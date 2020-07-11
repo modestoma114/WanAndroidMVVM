@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 文字大小 -->
+    <dimen name="text_notes">12sp</dimen>
+    <dimen name="text_content">15sp</dimen>
+    <dimen name="text_desc">13sp</dimen>
+    
+</resources>
