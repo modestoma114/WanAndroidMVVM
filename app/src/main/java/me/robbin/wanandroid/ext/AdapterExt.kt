@@ -16,20 +16,22 @@ import me.robbin.wanandroid.ui.fragment.wechat.WechatFragment
 
 fun ViewPager2.mainAdapter(fragment: Fragment): ViewPager2 {
 
-    this.isUserInputEnabled = false
+    val homeFragment by lazy { HomeFragment() }
+    val treeFragment by lazy { TreeFragment() }
+    val projectFragment by lazy { ProjectFragment() }
+    val wechatFragment by lazy { WechatFragment() }
+
     this.adapter = object : FragmentStateAdapter(fragment) {
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 -> HomeFragment()
-                1 -> TreeFragment()
-                2 -> ProjectFragment()
-                3 -> WechatFragment()
-                4 -> MeFragment()
-                else -> throw Exception("Illegal index.")
+                0 -> homeFragment
+                1 -> treeFragment
+                2 -> projectFragment
+                else -> wechatFragment
             }
         }
 
-        override fun getItemCount(): Int = 5
+        override fun getItemCount(): Int = 4
     }
 
     return this

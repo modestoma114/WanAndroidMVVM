@@ -5,8 +5,11 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
 
     <color name="text_new">@color/colorPrimary</color>
     <color name="text_top">#F86734</color>
+    <color name="text_title">#FFFFFF</color>
 
 </resources>

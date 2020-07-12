@@ -1,16 +1,19 @@
 package me.robbin.wanandroid.ui.fragment.home
 
 import android.os.Bundle
-import android.widget.LinearLayout
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.include_list.*
-import kotlinx.android.synthetic.main.include_toolbar.*
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_main.*
 import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
+import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
+import me.robbin.wanandroid.data.bean.ArticleBean
 import me.robbin.wanandroid.databinding.FragmentHomeBinding
-import me.robbin.wanandroid.ext.addTopPadding
 import me.robbin.wanandroid.ui.adapter.ArticleAdapter
 import me.robbin.wanandroid.viewmodel.HomeViewModel
 
@@ -29,10 +32,8 @@ class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
-        toolbar.title = resources.getString(R.string.bottom_home)
-        toolbar.addTopPadding(108)
-        data_list.layoutManager = LinearLayoutManager(requireContext())
-        data_list.adapter = adapter
+        rlHome.layoutManager = LinearLayoutManager(requireContext())
+        rlHome.adapter = adapter
     }
 
     override fun initData() {

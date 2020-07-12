@@ -17,4 +17,7 @@ interface WanApi {
     @GET("article/list/{page}/json")
     suspend fun getArticleList(@Path("page") page: Int): ApiResponse<ApiPageResponse<List<ArticleBean>>>
 
+    @GET("article/top/json")
+    suspend fun getTopArticleList(): ApiResponse<List<ArticleBean>>
+
 }

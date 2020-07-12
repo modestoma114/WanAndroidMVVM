@@ -35,5 +35,9 @@ data class ArticleBean(
     var userId: Int,
     var visible: Int,
     var zan: Int,
-    var tags: List<TagsBean>
+    var tags: List<TagsBean>,
+    // Flag
+    var tagFlag: Boolean,
+    var freshFlag: Boolean,
+    var topFlag: Boolean
 )

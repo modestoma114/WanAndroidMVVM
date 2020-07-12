@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <LinearLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshHome"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <include layout="@layout/include_toolbar" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rlHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/rv_item_article"/>
 
-        <include layout="@layout/include_list" />
-
-    </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

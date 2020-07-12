@@ -1,14 +1,21 @@
 package me.robbin.wanandroid.ui.adapter
 
+import android.opengl.Visibility
+import android.text.Html
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.data.bean.ArticleBean
+import me.robbin.wanandroid.ext.html2string
+import me.robbin.wanandroid.ext.removeAllBlank
 
 /**
  *
@@ -28,6 +35,9 @@ class ArticleAdapter : PagingDataAdapter<ArticleBean, ArticleViewHolder>(POST_CO
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         holder.bindTo(getItem(position))
+        holder.itemView.setOnClickListener {
+            getItem(position)?.title?.toToast()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -40,35 +50,63 @@ class ArticleAdapter : PagingDataAdapter<ArticleBean, ArticleViewHolder>(POST_CO
 }
 
 class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val chapter: AppCompatTextView = itemView.findViewById(R.id.tv_chapter)
-    val author: AppCompatTextView = itemView.findViewById(R.id.tv_author)
-    val title: AppCompatTextView = itemView.findViewById(R.id.tv_title)
-    val desc: AppCompatTextView = itemView.findViewById(R.id.tv_desc)
-    val time: AppCompatTextView = itemView.findViewById(R.id.tv_time)
-    val new: AppCompatTextView = itemView.findViewById(R.id.tv_new)
-    val top: AppCompatTextView = itemView.findViewById(R.id.tv_top)
-    val tag: AppCompatTextView = itemView.findViewById(R.id.tv_tag)
+    private val chapter: AppCompatTextView = itemView.findViewById(R.id.tv_chapter)
+    private val author: AppCompatTextView = itemView.findViewById(R.id.tv_author)
+    private val title: AppCompatTextView = itemView.findViewById(R.id.tv_title)
+    private val desc: AppCompatTextView = itemView.findViewById(R.id.tv_desc)
+    private val time: AppCompatTextView = itemView.findViewById(R.id.tv_time)
+    private val new: AppCompatTextView = itemView.findViewById(R.id.tv_new)
+    private val top: AppCompatTextView = itemView.findViewById(R.id.tv_top)
+    private val tag: AppCompatTextView = itemView.findViewById(R.id.tv_tag)
 
     fun bindTo(article: ArticleBean?) {
-        if (article?.type == 0) {
-            top.visibility = View.GONE
-        }
-        if (article?.fresh == false) {
-            new.visibility = View.GONE
-        }
-        chapter.text = "${article?.superChapterName}·${article?.chapterName}"
-        author.text = if (article?.author == "") article.shareUser else article?.author
-        title.text = article?.title
-        if (desc.text == "") {
-            desc.visibility = View.GONE
-        } else {
-            desc.text = article?.desc
-        }
-        time.text = article?.niceDate
-        if (article?.tags != null && article.tags.isNotEmpty()) {
-            tag.text = article.tags[0].name
-        } else {
-            tag.visibility = View.GONE
+        if (article != null) {
+            // author
+            author.text = if (article.author == "") article.shareUser else article.author
+            author.setOnClickListener {
+                author.text.toString().toToast()
+            }
+            // new
+            if (article.fresh) {
+                article.freshFlag = true
+            }
+            new.visibility = if (article.freshFlag) View.VISIBLE else View.GONE
+            // top
+            if (article.type == 1) {
+                article.topFlag = true
+            }
+            top.visibility = if (article.topFlag) View.VISIBLE else View.GONE
+            // tag
+            if (article.tags.isNotEmpty()) {
+                article.tagFlag = true
+            }
+            if (article.tagFlag) {
+                tag.text = article.tags[0].name
+                tag.visibility = View.VISIBLE
+                tag.setOnClickListener {
+                    tag.text.toString().toToast()
+                }
+            } else {
+                tag.visibility = View.GONE
+            }
+            // time
+            time.text = article.niceDate
+            // title
+            title.text = article.title.html2string()
+            // desc
+            if (TextUtils.isEmpty(article.desc)) {
+                desc.visibility = View.GONE
+                title.isSingleLine = false
+            } else {
+                desc.visibility = View.VISIBLE
+                title.isSingleLine = true
+                desc.text = article.desc.html2string().removeAllBlank(2)
+            }
+            // chapter
+            chapter.text = "${article.superChapterName}·${article.chapterName}"
+            chapter.setOnClickListener {
+                chapter.text.toString().toToast()
+            }
         }
     }
 

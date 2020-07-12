@@ -1,6 +1,8 @@
 package me.robbin.wanandroid.data.network
 
 import me.robbin.mvvmscaffold.network.RetrofitClient
+import me.robbin.wanandroid.data.bean.ArticleBean
+import me.robbin.wanandroid.data.bean.BannerBean
 
 /**
  *
@@ -8,6 +10,17 @@ import me.robbin.mvvmscaffold.network.RetrofitClient
  */
 object ApiService {
 
-    fun getApi() = RetrofitClient.instance.getApi("https://www.wanandroid.com", WanApi::class.java)
+    fun getApi() =
+        RetrofitClient.instance.getApi("https://www.wanandroid.com", WanApi::class.java)
+
+    suspend fun getArticle(page: Int): Triple<List<ArticleBean>, Int, Int> {
+        return if (page == -1) {
+            val result = getApi().getTopArticleList()
+            Triple(result.data, 0, 1)
+        } else {
+            val result = getApi().getArticleList(page)
+            Triple(result.data.datas, result.data.curPage, result.data.pageCount)
+        }
+    }
 
 }
