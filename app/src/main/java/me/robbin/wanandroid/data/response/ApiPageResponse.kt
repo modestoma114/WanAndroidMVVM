@@ -1,4 +1,4 @@
-package me.robbin.wanandroid.data.network
+package me.robbin.wanandroid.data.response
 
 /**
  *

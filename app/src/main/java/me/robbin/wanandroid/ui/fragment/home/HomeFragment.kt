@@ -9,6 +9,10 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
@@ -29,6 +33,7 @@ class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
     private val adapter by lazy {
         ArticleAdapter()
     }
+    private var articleJob: Job? = null
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
@@ -37,15 +42,16 @@ class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
     }
 
     override fun initData() {
-        mViewModel.getArticle()
-    }
-
-    override fun createObserver() {
-        mViewModel.getArticle().observe(viewLifecycleOwner, Observer {
-            lifecycleScope.launchWhenCreated {
+        articleJob = lifecycleScope.launch {
+            mViewModel.getArticle().collect {
                 adapter.submitData(it)
             }
-        })
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        articleJob?.cancel()
     }
 
 }

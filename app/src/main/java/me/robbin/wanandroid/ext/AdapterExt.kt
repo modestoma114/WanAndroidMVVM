@@ -37,3 +37,20 @@ fun ViewPager2.mainAdapter(fragment: Fragment): ViewPager2 {
     return this
 
 }
+
+fun ViewPager2.init(
+    fragment: Fragment,
+    fragments: ArrayList<Fragment>,
+    enableSlide: Boolean = true
+): ViewPager2 {
+
+    this.isUserInputEnabled = enableSlide
+
+    this.adapter = object : FragmentStateAdapter(fragment) {
+        override fun createFragment(position: Int) = fragments[position]
+        override fun getItemCount() = fragments.size
+    }
+
+    return this
+
+}

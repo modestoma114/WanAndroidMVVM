@@ -1,8 +1,7 @@
-package me.robbin.wanandroid.data.network
+package me.robbin.wanandroid.data.api
 
 import me.robbin.mvvmscaffold.network.RetrofitClient
 import me.robbin.wanandroid.data.bean.ArticleBean
-import me.robbin.wanandroid.data.bean.BannerBean
 
 /**
  *
