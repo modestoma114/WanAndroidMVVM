@@ -1,15 +1,14 @@
 package me.robbin.wanandroid.ui.adapter
 
-import android.opengl.Visibility
-import android.text.Html
+import android.annotation.SuppressLint
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.navigation.Navigation
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
@@ -35,9 +34,6 @@ class ArticleAdapter : PagingDataAdapter<ArticleBean, ArticleViewHolder>(POST_CO
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         holder.bindTo(getItem(position))
-        holder.itemView.setOnClickListener {
-            getItem(position)?.title?.toToast()
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -59,33 +55,22 @@ class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val top: AppCompatTextView = itemView.findViewById(R.id.tv_top)
     private val tag: AppCompatTextView = itemView.findViewById(R.id.tv_tag)
 
+    @SuppressLint("SetTextI18n")
     fun bindTo(article: ArticleBean?) {
+        itemView.setOnClickListener {
+            Navigation.findNavController(itemView).navigate(R.id.action_global_webView)
+        }
         if (article != null) {
             // author
             author.text = if (article.author == "") article.shareUser else article.author
-            author.setOnClickListener {
-                author.text.toString().toToast()
-            }
             // new
-            if (article.fresh) {
-                article.freshFlag = true
-            }
-            new.visibility = if (article.freshFlag) View.VISIBLE else View.GONE
+            new.visibility = if (article.fresh) View.VISIBLE else View.GONE
             // top
-            if (article.type == 1) {
-                article.topFlag = true
-            }
-            top.visibility = if (article.topFlag) View.VISIBLE else View.GONE
+            top.visibility = if (article.type == 1) View.VISIBLE else View.GONE
             // tag
             if (article.tags.isNotEmpty()) {
-                article.tagFlag = true
-            }
-            if (article.tagFlag) {
                 tag.text = article.tags[0].name
                 tag.visibility = View.VISIBLE
-                tag.setOnClickListener {
-                    tag.text.toString().toToast()
-                }
             } else {
                 tag.visibility = View.GONE
             }

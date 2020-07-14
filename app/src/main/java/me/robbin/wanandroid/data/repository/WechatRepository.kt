@@ -1,8 +1,6 @@
 package me.robbin.wanandroid.data.repository
 
-import androidx.paging.PagingSource
 import me.robbin.wanandroid.data.api.ApiService
-import me.robbin.wanandroid.data.bean.ChapterBean
 
 /**
  *
@@ -10,16 +8,6 @@ import me.robbin.wanandroid.data.bean.ChapterBean
  */
 class WechatRepository {
 
-    suspend fun getWechatList() = ApiService.getApi().getWechatList()
+    suspend fun getWechatList() = ApiService.getApi().getPublicList()
 
 }
-
-//class WecharPagingSource: PagingSource<Int, ChapterBean>() {
-//
-//    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ChapterBean> {
-//        return try {
-//            val result = ApiService.getApi()
-//        }
-//    }
-//
-//}

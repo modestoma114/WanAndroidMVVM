@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tab_home"
+        android:icon="@drawable/ic_tab_home"
+        android:title="@string/tab_home" />
+    <item
+        android:id="@+id/tab_question"
+        android:icon="@drawable/ic_tab_question"
+        android:title="@string/tab_question" />
+    <item
+        android:id="@+id/tab_tree"
+        android:icon="@drawable/ic_tab_tree"
+        android:title="@string/tab_tree" />
+    <item
+        android:id="@+id/tab_me"
+        android:icon="@drawable/ic_tab_me"
+        android:title="@string/tab_me" />
+
+</menu>

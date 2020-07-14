@@ -2,9 +2,9 @@ package me.robbin.wanandroid.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import androidx.paging.PagingSource
-import me.robbin.wanandroid.data.bean.ArticleBean
-import me.robbin.wanandroid.data.api.ApiService
+import me.robbin.wanandroid.data.datasource.ArticleDataSource
+import me.robbin.wanandroid.data.datasource.ChapterArticleDataSource
+import me.robbin.wanandroid.data.datasource.PublicArticleDataSource
 
 /**
  *
@@ -12,28 +12,26 @@ import me.robbin.wanandroid.data.api.ApiService
  */
 
 class ArticleRepository {
+
+    companion object {
+        val instance: ArticleRepository by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+            ArticleRepository()
+        }
+    }
+
     fun getArticle() =
         Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
             ArticleDataSource()
         }.flow
-}
 
-class ArticleDataSource : PagingSource<Int, ArticleBean>() {
+    fun getPublicArticle(cid: Int) =
+        Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
+            PublicArticleDataSource(cid)
+        }.flow
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticleBean> {
-
-        return try {
-            val page = params.key ?: -1
-            val (data, curPage, pageCount) = ApiService.getArticle(page)
-            LoadResult.Page(
-                data = data,
-                prevKey = if (page == -1) null else page - 1,
-                nextKey = if (curPage == pageCount) null else page + 1
-            )
-        } catch (e: Exception) {
-            LoadResult.Error(e)
-        }
-
-    }
+    fun getQuestionArticle(type: Int) =
+        Pager(PagingConfig(pageSize = 22, enablePlaceholders = false)) {
+            ChapterArticleDataSource(type)
+        }.flow
 
 }

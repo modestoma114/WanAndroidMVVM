@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/containerFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.common.WebFragment"
+        android:label="WebFragment"
+        tools:layout="@layout/fragment_web" />
+
+    <action
+        android:id="@+id/action_global_webView"
+        app:destination="@id/webFragment"
+        app:enterAnim="@anim/nav_fragment_enter"
+        app:exitAnim="@anim/nav_fragment_exit"
+        app:popEnterAnim="@anim/nav_fragment_pop_enter"
+        app:popExitAnim="@anim/nav_fragment_pop_exit" />
+    <fragment
+        android:id="@+id/containerFragment"
+        android:name="me.robbin.wanandroid.ui.ContainerFragment"
+        android:label="ContainerFragment"
+        tools:layout="@layout/fragment_container" />
+</navigation>

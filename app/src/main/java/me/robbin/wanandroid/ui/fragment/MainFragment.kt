@@ -1,40 +1,52 @@
 package me.robbin.wanandroid.ui.fragment
 
 import android.os.Bundle
-import android.view.Gravity
-import androidx.core.view.GravityCompat
-import com.google.android.material.tabs.TabLayoutMediator
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavHost
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
+import me.robbin.mvvmscaffold.navigation.NavHostFragment
+import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.ext.addTopPadding
+import me.robbin.wanandroid.data.api.ApiService
 import me.robbin.wanandroid.ext.mainAdapter
 
 /**
  *
- * Create by Robbin at 2020/7/10
+ * Create by Robbin at 2020/7/13
  */
-class MainFragment: BaseVMFragment<BaseViewModel>() {
+class MainFragment : BaseVMFragment<BaseViewModel>() {
 
     override val layoutRes: Int
         get() = R.layout.fragment_main
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
-        vpMain.mainAdapter(this)
-        toolbarMain.addTopPadding(108)
-        toolbarMain.setNavigationOnClickListener {
-            navigationMain.openDrawer(GravityCompat.START)
-        }
-        TabLayoutMediator(tabMain, vpMain) { tab, position ->
-            when (position) {
-                0 -> tab.text = "首页"
-                1 -> tab.text = "广场"
-                2 -> tab.text = "项目"
-                else -> tab.text = "公众号"
+        vpMain.mainAdapter(childFragmentManager)
+        bottomMain.setOnNavigationItemSelectedListener {
+            return@setOnNavigationItemSelectedListener when (it.itemId) {
+                R.id.tab_home -> {
+                    vpMain.currentItem = 0
+                    true
+                }
+                R.id.tab_question -> {
+                    vpMain.currentItem = 1
+                    true
+                }
+                R.id.tab_tree -> {
+                    vpMain.currentItem = 2
+                    true
+                }
+                R.id.tab_me -> {
+                    vpMain.currentItem = 4
+                    true
+                }
+                else -> false
             }
-        }.attach()
+        }
     }
 
 }

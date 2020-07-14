@@ -12,4 +12,7 @@
     <color name="text_top">#F86734</color>
     <color name="text_title">#FFFFFF</color>
 
+    <color name="bg_web_title">#11000000</color>
+    <color name="bg_view">@color/white</color>
+
 </resources>

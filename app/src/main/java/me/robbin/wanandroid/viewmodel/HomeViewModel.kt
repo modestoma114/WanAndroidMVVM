@@ -9,7 +9,7 @@ import me.robbin.wanandroid.data.repository.ArticleRepository
  */
 class HomeViewModel : BaseViewModel() {
 
-    private val articleRepository by lazy { ArticleRepository() }
+    private val articleRepository by lazy { ArticleRepository.instance }
 
     fun getArticle() = articleRepository.getArticle()
 

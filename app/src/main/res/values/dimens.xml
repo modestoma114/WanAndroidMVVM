@@ -5,5 +5,7 @@
     <dimen name="text_notes">12sp</dimen>
     <dimen name="text_content">15sp</dimen>
     <dimen name="text_desc">13sp</dimen>
+    <dimen name="text_web_title">20sp</dimen>
+    <dimen name="text_waring">24sp</dimen>
     
 </resources>

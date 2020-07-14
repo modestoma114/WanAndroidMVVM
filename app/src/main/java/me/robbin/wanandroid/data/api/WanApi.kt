@@ -3,8 +3,8 @@ package me.robbin.wanandroid.data.api
 import me.robbin.wanandroid.data.bean.ArticleBean
 import me.robbin.wanandroid.data.bean.BannerBean
 import me.robbin.wanandroid.data.bean.ChapterBean
-import me.robbin.wanandroid.data.response.ApiPageResponse
-import me.robbin.wanandroid.data.response.ApiResponse
+import me.robbin.wanandroid.data.bean.ApiPageResponse
+import me.robbin.wanandroid.data.bean.ApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -18,12 +18,27 @@ interface WanApi {
     suspend fun getBanner(): ApiResponse<List<BannerBean>>
 
     @GET("article/list/{page}/json")
-    suspend fun getArticleList(@Path("page") page: Int): ApiResponse<ApiPageResponse<List<ArticleBean>>>
+    suspend fun getArticleList(@Path("page") page: Int)
+            : ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
 
     @GET("article/top/json")
     suspend fun getTopArticleList(): ApiResponse<List<ArticleBean>>
 
     @GET("wxarticle/chapters/json")
-    suspend fun getWechatList(): ApiResponse<List<ChapterBean>>
+    suspend fun getPublicList(): ApiResponse<List<ChapterBean>>
+
+    @GET("wxarticle/list/{cid}/{page}/json")
+    suspend fun getPublicArticleList(
+        @Path("cid") cid: Int,
+        @Path("page") page: Int
+    ): ApiResponse<ApiPageResponse<List<ArticleBean>>>
+
+    @GET("wenda/list/{page}/json")
+    suspend fun getQuestionArticleList(@Path("page") page: Int)
+            : ApiResponse<ApiPageResponse<List<ArticleBean>>>
+
+    @GET("user_article/list/{page}/json")
+    suspend fun getUserArticleList(@Path("page") page: Int)
+            : ApiResponse<ApiPageResponse<List<ArticleBean>>>
 
 }
