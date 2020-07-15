@@ -1,6 +1,7 @@
 package me.robbin.wanandroid.ui.adapter
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -34,6 +35,11 @@ class ArticleAdapter : PagingDataAdapter<ArticleBean, ArticleViewHolder>(POST_CO
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         holder.bindTo(getItem(position))
+        holder.itemView.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putParcelable("data", getItem(position))
+            Navigation.findNavController(holder.itemView).navigate(R.id.action_global_webView, bundle)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -57,9 +63,6 @@ class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     @SuppressLint("SetTextI18n")
     fun bindTo(article: ArticleBean?) {
-        itemView.setOnClickListener {
-            Navigation.findNavController(itemView).navigate(R.id.action_global_webView)
-        }
         if (article != null) {
             // author
             author.text = if (article.author == "") article.shareUser else article.author

@@ -11,6 +11,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
+import me.robbin.mvvmscaffold.utils.StatusBarUtils
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.databinding.FragmentHomeBinding
@@ -35,7 +36,7 @@ class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
-        toolbarHome.addTopPadding(108)
+        toolbarHome.addTopPadding(StatusBarUtils.getStatusBarHeight())
         toolbarHome.setTitle(R.string.tab_home)
         initAdapter()
         refresh = refreshHome

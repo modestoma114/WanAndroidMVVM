@@ -6,7 +6,7 @@
     app:startDestination="@id/containerFragment">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.MainFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.main.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main" />
     <fragment
@@ -14,7 +14,6 @@
         android:name="me.robbin.wanandroid.ui.fragment.common.WebFragment"
         android:label="WebFragment"
         tools:layout="@layout/fragment_web" />
-
     <action
         android:id="@+id/action_global_webView"
         app:destination="@id/webFragment"
@@ -22,9 +21,24 @@
         app:exitAnim="@anim/nav_fragment_exit"
         app:popEnterAnim="@anim/nav_fragment_pop_enter"
         app:popExitAnim="@anim/nav_fragment_pop_exit" />
+
     <fragment
         android:id="@+id/containerFragment"
-        android:name="me.robbin.wanandroid.ui.ContainerFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.ContainerFragment"
         android:label="ContainerFragment"
         tools:layout="@layout/fragment_container" />
+
+    <fragment
+        android:id="@+id/knowledgeArticleListFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.knowledge.KnowledgeArticleListFragment"
+        android:label="KnowledgeArticleListFragment"
+        tools:layout="@layout/fragment_knowledge_article_list" />
+    <action
+        android:id="@+id/action_global_knowledgeArticleListFragment"
+        app:destination="@id/knowledgeArticleListFragment"
+        app:enterAnim="@anim/nav_fragment_enter"
+        app:exitAnim="@anim/nav_fragment_exit"
+        app:popEnterAnim="@anim/nav_fragment_pop_enter"
+        app:popExitAnim="@anim/nav_fragment_pop_exit" />
+
 </navigation>

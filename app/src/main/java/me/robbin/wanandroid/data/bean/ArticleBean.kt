@@ -1,8 +1,12 @@
 package me.robbin.wanandroid.data.bean
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 /**
  * Created by Robbin on 2020-07-11
  */
+@Parcelize
 data class ArticleBean(
     var apkLink: String,
     var audit: Int,
@@ -36,4 +40,4 @@ data class ArticleBean(
     var visible: Int,
     var zan: Int,
     var tags: List<TagsBean>
-)
+) : Parcelable

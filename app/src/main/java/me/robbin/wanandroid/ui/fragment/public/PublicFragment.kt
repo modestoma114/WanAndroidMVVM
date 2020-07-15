@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_chapter.*
 import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
+import me.robbin.mvvmscaffold.utils.StatusBarUtils
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.data.bean.ChapterBean
 import me.robbin.wanandroid.databinding.FragmentChapterBinding
@@ -29,7 +30,7 @@ class PublicFragment: BaseDBFragment<PublicViewModel, FragmentChapterBinding>() 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
         vpChapter.init(childFragmentManager, lifecycle, fragments)
-        tabChapter.addTopPadding(108)
+        tabChapter.addTopPadding(StatusBarUtils.getStatusBarHeight())
         TabLayoutMediator(tabChapter, vpChapter) { tab, position ->
             when (position) {
                 position -> tab.text = titles[position].name

@@ -29,9 +29,14 @@ class ArticleRepository {
             PublicArticleDataSource(cid)
         }.flow
 
-    fun getQuestionArticle(type: Int) =
+    fun getArticleList(type: Int, cid: Int = -1) =
+        Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
+            ChapterArticleDataSource(type, cid)
+        }.flow
+
+    fun getQuestionList(type: Int) =
         Pager(PagingConfig(pageSize = 22, enablePlaceholders = false)) {
             ChapterArticleDataSource(type)
-        }.flow
+        }
 
 }

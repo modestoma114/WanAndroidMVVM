@@ -7,6 +7,7 @@ import me.robbin.wanandroid.data.bean.ApiPageResponse
 import me.robbin.wanandroid.data.bean.ApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  *
@@ -40,5 +41,14 @@ interface WanApi {
     @GET("user_article/list/{page}/json")
     suspend fun getUserArticleList(@Path("page") page: Int)
             : ApiResponse<ApiPageResponse<List<ArticleBean>>>
+
+    @GET("tree/json")
+    suspend fun getKnowledgeList(): ApiResponse<List<ChapterBean>>
+
+    @GET("article/list/{page}/json")
+    suspend fun getKnowledgeArticleList(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int
+    ): ApiResponse<ApiPageResponse<List<ArticleBean>>>
 
 }

@@ -14,5 +14,6 @@
 
     <color name="bg_web_title">#11000000</color>
     <color name="bg_view">@color/white</color>
+    <color name="bg_todo_toolbar">#F0F0F0</color>
 
 </resources>

@@ -1,14 +1,17 @@
-package me.robbin.wanandroid.ui.fragment
+package me.robbin.wanandroid.ui.fragment.main
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavHost
 import androidx.navigation.Navigation
+import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.mvvmscaffold.navigation.NavHostFragment
+import me.robbin.mvvmscaffold.utils.setStatusBarLightMode
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.data.api.ApiService
@@ -47,6 +50,40 @@ class MainFragment : BaseVMFragment<BaseViewModel>() {
                 else -> false
             }
         }
+        vpMain.addOnPageChangeListener(pageChangeListener)
+    }
+
+    private var menuItem: MenuItem? = null
+    private val pageChangeListener = object : ViewPager.OnPageChangeListener {
+        override fun onPageScrollStateChanged(state: Int) {
+        }
+
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
+        }
+
+        override fun onPageSelected(position: Int) {
+            if (menuItem != null)
+                menuItem?.isChecked = false
+            else
+                bottomMain.menu.getItem(position).isChecked = false
+            menuItem = bottomMain.menu.getItem(position)
+            menuItem?.isChecked = true
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setStatusBarLightMode(false)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        vpMain.removeOnPageChangeListener(pageChangeListener)
     }
 
 }

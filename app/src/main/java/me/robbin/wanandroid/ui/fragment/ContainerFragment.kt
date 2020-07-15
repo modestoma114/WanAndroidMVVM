@@ -1,14 +1,13 @@
-package me.robbin.wanandroid.ui
+package me.robbin.wanandroid.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
-import kotlinx.android.synthetic.main.fragment_chapter.*
 import kotlinx.android.synthetic.main.fragment_container.*
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.ui.fragment.MainFragment
+import me.robbin.wanandroid.ui.fragment.main.MainFragment
 import me.robbin.wanandroid.ui.fragment.todo.TodoFragment
 
 /**
@@ -27,12 +26,7 @@ class ContainerFragment: BaseVMFragment<BaseViewModel>() {
         super.initView(savedInstanceState)
         val fragments = listOf<Fragment>(todoFragment, mainFragment)
         vpContainer.adapter = object : FragmentStatePagerAdapter(childFragmentManager, 1) {
-            override fun getItem(position: Int): Fragment {
-                return when (position) {
-                    0 -> fragments[0]
-                    else -> fragments[1]
-                }
-            }
+            override fun getItem(position: Int): Fragment = fragments[position]
 
             override fun getCount(): Int = 2
 

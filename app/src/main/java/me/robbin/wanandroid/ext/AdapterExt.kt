@@ -10,7 +10,7 @@ import androidx.viewpager2.widget.ViewPager2
 import me.robbin.wanandroid.ui.fragment.home.HomeFragment
 import me.robbin.wanandroid.ui.fragment.me.MeFragment
 import me.robbin.wanandroid.ui.fragment.question.QuestionFragment
-import me.robbin.wanandroid.ui.fragment.tree.TreeFragment
+import me.robbin.wanandroid.ui.fragment.knowledge.KnowledgeFragment
 
 /**
  *
@@ -21,7 +21,7 @@ fun ViewPager.mainAdapter(fm: FragmentManager): ViewPager {
 
     val homeFragment by lazy { HomeFragment() }
     val questionFragment by lazy { QuestionFragment() }
-    val treeFragment by lazy { TreeFragment() }
+    val treeFragment by lazy { KnowledgeFragment() }
     val meFragment by lazy { MeFragment() }
 
     this.offscreenPageLimit = 3
