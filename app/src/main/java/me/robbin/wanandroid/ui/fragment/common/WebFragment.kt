@@ -1,13 +1,11 @@
 package me.robbin.wanandroid.ui.fragment.common
 
 import android.os.Bundle
-import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.fragment_web.*
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.utils.StatusBarUtils
-import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.data.bean.ArticleBean
 import me.robbin.wanandroid.ext.addTopPadding
@@ -38,6 +36,10 @@ class WebFragment: BaseVMFragment<WebViewModel>() {
                 return true
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
 }
