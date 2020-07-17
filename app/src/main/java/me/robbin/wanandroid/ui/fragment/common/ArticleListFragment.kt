@@ -6,7 +6,6 @@ import kotlinx.android.synthetic.main.fragment_list_article.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
-import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.ui.adapter.ArticleAdapter
 import me.robbin.wanandroid.viewmodel.ArticleListViewModel

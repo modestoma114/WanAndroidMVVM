@@ -41,4 +41,18 @@
         app:popEnterAnim="@anim/nav_fragment_pop_enter"
         app:popExitAnim="@anim/nav_fragment_pop_exit" />
 
+    <fragment
+        android:id="@+id/loginMainFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.login.LoginMainFragment"
+        android:label="LoginMainFragment"
+        tools:layout="@layout/fragment_login_main" />
+
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginMainFragment"
+        app:enterAnim="@anim/nav_login_enter"
+        app:exitAnim="@anim/nav_login_exit"
+        app:popEnterAnim="@anim/nav_login_pop_enter"
+        app:popExitAnim="@anim/nav_login_pop_exit" />
+
 </navigation>

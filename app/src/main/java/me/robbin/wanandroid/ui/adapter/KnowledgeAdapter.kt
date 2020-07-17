@@ -1,13 +1,11 @@
 package me.robbin.wanandroid.ui.adapter
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import me.robbin.mvvmscaffold.navigation.NavHostFragment
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.data.bean.ChapterBean
 import me.robbin.wanandroid.databinding.RvItemKnowledgeBinding
@@ -39,7 +37,6 @@ class KnowledgeAdapter :
         val binding = holder.dataBinding
         if (binding != null) {
             binding.tvChapterName.text = item.name
-            val chips = item.children
             for (index in item.children.indices) {
                 val chip = createItemChip()
                 chip.text = item.children[index].name

@@ -12,18 +12,4 @@ data class ApiPageResponse<T>(
     var pageCount: Int,
     var size: Int,
     var total: Int
-) {
-
-    fun isEmpty(): Boolean {
-        return (datas as List<*>).size == 0
-    }
-
-    fun isRefresh(): Boolean {
-        return offset == 0
-    }
-
-    fun hasMore(): Boolean {
-        return !over
-    }
-
-}
+)

@@ -38,8 +38,4 @@ class WebFragment: BaseVMFragment<WebViewModel>() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
 }

@@ -2,19 +2,12 @@ package me.robbin.wanandroid.ui.fragment.main
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavHost
-import androidx.navigation.Navigation
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
-import me.robbin.mvvmscaffold.navigation.NavHostFragment
 import me.robbin.mvvmscaffold.utils.setStatusBarLightMode
-import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.data.api.ApiService
 import me.robbin.wanandroid.ext.mainAdapter
 
 /**
