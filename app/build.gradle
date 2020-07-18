@@ -48,7 +48,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation 'me.robbin.mvvmscaffold:mvvmscaffold:0.1.5'
+    implementation 'me.robbin.mvvmscaffold:mvvmscaffold:0.1.6'
     implementation 'com.youth.banner:banner:2.0.12'
 
     implementation "androidx.paging:paging-runtime:3.0.0-alpha02"
