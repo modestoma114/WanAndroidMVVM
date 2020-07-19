@@ -1,13 +1,7 @@
 package me.robbin.wanandroid.data.api
 
-import me.robbin.wanandroid.data.bean.ArticleBean
-import me.robbin.wanandroid.data.bean.BannerBean
-import me.robbin.wanandroid.data.bean.ChapterBean
-import me.robbin.wanandroid.data.bean.ApiPageResponse
-import me.robbin.wanandroid.data.bean.ApiResponse
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import me.robbin.wanandroid.data.bean.*
+import retrofit2.http.*
 
 /**
  *
@@ -50,5 +44,32 @@ interface WanApi {
         @Path("page") page: Int,
         @Query("cid") cid: Int
     ): ApiResponse<ApiPageResponse<List<ArticleBean>>>
+
+    @GET("hotkey/json")
+    suspend fun getHotKey(): ApiResponse<List<HotKeyBean>>
+
+    @POST("article/query/{page}/json")
+    suspend fun getSearchDataByKey(
+        @Path("page") pageNo: Int,
+        @Query("k") searchKey: String
+    ): ApiResponse<ApiPageResponse<ArrayList<ArticleBean>>>
+
+    @FormUrlEncoded
+    @POST("user/login")
+    suspend fun login(
+        @Field("username") username: String,
+        @Field("password") pwd: String
+    ): ApiResponse<UserBean>
+
+    @FormUrlEncoded
+    @POST("user/register")
+    suspend fun register(
+        @Field("username") username: String,
+        @Field("password") pwd: String,
+        @Field("repassword") pwd2: String
+    ): ApiResponse<Any>
+
+    @GET("lg/coin/userinfo/json")
+    suspend fun getIntegral(): ApiResponse<IntegralBean>
 
 }

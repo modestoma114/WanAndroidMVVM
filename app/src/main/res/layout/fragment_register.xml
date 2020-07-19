@@ -15,6 +15,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/evRegisterUsername"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -33,6 +34,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/evRegisterPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -51,6 +53,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/evRegisterPassword2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

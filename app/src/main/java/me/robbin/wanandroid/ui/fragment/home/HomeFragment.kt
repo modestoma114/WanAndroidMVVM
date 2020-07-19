@@ -16,8 +16,9 @@ import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.databinding.FragmentHomeBinding
 import me.robbin.wanandroid.ext.addTopPadding
+import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.adapter.ArticleAdapter
-import me.robbin.wanandroid.ui.adapter.ReposLoadStateAdapter
+import me.robbin.wanandroid.ui.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.viewmodel.HomeViewModel
 
 /**
@@ -38,6 +39,13 @@ class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
         super.initView(savedInstanceState)
         toolbarHome.addTopPadding(StatusBarUtils.getStatusBarHeight())
         toolbarHome.setTitle(R.string.tab_home)
+        toolbarHome.setOnMenuItemClickListener {
+            return@setOnMenuItemClickListener if (it.itemId == R.id.searchHome) {
+                nav().navigate(R.id.action_main_searchFragment)
+                true
+            } else
+                false
+        }
         initAdapter()
         refresh = refreshHome
         refresh.setOnRefreshListener {
@@ -49,7 +57,7 @@ class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
     }
 
     private fun initAdapter() {
-        rlHome.adapter = adapter.withLoadStateFooter(ReposLoadStateAdapter { adapter.retry() })
+        rlHome.adapter = adapter.withLoadStateFooter(PagingLoadStateAdapter { adapter.retry() })
         adapter.addLoadStateListener { loadState ->
             rlHome.isVisible = loadState.refresh is LoadState.NotLoading
             progressLoading.isVisible = loadState.refresh is LoadState.Loading
@@ -77,6 +85,7 @@ class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
         articleJob?.cancel()
         articleJob = lifecycleScope.launch {
             mViewModel.getArticle().collect {
+                refresh.isRefreshing = false
                 adapter.submitData(it)
             }
         }

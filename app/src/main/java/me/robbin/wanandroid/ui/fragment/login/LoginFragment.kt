@@ -1,5 +1,6 @@
 package me.robbin.wanandroid.ui.fragment.login
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.activityViewModels
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -24,6 +25,9 @@ class LoginFragment : BaseDBFragment<BaseViewModel, FragmentLoginBinding>() {
         super.initView(savedInstanceState)
         btnGoRegister.setOnClickListener {
             (parentFragment as LoginMainFragment).goRegister()
+        }
+        btnLogin.setOnClickListener {
+            userViewModel.login()
         }
     }
 

@@ -13,22 +13,23 @@ import me.robbin.wanandroid.databinding.LayoutListFooterViewBinding
  *
  * Create by Robbin at 2020/7/11
  */
-class ReposLoadStateAdapter(private val retry: () -> Unit): LoadStateAdapter<ReposLoadStateViewHolder>() {
+class PagingLoadStateAdapter(private val retry: () -> Unit) :
+    LoadStateAdapter<PagingLoadStateViewHolder>() {
 
-    override fun onBindViewHolder(holder: ReposLoadStateViewHolder, loadState: LoadState) {
+    override fun onBindViewHolder(holder: PagingLoadStateViewHolder, loadState: LoadState) {
         holder.bind(loadState)
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         loadState: LoadState
-    ): ReposLoadStateViewHolder {
-        return ReposLoadStateViewHolder.create(parent, retry)
+    ): PagingLoadStateViewHolder {
+        return PagingLoadStateViewHolder.create(parent, retry)
     }
 
 }
 
-class ReposLoadStateViewHolder(
+class PagingLoadStateViewHolder private constructor(
     private val binding: LayoutListFooterViewBinding,
     retry: () -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
@@ -38,20 +39,19 @@ class ReposLoadStateViewHolder(
     }
 
     fun bind(loadState: LoadState) {
-        if (loadState is LoadState.Error){
+        if (loadState is LoadState.Error)
             binding.footerErrorMsg.text = loadState.error.localizedMessage
-        }
         binding.footerProgressBar.isVisible = loadState is LoadState.Loading
         binding.footerErrorMsg.isVisible = loadState !is LoadState.Loading
         binding.footerRetryBtn.isVisible = loadState !is LoadState.Loading
     }
 
     companion object {
-        fun create(parent: ViewGroup, retry: () -> Unit): ReposLoadStateViewHolder {
+        fun create(parent: ViewGroup, retry: () -> Unit): PagingLoadStateViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.layout_list_footer_view, parent, false)
             val binding = LayoutListFooterViewBinding.bind(view)
-            return ReposLoadStateViewHolder(binding, retry)
+            return PagingLoadStateViewHolder(binding, retry)
         }
     }
 

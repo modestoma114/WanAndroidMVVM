@@ -38,20 +38,21 @@ class ArticleAdapter : PagingDataAdapter<ArticleBean, ArticleViewHolder>(POST_CO
         holder.itemView.setOnClickListener {
             val bundle = Bundle()
             bundle.putParcelable("data", getItem(position))
-            Navigation.findNavController(holder.itemView).navigate(R.id.action_global_webView, bundle)
+            Navigation.findNavController(holder.itemView)
+                .navigate(R.id.action_global_webView, bundle)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        return ArticleViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.rv_item_article, parent, false)
-        )
+        return ArticleViewHolder(parent)
     }
 
 }
 
-class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class ArticleViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
+    LayoutInflater.from(parent.context)
+        .inflate(R.layout.rv_item_article, parent, false)
+) {
     private val chapter: AppCompatTextView = itemView.findViewById(R.id.tv_chapter)
     private val author: AppCompatTextView = itemView.findViewById(R.id.tv_author)
     private val title: AppCompatTextView = itemView.findViewById(R.id.tv_title)

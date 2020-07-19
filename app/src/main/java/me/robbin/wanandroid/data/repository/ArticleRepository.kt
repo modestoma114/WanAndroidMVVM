@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import me.robbin.wanandroid.data.datasource.ArticleDataSource
 import me.robbin.wanandroid.data.datasource.ChapterArticleDataSource
 import me.robbin.wanandroid.data.datasource.PublicArticleDataSource
+import me.robbin.wanandroid.data.datasource.SearchArticleDateSource
 
 /**
  *
@@ -32,6 +33,11 @@ class ArticleRepository {
     fun getArticleList(type: Int, cid: Int = -1) =
         Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
             ChapterArticleDataSource(type, cid)
+        }.flow
+
+    fun getSearchArticle(query: String) =
+        Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
+            SearchArticleDateSource(query)
         }.flow
 
 }
