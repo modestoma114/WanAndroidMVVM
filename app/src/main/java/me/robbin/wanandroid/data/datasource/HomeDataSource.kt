@@ -10,7 +10,7 @@ import java.io.IOException
  *
  * Create by Robbin at 2020/7/14
  */
-class ArticleDataSource : PagingSource<Int, ArticleBean>() {
+class HomeDataSource : PagingSource<Int, ArticleBean>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticleBean> {
 

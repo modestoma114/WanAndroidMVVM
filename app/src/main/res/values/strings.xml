@@ -12,7 +12,7 @@
     <string name="text_author">Robbin</string>
     <string name="text_top">置顶</string>
     <string name="text_time">刚刚</string>
-    <string name="text_error_retry">重试</string>
+    <string name="text_error_retry">出错了，点我重试</string>
     <string name="text_empty_retry">什么都没有，点我重试</string>
     <string name="text_me_login">去登录</string>
     <string name="text_user_info">等级：—&#160;&#160;&#160;排名： —</string>

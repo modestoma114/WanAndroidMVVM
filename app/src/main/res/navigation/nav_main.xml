@@ -4,18 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/containerFragment">
+
+    <fragment
+        android:id="@+id/containerFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.ContainerFragment"
+        android:label="ContainerFragment"
+        tools:layout="@layout/fragment_container">
+        <action
+            android:id="@+id/action_main_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_main_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_main_to_knowledgeArticleListFragment"
+            app:destination="@id/knowledgeArticleListFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
+    </fragment>
+
     <fragment
         android:id="@+id/mainFragment"
         android:name="me.robbin.wanandroid.ui.fragment.main.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/webFragment"
         android:name="me.robbin.wanandroid.ui.fragment.common.WebFragment"
         android:label="WebFragment"
         tools:layout="@layout/fragment_web" />
     <action
-        android:id="@+id/action_global_webView"
+        android:id="@+id/action_global_to_webFragment"
         app:destination="@id/webFragment"
         app:enterAnim="@anim/nav_fragment_enter"
         app:exitAnim="@anim/nav_fragment_exit"
@@ -23,40 +66,28 @@
         app:popExitAnim="@anim/nav_fragment_pop_exit" />
 
     <fragment
-        android:id="@+id/containerFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.ContainerFragment"
-        android:label="ContainerFragment"
-        tools:layout="@layout/fragment_container">
-
-        <action
-            android:id="@+id/action_main_searchFragment"
-            app:destination="@id/searchFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_fade_exit"
-            app:popEnterAnim="@anim/fragment_fade_enter"
-            app:popExitAnim="@anim/fragment_fade_exit" />
-
-    </fragment>
-
-    <fragment
         android:id="@+id/knowledgeArticleListFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.knowledge.KnowledgeArticleListFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.knowledge.ChapterArticlesFragment"
         android:label="KnowledgeArticleListFragment"
         tools:layout="@layout/fragment_knowledge_article_list" />
-    <action
-        android:id="@+id/action_global_knowledgeArticleListFragment"
-        app:destination="@id/knowledgeArticleListFragment"
-        app:enterAnim="@anim/nav_fragment_enter"
-        app:exitAnim="@anim/nav_fragment_exit"
-        app:popEnterAnim="@anim/nav_fragment_pop_enter"
-        app:popExitAnim="@anim/nav_fragment_pop_exit" />
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.home.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.setting.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting" />
 
     <fragment
         android:id="@+id/loginMainFragment"
         android:name="me.robbin.wanandroid.ui.fragment.login.LoginMainFragment"
         android:label="LoginMainFragment"
         tools:layout="@layout/fragment_login_main" />
-
     <action
         android:id="@+id/action_global_loginFragment"
         app:destination="@id/loginMainFragment"
@@ -64,11 +95,5 @@
         app:exitAnim="@anim/nav_login_exit"
         app:popEnterAnim="@anim/nav_login_pop_enter"
         app:popExitAnim="@anim/nav_login_pop_exit" />
-
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.home.SearchFragment"
-        android:label="SearchFragment"
-        tools:layout="@layout/fragment_search" />
 
 </navigation>

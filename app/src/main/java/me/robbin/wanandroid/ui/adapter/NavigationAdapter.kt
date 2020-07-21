@@ -1,23 +1,22 @@
 package me.robbin.wanandroid.ui.adapter
 
 import android.os.Bundle
-import android.view.ViewGroup
 import androidx.navigation.NavController
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.data.bean.ChapterBean
+import me.robbin.wanandroid.data.bean.NavigationBean
 import me.robbin.wanandroid.databinding.RvItemKnowledgeBinding
 import java.util.*
 
 /**
  *
- * Create by Robbin at 2020/7/15
+ * Create by Robbin at 2020/7/21
  */
-class KnowledgeAdapter :
-    BaseQuickAdapter<ChapterBean, BaseDataBindingHolder<RvItemKnowledgeBinding>>(R.layout.rv_item_knowledge) {
+class NavigationAdapter :
+    BaseQuickAdapter<NavigationBean, BaseDataBindingHolder<RvItemKnowledgeBinding>>(R.layout.rv_item_knowledge) {
 
     private val chipItemCaches: Queue<Chip> = LinkedList()
     private var onItemChipClickListener: OnItemChipClickListener? = null
@@ -34,21 +33,20 @@ class KnowledgeAdapter :
         this.onItemChipClickListener = listener
     }
 
-    override fun convert(holder: BaseDataBindingHolder<RvItemKnowledgeBinding>, item: ChapterBean) {
+    override fun convert(holder: BaseDataBindingHolder<RvItemKnowledgeBinding>, item: NavigationBean) {
         val binding = holder.dataBinding
         if (binding != null) {
             binding.tvChapterName.text = item.name
-            for (index in item.children.indices) {
+            for (index in item.articles.indices) {
                 val chip = createItemChip()
-                chip.text = item.children[index].name
+                chip.text = item.articles[index].title
                 chip.isCheckable = false
                 chip.isCloseIconVisible = false
                 chip.setOnClickListener {
                     val bundle = Bundle()
-                    bundle.putParcelable("data", item)
-                    bundle.putInt("index", index)
+                    bundle.putParcelable("data", item.articles[index])
                     onItemChipClickListener?.setNavController()
-                        ?.navigate(R.id.action_main_to_knowledgeArticleListFragment, bundle)
+                        ?.navigate(R.id.action_global_to_webFragment, bundle)
                 }
                 binding.chipGroup.addView(chip)
             }

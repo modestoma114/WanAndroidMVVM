@@ -11,7 +11,8 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.databinding.FragmentChapterBinding
 import me.robbin.wanandroid.ext.addTopPadding
 import me.robbin.wanandroid.ext.init
-import me.robbin.wanandroid.ui.fragment.common.ArticleListFragment
+import me.robbin.wanandroid.ui.fragment.common.ArticleListsFragment
+import me.robbin.wanandroid.ui.fragment.common.ArticleType
 
 /**
  *
@@ -22,8 +23,8 @@ class QuestionFragment : BaseDBFragment<BaseViewModel, FragmentChapterBinding>()
     override val layoutRes: Int
         get() = R.layout.fragment_chapter
 
-    private val questionFragment by lazy { ArticleListFragment.newInstance(1) }
-    private val userArticleFragment by lazy { ArticleListFragment.newInstance(2) }
+    private val questionFragment by lazy { ArticleListsFragment.newInstance(ArticleType.QUESTION) }
+    private val userArticleFragment by lazy { ArticleListsFragment.newInstance(ArticleType.SHARE) }
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)

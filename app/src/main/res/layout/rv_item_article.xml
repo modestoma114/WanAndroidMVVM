@@ -5,25 +5,45 @@
 
     <data>
 
+        <variable
+            name="route"
+            type="me.robbin.wanandroid.ui.adapter.ArticleAdapter.RouteClick" />
+
+        <variable
+            name="bean"
+            type="me.robbin.wanandroid.data.bean.ArticleBean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:background="@color/bg_view">
+        android:background="@color/bg_view"
+        android:onClick="@{() -> route.goWeb(bean)}"
+        android:padding="15dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivProject"
+            imgIsVisible="@{bean.envelopePic}"
+            android:layout_width="70dp"
+            android:layout_height="99dp"
+            android:background="?attr/selectableItemBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_head"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivProject"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_author"
+                textAuthor="@{bean.author}"
+                textShareUser="@{bean.shareUser}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_author"
@@ -34,6 +54,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_new"
+                isNew="@{bean.fresh}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -46,6 +67,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_top"
+                isTop="@{bean.type}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -58,6 +80,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_tag"
+                hasTag="@{bean.tags}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -76,7 +99,7 @@
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/text_time"
+                android:text="@{bean.niceDate}"
                 android:textSize="@dimen/text_notes"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -86,40 +109,47 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
+            articleTitle="@{bean.title}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_content"
             android:textStyle="bold"
-            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivProject"
             app:layout_constraintTop_toBottomOf="@id/cl_head"
             tools:text="@string/app_name" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_desc"
+            articleDesc="@{bean.desc}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="3"
             android:textSize="@dimen/text_desc"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivProject"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             tools:text="desc" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_chapter"
+            chapter="@{bean.chapterName}"
+            superChapter="@{bean.superChapterName}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:textSize="@dimen/text_notes"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivProject"
             app:layout_constraintTop_toBottomOf="@id/tv_desc"
             tools:text="问答·官方" />
 

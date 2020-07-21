@@ -5,17 +5,20 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.fragment_web.*
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
+import me.robbin.mvvmscaffold.ext.viewmodel.getAppVM
 import me.robbin.mvvmscaffold.utils.StatusBarUtils
+import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.data.bean.ArticleBean
 import me.robbin.wanandroid.ext.addTopPadding
+import me.robbin.wanandroid.viewmodel.AppViewModel
 import me.robbin.wanandroid.viewmodel.WebViewModel
 
 /**
  *
  * Create by Robbin at 2020/7/11
  */
-class WebFragment: BaseVMFragment<WebViewModel>() {
+class WebFragment : BaseVMFragment<WebViewModel>() {
 
     override val layoutRes: Int
         get() = R.layout.fragment_web

@@ -1,6 +1,7 @@
 package me.robbin.wanandroid.ext
 
 import android.view.View
+import android.widget.ImageView
 
 /**
  *

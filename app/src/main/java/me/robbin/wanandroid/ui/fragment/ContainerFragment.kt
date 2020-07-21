@@ -24,8 +24,6 @@ class ContainerFragment: BaseVMFragment<BaseViewModel>() {
     private val todoFragment by lazy { TodoFragment() }
     private val mainFragment by lazy { MainFragment() }
 
-    private val appViewModel by lazy { getAppVM<AppViewModel>() }
-
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
         val fragments = listOf<Fragment>(todoFragment, mainFragment)
@@ -36,7 +34,6 @@ class ContainerFragment: BaseVMFragment<BaseViewModel>() {
 
         }
         vpContainer.currentItem = 1
-        appViewModel.getIntegral()
     }
 
 }

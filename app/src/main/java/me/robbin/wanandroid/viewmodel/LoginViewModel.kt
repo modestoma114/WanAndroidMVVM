@@ -8,8 +8,6 @@ import me.robbin.mvvmscaffold.utils.SPUtils
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.app.watcher.SimpleWatcher
 import me.robbin.wanandroid.data.api.ApiService
-import me.robbin.wanandroid.data.bean.ApiResponse
-import me.robbin.wanandroid.data.bean.UserBean
 
 /**
  *
@@ -42,11 +40,13 @@ class LoginViewModel : BaseViewModel() {
         }
     }
 
-    fun login() {
-        launchOnlyResult<UserBean>(
+    fun login(success: () -> Unit) {
+        launchOnlyResult(
             block = { ApiService.getApi().login(username.value.toString(), pwd.value.toString()) },
             success = {
-                val sp = SPUtils.getInstance("UserInfo", Context.MODE_PRIVATE)
+                val sp = SPUtils.getInstance("app", Context.MODE_PRIVATE)
+                sp.put("isLogin", true)
+                success()
             },
             error = {
                 "${it.code}: ${it.code}".toToast()

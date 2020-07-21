@@ -11,14 +11,15 @@ import me.robbin.wanandroid.data.bean.ChapterBean
 import me.robbin.wanandroid.ext.addTopPadding
 import me.robbin.wanandroid.ext.init
 import me.robbin.wanandroid.ext.nav
-import me.robbin.wanandroid.ui.fragment.common.ArticleListFragment
+import me.robbin.wanandroid.ui.fragment.common.ArticleListsFragment
+import me.robbin.wanandroid.ui.fragment.common.ArticleType
 import me.robbin.wanandroid.viewmodel.ArticleListViewModel
 
 /**
  *
  * Create by Robbin at 2020/7/15
  */
-class KnowledgeArticleListFragment : BaseVMFragment<ArticleListViewModel>() {
+class ChapterArticlesFragment : BaseVMFragment<ArticleListViewModel>() {
 
     override val layoutRes: Int
         get() = R.layout.fragment_knowledge_article_list
@@ -39,7 +40,7 @@ class KnowledgeArticleListFragment : BaseVMFragment<ArticleListViewModel>() {
         }
         val fragments = ArrayList<Fragment>()
         chapter.children.forEach {
-            fragments.add(ArticleListFragment.newInstance(3, it.id))
+            fragments.add(ArticleListsFragment.newInstance(ArticleType.TREE, it.id))
         }
         vpKnowledge.init(childFragmentManager, lifecycle, fragments)
             .postDelayed({ vpKnowledge.currentItem = index }, 50)

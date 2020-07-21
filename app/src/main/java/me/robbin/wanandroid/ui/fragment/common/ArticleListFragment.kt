@@ -1,45 +1,83 @@
 package me.robbin.wanandroid.ui.fragment.common
 
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import kotlinx.android.synthetic.main.fragment_list_article.*
+import androidx.paging.LoadState
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import kotlinx.android.synthetic.main.layout_article_list.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
+import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.ui.adapter.ArticleAdapter
+import me.robbin.wanandroid.ui.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.viewmodel.ArticleListViewModel
 
 /**
  *
- * Create by Robbin at 2020/7/14
+ * Create by Robbin at 2020/7/21
  */
-class ArticleListFragment : BaseVMFragment<ArticleListViewModel>() {
+class ArticleListsFragment : BaseVMFragment<ArticleListViewModel>() {
 
     override val layoutRes: Int
-        get() = R.layout.fragment_list_article
+        get() = R.layout.layout_article_list
 
-    private var type: Int = 1
+    private var type: ArticleType = ArticleType.HOME
     private var cid: Int = -1
 
-    private val adapter by lazy { ArticleAdapter() }
+    private val articleAdapter by lazy { ArticleAdapter(requireContext()) }
 
     private var articleJob: Job? = null
+    private lateinit var refresh: SwipeRefreshLayout
 
     override fun initView(savedInstanceState: Bundle?) {
-        super.initView(savedInstanceState)
         arguments?.let {
-            type = it.getInt("type")
+            type = it.getSerializable("type") as ArticleType
             cid = it.getInt("cid")
         }
-        rlListArticle.adapter = adapter
+        rlArticles.adapter = articleAdapter
+        initAdapter()
+        refresh = refreshArticles
+        refresh.setOnRefreshListener { refreshData() }
+        btnError.setOnClickListener { articleAdapter.retry() }
     }
 
     override fun initData() {
         articleJob?.cancel()
-        articleJob = lifecycleScope.launchWhenCreated {
+        articleJob = lifecycleScope.launchWhenResumed {
             mViewModel.getArticleList(type, cid).collect {
-                adapter.submitData(it)
+                articleAdapter.submitData(it)
+            }
+        }
+    }
+
+    private fun initAdapter() {
+        rlArticles.adapter =
+            articleAdapter.withLoadStateFooter(PagingLoadStateAdapter { articleAdapter.retry() })
+        articleAdapter.addLoadStateListener { loadState ->
+            rlArticles.isVisible = loadState.refresh is LoadState.NotLoading
+            loadingArticles.isVisible = loadState.refresh is LoadState.Loading
+            ivError.isVisible = loadState.refresh is LoadState.Error
+            btnError.isVisible = loadState.refresh is LoadState.Error
+            val errorState = loadState.source.append as? LoadState.Error
+                ?: loadState.source.prepend as? LoadState.Error
+                ?: loadState.append as? LoadState.Error
+                ?: loadState.prepend as? LoadState.Error
+            errorState?.let {
+                "\uD83D\uDE28 Wooops: ${it.error}".toToast()
+            }
+        }
+    }
+
+    private fun refreshData() {
+        articleJob?.cancel()
+        articleJob = lifecycleScope.launch {
+            mViewModel.getArticleList(type, cid).collect {
+                refresh.isRefreshing = false
+                articleAdapter.submitData(it)
             }
         }
     }
@@ -50,15 +88,20 @@ class ArticleListFragment : BaseVMFragment<ArticleListViewModel>() {
     }
 
     companion object {
-        fun newInstance(type: Int, cid: Int = -1): ArticleListFragment {
+
+        fun newInstance(type: ArticleType, cid: Int = -1): ArticleListsFragment {
             val args = Bundle()
-            args.putInt("type", type)
-            if (cid != -1) args.putInt("cid", cid)
-            val fragment =
-                ArticleListFragment()
+            args.putSerializable("type", type)
+            args.putInt("cid", cid)
+            val fragment = ArticleListsFragment()
             fragment.arguments = args
             return fragment
         }
+
     }
 
+}
+
+enum class ArticleType {
+    HOME, QUESTION, SHARE, TREE, PROJECT, LAST_PROJECT, PUBLIC
 }

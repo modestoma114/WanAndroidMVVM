@@ -30,7 +30,7 @@ class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
     override val layoutRes: Int
         get() = R.layout.fragment_home
 
-    private val adapter by lazy { ArticleAdapter() }
+    private val adapter by lazy { ArticleAdapter(requireContext()) }
     private var articleJob: Job? = null
 
     private lateinit var refresh: SwipeRefreshLayout
@@ -41,7 +41,7 @@ class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
         toolbarHome.setTitle(R.string.tab_home)
         toolbarHome.setOnMenuItemClickListener {
             return@setOnMenuItemClickListener if (it.itemId == R.id.searchHome) {
-                nav().navigate(R.id.action_main_searchFragment)
+                nav().navigate(R.id.action_main_to_searchFragment)
                 true
             } else
                 false

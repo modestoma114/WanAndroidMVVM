@@ -33,12 +33,11 @@ class SearchFragment : BaseDBFragment<SearchViewModel, FragmentSearchBinding>() 
     override val layoutRes: Int
         get() = R.layout.fragment_search
 
-    private val adapter by lazy { ArticleAdapter() }
+    private val adapter by lazy { ArticleAdapter(requireContext()) }
     private var searchJob: Job? = null
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
-        setStatusBarLightMode(true)
         llSearch.addTopPadding(StatusBarUtils.getStatusBarHeight())
         rlSearchResult.adapter = adapter
         initAdapter()
@@ -126,11 +125,6 @@ class SearchFragment : BaseDBFragment<SearchViewModel, FragmentSearchBinding>() 
 
     override fun initVariable() {
         mBinding.viewModel = mViewModel
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        setStatusBarLightMode(false)
     }
 
 }

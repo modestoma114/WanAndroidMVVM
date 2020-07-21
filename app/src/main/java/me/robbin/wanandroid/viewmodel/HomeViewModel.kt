@@ -14,7 +14,7 @@ class HomeViewModel : BaseViewModel() {
 
     private val articleRepository by lazy { ArticleRepository.instance }
 
-    fun getArticle() = articleRepository.getArticle()
+    fun getArticle() = articleRepository.getHomeArticles()
 
     val bannerData: MutableLiveData<List<BannerBean>> = MutableLiveData()
 

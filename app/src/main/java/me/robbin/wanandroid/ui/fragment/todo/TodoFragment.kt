@@ -4,10 +4,13 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.fragment_todo.*
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
+import me.robbin.mvvmscaffold.ext.viewmodel.getAppVM
 import me.robbin.mvvmscaffold.utils.StatusBarUtils
 import me.robbin.mvvmscaffold.utils.setStatusBarLightMode
+import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.ext.addTopPadding
+import me.robbin.wanandroid.viewmodel.AppViewModel
 
 /**
  *

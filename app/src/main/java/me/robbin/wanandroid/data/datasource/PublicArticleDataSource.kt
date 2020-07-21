@@ -17,7 +17,7 @@ class PublicArticleDataSource(private val cid: Int) : PagingSource<Int, ArticleB
         return try {
             val page = params.key ?: 0
             val response =
-                ApiService.getApi().getPublicArticleList(cid, page)
+                ApiService.getApi().getPublicArticles(cid, page)
             LoadResult.Page(
                 data = response.data.datas,
                 prevKey = if (page == 0) null else page - 1,

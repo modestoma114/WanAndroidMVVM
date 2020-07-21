@@ -54,5 +54,7 @@ dependencies {
     implementation "androidx.paging:paging-runtime:3.0.0-alpha02"
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    implementation 'io.coil-kt:coil:0.11.0'
 
 }
