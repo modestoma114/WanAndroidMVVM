@@ -3,7 +3,7 @@ package me.robbin.wanandroid.ui.fragment.knowledge
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.fragment_knowledge_article_list.*
+import kotlinx.android.synthetic.main.fragment_chapter_articles.*
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.utils.StatusBarUtils
 import me.robbin.wanandroid.R
@@ -22,7 +22,7 @@ import me.robbin.wanandroid.viewmodel.ArticleListViewModel
 class ChapterArticlesFragment : BaseVMFragment<ArticleListViewModel>() {
 
     override val layoutRes: Int
-        get() = R.layout.fragment_knowledge_article_list
+        get() = R.layout.fragment_chapter_articles
 
     private lateinit var chapter: ChapterBean
     private var index: Int = 1
@@ -33,18 +33,18 @@ class ChapterArticlesFragment : BaseVMFragment<ArticleListViewModel>() {
             chapter = it.getParcelable("data")!!
             index = it.getInt("index")
         }
-        toolbarKnowledgeArticle.title = chapter.name
-        toolbarKnowledgeArticle.addTopPadding(StatusBarUtils.getStatusBarHeight())
-        toolbarKnowledgeArticle.setNavigationOnClickListener {
+        toolbarChapterArticles.title = chapter.name
+        toolbarChapterArticles.addTopPadding(StatusBarUtils.getStatusBarHeight())
+        toolbarChapterArticles.setNavigationOnClickListener {
             nav().navigateUp()
         }
         val fragments = ArrayList<Fragment>()
         chapter.children.forEach {
             fragments.add(ArticleListsFragment.newInstance(ArticleType.TREE, it.id))
         }
-        vpKnowledge.init(childFragmentManager, lifecycle, fragments)
-            .postDelayed({ vpKnowledge.currentItem = index }, 50)
-        TabLayoutMediator(tabKnowledge, vpKnowledge) { tab, position ->
+        vpChapter.init(childFragmentManager, lifecycle, fragments)
+            .postDelayed({ vpChapter.currentItem = index }, 50)
+        TabLayoutMediator(tabChapter, vpChapter) { tab, position ->
             when (position) {
                 position -> tab.text = chapter.children[position].name
             }

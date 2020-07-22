@@ -3,10 +3,10 @@ package me.robbin.wanandroid.ui.fragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.fragment.app.activityViewModels
 import kotlinx.android.synthetic.main.fragment_container.*
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
-import me.robbin.mvvmscaffold.ext.viewmodel.getAppVM
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.ui.fragment.main.MainFragment
 import me.robbin.wanandroid.ui.fragment.todo.TodoFragment
@@ -24,6 +24,8 @@ class ContainerFragment: BaseVMFragment<BaseViewModel>() {
     private val todoFragment by lazy { TodoFragment() }
     private val mainFragment by lazy { MainFragment() }
 
+    private val appViewModel by activityViewModels<AppViewModel>()
+
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
         val fragments = listOf<Fragment>(todoFragment, mainFragment)
@@ -34,6 +36,10 @@ class ContainerFragment: BaseVMFragment<BaseViewModel>() {
 
         }
         vpContainer.currentItem = 1
+    }
+
+    override fun initData() {
+        appViewModel
     }
 
 }

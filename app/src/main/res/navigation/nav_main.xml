@@ -69,7 +69,7 @@
         android:id="@+id/knowledgeArticleListFragment"
         android:name="me.robbin.wanandroid.ui.fragment.knowledge.ChapterArticlesFragment"
         android:label="KnowledgeArticleListFragment"
-        tools:layout="@layout/fragment_knowledge_article_list" />
+        tools:layout="@layout/fragment_chapter_articles" />
 
     <fragment
         android:id="@+id/searchFragment"

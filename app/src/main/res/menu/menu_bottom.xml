@@ -5,6 +5,7 @@
         android:id="@+id/tab_home"
         android:icon="@drawable/ic_tab_home"
         android:title="@string/tab_home" />
+
     <item
         android:id="@+id/tab_question"
         android:icon="@drawable/ic_tab_question"

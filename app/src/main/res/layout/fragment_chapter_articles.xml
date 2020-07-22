@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarKnowledgeArticle"
+        android:id="@+id/toolbarChapterArticles"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
@@ -16,23 +16,23 @@
         app:titleTextColor="@color/text_title" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabKnowledge"
+        android:id="@+id/tabChapter"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarKnowledgeArticle"
+        app:layout_constraintTop_toBottomOf="@id/toolbarChapterArticles"
         app:tabMode="scrollable"
         app:tabTextColor="@color/text_title" />
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vpKnowledge"
+        android:id="@+id/vpChapter"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabKnowledge" />
+        app:layout_constraintTop_toBottomOf="@id/tabChapter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

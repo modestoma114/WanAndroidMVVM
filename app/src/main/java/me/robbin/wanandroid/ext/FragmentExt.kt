@@ -3,15 +3,16 @@ package me.robbin.wanandroid.ext
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import me.robbin.wanandroid.R
+import me.robbin.wanandroid.app.utils.CacheUtils
 import me.robbin.wanandroid.viewmodel.AppViewModel
 
 /**
  *
  * Create by Robbin at 2020/7/21
  */
-fun Fragment.checkLogin(viewModel: AppViewModel, action: () -> Unit) {
+fun Fragment.checkLogin(action: () -> Unit) {
 
-    if (viewModel.isLogin.value == true) {
+    if (CacheUtils.isLogin()) {
         action()
     } else {
         nav().navigate(R.id.action_global_loginFragment)
@@ -19,9 +20,9 @@ fun Fragment.checkLogin(viewModel: AppViewModel, action: () -> Unit) {
 
 }
 
-fun Fragment.backMain(viewModel: AppViewModel) {
+fun Fragment.backMain() {
     requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-        viewModel.isLogin.value = false
+        CacheUtils.setIsLogin(false)
         nav().popBackStack(R.id.containerFragment, false)
     }
 }

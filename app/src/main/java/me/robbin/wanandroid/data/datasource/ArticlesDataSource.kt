@@ -29,6 +29,7 @@ class ArticlesDataSource(private val type: ArticleType, private val cid: Int = -
                     ArticleType.PUBLIC -> api.getPublicArticles(cid, page)
                     else -> ApiService.getApi().getShareArticles(page)
                 }
+//            if (response.data.datas.isEmpty()) { LoadResult.Error }
             LoadResult.Page(
                 data = response.data.datas,
                 prevKey = if (page == 0) null else page - 1,

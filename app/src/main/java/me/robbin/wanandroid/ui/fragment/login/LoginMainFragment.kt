@@ -34,7 +34,7 @@ class LoginMainFragment : BaseVMFragment<BaseViewModel>() {
             nav().navigateUp()
         }
         vpLogin.init(childFragmentManager, lifecycle, arrayListOf(loginFragment, registerFragment))
-        backMain(appViewModel)
+        backMain()
     }
 
     fun goLogin() {

@@ -8,6 +8,11 @@
         <variable
             name="route"
             type="me.robbin.wanandroid.ui.fragment.me.MeFragment.RouteClick" />
+
+        <variable
+            name="viewModel"
+            type="me.robbin.wanandroid.viewmodel.MeViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +27,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="100dp"
             android:onClick="@{() -> route.login()}"
-            android:src="@color/colorAccent"
+            android:src="@drawable/head"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +38,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginBottom="5dp"
             android:onClick="@{() -> route.login()}"
-            android:text="@string/text_me_login"
+            android:text="@{viewModel.userName}"
             android:textColor="@color/text_title"
             android:textSize="@dimen/text_content"
             app:layout_constraintBottom_toBottomOf="@id/guidelineMe"
@@ -45,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-            android:text="@string/text_user_info"
+            android:text="@{viewModel.info}"
             android:textColor="@color/text_title"
             android:textSize="@dimen/text_content"
             app:layout_constraintStart_toEndOf="@id/ivMinePic"
@@ -94,6 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:text="@{String.valueOf(viewModel.coin)}"
                         android:textColor="@color/text_new"
                         android:textSize="@dimen/text_content"
                         tools:text="100" />
@@ -191,6 +197,38 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:text="@string/text_setting_wanandroid"
+                        android:textColor="@color/text_settings"
+                        android:textSize="@dimen/text_content" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/ic_right" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/btnSettingProject"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:src="@drawable/ic_project" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/text_setting_project"
                         android:textColor="@color/text_settings"
                         android:textSize="@dimen/text_content" />
 

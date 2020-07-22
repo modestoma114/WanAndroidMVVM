@@ -8,9 +8,9 @@ import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import me.robbin.wanandroid.ui.fragment.home.HomeFragment
+import me.robbin.wanandroid.ui.fragment.knowledge.KnowledgeFragment
 import me.robbin.wanandroid.ui.fragment.me.MeFragment
 import me.robbin.wanandroid.ui.fragment.question.QuestionFragment
-import me.robbin.wanandroid.ui.fragment.knowledge.KnowledgeFragment
 
 /**
  *

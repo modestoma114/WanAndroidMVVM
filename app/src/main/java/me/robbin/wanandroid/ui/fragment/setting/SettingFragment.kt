@@ -20,7 +20,7 @@ class SettingFragment : BaseVMFragment<BaseViewModel>() {
     private val appViewModel by lazy { getAppVM<AppViewModel>() }
 
     override fun createObserver() {
-        checkLogin(appViewModel) {
+        checkLogin() {
             "Welcome".toToast()
         }
     }
