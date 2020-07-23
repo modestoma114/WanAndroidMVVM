@@ -14,9 +14,10 @@ import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
 import me.robbin.mvvmscaffold.utils.StatusBarUtils
-import me.robbin.mvvmscaffold.utils.setStatusBarLightMode
+import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.databinding.FragmentSearchBinding
 import me.robbin.wanandroid.ext.addTopPadding
@@ -30,11 +31,12 @@ import me.robbin.wanandroid.viewmodel.SearchViewModel
  */
 class SearchFragment : BaseDBFragment<SearchViewModel, FragmentSearchBinding>() {
 
-    override val layoutRes: Int
-        get() = R.layout.fragment_search
-
     private val adapter by lazy { ArticleAdapter(requireContext()) }
     private var searchJob: Job? = null
+
+    override fun getDataBindingConfig(): DataBindingConfig {
+        return DataBindingConfig(R.layout.fragment_search, BR.viewModel, mViewModel)
+    }
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
@@ -121,10 +123,6 @@ class SearchFragment : BaseDBFragment<SearchViewModel, FragmentSearchBinding>() 
                 cgSearch.addView(chip)
             }
         })
-    }
-
-    override fun initVariable() {
-        mBinding.viewModel = mViewModel
     }
 
 }

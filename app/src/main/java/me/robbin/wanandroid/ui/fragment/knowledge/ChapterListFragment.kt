@@ -18,8 +18,7 @@ import me.robbin.wanandroid.viewmodel.ChapterListViewModel
  */
 class ChapterListFragment : BaseVMFragment<ChapterListViewModel>() {
 
-    override val layoutRes: Int
-        get() = R.layout.fragment_chapter_list
+    override fun getLayoutRes(): Int = R.layout.fragment_chapter_list
 
     private var type: ChapterType = ChapterType.KNOWLEDGE
 

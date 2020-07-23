@@ -2,6 +2,7 @@ package me.robbin.wanandroid.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
+import me.robbin.wanandroid.app.utils.CacheUtils
 import me.robbin.wanandroid.data.api.ApiService
 
 /**
@@ -17,6 +18,8 @@ class MeViewModel : BaseViewModel() {
     val coin: MutableLiveData<Int> = MutableLiveData(0)
 
     fun getUserInfo() {
+        val userInfo = CacheUtils.getUser()
+        userName.value = userInfo?.nickname
         launchGo(
             {
                 val result = ApiService.getApi().getIntegral()
@@ -24,6 +27,12 @@ class MeViewModel : BaseViewModel() {
                 coin.value = result.data.coinCount
             }
         )
+    }
+
+    fun clearUserInfo() {
+        userName.value = "去登陆"
+        info.value = "等级： —    排名： —"
+        coin.value = 0
     }
 
 }

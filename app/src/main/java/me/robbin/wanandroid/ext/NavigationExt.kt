@@ -2,7 +2,7 @@ package me.robbin.wanandroid.ext
 
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import me.robbin.mvvmscaffold.navigation.NavHostFragment
+import me.robbin.mvvmscaffold.fix.navigation.NavHostFragment
 
 /**
  *

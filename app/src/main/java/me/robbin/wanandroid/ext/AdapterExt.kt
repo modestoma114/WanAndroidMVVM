@@ -43,6 +43,18 @@ fun ViewPager.mainAdapter(fm: FragmentManager): ViewPager {
 
 }
 
+fun ViewPager.init(
+    fm: FragmentManager,
+    fragments: ArrayList<Fragment>
+): ViewPager {
+    this.adapter = object : FragmentStatePagerAdapter(fm, 1) {
+        override fun getCount(): Int = fragments.size
+
+        override fun getItem(position: Int): Fragment = fragments[position]
+    }
+    return this
+}
+
 fun ViewPager2.init(
     fm: FragmentManager,
     lifecycle: Lifecycle,

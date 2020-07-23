@@ -21,8 +21,7 @@ import me.robbin.wanandroid.viewmodel.ArticleListViewModel
  */
 class ChapterArticlesFragment : BaseVMFragment<ArticleListViewModel>() {
 
-    override val layoutRes: Int
-        get() = R.layout.fragment_chapter_articles
+    override fun getLayoutRes(): Int = R.layout.fragment_chapter_articles
 
     private lateinit var chapter: ChapterBean
     private var index: Int = 1

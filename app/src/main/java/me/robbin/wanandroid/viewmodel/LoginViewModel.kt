@@ -41,7 +41,9 @@ class LoginViewModel : BaseViewModel() {
 
     fun login(success: () -> Unit) {
         launchOnlyResult(
-            block = { ApiService.getApi().login(username.value.toString(), pwd.value.toString()) },
+            block = {
+                ApiService.getApi().login(username.value.toString(), pwd.value.toString())
+            },
             success = {
                 CacheUtils.setUser(it)
                 success()

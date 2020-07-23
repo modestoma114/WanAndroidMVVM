@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <data>
-
-    </data>
-
-    <LinearLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabChapter"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        app:tabGravity="center"
+        app:tabMode="scrollable"
+        app:tabRippleColor="@color/transparent"
+        app:tabTextColor="@color/text_title" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabChapter"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorPrimary"
-            app:tabGravity="center"
-            app:tabMode="scrollable"
-            app:tabRippleColor="@color/transparent"
-            app:tabTextColor="@color/text_title" />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpChapter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vpChapter"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
-</layout>
+</LinearLayout>

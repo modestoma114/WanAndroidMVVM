@@ -3,9 +3,11 @@ package me.robbin.wanandroid.ui.fragment.login
 import android.os.Bundle
 import androidx.fragment.app.activityViewModels
 import kotlinx.android.synthetic.main.fragment_login.*
-import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
+import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
+import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
+import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.databinding.FragmentLoginBinding
 import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.viewmodel.LoginViewModel
@@ -14,12 +16,13 @@ import me.robbin.wanandroid.viewmodel.LoginViewModel
  *
  * Create by Robbin at 2020/7/17
  */
-class LoginFragment : BaseDBFragment<BaseViewModel, FragmentLoginBinding>() {
+class LoginFragment : BaseFragment<BaseViewModel, FragmentLoginBinding>() {
 
     private val userViewModel by activityViewModels<LoginViewModel>()
 
-    override val layoutRes: Int
-        get() = R.layout.fragment_login
+    override fun getDataBindingConfig(): DataBindingConfig {
+        return DataBindingConfig(R.layout.fragment_login, BR.viewModel, userViewModel)
+    }
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
@@ -28,13 +31,10 @@ class LoginFragment : BaseDBFragment<BaseViewModel, FragmentLoginBinding>() {
         }
         btnLogin.setOnClickListener {
             userViewModel.login {
+                appViewModel.setIsLogin(true)
                 nav().navigateUp()
             }
         }
-    }
-
-    override fun initVariable() {
-        mBinding.viewModel = userViewModel
     }
 
 }

@@ -20,4 +20,15 @@ class AppViewModel : BaseViewModel() {
         userInfo.value = CacheUtils.getUser()
     }
 
+    fun setIsLogin(isLogin: Boolean) {
+        this.isLogin.value = isLogin
+        if (isLogin) userInfo.value = CacheUtils.getUser()
+    }
+
+    fun clearUser() {
+        isLogin.value = false
+        userInfo.value = null
+        CacheUtils.setUser(null)
+    }
+
 }

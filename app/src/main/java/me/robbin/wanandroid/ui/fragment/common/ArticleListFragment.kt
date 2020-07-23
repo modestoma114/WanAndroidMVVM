@@ -22,8 +22,7 @@ import me.robbin.wanandroid.viewmodel.ArticleListViewModel
  */
 class ArticleListsFragment : BaseVMFragment<ArticleListViewModel>() {
 
-    override val layoutRes: Int
-        get() = R.layout.layout_article_list
+    override fun getLayoutRes(): Int = R.layout.layout_article_list
 
     private var type: ArticleType = ArticleType.HOME
     private var cid: Int = -1

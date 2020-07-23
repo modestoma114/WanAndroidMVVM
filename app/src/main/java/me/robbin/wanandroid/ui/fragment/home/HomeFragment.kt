@@ -10,9 +10,11 @@ import kotlinx.android.synthetic.main.layout_loading_view.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
 import me.robbin.mvvmscaffold.utils.StatusBarUtils
 import me.robbin.mvvmscaffold.utils.toToast
+import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.databinding.FragmentHomeBinding
 import me.robbin.wanandroid.ext.addTopPadding
@@ -27,13 +29,14 @@ import me.robbin.wanandroid.viewmodel.HomeViewModel
  */
 class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
 
-    override val layoutRes: Int
-        get() = R.layout.fragment_home
-
     private val adapter by lazy { ArticleAdapter(requireContext()) }
     private var articleJob: Job? = null
 
     private lateinit var refresh: SwipeRefreshLayout
+
+    override fun getDataBindingConfig(): DataBindingConfig {
+        return DataBindingConfig(R.layout.fragment_home, BR.state, mViewModel)
+    }
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)

@@ -1,27 +1,33 @@
 package me.robbin.wanandroid.ui.fragment.setting
 
-import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
+import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
-import me.robbin.mvvmscaffold.ext.viewmodel.getAppVM
-import me.robbin.mvvmscaffold.utils.toToast
+import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.ext.checkLogin
-import me.robbin.wanandroid.viewmodel.AppViewModel
+import me.robbin.wanandroid.app.base.BaseFragment
+import me.robbin.wanandroid.databinding.FragmentSettingBinding
+import me.robbin.wanandroid.ext.nav
 
 /**
  *
  * Create by Robbin at 2020/7/20
  */
-class SettingFragment : BaseVMFragment<BaseViewModel>() {
+class SettingFragment : BaseFragment<BaseViewModel, FragmentSettingBinding>() {
 
-    override val layoutRes: Int
-        get() = R.layout.fragment_setting
+    override fun getDataBindingConfig(): DataBindingConfig {
+        return DataBindingConfig(R.layout.fragment_setting, BR.state, appViewModel)
+            .addBindingParams(BR.click, SettingClick())
+    }
 
-    private val appViewModel by lazy { getAppVM<AppViewModel>() }
+    inner class SettingClick {
+        fun back() {
+            nav().navigateUp()
+        }
 
-    override fun createObserver() {
-        checkLogin() {
-            "Welcome".toToast()
+        fun logOut() {
+            back()
+            appViewModel.clearUser()
         }
     }
+
 }

@@ -1,45 +1,34 @@
 package me.robbin.wanandroid.ui.fragment.me
 
-import android.os.Bundle
 import androidx.lifecycle.Observer
-import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
-import me.robbin.mvvmscaffold.ext.viewmodel.getAppVM
-import me.robbin.mvvmscaffold.utils.toToast
+import me.robbin.mvvmscaffold.base.DataBindingConfig
+import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
+import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.app.utils.CacheUtils
 import me.robbin.wanandroid.databinding.FragmentMeBinding
 import me.robbin.wanandroid.ext.nav
-import me.robbin.wanandroid.viewmodel.AppViewModel
 import me.robbin.wanandroid.viewmodel.MeViewModel
 
 /**
  *
  * Create by Robbin at 2020/7/10
  */
-class MeFragment : BaseDBFragment<MeViewModel, FragmentMeBinding>() {
+class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
-    override val layoutRes: Int
-        get() = R.layout.fragment_me
-
-    private val appViewModel by lazy { getAppVM<AppViewModel>() }
-
-    override fun initView(savedInstanceState: Bundle?) {
-        appViewModel.isLogin.value.toString().toToast()
-    }
-
-    override fun initVariable() {
-        mBinding.route = RouteClick()
-        mBinding.viewModel = mViewModel
+    override fun getDataBindingConfig(): DataBindingConfig {
+        return DataBindingConfig(R.layout.fragment_me, BR.viewModel, mViewModel)
+            .addBindingParams(BR.route, RouteClick())
     }
 
     override fun createObserver() {
-        appViewModel.userInfo.observe(viewLifecycleOwner, Observer {
-            mViewModel.userName.value = it.nickname
+        appViewModel.isLogin.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                mViewModel.getUserInfo()
+            } else {
+                mViewModel.clearUserInfo()
+            }
         })
-    }
-
-    override fun initData() {
-        mViewModel.getUserInfo()
     }
 
     inner class RouteClick {

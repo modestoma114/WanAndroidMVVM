@@ -16,8 +16,7 @@ import me.robbin.wanandroid.ext.mainAdapter
  */
 class MainFragment : BaseVMFragment<BaseViewModel>() {
 
-    override val layoutRes: Int
-        get() = R.layout.fragment_main
+    override fun getLayoutRes(): Int = R.layout.fragment_main
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
@@ -74,8 +73,8 @@ class MainFragment : BaseVMFragment<BaseViewModel>() {
         setStatusBarLightMode(false)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         vpMain.removeOnPageChangeListener(pageChangeListener)
     }
 
