@@ -15,340 +15,354 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshMe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:layout_height="match_parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivMinePic"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="100dp"
-            android:onClick="@{() -> route.login()}"
-            android:src="@drawable/head"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvMineName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="5dp"
-            android:onClick="@{() -> route.login()}"
-            android:text="@{viewModel.userName}"
-            android:textColor="@color/text_title"
-            android:textSize="@dimen/text_content"
-            app:layout_constraintBottom_toBottomOf="@id/guidelineMe"
-            app:layout_constraintStart_toEndOf="@id/ivMinePic" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivMinePic"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="100dp"
+                android:onClick="@{() -> route.goProfile()}"
+                android:src="@drawable/head"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvMineId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
-            android:text="@{viewModel.info}"
-            android:textColor="@color/text_title"
-            android:textSize="@dimen/text_content"
-            app:layout_constraintStart_toEndOf="@id/ivMinePic"
-            app:layout_constraintTop_toTopOf="@id/guidelineMe" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMineName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="5dp"
+                android:onClick="@{() -> route.goProfile()}"
+                android:text="@{viewModel.userName}"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/text_content"
+                app:layout_constraintBottom_toBottomOf="@id/guidelineMe"
+                app:layout_constraintStart_toEndOf="@id/ivMinePic" />
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/bg_bottom_sheet"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivMinePic">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMineId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:text="@{viewModel.info}"
+                android:textColor="@color/text_title"
+                android:textSize="@dimen/text_content"
+                app:layout_constraintStart_toEndOf="@id/ivMinePic"
+                app:layout_constraintTop_toTopOf="@id/guidelineMe" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/bg_bottom_sheet"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivMinePic">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/btnSettingCoin"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="16dp"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:src="@drawable/ic_coin" />
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/btnSettingCoin"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="16dp"
+                        android:onClick="@{() -> route.goIntegral()}"
+                        android:orientation="horizontal">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:text="@string/text_setting_coin"
-                        android:textColor="@color/text_settings"
-                        android:textSize="@dimen/text_content" />
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/ic_coin" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@{String.valueOf(viewModel.coin)}"
-                        android:textColor="@color/text_new"
-                        android:textSize="@dimen/text_content"
-                        tools:text="100" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/text_setting_coin"
+                            android:textColor="@color/text_settings"
+                            android:textSize="@dimen/text_content" />
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_right" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@{String.valueOf(viewModel.coin)}"
+                            android:textColor="@color/text_new"
+                            android:textSize="@dimen/text_content"
+                            tools:text="100" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/ic_right" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/btnSettingCollect"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="@{() -> route.goMyCollect()}"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/ic_setting_collect" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/text_setting_collect"
+                            android:textColor="@color/text_settings"
+                            android:textSize="@dimen/text_content" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/ic_right" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/btnSettingShare"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="@{() -> route.goMyArticle()}"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/ic_my_article" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/text_setting_share"
+                            android:textColor="@color/text_settings"
+                            android:textSize="@dimen/text_content" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/ic_right" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/btnSettingWanAndroid"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="@{() -> route.goWanAndroidSite()}"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/ic_website" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/text_setting_wanandroid"
+                            android:textColor="@color/text_settings"
+                            android:textSize="@dimen/text_content" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/ic_right" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/btnSettingProject"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="@{() -> route.goProject()}"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/ic_project" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/text_setting_project"
+                            android:textColor="@color/text_settings"
+                            android:textSize="@dimen/text_content" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/ic_right" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/btnSettingOpenSource"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="@{() -> route.goOpenSource()}"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/ic_github" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/text_setting_open_source"
+                            android:textColor="@color/text_settings"
+                            android:textSize="@dimen/text_content" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/ic_right" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/btnSettingAboutMe"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="@{() -> route.goAboutMe()}"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/ic_setting_info" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/text_setting_about_me"
+                            android:textColor="@color/text_settings"
+                            android:textSize="@dimen/text_content" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/ic_right" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/btnSettingSettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:onClick="@{() -> route.goSetting()}"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/ic_setting" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:text="@string/text_setting_settings"
+                            android:textColor="@color/text_settings"
+                            android:textSize="@dimen/text_content" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/ic_right" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/btnSettingCollect"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
+            </androidx.core.widget.NestedScrollView>
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:src="@drawable/ic_collect" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:text="@string/text_setting_collect"
-                        android:textColor="@color/text_settings"
-                        android:textSize="@dimen/text_content" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_right" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/btnSettingShare"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:src="@drawable/ic_my_article" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:text="@string/text_setting_share"
-                        android:textColor="@color/text_settings"
-                        android:textSize="@dimen/text_content" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_right" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/btnSettingWanAndroid"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:src="@drawable/ic_website" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:text="@string/text_setting_wanandroid"
-                        android:textColor="@color/text_settings"
-                        android:textSize="@dimen/text_content" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_right" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/btnSettingProject"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:src="@drawable/ic_project" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:text="@string/text_setting_project"
-                        android:textColor="@color/text_settings"
-                        android:textSize="@dimen/text_content" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_right" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/btnSettingOpenSource"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:src="@drawable/ic_github" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:text="@string/text_setting_open_source"
-                        android:textColor="@color/text_settings"
-                        android:textSize="@dimen/text_content" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_right" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/btnSettingAboutMe"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:src="@drawable/ic_info" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:text="@string/text_setting_about_me"
-                        android:textColor="@color/text_settings"
-                        android:textSize="@dimen/text_content" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_right" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/btnSettingSettings"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:onClick="@{() -> route.goSetting()}"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:src="@drawable/ic_setting" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:text="@string/text_setting_settings"
-                        android:textColor="@color/text_settings"
-                        android:textSize="@dimen/text_content" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:src="@drawable/ic_right" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </androidx.core.widget.NestedScrollView>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineMe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="130dp" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineMe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="130dp" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

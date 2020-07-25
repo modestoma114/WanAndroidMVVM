@@ -4,7 +4,6 @@ import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.utils.CacheUtils
-import me.robbin.wanandroid.viewmodel.AppViewModel
 
 /**
  *

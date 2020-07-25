@@ -11,6 +11,8 @@ import me.robbin.wanandroid.data.api.ApiService
  */
 class MeViewModel : BaseViewModel() {
 
+    val refresh: MutableLiveData<Boolean> = MutableLiveData(false)
+
     val userName: MutableLiveData<String> = MutableLiveData("去登陆")
 
     val info: MutableLiveData<String> = MutableLiveData("等级： —    排名： —")
@@ -26,6 +28,18 @@ class MeViewModel : BaseViewModel() {
                 info.value = "等级：${result.data.level}  排名：${result.data.rank}"
                 coin.value = result.data.coinCount
             }
+        )
+    }
+
+    fun refreshInfo() {
+        launchGo(
+            {
+                refresh.value = true
+                val result = ApiService.getApi().getIntegral()
+                info.value = "等级：${result.data.level}  排名：${result.data.rank}"
+                coin.value = result.data.coinCount
+            },
+            complete = { refresh.value = false }
         )
     }
 

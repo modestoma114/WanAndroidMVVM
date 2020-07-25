@@ -33,7 +33,10 @@ class NavigationAdapter :
         this.onItemChipClickListener = listener
     }
 
-    override fun convert(holder: BaseDataBindingHolder<RvItemKnowledgeBinding>, item: NavigationBean) {
+    override fun convert(
+        holder: BaseDataBindingHolder<RvItemKnowledgeBinding>,
+        item: NavigationBean
+    ) {
         val binding = holder.dataBinding
         if (binding != null) {
             binding.tvChapterName.text = item.name
@@ -44,7 +47,7 @@ class NavigationAdapter :
                 chip.isCloseIconVisible = false
                 chip.setOnClickListener {
                     val bundle = Bundle()
-                    bundle.putParcelable("data", item.articles[index])
+                    bundle.putParcelable("article", item.articles[index])
                     onItemChipClickListener?.setNavController()
                         ?.navigate(R.id.action_global_to_webFragment, bundle)
                 }

@@ -1,12 +1,14 @@
 package me.robbin.wanandroid.ui.fragment.me
 
+import android.os.Bundle
 import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.fragment_me.*
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
-import me.robbin.wanandroid.app.utils.CacheUtils
 import me.robbin.wanandroid.databinding.FragmentMeBinding
+import me.robbin.wanandroid.ext.checkLogin
 import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.viewmodel.MeViewModel
 
@@ -21,32 +23,39 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             .addBindingParams(BR.route, RouteClick())
     }
 
+    override fun initView(savedInstanceState: Bundle?) {
+        refreshMe.setOnRefreshListener {
+            mViewModel.refreshInfo()
+        }
+    }
+
     override fun createObserver() {
         appViewModel.isLogin.observe(viewLifecycleOwner, Observer {
+            refreshMe.isEnabled = it
             if (it) {
                 mViewModel.getUserInfo()
             } else {
                 mViewModel.clearUserInfo()
             }
         })
+        mViewModel.refresh.observe(viewLifecycleOwner, Observer {
+            refreshMe.isRefreshing = it
+        })
     }
 
     inner class RouteClick {
-        fun login() {
-            if (CacheUtils.isLogin()) {
-                nav().navigate(R.id.action_main_to_profileFragment)
-            } else {
-                nav().navigate(R.id.action_global_loginFragment)
-            }
-        }
 
-        fun goIntegral() = nav()
+        fun goProfile() = checkLogin { nav().navigate(R.id.action_main_to_profileFragment) }
 
-        fun goMyCollect() = nav()
+        fun goIntegral() = checkLogin { nav().navigate(R.id.action_main_to_integralFragment) }
 
-        fun goMyArticle() = nav()
+        fun goMyCollect() = checkLogin { nav() }
+
+        fun goMyArticle() = checkLogin { nav() }
 
         fun goWanAndroidSite() = nav()
+
+        fun goProject() = nav()
 
         fun goOpenSource() = nav()
 

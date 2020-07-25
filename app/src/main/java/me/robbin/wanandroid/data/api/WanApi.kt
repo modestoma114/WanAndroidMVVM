@@ -156,4 +156,12 @@ interface WanApi {
     @GET("lg/coin/userinfo/json")
     suspend fun getIntegral(): ApiResponse<IntegralBean>
 
+    /**
+     * 获取积分详细
+     * Create by Robbin at 2020/7/25
+     */
+    @GET("lg/coin/list/{page}/json")
+    suspend fun getIntegralDetail(@Path("page") page: Int)
+            : ApiResponse<ApiPageResponse<MutableList<IntegralDetailBean>>>
+
 }

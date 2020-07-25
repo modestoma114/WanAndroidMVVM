@@ -3,6 +3,7 @@ package me.robbin.wanandroid.ui.fragment.home
 import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -61,6 +62,10 @@ class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
 
     private fun initAdapter() {
         rlHome.adapter = adapter.withLoadStateFooter(PagingLoadStateAdapter { adapter.retry() })
+        adapter.setOnArticleItemClickListener(object :
+            ArticleAdapter.OnArticleItemClickListener {
+            override fun setNavController(): NavController = nav()
+        })
         adapter.addLoadStateListener { loadState ->
             rlHome.isVisible = loadState.refresh is LoadState.NotLoading
             progressLoading.isVisible = loadState.refresh is LoadState.Loading

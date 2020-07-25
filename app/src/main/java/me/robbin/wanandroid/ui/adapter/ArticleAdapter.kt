@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -32,6 +33,16 @@ class ArticleAdapter(private val context: Context) :
         }
     }
 
+    interface OnArticleItemClickListener {
+        fun setNavController(): NavController
+    }
+
+    private var listener: OnArticleItemClickListener? = null
+
+    fun setOnArticleItemClickListener(listener: OnArticleItemClickListener) {
+        this.listener = listener
+    }
+
     private var view: View? = null
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
@@ -51,10 +62,10 @@ class ArticleAdapter(private val context: Context) :
     inner class RouteClick {
         fun goWeb(bean: ArticleBean) {
             val bundle = Bundle()
-            bundle.putParcelable("data", bean)
+            bundle.putParcelable("article", bean)
             view?.let {
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_global_to_webFragment, bundle)
+                listener?.setNavController()
+                    ?.navigate(R.id.action_global_to_webFragment, bundle)
             }
         }
 
@@ -62,7 +73,9 @@ class ArticleAdapter(private val context: Context) :
             "Hello Author".toToast()
         }
 
-        fun goChapter() {}
+        fun goChapter() {
+            "Hello Chapter".toToast()
+        }
 
     }
 

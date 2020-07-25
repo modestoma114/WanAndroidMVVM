@@ -3,6 +3,7 @@ package me.robbin.wanandroid.ui.fragment.common
 import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.android.synthetic.main.layout_article_list.*
@@ -12,6 +13,7 @@ import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
+import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.adapter.ArticleAdapter
 import me.robbin.wanandroid.ui.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.viewmodel.ArticleListViewModel
@@ -56,6 +58,10 @@ class ArticleListsFragment : BaseVMFragment<ArticleListViewModel>() {
     private fun initAdapter() {
         rlArticles.adapter =
             articleAdapter.withLoadStateFooter(PagingLoadStateAdapter { articleAdapter.retry() })
+        articleAdapter.setOnArticleItemClickListener(object :
+            ArticleAdapter.OnArticleItemClickListener {
+            override fun setNavController(): NavController = nav()
+        })
         articleAdapter.addLoadStateListener { loadState ->
             rlArticles.isVisible = loadState.refresh is LoadState.NotLoading
             loadingArticles.isVisible = loadState.refresh is LoadState.Loading

@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.appbar.CollapsingToolbarLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:toolbarId="@id/toolbarProfile">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbarProfile"
+    <data>
+        <variable
+            name="viewModel"
+            type="" />
+    </data>
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="match_parent"
+        app:toolbarId="@id/toolbarProfile">
 
-</com.google.android.material.appbar.CollapsingToolbarLayout>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarProfile"
+            addStatusPadding="@{true}"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            app:navigationIcon="@drawable/ic_back" />
+
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+</layout>

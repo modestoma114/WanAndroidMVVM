@@ -13,7 +13,7 @@ import me.robbin.wanandroid.ui.fragment.common.ArticleType
  * Create by Robbin at 2020/7/11
  */
 
-class ArticleRepository {
+class ArticleRepository private constructor() {
 
     companion object {
         val instance: ArticleRepository by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {

@@ -7,6 +7,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import com.google.android.material.chip.Chip
@@ -21,6 +22,7 @@ import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.databinding.FragmentSearchBinding
 import me.robbin.wanandroid.ext.addTopPadding
+import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.adapter.ArticleAdapter
 import me.robbin.wanandroid.ui.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.viewmodel.SearchViewModel
@@ -41,7 +43,6 @@ class SearchFragment : BaseDBFragment<SearchViewModel, FragmentSearchBinding>() 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
         llSearch.addTopPadding(StatusBarUtils.getStatusBarHeight())
-        rlSearchResult.adapter = adapter
         initAdapter()
         initSearch()
         btnClearSearch.setOnClickListener {
@@ -53,7 +54,12 @@ class SearchFragment : BaseDBFragment<SearchViewModel, FragmentSearchBinding>() 
     }
 
     private fun initAdapter() {
-        adapter.withLoadStateFooter(PagingLoadStateAdapter { adapter.retry() })
+        rlSearchResult.adapter =
+            adapter.withLoadStateFooter(PagingLoadStateAdapter { adapter.retry() })
+        adapter.setOnArticleItemClickListener(object :
+            ArticleAdapter.OnArticleItemClickListener {
+            override fun setNavController(): NavController = nav()
+        })
         adapter.addLoadStateListener { loadState ->
             mBinding.rlSearchResult.isVisible = loadState.refresh is LoadState.NotLoading
         }

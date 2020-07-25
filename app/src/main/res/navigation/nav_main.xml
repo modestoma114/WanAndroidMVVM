@@ -38,6 +38,13 @@
             app:exitAnim="@anim/nav_fragment_exit"
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
             app:popExitAnim="@anim/nav_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_main_to_integralFragment"
+            app:destination="@id/integralFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
     </fragment>
 
     <fragment
@@ -82,6 +89,12 @@
         android:name="me.robbin.wanandroid.ui.fragment.setting.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/fragment_setting" />
+
+    <fragment
+        android:id="@+id/integralFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.IntegralFragment"
+        android:label="IntegralFragment"
+        tools:layout="@layout/fragment_integral" />
 
     <fragment
         android:id="@+id/loginMainFragment"

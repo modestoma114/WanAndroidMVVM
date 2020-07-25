@@ -1,6 +1,5 @@
 package me.robbin.wanandroid.app.network
 
-import android.content.SharedPreferences
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
@@ -13,7 +12,7 @@ import java.util.concurrent.TimeUnit
  *
  * Create by Robbin at 2020/7/18
  */
-class NetworkClient : RetrofitClient() {
+class NetworkClient private constructor() : RetrofitClient() {
 
     companion object {
         val instance: NetworkClient by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
@@ -33,6 +32,10 @@ class NetworkClient : RetrofitClient() {
             writeTimeout(5, TimeUnit.SECONDS)
         }
         return builder
+    }
+
+    fun clearCookie() {
+        cookieJar.clear()
     }
 
 }
