@@ -13,13 +13,13 @@ import me.robbin.wanandroid.ext.init
 import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.fragment.common.ArticleListsFragment
 import me.robbin.wanandroid.ui.fragment.common.ArticleType
-import me.robbin.wanandroid.viewmodel.ArticleListViewModel
+import me.robbin.wanandroid.viewmodel.knowledge.ChapterListViewModel
 
 /**
  *
  * Create by Robbin at 2020/7/15
  */
-class ChapterArticlesFragment : BaseVMFragment<ArticleListViewModel>() {
+class ChapterArticlesFragment : BaseVMFragment<ChapterListViewModel>() {
 
     override fun getLayoutRes(): Int = R.layout.fragment_chapter_articles
 

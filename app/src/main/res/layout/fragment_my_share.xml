@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="me.robbin.wanandroid.viewmodel.common.ArticleListViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_main"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            addStatusPadding="@{true}"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            app:menu="@menu/menu_share"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="@string/title_my_share"
+            app:titleTextColor="@color/text_title" />
+
+        <include
+            layout="@layout/layout_article_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

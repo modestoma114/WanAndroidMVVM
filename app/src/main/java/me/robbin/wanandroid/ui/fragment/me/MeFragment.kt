@@ -10,7 +10,7 @@ import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.databinding.FragmentMeBinding
 import me.robbin.wanandroid.ext.checkLogin
 import me.robbin.wanandroid.ext.nav
-import me.robbin.wanandroid.viewmodel.MeViewModel
+import me.robbin.wanandroid.viewmodel.me.MeViewModel
 
 /**
  *
@@ -45,13 +45,13 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
     inner class RouteClick {
 
-        fun goProfile() = checkLogin { nav().navigate(R.id.action_main_to_profileFragment) }
+        fun goProfile() = checkLogin { nav().navigate(R.id.action_main_to_profile) }
 
-        fun goIntegral() = checkLogin { nav().navigate(R.id.action_main_to_integralFragment) }
+        fun goIntegral() = checkLogin { nav().navigate(R.id.action_main_to_integral) }
 
-        fun goMyCollect() = checkLogin { nav() }
+        fun goMyCollect() = checkLogin { nav().navigate(R.id.action_main_to_my_collect) }
 
-        fun goMyArticle() = checkLogin { nav() }
+        fun goMyArticle() = checkLogin { nav().navigate(R.id.action_main_to_my_share) }
 
         fun goWanAndroidSite() = nav()
 
@@ -61,7 +61,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
         fun goAboutMe() = nav()
 
-        fun goSetting() = nav().navigate(R.id.action_mainFragment_to_settingFragment)
+        fun goSetting() = nav().navigate(R.id.action_mainFragment_to_setting)
     }
 
 }

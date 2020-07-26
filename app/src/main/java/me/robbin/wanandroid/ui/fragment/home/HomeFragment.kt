@@ -12,23 +12,23 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.DataBindingConfig
-import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
 import me.robbin.mvvmscaffold.utils.StatusBarUtils
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
+import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.databinding.FragmentHomeBinding
 import me.robbin.wanandroid.ext.addTopPadding
 import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.adapter.ArticleAdapter
 import me.robbin.wanandroid.ui.adapter.PagingLoadStateAdapter
-import me.robbin.wanandroid.viewmodel.HomeViewModel
+import me.robbin.wanandroid.viewmodel.home.HomeViewModel
 
 /**
  *
  * Create by Robbin at 2020/7/10
  */
-class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     private val adapter by lazy { ArticleAdapter(requireContext()) }
     private var articleJob: Job? = null
@@ -45,7 +45,7 @@ class HomeFragment : BaseDBFragment<HomeViewModel, FragmentHomeBinding>() {
         toolbarHome.setTitle(R.string.tab_home)
         toolbarHome.setOnMenuItemClickListener {
             return@setOnMenuItemClickListener if (it.itemId == R.id.searchHome) {
-                nav().navigate(R.id.action_main_to_searchFragment)
+                nav().navigate(R.id.action_main_to_search)
                 true
             } else
                 false

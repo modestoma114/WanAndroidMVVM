@@ -1,4 +1,4 @@
-package me.robbin.wanandroid.viewmodel
+package me.robbin.wanandroid.viewmodel.common
 
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 

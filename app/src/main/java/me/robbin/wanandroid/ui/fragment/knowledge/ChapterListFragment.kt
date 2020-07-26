@@ -10,7 +10,7 @@ import me.robbin.wanandroid.data.bean.ChapterBean
 import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.adapter.KnowledgeAdapter
 import me.robbin.wanandroid.ui.adapter.NavigationAdapter
-import me.robbin.wanandroid.viewmodel.ChapterListViewModel
+import me.robbin.wanandroid.viewmodel.knowledge.ChapterListViewModel
 
 /**
  *

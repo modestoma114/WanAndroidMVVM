@@ -2,9 +2,10 @@ package me.robbin.wanandroid.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import me.robbin.wanandroid.data.datasource.HomeDataSource
+import androidx.paging.PagingData
 import me.robbin.wanandroid.data.datasource.ArticlesDataSource
-import me.robbin.wanandroid.data.datasource.PublicArticleDataSource
+import me.robbin.wanandroid.data.datasource.CollectDataSource
+import me.robbin.wanandroid.data.datasource.HomeDataSource
 import me.robbin.wanandroid.data.datasource.SearchArticleDateSource
 import me.robbin.wanandroid.ui.fragment.common.ArticleType
 
@@ -26,19 +27,19 @@ class ArticleRepository private constructor() {
             HomeDataSource()
         }.flow
 
-    fun getPublicArticle(cid: Int) =
-        Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
-            PublicArticleDataSource(cid)
-        }.flow
-
-    fun getArticleList(type: ArticleType, cid: Int = -1) =
+    fun getArticles(type: ArticleType, cid: Int = -1) =
         Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
             ArticlesDataSource(type, cid)
         }.flow
 
-    fun getSearchArticle(query: String) =
+    fun getSearchArticles(query: String) =
         Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
             SearchArticleDateSource(query)
+        }.flow
+
+    fun getCollectArticles() =
+        Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
+            CollectDataSource()
         }.flow
 
 }

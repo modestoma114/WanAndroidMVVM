@@ -1,4 +1,4 @@
-package me.robbin.wanandroid.viewmodel
+package me.robbin.wanandroid.viewmodel.login
 
 import android.text.Editable
 import androidx.lifecycle.MutableLiveData

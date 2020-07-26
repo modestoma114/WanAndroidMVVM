@@ -7,13 +7,13 @@
 
         <variable
             name="state"
-            type="me.robbin.wanandroid.viewmodel.HomeViewModel" />
+            type="me.robbin.wanandroid.viewmodel.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_view"
+        android:background="@color/bg_main"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.MaterialToolbar

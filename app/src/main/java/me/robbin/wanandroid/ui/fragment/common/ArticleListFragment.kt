@@ -2,6 +2,7 @@ package me.robbin.wanandroid.ui.fragment.common
 
 import android.os.Bundle
 import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.paging.LoadState
@@ -16,7 +17,7 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.adapter.ArticleAdapter
 import me.robbin.wanandroid.ui.adapter.PagingLoadStateAdapter
-import me.robbin.wanandroid.viewmodel.ArticleListViewModel
+import me.robbin.wanandroid.viewmodel.common.ArticleListViewModel
 
 /**
  *
@@ -49,7 +50,7 @@ class ArticleListsFragment : BaseVMFragment<ArticleListViewModel>() {
     override fun initData() {
         articleJob?.cancel()
         articleJob = lifecycleScope.launchWhenResumed {
-            mViewModel.getArticleList(type, cid).collect {
+            mViewModel.getArticles(type, cid).collect {
                 articleAdapter.submitData(it)
             }
         }
@@ -80,11 +81,16 @@ class ArticleListsFragment : BaseVMFragment<ArticleListViewModel>() {
     private fun refreshData() {
         articleJob?.cancel()
         articleJob = lifecycleScope.launch {
-            mViewModel.getArticleList(type, cid).collect {
-                refresh.isRefreshing = false
+            mViewModel.getArticles(type, cid).collect {
                 articleAdapter.submitData(it)
             }
         }
+    }
+
+    override fun createObserver() {
+        mViewModel.autoRefresh.observe(viewLifecycleOwner, Observer {
+            refresh.isRefreshing = it
+        })
     }
 
     override fun onDestroy() {
@@ -108,5 +114,5 @@ class ArticleListsFragment : BaseVMFragment<ArticleListViewModel>() {
 }
 
 enum class ArticleType {
-    HOME, QUESTION, SHARE, TREE, PROJECT, LAST_PROJECT, PUBLIC
+    HOME, QUESTION, SHARE, TREE, PROJECT, LAST_PROJECT, PUBLIC, MY_SHARE
 }

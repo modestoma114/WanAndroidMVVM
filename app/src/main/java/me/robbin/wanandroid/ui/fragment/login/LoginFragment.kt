@@ -10,7 +10,7 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.databinding.FragmentLoginBinding
 import me.robbin.wanandroid.ext.nav
-import me.robbin.wanandroid.viewmodel.LoginViewModel
+import me.robbin.wanandroid.viewmodel.login.LoginViewModel
 
 /**
  *

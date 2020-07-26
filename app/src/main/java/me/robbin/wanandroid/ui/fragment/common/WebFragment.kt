@@ -1,7 +1,6 @@
 package me.robbin.wanandroid.ui.fragment.common
 
 import android.os.Bundle
-import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.fragment_web.*
@@ -15,8 +14,7 @@ import me.robbin.wanandroid.data.bean.ArticleBean
 import me.robbin.wanandroid.databinding.FragmentWebBinding
 import me.robbin.wanandroid.ext.addTopPadding
 import me.robbin.wanandroid.ext.nav
-import me.robbin.wanandroid.viewmodel.WebViewModel
-import me.robbin.wanandroid.widget.ScrollWebView
+import me.robbin.wanandroid.viewmodel.common.WebViewModel
 
 /**
  *

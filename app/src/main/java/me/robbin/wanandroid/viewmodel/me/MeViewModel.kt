@@ -1,4 +1,4 @@
-package me.robbin.wanandroid.viewmodel
+package me.robbin.wanandroid.viewmodel.me
 
 import androidx.lifecycle.MutableLiveData
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel

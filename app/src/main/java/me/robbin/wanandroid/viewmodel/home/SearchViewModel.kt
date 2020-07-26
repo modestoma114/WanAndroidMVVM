@@ -1,4 +1,4 @@
-package me.robbin.wanandroid.viewmodel
+package me.robbin.wanandroid.viewmodel.home
 
 import android.text.Editable
 import androidx.lifecycle.MutableLiveData
@@ -14,7 +14,7 @@ import me.robbin.wanandroid.data.repository.ArticleRepository
  */
 class SearchViewModel : BaseViewModel() {
 
-    private val articleRepository by lazy { ArticleRepository() }
+    private val articleRepository by lazy { ArticleRepository.instance }
 
     val searchStr: MutableLiveData<String> = MutableLiveData("")
 
@@ -33,6 +33,6 @@ class SearchViewModel : BaseViewModel() {
         )
     }
 
-    fun searchArticle() = articleRepository.getSearchArticle(searchStr.value.toString())
+    fun searchArticle() = articleRepository.getSearchArticles(searchStr.value.toString())
 
 }

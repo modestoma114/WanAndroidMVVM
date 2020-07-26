@@ -6,12 +6,13 @@
 
         <variable
             name="viewModel"
-            type="me.robbin.wanandroid.viewmodel.LoginViewModel" />
+            type="me.robbin.wanandroid.viewmodel.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/bg_main">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/evRegisterUsername"

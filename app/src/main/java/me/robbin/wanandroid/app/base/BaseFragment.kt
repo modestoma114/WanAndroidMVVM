@@ -4,6 +4,7 @@ import androidx.databinding.ViewDataBinding
 import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.mvvmscaffold.ext.viewmodel.getAppVM
+import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.viewmodel.AppViewModel
 
 /**

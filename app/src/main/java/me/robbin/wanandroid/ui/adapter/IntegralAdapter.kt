@@ -16,10 +16,10 @@ import me.robbin.wanandroid.databinding.RvItemIntegralBinding
  * Create by Robbin at 2020/7/25
  */
 class IntegralAdapter(private val context: Context) :
-    PagingDataAdapter<IntegralDetailBean, IntegralViewHolder>(POST_COMPARATOR) {
+    PagingDataAdapter<IntegralDetailBean, IntegralViewHolder>(INTEGRAL_COMPARATOR) {
 
     companion object {
-        val POST_COMPARATOR = object : DiffUtil.ItemCallback<IntegralDetailBean>() {
+        val INTEGRAL_COMPARATOR = object : DiffUtil.ItemCallback<IntegralDetailBean>() {
             override fun areItemsTheSame(
                 oldItem: IntegralDetailBean,
                 newItem: IntegralDetailBean

@@ -1,25 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="" />
+            type="me.robbin.wanandroid.viewmodel.me.ProfileViewModel" />
     </data>
 
-    <com.google.android.material.appbar.CollapsingToolbarLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:toolbarId="@id/toolbarProfile">
+        android:background="@color/bg_main">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbarProfile"
-            addStatusPadding="@{true}"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorPrimary"
-            app:navigationIcon="@drawable/ic_back" />
+            android:layout_height="200dp">
 
-    </com.google.android.material.appbar.CollapsingToolbarLayout>
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minHeight="200dp"
+                app:collapsedTitleGravity="start"
+                app:contentScrim="@color/colorPrimary"
+                app:expandedTitleMarginEnd="10dp"
+                app:expandedTitleMarginStart="10dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    addStatusPadding="@{true}"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rlTest"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:listitem="@layout/rv_item_article" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

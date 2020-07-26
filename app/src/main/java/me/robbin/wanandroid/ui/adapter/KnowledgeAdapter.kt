@@ -1,7 +1,6 @@
 package me.robbin.wanandroid.ui.adapter
 
 import android.os.Bundle
-import android.view.ViewGroup
 import androidx.navigation.NavController
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
@@ -48,7 +47,7 @@ class KnowledgeAdapter :
                     bundle.putParcelable("data", item)
                     bundle.putInt("index", index)
                     onItemChipClickListener?.setNavController()
-                        ?.navigate(R.id.action_main_to_knowledgeArticleListFragment, bundle)
+                        ?.navigate(R.id.action_main_to_knowledgeArticleList, bundle)
                 }
                 binding.chipGroup.addView(chip)
             }

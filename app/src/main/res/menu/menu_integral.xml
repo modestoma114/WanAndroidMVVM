@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/rankIntegral"
+        android:id="@+id/integralRank"
         android:icon="@drawable/ic_rank"
         android:title="@string/text_integral_rank"
         app:showAsAction="always" />

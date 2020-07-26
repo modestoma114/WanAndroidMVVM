@@ -137,6 +137,8 @@ interface WanApi {
         @Field("password") pwd: String
     ): ApiResponse<UserBean>
 
+    // Integral
+
     /**
      * 注册
      * Create by Robbin at 2020/7/10
@@ -163,5 +165,21 @@ interface WanApi {
     @GET("lg/coin/list/{page}/json")
     suspend fun getIntegralDetail(@Path("page") page: Int)
             : ApiResponse<ApiPageResponse<MutableList<IntegralDetailBean>>>
+
+    @GET("coin/rank/{page}/json")
+    suspend fun getIntegralRank(@Path("page") page: Int)
+            : ApiResponse<ApiPageResponse<MutableList<IntegralBean>>>
+
+    // Collect
+
+    @GET("lg/collect/list/{page}/json")
+    suspend fun getCollectArticles(@Path("page") page: Int)
+            : ApiResponse<ApiPageResponse<MutableList<CollectBean>>>
+
+    // Share
+
+    @GET("user/lg/private_articles/{page}/json")
+    suspend fun getMyShare(@Path("page") page: Int)
+            : ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
 
 }

@@ -11,36 +11,50 @@
         android:label="ContainerFragment"
         tools:layout="@layout/fragment_container">
         <action
-            android:id="@+id/action_main_to_profileFragment"
+            android:id="@+id/action_main_to_profile"
             app:destination="@id/profileFragment"
             app:enterAnim="@anim/nav_fragment_enter"
             app:exitAnim="@anim/nav_fragment_exit"
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
             app:popExitAnim="@anim/nav_fragment_pop_exit" />
         <action
-            android:id="@+id/action_main_to_searchFragment"
+            android:id="@+id/action_main_to_search"
             app:destination="@id/searchFragment"
             app:enterAnim="@anim/nav_fragment_enter"
             app:exitAnim="@anim/nav_fragment_exit"
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
             app:popExitAnim="@anim/nav_fragment_pop_exit" />
         <action
-            android:id="@+id/action_main_to_knowledgeArticleListFragment"
+            android:id="@+id/action_main_to_knowledgeArticleList"
             app:destination="@id/knowledgeArticleListFragment"
             app:enterAnim="@anim/nav_fragment_enter"
             app:exitAnim="@anim/nav_fragment_exit"
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
             app:popExitAnim="@anim/nav_fragment_pop_exit" />
         <action
-            android:id="@+id/action_mainFragment_to_settingFragment"
+            android:id="@+id/action_mainFragment_to_setting"
             app:destination="@id/settingFragment"
             app:enterAnim="@anim/nav_fragment_enter"
             app:exitAnim="@anim/nav_fragment_exit"
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
             app:popExitAnim="@anim/nav_fragment_pop_exit" />
         <action
-            android:id="@+id/action_main_to_integralFragment"
+            android:id="@+id/action_main_to_integral"
             app:destination="@id/integralFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_main_to_my_collect"
+            app:destination="@id/myCollectFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_main_to_my_share"
+            app:destination="@id/myShareFragment"
             app:enterAnim="@anim/nav_fragment_enter"
             app:exitAnim="@anim/nav_fragment_exit"
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
@@ -94,7 +108,32 @@
         android:id="@+id/integralFragment"
         android:name="me.robbin.wanandroid.ui.fragment.me.IntegralFragment"
         android:label="IntegralFragment"
-        tools:layout="@layout/fragment_integral" />
+        tools:layout="@layout/fragment_integral">
+        <action
+            android:id="@+id/action_integral_to_integralRank"
+            app:destination="@id/integralRankFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/integralRankFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.IntegralRankFragment"
+        android:label="IntegralRankFragment"
+        tools:layout="@layout/fragment_integral_rank" />
+
+    <fragment
+        android:id="@+id/myCollectFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.CollectFragment"
+        android:label="MyCollectFragment"
+        tools:layout="@layout/fragment_collect" />
+
+    <fragment
+        android:id="@+id/myShareFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.MyShareFragment"
+        android:label="MyShareFragment"
+        tools:layout="@layout/fragment_my_share" />
 
     <fragment
         android:id="@+id/loginMainFragment"

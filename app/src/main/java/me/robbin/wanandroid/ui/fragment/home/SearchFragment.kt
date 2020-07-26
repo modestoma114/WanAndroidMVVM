@@ -16,22 +16,22 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.DataBindingConfig
-import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
 import me.robbin.mvvmscaffold.utils.StatusBarUtils
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
+import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.databinding.FragmentSearchBinding
 import me.robbin.wanandroid.ext.addTopPadding
 import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.adapter.ArticleAdapter
 import me.robbin.wanandroid.ui.adapter.PagingLoadStateAdapter
-import me.robbin.wanandroid.viewmodel.SearchViewModel
+import me.robbin.wanandroid.viewmodel.home.SearchViewModel
 
 /**
  *
  * Create by Robbin at 2020/7/19
  */
-class SearchFragment : BaseDBFragment<SearchViewModel, FragmentSearchBinding>() {
+class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
 
     private val adapter by lazy { ArticleAdapter(requireContext()) }
     private var searchJob: Job? = null

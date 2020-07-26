@@ -1,6 +1,7 @@
 package me.robbin.wanandroid.data.datasource
 
 import androidx.paging.PagingSource
+import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.data.api.ApiService
 import me.robbin.wanandroid.data.bean.ArticleBean
 import me.robbin.wanandroid.ui.fragment.common.ArticleType
@@ -27,14 +28,19 @@ class ArticlesDataSource(private val type: ArticleType, private val cid: Int = -
                     ArticleType.LAST_PROJECT -> api.getLastProjectArticles(page)
                     ArticleType.PROJECT -> api.getProjectArticles(page, cid)
                     ArticleType.PUBLIC -> api.getPublicArticles(cid, page)
+                    ArticleType.MY_SHARE -> api.getMyShare(page + 1)
                     else -> ApiService.getApi().getShareArticles(page)
                 }
-//            if (response.data.datas.isEmpty()) { LoadResult.Error }
+            if (response.data.total == 0) {
+                throw EmptyException("100", "返回结果为空")
+            }
             LoadResult.Page(
                 data = response.data.datas,
                 prevKey = if (page == 0) null else page - 1,
                 nextKey = if (response.data.curPage == response.data.pageCount) null else page + 1
             )
+        } catch (exception: EmptyException) {
+            return LoadResult.Error(exception)
         } catch (exception: IOException) {
             return LoadResult.Error(exception)
         } catch (exception: HttpException) {
