@@ -59,6 +59,20 @@
             app:exitAnim="@anim/nav_fragment_exit"
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
             app:popExitAnim="@anim/nav_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_main_to_project"
+            app:destination="@id/projectFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_main_to_about"
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
     </fragment>
 
     <fragment
@@ -134,6 +148,18 @@
         android:name="me.robbin.wanandroid.ui.fragment.me.MyShareFragment"
         android:label="MyShareFragment"
         tools:layout="@layout/fragment_my_share" />
+
+    <fragment
+        android:id="@+id/projectFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.ProjectFragment"
+        android:label="ProjectFragment"
+        tools:layout="@layout/fragment_project" />
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/fragment_about" />
 
     <fragment
         android:id="@+id/loginMainFragment"

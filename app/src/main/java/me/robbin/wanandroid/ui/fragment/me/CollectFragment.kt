@@ -2,13 +2,13 @@ package me.robbin.wanandroid.ui.fragment.me
 
 import android.os.Bundle
 import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.paging.LoadState
 import kotlinx.android.synthetic.main.layout_article_list.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.utils.toToast
@@ -35,7 +35,6 @@ class CollectFragment : BaseFragment<ArticleListViewModel, FragmentCollectBindin
     private var articleJob: Job? = null
 
     override fun initView(savedInstanceState: Bundle?) {
-        rlArticles.adapter = collectAdapter
         initAdapter()
         refreshArticles.setOnRefreshListener { refreshData() }
         btnError.setOnClickListener { collectAdapter.retry() }
@@ -57,6 +56,11 @@ class CollectFragment : BaseFragment<ArticleListViewModel, FragmentCollectBindin
             CollectAdapter.OnArticleItemClickListener {
             override fun setNavController(): NavController = nav()
         })
+        lifecycleScope.launchWhenCreated {
+            collectAdapter.loadStateFlow.collectLatest { loadState ->
+                refreshArticles.isRefreshing = loadState.refresh is LoadState.Loading
+            }
+        }
         collectAdapter.addLoadStateListener { loadState ->
             rlArticles.isVisible = loadState.refresh is LoadState.NotLoading
             loadingArticles.isVisible = loadState.refresh is LoadState.Loading
@@ -81,11 +85,11 @@ class CollectFragment : BaseFragment<ArticleListViewModel, FragmentCollectBindin
         }
     }
 
-    override fun createObserver() {
-        mViewModel.autoRefresh.observe(viewLifecycleOwner, Observer {
-            refreshArticles.isRefreshing = it
-        })
-    }
+//    override fun createObserver() {
+//        mViewModel.autoRefresh.observe(viewLifecycleOwner, Observer {
+//            refreshArticles.isRefreshing = it
+//        })
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

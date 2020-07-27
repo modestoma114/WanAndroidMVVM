@@ -7,7 +7,7 @@
 
         <variable
             name="bean"
-            type="me.robbin.wanandroid.ui.adapter.IntegralAdapter.IntegralDetail" />
+            type="me.robbin.wanandroid.data.bean.IntegralDetail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -55,11 +55,9 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
         fun goWanAndroidSite() = nav()
 
-        fun goProject() = nav()
+        fun goProject() = nav().navigate(R.id.action_main_to_project)
 
-        fun goOpenSource() = nav()
-
-        fun goAboutMe() = nav()
+        fun goAboutMe() = nav().navigate(R.id.action_main_to_about)
 
         fun goSetting() = nav().navigate(R.id.action_mainFragment_to_setting)
     }

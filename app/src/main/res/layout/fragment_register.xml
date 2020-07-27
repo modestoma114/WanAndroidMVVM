@@ -16,7 +16,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/evRegisterUsername"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -29,13 +28,13 @@
                 onTextChanged="@{viewModel.nameWatcher}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_edit"
                 android:text="@{viewModel.username}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/evRegisterPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -48,13 +47,13 @@
                 onTextChanged="@{viewModel.pwdWatcher}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_edit"
                 android:text="@{viewModel.pwd}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/evRegisterPassword2"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -67,6 +66,7 @@
                 onTextChanged="@{viewModel.pwd2Watcher}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_edit"
                 android:text="@{viewModel.pwd2}" />
 
         </com.google.android.material.textfield.TextInputLayout>

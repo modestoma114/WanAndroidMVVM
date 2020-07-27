@@ -182,4 +182,10 @@ interface WanApi {
     suspend fun getMyShare(@Path("page") page: Int)
             : ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
 
+    // Todo
+
+    @GET("lg/todo/v2/list/{page}/json")
+    suspend fun getTodoList(@Path("page") page: Int)
+            : ApiResponse<ApiPageResponse<MutableList<TodoBean>>>
+
 }

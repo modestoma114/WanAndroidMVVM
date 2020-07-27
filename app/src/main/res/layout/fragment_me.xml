@@ -253,39 +253,6 @@
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/btnSettingOpenSource"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:onClick="@{() -> route.goOpenSource()}"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="20dp"
-                            android:src="@drawable/ic_github" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="10dp"
-                            android:layout_weight="1"
-                            android:text="@string/text_setting_open_source"
-                            android:textColor="@color/text_settings"
-                            android:textSize="@dimen/text_content" />
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center"
-                            android:layout_marginEnd="20dp"
-                            android:src="@drawable/ic_right" />
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/btnSettingAboutMe"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -305,7 +272,7 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
-                            android:text="@string/text_setting_about_me"
+                            android:text="@string/text_setting_about"
                             android:textColor="@color/text_settings"
                             android:textSize="@dimen/text_content" />
 

@@ -8,6 +8,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.robbin.wanandroid.R
+import me.robbin.wanandroid.data.bean.IntegralDetail
 import me.robbin.wanandroid.data.bean.IntegralDetailBean
 import me.robbin.wanandroid.databinding.RvItemIntegralBinding
 
@@ -53,8 +54,6 @@ class IntegralAdapter(private val context: Context) :
         )
         return IntegralViewHolder(binding)
     }
-
-    inner class IntegralDetail(val date: String, val desc: String, val coinCount: Int)
 
 }
 
