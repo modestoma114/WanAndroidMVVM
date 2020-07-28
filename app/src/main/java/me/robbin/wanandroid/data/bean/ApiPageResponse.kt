@@ -1,7 +1,7 @@
 package me.robbin.wanandroid.data.bean
 
 /**
- *
+ * 分页数据基类
  * Create by Robbin at 2020/7/11
  */
 data class ApiPageResponse<T>(

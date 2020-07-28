@@ -12,7 +12,7 @@ import me.robbin.wanandroid.ui.fragment.me.adapter.LicensesAdapter
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.AboutViewModel
 
 /**
- *
+ * 关于软件 Fragment
  * Create by Robbin at 2020/7/21
  */
 class AboutFragment : BaseDBFragment<AboutViewModel, FragmentAboutBinding>() {

@@ -15,7 +15,7 @@ import me.robbin.wanandroid.data.bean.CollectBean
 import me.robbin.wanandroid.databinding.RvItemCollectBinding
 
 /**
- *
+ * 收藏列表适配器
  * Create by Robbin at 2020/7/26
  */
 class CollectAdapter(private val context: Context) :

@@ -16,7 +16,7 @@ import me.robbin.wanandroid.ui.fragment.me.adapter.IntegralAdapter
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.IntegralViewModel
 
 /**
- *
+ * 积分 Fragment
  * Create by Robbin at 2020/7/21
  */
 class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding>() {
@@ -51,9 +51,13 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
             mViewModel.getIntegral()
             getIntegralDetail()
         }
-        rlIntegral.adapter = integralAdapter
+        initAdapter()
         integralJob?.cancel()
         getIntegralDetail()
+    }
+
+    private fun initAdapter() {
+        rlIntegral.adapter = integralAdapter
     }
 
     private fun getIntegralDetail() {
@@ -77,7 +81,6 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
 
     inner class IntegralClick {
         fun back() = nav().navigateUp()
-        fun goRank() = nav().navigate(R.id.action_integral_to_integralRank)
     }
 
 }

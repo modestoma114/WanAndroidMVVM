@@ -13,10 +13,15 @@ import me.robbin.wanandroid.ui.fragment.me.view.MeFragment
 import me.robbin.wanandroid.ui.fragment.question.QuestionFragment
 
 /**
- *
+ * Adapter 拓展函数
  * Create by Robbin at 2020/7/10
  */
 
+/**
+ * 初始化 MainFragment 界面 ViewPager
+ * @param fm 所属界面 FragmentManager
+ * Create by Robbin at 2020/7/10
+ */
 fun ViewPager.mainAdapter(fm: FragmentManager): ViewPager {
 
     val homeFragment by lazy { HomeFragment() }
@@ -43,6 +48,12 @@ fun ViewPager.mainAdapter(fm: FragmentManager): ViewPager {
 
 }
 
+/**
+ * 初始化 ViewPager
+ * @param fm 所属界面 FragmentManager
+ * @param fragments 要添加的 Fragment 列表
+ * Create by Robbin at 2020/7/10
+ */
 fun ViewPager.init(
     fm: FragmentManager,
     fragments: ArrayList<Fragment>
@@ -55,6 +66,14 @@ fun ViewPager.init(
     return this
 }
 
+/**
+ * 初始化 ViewPager2
+ * @param fm 所属界面 FragmentManager
+ * @param lifecycle 所属界面生命周期
+ * @param fragments 要添加的 Fragment 列表
+ * @param enableSlide 是否开启用户输入 true 为开启
+ * Create by Robbin at 2020/7/10
+ */
 fun ViewPager2.init(
     fm: FragmentManager,
     lifecycle: Lifecycle,

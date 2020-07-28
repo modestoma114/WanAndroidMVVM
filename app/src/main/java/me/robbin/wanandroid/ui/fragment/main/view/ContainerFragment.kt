@@ -6,11 +6,10 @@ import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.ext.init
-import me.robbin.wanandroid.ui.fragment.main.view.MainFragment
 import me.robbin.wanandroid.ui.fragment.todo.view.TodoFragment
 
 /**
- *
+ * 一级承载界面
  * Create by Robbin at 2020/7/14
  */
 class ContainerFragment : BaseVMFragment<BaseViewModel>() {

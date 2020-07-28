@@ -6,7 +6,7 @@ import me.robbin.wanandroid.data.datasource.IntegralDataSource
 import me.robbin.wanandroid.data.datasource.IntegralRankDataSource
 
 /**
- *
+ * 积分信息仓库
  * Create by Robbin at 2020/7/25
  */
 class IntegralRepository private constructor() {
@@ -17,11 +17,19 @@ class IntegralRepository private constructor() {
         }
     }
 
+    /**
+     * 获取积分详细列表
+     * Create by Robbin at 2020/7/25
+     */
     fun getIntegralDetail() =
         Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
             IntegralDataSource()
         }.flow
 
+    /**
+     * 获取积分排名列表
+     * Create by Robbin at 2020/7/25
+     */
     fun getIntegralRank() =
         Pager(PagingConfig(pageSize = 30, enablePlaceholders = false)) {
             IntegralRankDataSource()

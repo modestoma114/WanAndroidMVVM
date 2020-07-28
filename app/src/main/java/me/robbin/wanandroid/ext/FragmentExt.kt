@@ -6,7 +6,13 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.utils.CacheUtils
 
 /**
- *
+ * Fragment 拓展函数
+ * Create by Robbin at 2020/7/21
+ */
+
+/**
+ * Fragment 中检查登录状态
+ * @param action 原先要执行的行为
  * Create by Robbin at 2020/7/21
  */
 fun Fragment.checkLogin(action: () -> Unit) {
@@ -19,6 +25,10 @@ fun Fragment.checkLogin(action: () -> Unit) {
 
 }
 
+/**
+ * 直接从当前 Fragment 返回 MainFragment
+ * Create by Robbin at 2020/7/21
+ */
 fun Fragment.backMain() {
     requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
         CacheUtils.setIsLogin(false)

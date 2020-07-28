@@ -9,7 +9,7 @@ import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
 /**
- *
+ * Retrofit
  * Create by Robbin at 2020/7/18
  */
 class NetworkClient private constructor() : RetrofitClient() {
@@ -20,6 +20,7 @@ class NetworkClient private constructor() : RetrofitClient() {
         }
     }
 
+    // Cookie 本地存储
     private val cookieJar by lazy {
         PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(Utils.getAPP()))
     }
@@ -34,6 +35,10 @@ class NetworkClient private constructor() : RetrofitClient() {
         return builder
     }
 
+    /**
+     * 清除本地 Cookie 缓存
+     * Create by Robbin at 2020/7/20
+     */
     fun clearCookie() {
         cookieJar.clear()
     }

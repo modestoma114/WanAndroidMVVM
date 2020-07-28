@@ -12,7 +12,7 @@ import me.robbin.wanandroid.databinding.RvItemKnowledgeBinding
 import java.util.*
 
 /**
- *
+ * 导航列表适配器
  * Create by Robbin at 2020/7/21
  */
 class NavigationAdapter :

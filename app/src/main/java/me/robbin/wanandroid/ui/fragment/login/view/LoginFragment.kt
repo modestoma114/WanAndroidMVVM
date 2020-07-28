@@ -13,7 +13,7 @@ import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.fragment.login.viewmodel.LoginViewModel
 
 /**
- *
+ * 登录 Fragment
  * Create by Robbin at 2020/7/17
  */
 class LoginFragment : BaseFragment<BaseViewModel, FragmentLoginBinding>() {

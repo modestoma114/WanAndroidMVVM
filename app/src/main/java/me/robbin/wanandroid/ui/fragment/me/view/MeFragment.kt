@@ -14,7 +14,7 @@ import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.MeViewModel
 
 /**
- *
+ * 我的 Fragment
  * Create by Robbin at 2020/7/10
  */
 class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {

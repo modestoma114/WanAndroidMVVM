@@ -13,15 +13,14 @@ import me.robbin.wanandroid.ui.fragment.knowledge.adapter.NavigationAdapter
 import me.robbin.wanandroid.ui.fragment.knowledge.viewmodel.ChapterListViewModel
 
 /**
- *
+ * 分类列表 Fragment
  * Create by Robbin at 2020/7/14
  */
 class ChapterListFragment : BaseVMFragment<ChapterListViewModel>() {
 
     override fun getLayoutRes(): Int = R.layout.fragment_chapter_list
 
-    private var type: ChapterType =
-        ChapterType.KNOWLEDGE
+    private var type: ChapterType = ChapterType.KNOWLEDGE
 
     private val knowledgeAdapter by lazy { KnowledgeAdapter() }
     private val navigationAdapter by lazy { NavigationAdapter() }

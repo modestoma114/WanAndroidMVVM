@@ -16,13 +16,11 @@ import me.robbin.wanandroid.data.bean.ArticleBean
 import me.robbin.wanandroid.databinding.RvItemArticleBinding
 
 /**
- *
+ * 文章列表适配器
  * Create by Robbin at 2020/7/11
  */
 class ArticleAdapter(private val context: Context) :
-    PagingDataAdapter<ArticleBean, ArticleViewHolder>(
-        POST_COMPARATOR
-    ) {
+    PagingDataAdapter<ArticleBean, ArticleViewHolder>(POST_COMPARATOR) {
 
     companion object {
         val POST_COMPARATOR = object : DiffUtil.ItemCallback<ArticleBean>() {

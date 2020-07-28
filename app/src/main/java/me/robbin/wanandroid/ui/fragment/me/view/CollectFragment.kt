@@ -23,7 +23,7 @@ import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.common.viewmodel.ArticleListViewModel
 
 /**
- *
+ * 收藏列表 Fragment
  * Create by Robbin at 2020/7/21
  */
 class CollectFragment : BaseFragment<ArticleListViewModel, FragmentCollectBinding>() {

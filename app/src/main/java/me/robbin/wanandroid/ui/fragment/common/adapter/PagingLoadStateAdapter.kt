@@ -10,7 +10,7 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.databinding.LayoutListFooterViewBinding
 
 /**
- *
+ * Paging LoadMore 适配器
  * Create by Robbin at 2020/7/11
  */
 class PagingLoadStateAdapter(private val retry: () -> Unit) :

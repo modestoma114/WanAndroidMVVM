@@ -8,7 +8,7 @@ import retrofit2.HttpException
 import java.io.IOException
 
 /**
- *
+ * Todo 列表数据源
  * Create by Robbin at 2020/7/27
  */
 class TodoDataSource : PagingSource<Int, TodoBean>() {
@@ -17,6 +17,8 @@ class TodoDataSource : PagingSource<Int, TodoBean>() {
         return try {
             val page: Int = params.key ?: 1
             val response = ApiService.getApi().getTodoList(page)
+
+            // 如果获取结果为空，直接抛出 Empty 异常
             if (response.data.total == 0) {
                 throw EmptyException("100", "返回结果为空")
             }

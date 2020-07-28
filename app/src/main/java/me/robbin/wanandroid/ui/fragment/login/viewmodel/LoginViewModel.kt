@@ -9,7 +9,7 @@ import me.robbin.wanandroid.app.watcher.SimpleWatcher
 import me.robbin.wanandroid.data.api.ApiService
 
 /**
- *
+ * 登录模块 ViewModel
  * Create by Robbin at 2020/7/17
  */
 class LoginViewModel : BaseViewModel() {
@@ -52,6 +52,33 @@ class LoginViewModel : BaseViewModel() {
                 "${it.code}: ${it.code}".toToast()
             }
         )
+    }
+
+    fun register(success: () -> Unit) {
+        if (checkPwd()) {
+            launchOnlyResult(
+                block = {
+                    ApiService.getApi().register(
+                        username.value.toString(),
+                        pwd.value.toString(),
+                        pwd2.value.toString()
+                    )
+                },
+                success = {
+                    CacheUtils.setUser(it)
+                    success()
+                },
+                error = {
+                    "${it.code}: ${it.code}".toToast()
+                }
+            )
+        } else {
+            "两次密码不一致".toToast()
+        }
+    }
+
+    private fun checkPwd(): Boolean {
+        return pwd.value == pwd2.value
     }
 
 }

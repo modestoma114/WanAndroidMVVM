@@ -12,7 +12,7 @@ import me.robbin.wanandroid.ext.init
 import me.robbin.wanandroid.ext.nav
 
 /**
- *
+ * 登录/注册 Fragment
  * Create by Robbin at 2020/7/11
  */
 class LoginMainFragment : BaseVMFragment<BaseViewModel>() {

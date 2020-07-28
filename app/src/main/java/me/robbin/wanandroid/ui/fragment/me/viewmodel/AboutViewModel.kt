@@ -5,7 +5,7 @@ import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.data.bean.LicensesBean
 
 /**
- *
+ * 关于软件界面 ViewModel
  * Create by Robbin at 2020/7/27
  */
 class AboutViewModel : BaseViewModel() {

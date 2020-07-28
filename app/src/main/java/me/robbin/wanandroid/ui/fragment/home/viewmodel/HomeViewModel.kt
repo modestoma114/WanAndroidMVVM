@@ -7,11 +7,15 @@ import me.robbin.wanandroid.data.bean.ArticleBean
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**
- *
+ * 首页 ViewModel
  * Create by Robbin at 2020/7/10
  */
 class HomeViewModel : BaseArticlesViewModel() {
 
+    /**
+     * 获取首页文章列表
+     * Create by Robbin at 2020/7/28
+     */
     override fun getArticles(type: ArticleType, cid: Int): Flow<PagingData<ArticleBean>> =
         articleRepository.getHomeArticles()
 

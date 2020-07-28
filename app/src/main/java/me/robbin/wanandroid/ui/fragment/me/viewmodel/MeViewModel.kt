@@ -6,7 +6,7 @@ import me.robbin.wanandroid.app.utils.CacheUtils
 import me.robbin.wanandroid.data.api.ApiService
 
 /**
- *
+ * 我的界面 ViewModel
  * Create by Robbin at 2020/7/17
  */
 class MeViewModel : BaseViewModel() {
@@ -19,6 +19,10 @@ class MeViewModel : BaseViewModel() {
 
     val coin: MutableLiveData<Int> = MutableLiveData(0)
 
+    /**
+     * 获取用户信息
+     * Create by Robbin at 2020/7/21
+     */
     fun getUserInfo() {
         val userInfo = CacheUtils.getUser()
         userName.value = userInfo?.nickname
@@ -31,6 +35,10 @@ class MeViewModel : BaseViewModel() {
         )
     }
 
+    /**
+     * 刷新用户信息
+     * Create by Robbin at 2020/7/21
+     */
     fun refreshInfo() {
         launchGo(
             {
@@ -43,6 +51,10 @@ class MeViewModel : BaseViewModel() {
         )
     }
 
+    /**
+     * 清除用户信息
+     * Create by Robbin at 2020/7/21
+     */
     fun clearUserInfo() {
         userName.value = "去登陆"
         info.value = "等级： —    排名： —"

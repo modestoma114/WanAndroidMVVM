@@ -7,7 +7,7 @@ import me.robbin.wanandroid.data.bean.LicensesBean
 import me.robbin.wanandroid.databinding.RvItemLicensesBinding
 
 /**
- *
+ * 开源项目列表适配器
  * Create by Robbin at 2020/7/27
  */
 class LicensesAdapter :

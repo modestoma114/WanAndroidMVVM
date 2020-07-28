@@ -8,7 +8,7 @@ import me.robbin.wanandroid.data.repository.ArticleRepository
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**
- *
+ * 文章列表基类 ViewModel
  * Create by Robbin at 2020/7/28
  */
 abstract class BaseArticlesViewModel : BaseViewModel() {

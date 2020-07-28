@@ -9,7 +9,7 @@ import me.robbin.wanandroid.data.bean.CollectBean
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**
- *
+ * 通用文章列表 ViewModel
  * Create by Robbin at 2020/7/14
  */
 class ArticleListViewModel : BaseArticlesViewModel() {

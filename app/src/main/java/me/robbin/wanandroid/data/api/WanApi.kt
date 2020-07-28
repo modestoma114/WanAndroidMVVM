@@ -4,17 +4,10 @@ import me.robbin.wanandroid.data.bean.*
 import retrofit2.http.*
 
 /**
- *
+ * WanAndroid Api
  * Create by Robbin at 2020/7/10
  */
 interface WanApi {
-
-    /**
-     * 获取首页Banner
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("banner/json")
-    suspend fun getBanner(): ApiResponse<MutableList<BannerBean>>
 
     /**
      * 获取首页文章列表
@@ -149,7 +142,7 @@ interface WanApi {
         @Field("username") username: String,
         @Field("password") pwd: String,
         @Field("repassword") pwd2: String
-    ): ApiResponse<Any>
+    ): ApiResponse<UserBean>
 
     /**
      * 获取用户积分

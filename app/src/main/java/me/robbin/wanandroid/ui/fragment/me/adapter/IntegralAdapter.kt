@@ -13,7 +13,7 @@ import me.robbin.wanandroid.data.bean.IntegralDetailBean
 import me.robbin.wanandroid.databinding.RvItemIntegralBinding
 
 /**
- *
+ * 积分列表适配器
  * Create by Robbin at 2020/7/25
  */
 class IntegralAdapter(private val context: Context) :

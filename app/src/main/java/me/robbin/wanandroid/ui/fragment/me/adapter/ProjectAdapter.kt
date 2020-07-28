@@ -1,6 +1,5 @@
 package me.robbin.wanandroid.ui.fragment.me.adapter
 
-import androidx.lifecycle.MutableLiveData
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import me.robbin.wanandroid.R
@@ -8,7 +7,7 @@ import me.robbin.wanandroid.data.bean.ChapterBean
 import me.robbin.wanandroid.databinding.RvItemProjectsBinding
 
 /**
- *
+ * 项目分类列表适配器
  * Create by Robbin at 2020/7/27
  */
 class ProjectAdapter :

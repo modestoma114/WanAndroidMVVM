@@ -21,7 +21,7 @@ import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.fragment.home.viewmodel.SearchViewModel
 
 /**
- *
+ * 搜索 Fragment
  * Create by Robbin at 2020/7/19
  */
 class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBinding>() {
@@ -34,12 +34,16 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
         super.initView(savedInstanceState)
         initSearch()
         emptyStr = resources.getString(R.string.text_search_empty)
+
+        // 清除按钮点击事件
         btnClearSearch.setOnClickListener {
             etSearch.setText("")
             articleJob?.cancel()
             rlArticles.visibility = View.GONE
             cgSearch.visibility = View.VISIBLE
         }
+
+        // 回退按钮点击事件
         btnBack.setOnClickListener {
             nav().navigateUp()
         }
@@ -49,6 +53,7 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
         mViewModel.getHotKey()
     }
 
+    // 初始化搜索
     private fun initSearch() {
         etSearch.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_GO) {
@@ -75,6 +80,10 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
         }
     }
 
+    /**
+     * 更新搜索列表
+     * Create by Robbin at 2020/7/19
+     */
     private fun updateSearchList() {
         etSearch.text?.trim().let {
             if (!it.isNullOrBlank()) {
@@ -83,6 +92,10 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
         }
     }
 
+    /**
+     * 搜索事件
+     * Create by Robbin at 2020/7/19
+     */
     private fun search() {
         cgSearch.visibility = View.GONE
         articleJob?.cancel()

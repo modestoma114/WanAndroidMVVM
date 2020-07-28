@@ -16,7 +16,7 @@ import me.robbin.wanandroid.ui.fragment.me.adapter.ProjectAdapter
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.ProjectViewModel
 
 /**
- *
+ * 项目 Fragment
  * Create by Robbin at 2020/7/25
  */
 class ProjectFragment : BaseArticlesFragment<ProjectViewModel, FragmentProjectBinding>() {
@@ -44,6 +44,7 @@ class ProjectFragment : BaseArticlesFragment<ProjectViewModel, FragmentProjectBi
             mViewModel.cid.value = it[0].id
             projectAdapter.setNewInstance(it)
         })
+        // 当 cid 发生变化时自动刷新数据
         mViewModel.cid.observe(viewLifecycleOwner, Observer {
             articleJob?.cancel()
             articleJob = lifecycleScope.launch {

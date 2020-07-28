@@ -1,7 +1,7 @@
 package me.robbin.wanandroid.data.bean
 
 /**
- *
+ *  用户
  * Create by Robbin at 2020/7/10
  */
 data class UserBean(

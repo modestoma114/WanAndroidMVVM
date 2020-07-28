@@ -2,9 +2,9 @@ package me.robbin.wanandroid.data.bean
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import me.robbin.wanandroid.app.base.BaseModel
 
 /**
+ * 收藏
  * Created by Robbin on 2020-07-26
  */
 @Parcelize
@@ -25,4 +25,4 @@ data class CollectBean(
     var userId: Int,
     var visible: Int,
     var zan: Int
-) : Parcelable, BaseModel
+) : Parcelable

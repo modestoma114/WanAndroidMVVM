@@ -14,17 +14,15 @@ import me.robbin.wanandroid.ui.fragment.common.view.ArticleListsFragment
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**
- *
+ * 问答 Fragment
  * Create by Robbin at 2020/7/10
  */
 class QuestionFragment : BaseVMFragment<BaseViewModel>() {
 
     override fun getLayoutRes(): Int = R.layout.fragment_chapter
 
-    private val questionFragment by lazy { ArticleListsFragment.newInstance(
-        ArticleType.QUESTION) }
-    private val userArticleFragment by lazy { ArticleListsFragment.newInstance(
-        ArticleType.SHARE) }
+    private val questionFragment by lazy { ArticleListsFragment.newInstance(ArticleType.QUESTION) }
+    private val userArticleFragment by lazy { ArticleListsFragment.newInstance(ArticleType.SHARE) }
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)

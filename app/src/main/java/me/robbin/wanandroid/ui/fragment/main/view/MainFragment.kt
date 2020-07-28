@@ -11,7 +11,7 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.ext.mainAdapter
 
 /**
- *
+ * 二级承载界面
  * Create by Robbin at 2020/7/13
  */
 class MainFragment : BaseVMFragment<BaseViewModel>() {

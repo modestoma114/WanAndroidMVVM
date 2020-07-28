@@ -9,7 +9,7 @@ import retrofit2.HttpException
 import java.io.IOException
 
 /**
- *
+ * 文章列表数据源
  * Create by Robbin at 2020/7/14
  */
 class ArticlesDataSource(private val type: ArticleType, private val cid: Int = -1) :
@@ -20,6 +20,8 @@ class ArticlesDataSource(private val type: ArticleType, private val cid: Int = -
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticleBean> {
         return try {
             val page = params.key ?: 0
+
+            //根据所传 Type 获取不同数据
             val response =
                 when (type) {
                     ArticleType.QUESTION -> api.getQuestionArticles(page + 1)
@@ -31,6 +33,8 @@ class ArticlesDataSource(private val type: ArticleType, private val cid: Int = -
                     ArticleType.MY_SHARE -> api.getMyShare(page + 1)
                     else -> ApiService.getApi().getShareArticles(page)
                 }
+
+            // 如果获取结果为空，直接抛出 Empty 异常
             if (response.data.total == 0) {
                 throw EmptyException("100", "返回结果为空")
             }

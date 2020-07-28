@@ -5,7 +5,12 @@ import androidx.navigation.NavController
 import me.robbin.mvvmscaffold.fix.navigation.NavHostFragment
 
 /**
- *
+ * Navigation 拓展函数
+ * Create by Robbin at 2020/7/13
+ */
+
+/**
+ * 获取当前 Fragment 的 NavController
  * Create by Robbin at 2020/7/13
  */
 fun Fragment.nav(): NavController {

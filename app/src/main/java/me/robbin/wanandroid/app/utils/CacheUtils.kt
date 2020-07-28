@@ -6,7 +6,7 @@ import com.tencent.mmkv.MMKV
 import me.robbin.wanandroid.data.bean.UserBean
 
 /**
- *
+ * 本地缓存工具
  * Create by Robbin at 2020/7/22
  */
 object CacheUtils {
@@ -23,6 +23,7 @@ object CacheUtils {
 
     /**
      * 设置用户登录状态
+     * @param isLogin 登陆状态
      * Create by Robbin at 2020/7/22
      */
     fun setIsLogin(isLogin: Boolean) {
@@ -31,6 +32,7 @@ object CacheUtils {
 
     /**
      * 获取登录用户信息
+     * @return 本地缓存的用户信息
      * Create by Robbin at 2020/7/22
      */
     fun getUser(): UserBean? {
@@ -41,6 +43,7 @@ object CacheUtils {
 
     /**
      * 设置用户信息
+     * @param user 要保存的用户信息
      * Create by Robbin at 2020/7/22
      */
     fun setUser(user: UserBean?) {

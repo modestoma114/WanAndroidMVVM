@@ -5,7 +5,7 @@ import androidx.paging.PagingConfig
 import me.robbin.wanandroid.data.datasource.TodoDataSource
 
 /**
- *
+ * Todo 仓库
  * Create by Robbin at 2020/7/27
  */
 class TodoRepository private constructor() {
@@ -16,6 +16,10 @@ class TodoRepository private constructor() {
         }
     }
 
+    /**
+     * 获取 Todo 列表
+     * Create by Robbin at 2020/7/27
+     */
     fun getTodoList() =
         Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
             TodoDataSource()

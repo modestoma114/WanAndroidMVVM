@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.webkit.WebView
 
 /**
- *
+ * 监听滑动事件的 WebView
  * Create by Robbin at 2020/7/24
  */
 class ScrollWebView(context: Context, attributeSet: AttributeSet) : WebView(context, attributeSet) {

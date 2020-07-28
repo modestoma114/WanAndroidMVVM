@@ -13,13 +13,11 @@ import me.robbin.wanandroid.data.bean.TodoBean
 import me.robbin.wanandroid.databinding.RvItemTodoBinding
 
 /**
- *
+ * Todo 列表适配器
  * Create by Robbin at 2020/7/27
  */
 class TodoAdapter(private val context: Context) :
-    PagingDataAdapter<TodoBean, TodoViewHolder>(
-        TODO_COMPARATOR
-    ) {
+    PagingDataAdapter<TodoBean, TodoViewHolder>(TODO_COMPARATOR) {
 
     companion object {
         val TODO_COMPARATOR = object : DiffUtil.ItemCallback<TodoBean>() {
@@ -52,8 +50,6 @@ class TodoAdapter(private val context: Context) :
             position.toToast()
         }
     }
-
-    fun updateItem() {}
 
 }
 

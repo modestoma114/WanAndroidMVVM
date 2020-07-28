@@ -1,6 +1,7 @@
 package me.robbin.wanandroid.data.bean
 
 /**
+ * 积分排名
  * Created by Robbin on 2020-07-25
  */
 data class IntegralDetailBean(

@@ -8,7 +8,7 @@ import me.robbin.wanandroid.databinding.FragmentProfileBinding
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.ProfileViewModel
 
 /**
- *
+ * 用户信息 Fragment
  * Create by Robbin at 2020/7/21
  */
 class ProfileFragment : BaseArticlesFragment<ProfileViewModel, FragmentProfileBinding>() {

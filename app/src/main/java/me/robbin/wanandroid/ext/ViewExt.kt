@@ -4,7 +4,13 @@ import android.view.View
 import android.widget.ImageView
 
 /**
- *
+ * View 拓展函数
+ * Create by Robbin at 2020/7/10
+ */
+
+/**
+ * 给 View 添加顶部 Padding，大部分情况下用于 Toolbar
+ * @param padding 要补充的边距
  * Create by Robbin at 2020/7/10
  */
 fun View.addTopPadding(padding: Int) {

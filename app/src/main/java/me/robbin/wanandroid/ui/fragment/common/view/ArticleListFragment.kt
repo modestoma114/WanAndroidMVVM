@@ -8,7 +8,7 @@ import me.robbin.wanandroid.databinding.LayoutArticleListBinding
 import me.robbin.wanandroid.ui.fragment.common.viewmodel.ArticleListViewModel
 
 /**
- *
+ * 通用文章列表 Fragment
  * Create by Robbin at 2020/7/21
  */
 class ArticleListsFragment :
@@ -20,6 +20,12 @@ class ArticleListsFragment :
 
     companion object {
 
+        /**
+         * 根据 type 和 cid 获取不同 Fragment 实例
+         * @param type 文章类型
+         * @param cid 文章模块Id
+         * Create by Robbin at 2020/7/21
+         */
         fun newInstance(type: ArticleType, cid: Int = -1): ArticleListsFragment {
             val args = Bundle()
             args.putSerializable("type", type)
@@ -34,6 +40,10 @@ class ArticleListsFragment :
 
 }
 
+/**
+ * 文章类型枚举类
+ * Create by Robbin at 2020/7/21
+ */
 enum class ArticleType {
     HOME, QUESTION, SHARE, TREE, PROJECT, LAST_PROJECT, PUBLIC, MY_SHARE
 }

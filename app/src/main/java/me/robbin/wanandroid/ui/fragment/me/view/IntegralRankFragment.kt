@@ -1,9 +1,11 @@
 package me.robbin.wanandroid.ui.fragment.me.view
 
-import androidx.lifecycle.Observer
+import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import kotlinx.android.synthetic.main.fragment_integral_rank.*
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
@@ -14,24 +16,23 @@ import me.robbin.wanandroid.ui.fragment.me.adapter.IntegralRankAdapter
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.IntegralRankViewModel
 
 /**
- *
+ * 积分排行榜 Fragment
  * Create by Robbin at 2020/7/26
  */
 class IntegralRankFragment : BaseFragment<IntegralRankViewModel, FragmentIntegralRankBinding>() {
 
-    private val rankAdapter by lazy {
-        IntegralRankAdapter(
-            requireContext()
-        )
-    }
+    private val rankAdapter by lazy { IntegralRankAdapter(requireContext()) }
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_integral_rank, BR.viewModel, mViewModel)
             .addBindingParams(BR.click, Click())
     }
 
+    override fun initView(savedInstanceState: Bundle?) {
+        initAdapter()
+    }
+
     override fun initData() {
-        rlRank.adapter = rankAdapter
         lifecycleScope.launchWhenCreated {
             mViewModel.getIntegralRank().collect {
                 rankAdapter.submitData(it)
@@ -39,10 +40,13 @@ class IntegralRankFragment : BaseFragment<IntegralRankViewModel, FragmentIntegra
         }
     }
 
-    override fun createObserver() {
-        mViewModel.autoRefresh.observe(viewLifecycleOwner, Observer {
-            refreshRank.isRefreshing = it
-        })
+    private fun initAdapter() {
+        rlRank.adapter = rankAdapter
+        lifecycleScope.launchWhenCreated {
+            rankAdapter.loadStateFlow.collectLatest { loadState ->
+                refreshRank.isRefreshing = loadState.refresh is LoadState.Loading
+            }
+        }
     }
 
     inner class Click {

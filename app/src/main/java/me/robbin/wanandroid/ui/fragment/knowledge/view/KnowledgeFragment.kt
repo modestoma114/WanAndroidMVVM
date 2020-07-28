@@ -14,7 +14,7 @@ import me.robbin.wanandroid.ui.fragment.knowledge.view.ChapterListFragment
 import me.robbin.wanandroid.ui.fragment.knowledge.view.ChapterType
 
 /**
- *
+ * 体系 Fragment
  * Create by Robbin at 2020/7/10
  */
 class KnowledgeFragment : BaseVMFragment<BaseViewModel>() {

@@ -9,7 +9,7 @@ import me.robbin.wanandroid.databinding.FragmentSettingBinding
 import me.robbin.wanandroid.ext.nav
 
 /**
- *
+ * 设置 Fragment
  * Create by Robbin at 2020/7/20
  */
 class SettingFragment : BaseFragment<BaseViewModel, FragmentSettingBinding>() {

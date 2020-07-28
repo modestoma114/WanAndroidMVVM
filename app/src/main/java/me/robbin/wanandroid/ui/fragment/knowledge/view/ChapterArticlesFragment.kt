@@ -16,7 +16,7 @@ import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 import me.robbin.wanandroid.ui.fragment.knowledge.viewmodel.ChapterListViewModel
 
 /**
- *
+ * 模块文章列表 Fragment
  * Create by Robbin at 2020/7/15
  */
 class ChapterArticlesFragment : BaseVMFragment<ChapterListViewModel>() {

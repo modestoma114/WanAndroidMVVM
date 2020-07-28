@@ -4,7 +4,7 @@ import android.text.Editable
 import android.text.TextWatcher
 
 /**
- *
+ * EditText 自定义 Watcher
  * Create by Robbin at 2020/7/17
  */
 open class SimpleWatcher: TextWatcher {

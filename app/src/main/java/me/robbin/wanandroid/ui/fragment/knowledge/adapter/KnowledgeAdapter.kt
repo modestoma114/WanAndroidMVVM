@@ -12,13 +12,15 @@ import me.robbin.wanandroid.databinding.RvItemKnowledgeBinding
 import java.util.*
 
 /**
- *
+ * 体系列表适配器
  * Create by Robbin at 2020/7/15
  */
 class KnowledgeAdapter :
     BaseQuickAdapter<ChapterBean, BaseDataBindingHolder<RvItemKnowledgeBinding>>(R.layout.rv_item_knowledge) {
 
+    // 当前模块的子模块列表
     private val chipItemCaches: Queue<Chip> = LinkedList()
+    // 点击事件
     private var onItemChipClickListener: OnItemChipClickListener? = null
 
     override fun onViewRecycled(holder: BaseDataBindingHolder<RvItemKnowledgeBinding>) {

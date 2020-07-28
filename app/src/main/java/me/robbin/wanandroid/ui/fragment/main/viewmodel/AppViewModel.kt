@@ -7,7 +7,7 @@ import me.robbin.wanandroid.app.utils.CacheUtils
 import me.robbin.wanandroid.data.bean.UserBean
 
 /**
- *
+ * 全局 ViewModel
  * Create by Robbin at 2020/7/19
  */
 class AppViewModel : BaseViewModel() {

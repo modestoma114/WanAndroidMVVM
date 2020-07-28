@@ -1,6 +1,7 @@
 package me.robbin.wanandroid.data.bean
 
 /**
+ * 搜索热词
  * Created by Robbin on 2020-07-19
  */
 data class HotKeyBean(

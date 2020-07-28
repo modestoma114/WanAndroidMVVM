@@ -9,10 +9,11 @@ import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.databinding.FragmentRegisterBinding
+import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.fragment.login.viewmodel.LoginViewModel
 
 /**
- *
+ * 注册 Fragment
  * Create by Robbin at 2020/7/17
  */
 class RegisterFragment : BaseFragment<BaseViewModel, FragmentRegisterBinding>() {
@@ -27,6 +28,12 @@ class RegisterFragment : BaseFragment<BaseViewModel, FragmentRegisterBinding>() 
         super.initView(savedInstanceState)
         btnGoLogin.setOnClickListener {
             (parentFragment as LoginMainFragment).goLogin()
+        }
+        btnRegister.setOnClickListener {
+            userViewModel.register {
+                appViewModel.setIsLogin(true)
+                nav().navigateUp()
+            }
         }
     }
 

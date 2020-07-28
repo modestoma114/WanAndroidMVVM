@@ -17,7 +17,7 @@ import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.fragment.common.viewmodel.WebViewModel
 
 /**
- *
+ * 网页 Fragment
  * Create by Robbin at 2020/7/11
  */
 class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
@@ -27,6 +27,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
             .addBindingParams(BR.click, WebClick())
     }
 
+    // 文章信息
     private var article: ArticleBean? = null
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -37,7 +38,6 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
         }
         mBinding.article = article!!
         statusWeb.addTopPadding(StatusBarUtils.getStatusBarHeight())
-//        initWebView()
         webDetail.loadUrl(article?.link!!)
         webDetail.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
@@ -46,28 +46,6 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
             }
         }
     }
-
-//    private fun initWebView() {
-//        webDetail.run {
-//            settings.run {
-//                javaScriptEnabled = true
-//            }
-//            setBackgroundColor(0)
-////            addJavascriptInterface()
-//            onScrollChangeListener = object : ScrollWebView.OnScrollChangeListener {
-//                override fun onScroll(dx: Int, dy: Int, oldDx: Int, oldDy: Int) {
-//                }
-//            }
-//            webViewClient = object : WebViewClient() {
-//                override fun shouldInterceptRequest(
-//                    view: WebView?,
-//                    url: String?
-//                ): WebResourceResponse? {
-//                    if ()
-//                }
-//            }
-//        }
-//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

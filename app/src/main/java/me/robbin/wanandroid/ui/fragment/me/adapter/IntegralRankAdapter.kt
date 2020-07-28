@@ -12,7 +12,7 @@ import me.robbin.wanandroid.data.bean.IntegralBean
 import me.robbin.wanandroid.databinding.RvItemIntegralRankBinding
 
 /**
- *
+ * 积分排名列表适配器
  * Create by Robbin at 2020/7/26
  */
 class IntegralRankAdapter(private val context: Context) :
@@ -52,7 +52,7 @@ class IntegralRankAdapter(private val context: Context) :
     override fun onBindViewHolder(holder: IntegralRankViewHolder, position: Int) {
         val binding = DataBindingUtil.getBinding<RvItemIntegralRankBinding>(holder.itemView)
         binding?.bean = getItem(position)
-        binding?.max = 20000
+        binding?.max = 25000
     }
 
 }
