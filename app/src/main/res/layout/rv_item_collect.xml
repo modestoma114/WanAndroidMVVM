@@ -7,7 +7,7 @@
 
         <variable
             name="route"
-            type="me.robbin.wanandroid.ui.adapter.CollectAdapter.RouteClick" />
+            type="me.robbin.wanandroid.ui.fragment.me.adapter.CollectAdapter.RouteClick" />
 
         <variable
             name="bean"

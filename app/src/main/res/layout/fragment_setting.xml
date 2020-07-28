@@ -6,7 +6,7 @@
 
         <variable
             name="state"
-            type="me.robbin.wanandroid.viewmodel.AppViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.main.viewmodel.AppViewModel" />
 
         <variable
             name="click"

@@ -12,7 +12,10 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="10dp"
         android:text="@{title}"
         android:textSize="@dimen/text_content"
         tools:text="Hello Robbin" />

@@ -7,7 +7,7 @@
 
         <variable
             name="state"
-            type="me.robbin.wanandroid.viewmodel.home.HomeViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.home.viewmodel.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +28,7 @@
             app:titleTextColor="@color/white" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/refreshHome"
+            android:id="@+id/refreshArticles"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -37,7 +37,7 @@
             app:layout_constraintTop_toBottomOf="@id/toolbarHome">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rlHome"
+                android:id="@+id/rlArticles"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical"

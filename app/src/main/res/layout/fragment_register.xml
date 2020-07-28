@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="me.robbin.wanandroid.viewmodel.login.LoginViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.login.viewmodel.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

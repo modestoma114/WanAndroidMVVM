@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/containerFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.ContainerFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.main.view.ContainerFragment"
         android:label="ContainerFragment"
         tools:layout="@layout/fragment_container">
         <action
@@ -77,19 +77,19 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.main.MainFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.main.view.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.me.ProfileFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.view.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/webFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.common.WebFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.common.view.WebFragment"
         android:label="WebFragment"
         tools:layout="@layout/fragment_web" />
     <action
@@ -102,13 +102,13 @@
 
     <fragment
         android:id="@+id/knowledgeArticleListFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.knowledge.ChapterArticlesFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.knowledge.view.ChapterArticlesFragment"
         android:label="KnowledgeArticleListFragment"
         tools:layout="@layout/fragment_chapter_articles" />
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.home.SearchFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.home.view.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search" />
 
@@ -120,7 +120,7 @@
 
     <fragment
         android:id="@+id/integralFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.me.IntegralFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.view.IntegralFragment"
         android:label="IntegralFragment"
         tools:layout="@layout/fragment_integral">
         <action
@@ -133,37 +133,37 @@
     </fragment>
     <fragment
         android:id="@+id/integralRankFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.me.IntegralRankFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.view.IntegralRankFragment"
         android:label="IntegralRankFragment"
         tools:layout="@layout/fragment_integral_rank" />
 
     <fragment
         android:id="@+id/myCollectFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.me.CollectFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.view.CollectFragment"
         android:label="MyCollectFragment"
         tools:layout="@layout/fragment_collect" />
 
     <fragment
         android:id="@+id/myShareFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.me.MyShareFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.view.MyShareFragment"
         android:label="MyShareFragment"
         tools:layout="@layout/fragment_my_share" />
 
     <fragment
         android:id="@+id/projectFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.me.ProjectFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.view.ProjectFragment"
         android:label="ProjectFragment"
         tools:layout="@layout/fragment_project" />
 
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.me.AboutFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.me.view.AboutFragment"
         android:label="AboutFragment"
         tools:layout="@layout/fragment_about" />
 
     <fragment
         android:id="@+id/loginMainFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.login.LoginMainFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.login.view.LoginMainFragment"
         android:label="LoginMainFragment"
         tools:layout="@layout/fragment_login_main" />
     <action

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_main"
+    android:paddingBottom="10dp">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etTodoTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/transparent"
+        android:hint="@string/hint_add_todo_title"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textSize="@dimen/text_content"
+        app:layout_constraintEnd_toStartOf="@id/btnTodoSend"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnTodoSend"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etTodoDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:hint="@string/hint_add_todo_detail"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:textSize="@dimen/text_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etTodoTitle" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/cpTodoTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etTodoDetail"
+        tools:text="2020-7-20" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvChooseTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:drawableStart="@drawable/ic_calender"
+        android:drawablePadding="10dp"
+        android:text="@string/text_choose_time"
+        android:textSize="@dimen/text_content"
+        app:layout_constraintStart_toEndOf="@id/cpTodoTime"
+        app:layout_constraintTop_toBottomOf="@id/etTodoDetail" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:drawableStart="@drawable/ic_list"
+        android:drawablePadding="10dp"
+        android:text="@string/text_add_detail"
+        android:textSize="@dimen/text_content"
+        app:layout_constraintStart_toEndOf="@id/tvChooseTime"
+        app:layout_constraintTop_toTopOf="@id/tvChooseTime" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

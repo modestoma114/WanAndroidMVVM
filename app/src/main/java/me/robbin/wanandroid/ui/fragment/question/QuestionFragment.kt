@@ -10,8 +10,8 @@ import me.robbin.mvvmscaffold.utils.StatusBarUtils
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.ext.addTopPadding
 import me.robbin.wanandroid.ext.init
-import me.robbin.wanandroid.ui.fragment.common.ArticleListsFragment
-import me.robbin.wanandroid.ui.fragment.common.ArticleType
+import me.robbin.wanandroid.ui.fragment.common.view.ArticleListsFragment
+import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**
  *
@@ -21,8 +21,10 @@ class QuestionFragment : BaseVMFragment<BaseViewModel>() {
 
     override fun getLayoutRes(): Int = R.layout.fragment_chapter
 
-    private val questionFragment by lazy { ArticleListsFragment.newInstance(ArticleType.QUESTION) }
-    private val userArticleFragment by lazy { ArticleListsFragment.newInstance(ArticleType.SHARE) }
+    private val questionFragment by lazy { ArticleListsFragment.newInstance(
+        ArticleType.QUESTION) }
+    private val userArticleFragment by lazy { ArticleListsFragment.newInstance(
+        ArticleType.SHARE) }
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)

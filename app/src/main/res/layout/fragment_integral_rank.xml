@@ -7,11 +7,11 @@
 
         <variable
             name="viewModel"
-            type="me.robbin.wanandroid.viewmodel.me.IntegralRankViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.me.viewmodel.IntegralRankViewModel" />
 
         <variable
             name="click"
-            type="me.robbin.wanandroid.ui.fragment.me.IntegralRankFragment.Click" />
+            type="me.robbin.wanandroid.ui.fragment.me.view.IntegralRankFragment.Click" />
     </data>
 
     <LinearLayout

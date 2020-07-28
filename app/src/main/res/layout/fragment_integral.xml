@@ -7,11 +7,11 @@
 
         <variable
             name="viewModel"
-            type="me.robbin.wanandroid.viewmodel.me.IntegralViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.me.viewmodel.IntegralViewModel" />
 
         <variable
             name="click"
-            type="me.robbin.wanandroid.ui.fragment.me.IntegralFragment.IntegralClick" />
+            type="me.robbin.wanandroid.ui.fragment.me.view.IntegralFragment.IntegralClick" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

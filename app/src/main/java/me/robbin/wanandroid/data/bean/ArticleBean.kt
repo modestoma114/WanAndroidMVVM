@@ -2,6 +2,7 @@ package me.robbin.wanandroid.data.bean
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import me.robbin.wanandroid.app.base.BaseModel
 
 /**
  * Created by Robbin on 2020-07-11
@@ -40,4 +41,4 @@ data class ArticleBean(
     var visible: Int,
     var zan: Int,
     var tags: List<TagsBean>
-) : Parcelable
+) : Parcelable, BaseModel

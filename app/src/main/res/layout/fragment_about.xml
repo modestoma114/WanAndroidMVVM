@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="me.robbin.wanandroid.viewmodel.me.AboutViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.me.viewmodel.AboutViewModel" />
 
     </data>
 

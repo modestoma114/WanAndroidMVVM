@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.data.api.ApiService
 import me.robbin.wanandroid.data.bean.ArticleBean
-import me.robbin.wanandroid.ui.fragment.common.ArticleType
+import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 import retrofit2.HttpException
 import java.io.IOException
 

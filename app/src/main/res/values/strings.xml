@@ -21,6 +21,7 @@
     <string name="text_time">刚刚</string>
     <string name="text_error_retry">出错了，点我重试</string>
     <string name="text_empty_retry">什么都没有，点我重试</string>
+    <string name="text_search_empty">什么都没有找到，换个关键词试试</string>
     <string name="text_me_login">去登录</string>
     <string name="text_user_info">等级：—&#160;&#160;&#160;排名： —</string>
     <string name="text_login_title">登录/注册</string>
@@ -36,6 +37,8 @@
     <string name="text_developer">Developer</string>
     <string name="text_contact_me">Contact me</string>
     <string name="text_licenses">Licenses</string>
+    <string name="text_choose_time">选择截止时间</string>
+    <string name="text_add_detail">添加详细信息</string>
 
     <string name="text_setting_coin">我的积分</string>
     <string name="text_setting_collect">我的收藏</string>
@@ -49,5 +52,7 @@
     <string name="hint_login_password">请输入密码</string>
     <string name="hint_register_password2">请再次输入密码</string>
     <string name="hint_search">输入搜索内容</string>
+    <string name="hint_add_todo_title">新建任务</string>
+    <string name="hint_add_todo_detail">添加详细信息</string>
 
 </resources>

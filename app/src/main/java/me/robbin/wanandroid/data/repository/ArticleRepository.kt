@@ -2,12 +2,11 @@ package me.robbin.wanandroid.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import androidx.paging.PagingData
 import me.robbin.wanandroid.data.datasource.ArticlesDataSource
 import me.robbin.wanandroid.data.datasource.CollectDataSource
 import me.robbin.wanandroid.data.datasource.HomeDataSource
 import me.robbin.wanandroid.data.datasource.SearchArticleDateSource
-import me.robbin.wanandroid.ui.fragment.common.ArticleType
+import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**
  *

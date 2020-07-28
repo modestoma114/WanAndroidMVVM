@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="me.robbin.wanandroid.viewmodel.me.ProjectViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.me.viewmodel.ProjectViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +38,7 @@
             tools:listitem="@layout/rv_item_projects" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/refreshProjectArticles"
+            android:id="@+id/refreshArticles"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,16 +51,13 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rlProjectArticles"
+                    android:id="@+id/rlArticles"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layoutManager="LinearLayoutManager"
                     tools:listitem="@layout/rv_item_article" />
 
-                <include
-                    layout="@layout/layout_loading_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                <include layout="@layout/layout_loading_view" />
 
             </FrameLayout>
 

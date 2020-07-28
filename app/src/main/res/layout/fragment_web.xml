@@ -6,7 +6,7 @@
 
         <variable
             name="state"
-            type="me.robbin.wanandroid.viewmodel.AppViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.main.viewmodel.AppViewModel" />
 
         <variable
             name="article"
@@ -14,7 +14,7 @@
 
         <variable
             name="click"
-            type="me.robbin.wanandroid.ui.fragment.common.WebFragment.WebClick" />
+            type="me.robbin.wanandroid.ui.fragment.common.view.WebFragment.WebClick" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

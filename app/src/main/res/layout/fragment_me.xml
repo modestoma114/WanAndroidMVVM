@@ -7,11 +7,11 @@
 
         <variable
             name="route"
-            type="me.robbin.wanandroid.ui.fragment.me.MeFragment.RouteClick" />
+            type="me.robbin.wanandroid.ui.fragment.me.view.MeFragment.RouteClick" />
 
         <variable
             name="viewModel"
-            type="me.robbin.wanandroid.viewmodel.me.MeViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.me.viewmodel.MeViewModel" />
 
     </data>
 

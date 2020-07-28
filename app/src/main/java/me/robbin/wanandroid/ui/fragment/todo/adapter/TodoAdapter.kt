@@ -1,0 +1,60 @@
+package me.robbin.wanandroid.ui.fragment.todo.adapter
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
+import me.robbin.mvvmscaffold.utils.toToast
+import me.robbin.wanandroid.R
+import me.robbin.wanandroid.data.bean.TodoBean
+import me.robbin.wanandroid.databinding.RvItemTodoBinding
+
+/**
+ *
+ * Create by Robbin at 2020/7/27
+ */
+class TodoAdapter(private val context: Context) :
+    PagingDataAdapter<TodoBean, TodoViewHolder>(
+        TODO_COMPARATOR
+    ) {
+
+    companion object {
+        val TODO_COMPARATOR = object : DiffUtil.ItemCallback<TodoBean>() {
+            override fun areContentsTheSame(oldItem: TodoBean, newItem: TodoBean): Boolean =
+                oldItem == newItem
+
+            override fun areItemsTheSame(oldItem: TodoBean, newItem: TodoBean): Boolean =
+                oldItem.id == newItem.id
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val binding = DataBindingUtil.inflate<RvItemTodoBinding>(
+            inflater,
+            R.layout.rv_item_todo,
+            parent,
+            false
+        )
+        return TodoViewHolder(
+            binding
+        )
+    }
+
+    override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
+        val binding = DataBindingUtil.getBinding<RvItemTodoBinding>(holder.itemView)
+        binding?.bean = getItem(position)
+        val view = binding?.root
+        view?.setOnClickListener {
+            position.toToast()
+        }
+    }
+
+    fun updateItem() {}
+
+}
+
+class TodoViewHolder(binding: RvItemTodoBinding) : RecyclerView.ViewHolder(binding.root)
