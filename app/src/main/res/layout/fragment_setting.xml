@@ -6,17 +6,21 @@
 
         <variable
             name="state"
+            type="me.robbin.wanandroid.ui.fragment.setting.viewmodel.SettingViewModel" />
+
+        <variable
+            name="appState"
             type="me.robbin.wanandroid.ui.fragment.main.viewmodel.AppViewModel" />
 
         <variable
             name="click"
-            type="me.robbin.wanandroid.ui.fragment.setting.SettingFragment.SettingClick" />
+            type="me.robbin.wanandroid.ui.fragment.setting.view.SettingFragment.SettingClick" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_main">
+        android:background="@color/bg_primary">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarSetting"
@@ -24,7 +28,7 @@
             tbNavIconClick="@{() -> click.back()}"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/bg_main"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -45,10 +49,39 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    isVisible="@{state.isLogin}"
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/bg_second"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="@string/setting_night_mode"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/text_content" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchNight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    isVisible="@{appState.isLogin}"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/bg_second"
                     android:gravity="center"
                     android:onClick="@{() -> click.logOut()}"
                     android:text="@string/text_logout"

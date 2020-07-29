@@ -3,7 +3,6 @@ package me.robbin.wanandroid.ui.fragment.common.adapter
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -42,8 +41,6 @@ class ArticleAdapter(private val context: Context) :
         this.listener = listener
     }
 
-    private var view: View? = null
-
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val binding = DataBindingUtil.getBinding<RvItemArticleBinding>(holder.itemView)
         binding?.route = this.RouteClick()
@@ -54,7 +51,6 @@ class ArticleAdapter(private val context: Context) :
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val binding: RvItemArticleBinding =
             DataBindingUtil.inflate(inflater, R.layout.rv_item_article, parent, false)
-        view = binding.root
         return ArticleViewHolder(
             binding
         )
@@ -63,11 +59,14 @@ class ArticleAdapter(private val context: Context) :
     inner class RouteClick {
         fun goWeb(bean: ArticleBean) {
             val bundle = Bundle()
-            bundle.putParcelable("article", bean)
-            view?.let {
-                listener?.setNavController()
-                    ?.navigate(R.id.action_global_to_webFragment, bundle)
-            }
+            bundle.putString("url", bean.link)
+            bundle.putString("title", bean.title)
+            bundle.putInt("articleId", bean.id)
+            bundle.putBoolean("collected", bean.collect)
+            bundle.putString("author", bean.author)
+            bundle.putInt("userId", bean.userId)
+            listener?.setNavController()
+                ?.navigate(R.id.action_global_to_webFragment, bundle)
         }
 
         fun goAuthorProfile() {

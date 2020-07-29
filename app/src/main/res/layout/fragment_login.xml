@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg_main">
+        android:background="@color/bg_primary">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/evLoginUsername"
@@ -57,8 +57,10 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button"
             android:text="@string/text_login"
-            android:textSize="@dimen/text_web_title"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/evLoginPassword" />

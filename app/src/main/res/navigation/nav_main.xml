@@ -114,7 +114,7 @@
 
     <fragment
         android:id="@+id/settingFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.setting.SettingFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.setting.view.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/fragment_setting" />
 

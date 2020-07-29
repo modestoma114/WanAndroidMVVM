@@ -1,6 +1,6 @@
 package me.robbin.wanandroid.ext
 
-import android.text.Html
+import androidx.core.text.HtmlCompat
 import java.util.regex.Pattern
 
 /**
@@ -12,10 +12,9 @@ import java.util.regex.Pattern
  * 转化 HTML 格式的 String
  * Create by Robbin at 2020/7/12
  */
-@Suppress("DEPRECATION")
-fun String.html2string(): String {
-    return Html.fromHtml(this).toString()
-}
+fun String?.html2string() =
+    if (this.isNullOrEmpty()) ""
+    else HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
 
 /**
  * 去除 String 当中的空格

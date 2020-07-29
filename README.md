@@ -1,2 +1,6 @@
-# WanAndroidMVVM
-项目采用 Kotlin 语言，基于 MVVM + Coroutines + Retrofit + Coil + Jetpack 等架构设计，努力打造一款优秀的 [玩Android] 客户端
+## WanAndroidMVVM
+- 项目采用 Kotlin 语言
+- 采用 ViewModel + LiveData 实现 MVVM 架构
+- 网络请求采用 Kotlin Coroutines + Paging 3.0
+
+#### 已有功能

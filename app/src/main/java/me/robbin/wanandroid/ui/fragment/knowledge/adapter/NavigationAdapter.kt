@@ -33,6 +33,7 @@ class NavigationAdapter :
         this.onItemChipClickListener = listener
     }
 
+    @Suppress("DEPRECATION")
     override fun convert(
         holder: BaseDataBindingHolder<RvItemKnowledgeBinding>,
         item: NavigationBean
@@ -45,9 +46,17 @@ class NavigationAdapter :
                 chip.text = item.articles[index].title
                 chip.isCheckable = false
                 chip.isCloseIconVisible = false
+                chip.setTextColor(context.resources.getColor(R.color.text_secondary))
+                chip.setChipBackgroundColorResource(R.color.bg_third)
                 chip.setOnClickListener {
                     val bundle = Bundle()
-                    bundle.putParcelable("article", item.articles[index])
+                    val bean = item.articles[index]
+                    bundle.putString("url", bean.link)
+                    bundle.putString("title", bean.title)
+                    bundle.putInt("articleId", bean.id)
+                    bundle.putBoolean("collected", bean.collect)
+                    bundle.putString("author", bean.author)
+                    bundle.putInt("userId", bean.userId)
                     onItemChipClickListener?.setNavController()
                         ?.navigate(R.id.action_global_to_webFragment, bundle)
                 }

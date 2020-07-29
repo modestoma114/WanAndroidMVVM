@@ -19,12 +19,12 @@
         android:id="@+id/refreshMe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_main">
+        android:background="@color/bg_primary">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary">
+            android:background="@color/bg_main">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivMinePic"
@@ -99,7 +99,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/text_setting_coin"
-                            android:textColor="@color/text_settings"
+                            android:textColor="@color/text_primary"
                             android:textSize="@dimen/text_content" />
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -141,7 +141,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/text_setting_collect"
-                            android:textColor="@color/text_settings"
+                            android:textColor="@color/text_primary"
                             android:textSize="@dimen/text_content" />
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -174,7 +174,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/text_setting_share"
-                            android:textColor="@color/text_settings"
+                            android:textColor="@color/text_primary"
                             android:textSize="@dimen/text_content" />
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -207,7 +207,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/text_setting_wanandroid"
-                            android:textColor="@color/text_settings"
+                            android:textColor="@color/text_primary"
                             android:textSize="@dimen/text_content" />
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -240,7 +240,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/text_setting_project"
-                            android:textColor="@color/text_settings"
+                            android:textColor="@color/text_primary"
                             android:textSize="@dimen/text_content" />
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -273,7 +273,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/text_setting_about"
-                            android:textColor="@color/text_settings"
+                            android:textColor="@color/text_primary"
                             android:textSize="@dimen/text_content" />
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -306,7 +306,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:text="@string/text_setting_settings"
-                            android:textColor="@color/text_settings"
+                            android:textColor="@color/text_primary"
                             android:textSize="@dimen/text_content" />
 
                         <androidx.appcompat.widget.AppCompatImageView

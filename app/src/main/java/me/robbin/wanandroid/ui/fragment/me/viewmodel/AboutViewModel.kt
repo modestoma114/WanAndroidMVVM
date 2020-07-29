@@ -26,77 +26,77 @@ class AboutViewModel : BaseViewModel() {
         val list = mutableListOf<LicensesBean>()
         list.add(
             LicensesBean(
-                "Kotlin",
+                "Kotlin - JetBrains",
                 "The Kotlin Programming Language",
                 "https://github.com/JetBrains/kotlin"
             )
         )
         list.add(
             LicensesBean(
-                "Kotlinx.Coroutines",
+                "Kotlinx.Coroutines - Kotlin",
                 "Library support for Kotlin coroutines",
                 "https://github.com/Kotlin/kotlinx.coroutines"
             )
         )
         list.add(
             LicensesBean(
-                "Retrofit",
+                "Retrofit - Square",
                 "A type-safe HTTP client for Android and the JVM",
                 "https://github.com/square/retrofit"
             )
         )
         list.add(
             LicensesBean(
-                "OkHttp",
+                "OkHttp - Square",
                 "Square's meticulous HTTP client for Java and Kotlin.",
                 "https://github.com/square/okhttp"
             )
         )
         list.add(
             LicensesBean(
-                "Gson",
+                "Gson - Google",
                 "A Java serialization/deserialization library to convert Java Objects into JSON and back",
                 "https://github.com/google/gson"
             )
         )
         list.add(
             LicensesBean(
-                "Coil",
+                "Coil - coil-kt",
                 "Image loading for Android backed by Kotlin Coroutines.",
                 "https://github.com/coil-kt/coil"
             )
         )
         list.add(
             LicensesBean(
-                "PersistentCookieJar",
+                "PersistentCookieJar - franmontiel",
                 "A persistent CookieJar implementation for OkHttp 3 based on SharedPreferences.",
                 "https://github.com/franmontiel/PersistentCookieJar"
             )
         )
         list.add(
             LicensesBean(
-                "CircleImageView",
+                "CircleImageView - hdodenhof",
                 "A circular ImageView for Android",
                 "https://github.com/hdodenhof/CircleImageView"
             )
         )
         list.add(
             LicensesBean(
-                "BaseRecyclerViewAdapterHelper",
-                "BRVAH:Powerful and flexible RecyclerAdapter",
+                "BaseRecyclerViewAdapterHelper - CymChad",
+                "Powerful and flexible RecyclerAdapter",
                 "https://github.com/CymChad/BaseRecyclerViewAdapterHelper"
             )
         )
         list.add(
             LicensesBean(
-                "MMKV",
+                "MMKV - Tencent",
                 "An efficient, small mobile key-value storage framework developed by WeChat. Works on Android, iOS, macOS, Windows, and POSIX.",
                 "https://github.com/Tencent/MMKV"
             )
         )
         list.add(
             LicensesBean(
-                "MVVMScaffold",
+                "MVVMScaffold - RobbinM",
                 "A toolkit help to build Android MVVM Application",
                 "https://github.com/RobbinM/MVVMScaffold"
             )

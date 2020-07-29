@@ -36,6 +36,7 @@ abstract class BaseArticlesFragment<VM : BaseArticlesViewModel, VDB : ViewDataBi
 
     // 文章类型
     private var type: ArticleType = ArticleType.HOME
+
     // 文章模块Id
     private var cid: Int = -1
 
@@ -110,7 +111,7 @@ abstract class BaseArticlesFragment<VM : BaseArticlesViewModel, VDB : ViewDataBi
      * 刷新事件
      * Create by Robbin at 2020/7/28
      */
-    private fun refreshData() {
+    open fun refreshData() {
         articleJob?.cancel()
         articleJob = lifecycleScope.launch {
             mViewModel.getArticles(type, cid).collectLatest {

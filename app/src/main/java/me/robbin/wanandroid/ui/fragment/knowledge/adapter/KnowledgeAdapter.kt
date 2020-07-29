@@ -20,6 +20,7 @@ class KnowledgeAdapter :
 
     // 当前模块的子模块列表
     private val chipItemCaches: Queue<Chip> = LinkedList()
+
     // 点击事件
     private var onItemChipClickListener: OnItemChipClickListener? = null
 
@@ -35,6 +36,7 @@ class KnowledgeAdapter :
         this.onItemChipClickListener = listener
     }
 
+    @Suppress("DEPRECATION")
     override fun convert(holder: BaseDataBindingHolder<RvItemKnowledgeBinding>, item: ChapterBean) {
         val binding = holder.dataBinding
         if (binding != null) {
@@ -44,6 +46,8 @@ class KnowledgeAdapter :
                 chip.text = item.children[index].name
                 chip.isCheckable = false
                 chip.isCloseIconVisible = false
+                chip.setTextColor(context.resources.getColor(R.color.text_secondary))
+                chip.setChipBackgroundColorResource(R.color.bg_third)
                 chip.setOnClickListener {
                     val bundle = Bundle()
                     bundle.putParcelable("data", item)

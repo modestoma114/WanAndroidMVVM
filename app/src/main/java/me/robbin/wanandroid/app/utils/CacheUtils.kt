@@ -56,4 +56,20 @@ object CacheUtils {
         }
     }
 
+    /**
+     * 存储夜间模式状态
+     * Create by Robbin at 2020/7/29
+     */
+    fun setNightMode(isNightMode: Boolean) {
+        sp.encode("key_night_mode", isNightMode)
+    }
+
+    /**
+     * 获得夜间模式设置
+     * Create by Robbin at 2020/7/29
+     */
+    fun getNightMode(): Boolean {
+        return sp.decodeBool("key_night_mode", false)
+    }
+
 }

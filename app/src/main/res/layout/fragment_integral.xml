@@ -11,14 +11,14 @@
 
         <variable
             name="click"
-            type="me.robbin.wanandroid.ui.fragment.me.view.IntegralFragment.IntegralClick" />
+            type="me.robbin.wanandroid.ui.fragment.me.view.IntegralFragment.Click" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refreshIntegral"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_main">
+        android:background="@color/bg_primary">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 tbNavIconClick="@{() -> click.back()}"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:background="@color/colorPrimary"
+                android:background="@color/bg_main"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -43,9 +43,9 @@
                 android:id="@+id/tvIntegral"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:background="@color/colorPrimary"
+                android:background="@color/bg_main"
                 android:gravity="center"
-                android:text="@{String.valueOf(viewModel.integral)}"
+                android:text="@{viewModel.integral.toString()}"
                 android:textColor="@color/text_title"
                 android:textSize="60sp"
                 android:textStyle="bold"

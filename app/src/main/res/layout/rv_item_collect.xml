@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg_main"
+        android:background="@color/bg_primary"
         android:onClick="@{() -> route.goWeb(bean)}"
         android:padding="15dp">
 
@@ -36,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_author"
+                android:textColor="@color/text_secondary"
                 android:textSize="@dimen/text_notes"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{bean.niceDate}"
+                android:textColor="@color/text_secondary"
                 android:textSize="@dimen/text_notes"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +64,7 @@
             android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/black"
+            android:textColor="@color/text_primary"
             android:textSize="@dimen/text_content"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +81,7 @@
             android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="3"
+            android:textColor="@color/text_secondary"
             android:textSize="@dimen/text_desc"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,6 +96,7 @@
             android:layout_marginTop="5dp"
             android:onClick="@{() -> route.goChapter()}"
             android:text="@{bean.chapterName}"
+            android:textColor="@color/text_third"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_desc" />
 

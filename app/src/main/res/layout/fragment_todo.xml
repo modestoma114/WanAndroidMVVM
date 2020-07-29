@@ -13,18 +13,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_main">
+        android:background="@color/bg_primary">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarTodo"
             addStatusPadding="@{true}"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/bg_todo_toolbar"
+            android:background="@color/bg_second"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="@string/title_todo" />
+            app:title="@string/title_todo"
+            app:titleTextColor="@color/text_primary" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refreshTodo"

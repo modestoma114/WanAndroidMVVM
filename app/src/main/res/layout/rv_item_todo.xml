@@ -25,7 +25,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/bg_main">
+            android:background="@color/bg_primary">
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/todoCheck"
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:button="@null"
                 android:checked="@{bean.hasDone}"
-                android:drawableStart="@drawable/bg_check"
+                android:drawableStart="@drawable/check_todo"
                 android:padding="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -45,6 +45,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:text="@{bean.title}"
+                android:textColor="@color/text_primary"
                 android:textSize="@dimen/text_todo"
                 app:layout_constraintStart_toEndOf="@id/todoCheck"
                 app:layout_constraintTop_toTopOf="parent"
@@ -56,6 +57,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:textColor="@color/text_secondary"
                 app:layout_constraintStart_toStartOf="@id/todoTitle"
                 app:layout_constraintTop_toBottomOf="@id/todoTitle"
                 tools:text="这是一条测试Todo的详细内容" />
@@ -64,7 +66,9 @@
                 android:id="@+id/todoType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/bg_third"
                 android:text="@{bean.whatType}"
+                android:textColor="@color/text_secondary"
                 android:textSize="@dimen/text_content"
                 app:layout_constraintStart_toStartOf="@id/todoTitle"
                 app:layout_constraintTop_toBottomOf="@id/todoDetail"
@@ -76,6 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="@{bean.dateStr}"
+                android:textColor="@color/text_secondary"
                 android:textSize="@dimen/text_content"
                 app:layout_constraintBottom_toBottomOf="@id/todoType"
                 app:layout_constraintStart_toEndOf="@id/todoType"

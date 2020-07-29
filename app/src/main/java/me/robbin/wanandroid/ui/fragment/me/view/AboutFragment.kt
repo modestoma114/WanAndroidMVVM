@@ -8,6 +8,7 @@ import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.databinding.FragmentAboutBinding
+import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.fragment.me.adapter.LicensesAdapter
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.AboutViewModel
 
@@ -19,6 +20,7 @@ class AboutFragment : BaseDBFragment<AboutViewModel, FragmentAboutBinding>() {
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_about, BR.viewModel, mViewModel)
+            .addBindingParams(BR.click, Click())
     }
 
     private val licensesAdapter by lazy { LicensesAdapter() }
@@ -35,6 +37,10 @@ class AboutFragment : BaseDBFragment<AboutViewModel, FragmentAboutBinding>() {
         mViewModel.licenses.observe(viewLifecycleOwner, Observer {
             licensesAdapter.setNewInstance(it)
         })
+    }
+
+    inner class Click() {
+        fun back() = nav().navigateUp()
     }
 
 }

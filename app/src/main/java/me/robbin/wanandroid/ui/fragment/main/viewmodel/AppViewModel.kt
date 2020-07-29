@@ -15,6 +15,7 @@ class AppViewModel : BaseViewModel() {
     // 判断是否登录
     val isLogin: MutableLiveData<Boolean> = MutableLiveData(false)
     val userInfo: MutableLiveData<UserBean> = MutableLiveData()
+    val isNightMode: MutableLiveData<Boolean> = MutableLiveData(CacheUtils.getNightMode())
 
     init {
         isLogin.value = CacheUtils.isLogin()

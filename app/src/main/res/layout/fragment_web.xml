@@ -5,12 +5,8 @@
     <data>
 
         <variable
-            name="state"
-            type="me.robbin.wanandroid.ui.fragment.main.viewmodel.AppViewModel" />
-
-        <variable
-            name="article"
-            type="me.robbin.wanandroid.data.bean.ArticleBean" />
+            name="viewModel"
+            type="me.robbin.wanandroid.ui.fragment.common.viewmodel.WebViewModel" />
 
         <variable
             name="click"
@@ -20,13 +16,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_main">
+        android:background="@color/bg_primary">
 
         <View
             android:id="@+id/statusWeb"
+            addStatusPadding="@{true}"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="@color/white"
+            android:background="@color/bg_primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +40,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/bg_main"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,11 +50,11 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@color/transparent"
+                android:background="@color/bg_transparent"
                 android:onClick="@{() -> click.back()}"
                 android:src="@drawable/ic_back" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
@@ -65,21 +62,25 @@
                 android:background="@drawable/bg_web_title"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
-                android:maxLines="1"
+                android:imeOptions="actionGo"
+                android:lines="1"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
-                android:text="@{article.title}"
+                android:singleLine="true"
+                android:text="@{viewModel.title}"
                 android:textColor="@color/text_title"
                 android:textSize="@dimen/text_content" />
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:button="@null"
+                android:drawableEnd="@drawable/check_collect"
+                android:checked="@{viewModel.collected}"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                android:scaleType="center"
-                android:src="@drawable/ic_collect" />
+                android:scaleType="center" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="50dp"

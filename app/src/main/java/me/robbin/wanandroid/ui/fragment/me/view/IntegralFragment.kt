@@ -21,17 +21,13 @@ import me.robbin.wanandroid.ui.fragment.me.viewmodel.IntegralViewModel
  */
 class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding>() {
 
-    private val integralAdapter by lazy {
-        IntegralAdapter(
-            requireContext()
-        )
-    }
+    private val integralAdapter by lazy { IntegralAdapter(requireContext()) }
 
     private var integralJob: Job? = null
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_integral, BR.viewModel, mViewModel)
-            .addBindingParams(BR.click, IntegralClick())
+            .addBindingParams(BR.click, Click())
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -79,7 +75,7 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
         integralJob?.cancel()
     }
 
-    inner class IntegralClick {
+    inner class Click {
         fun back() = nav().navigateUp()
     }
 

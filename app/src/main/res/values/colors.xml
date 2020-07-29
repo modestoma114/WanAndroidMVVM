@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#4282F4</color>
-    <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="transparent">#00000000</color>
-
-    <color name="text_new">@color/colorPrimary</color>
+    <!-- 文章细节 -->
+    <color name="text_new">#4282F4</color>
     <color name="text_top">#F86734</color>
+    <!-- 文字细节 -->
+    <color name="text_primary">#1B1B1D</color>
+    <color name="text_secondary">#6B7178</color>
+    <color name="text_third">#9297A2</color>
     <color name="text_title">#FFFFFF</color>
-    <color name="text_settings">#333333</color>
-    <color name="text_surface">#999999</color>
-
-    <color name="bg_web_title">#11000000</color>
-    <color name="bg_main">@color/white</color>
-    <color name="bg_todo_toolbar">#F0F0F0</color>
-    <color name="bg_separator">#FFDDDDDD</color>
-    <color name="bg_edit">#FFEEEEEE</color>
+    <!-- 界面细节 -->
+    <color name="bg_main">#4282F4</color>
+    <color name="bg_primary">#FFFFFF</color>
+    <color name="bg_second">#F8F8F8</color>
+    <color name="bg_third">#E8E8E8</color>
+    <color name="bg_transparent">#00000000</color>
+    <color name="bg_mask">#11000000</color>
+    <!-- TabLayout细节 -->
+    <color name="text_select">#FFFFFF</color>
+    <color name="text_no_select">#88FFFFFF</color>
+    <!-- Icon细节 -->
+    <color name="color_icon">#FF4282F4</color>
+    <color name="color_bottom_icon">#FF6B7178</color>
 
 </resources>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/bg_main">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivAppIcon"
@@ -40,7 +40,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
-            android:background="@color/transparent"
+            android:background="@color/bg_transparent"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_down" />
 

@@ -3,6 +3,7 @@ package me.robbin.wanandroid.ui.fragment.todo.view
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -18,13 +19,14 @@ import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
+import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.databinding.FragmentTodoBinding
 import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.todo.adapter.TodoAdapter
 import me.robbin.wanandroid.ui.fragment.todo.viewmodel.TodoViewModel
 
 /**
- * Todo Fragment
+ * TodoL Fragment
  * Create by Robbin at 2020/7/14
  */
 class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
@@ -33,11 +35,7 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
         return DataBindingConfig(R.layout.fragment_todo, BR.viewModel, mViewModel)
     }
 
-    private val todoAdapter by lazy {
-        TodoAdapter(
-            requireContext()
-        )
-    }
+    private val todoAdapter by lazy { TodoAdapter(requireContext()) }
 
     private val bottomSheet by lazy { BottomSheetDialog(requireContext()) }
     private var behavior: BottomSheetBehavior<View>? = null
@@ -55,13 +53,24 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
         }
     }
 
-    override fun initData() {
-        todoJob?.cancel()
-        todoJob = lifecycleScope.launchWhenResumed {
-            mViewModel.getTodoList().collectLatest {
-                todoAdapter.submitData(it)
+    override fun createObserver() {
+        appViewModel.isLogin.observe(viewLifecycleOwner, Observer { isLogin ->
+            if (isLogin) {
+                refreshTodo.isEnabled = true
+                todoJob?.cancel()
+                todoJob = lifecycleScope.launchWhenResumed {
+                    mViewModel.getTodoList().collectLatest {
+                        todoAdapter.submitData(it)
+                    }
+                }
+            } else {
+                rlTodo.visibility = View.GONE
+                ivEmpty.visibility = View.VISIBLE
+                btnEmpty.visibility = View.VISIBLE
+                refreshTodo.isEnabled = false
+                btnEmpty.text = "请先登录"
             }
-        }
+        })
     }
 
     private fun initBottomSheet() {
@@ -87,8 +96,13 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
                 ?: loadState.source.prepend as? LoadState.Error
                 ?: loadState.append as? LoadState.Error
                 ?: loadState.prepend as? LoadState.Error
-            errorState?.let {
-                "\uD83D\uDE28 Wooops: ${it.error}".toToast()
+                ?: loadState.refresh as? LoadState.Error
+            if (errorState?.error is EmptyException) {
+                btnEmpty.text = (errorState.error as EmptyException).errMsg
+            } else {
+                errorState?.let {
+                    "\uD83D\uDE28 Wooops: ${it.error}".toToast()
+                }
             }
         }
     }
@@ -104,7 +118,7 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
 
     override fun onResume() {
         super.onResume()
-        setStatusBarLightMode(true)
+        setStatusBarLightMode(!appViewModel.isNightMode.value!!)
     }
 
 }
