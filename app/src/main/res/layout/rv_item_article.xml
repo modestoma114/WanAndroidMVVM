@@ -18,7 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_primary"
-        android:onClick="@{() -> route.goWeb(bean)}"
         android:padding="15dp">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -46,7 +45,7 @@
                 textShareUser="@{bean.shareUser}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> route.goAuthorProfile()}"
+                android:onClick="@{() -> route.goAuthorProfile(bean)}"
                 android:text="@string/text_author"
                 android:textColor="@color/text_secondary"
                 android:textSize="@dimen/text_notes"
@@ -152,7 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:onClick="@{() -> route.goChapter()}"
+            android:onClick="@{() -> route.goChapter(bean)}"
             android:textColor="@color/text_third"
             android:textSize="@dimen/text_notes"
             app:layout_constraintStart_toEndOf="@id/ivProject"

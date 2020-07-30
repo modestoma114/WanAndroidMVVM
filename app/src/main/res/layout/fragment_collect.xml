@@ -6,28 +6,48 @@
 
         <variable
             name="viewModel"
-            type="me.robbin.wanandroid.ui.fragment.common.viewmodel.ArticleListViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.me.viewmodel.CollectViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_primary"
-        android:orientation="vertical">
+        android:background="@color/bg_primary">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarCollect"
             addStatusPadding="@{true}"
+            tbNavIconClick="@{() -> viewModel.goBack()}"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/bg_main"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_back"
             app:title="@string/title_my_collect"
             app:titleTextColor="@color/text_title" />
 
-        <include
-            layout="@layout/layout_article_list"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabCollect"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="40dp"
+            android:background="@color/bg_main"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbarCollect"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/text_select"
+            app:tabTextColor="@color/text_no_select" />
 
-    </LinearLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpCollect"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabCollect" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -27,7 +27,6 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_integral, BR.viewModel, mViewModel)
-            .addBindingParams(BR.click, Click())
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -68,15 +67,14 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
         mViewModel.autoRefresh.observe(viewLifecycleOwner, Observer {
             refreshIntegral.isRefreshing = it
         })
+        mViewModel.back.observe(viewLifecycleOwner, Observer {
+            if (it) nav().navigateUp()
+        })
     }
 
     override fun onDestroy() {
         super.onDestroy()
         integralJob?.cancel()
-    }
-
-    inner class Click {
-        fun back() = nav().navigateUp()
     }
 
 }

@@ -1,40 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg_primary">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarChapterArticles"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="me.robbin.wanandroid.ui.fragment.knowledge.viewmodel.ChapterArticlesViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/bg_main"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_back"
-        app:titleTextColor="@color/text_title" />
+        android:layout_height="match_parent"
+        android:background="@color/bg_primary">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabChapter"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarChapterArticles"
-        app:tabBackground="@color/bg_main"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/text_select"
-        app:tabTextColor="@color/text_no_select" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarChapterArticles"
+            addStatusPadding="@{true}"
+            tbNavIconClick="@{() -> viewModel.goBack()}"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/bg_main"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="@{viewModel.title}"
+            app:titleTextColor="@color/text_title" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vpChapter"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabChapter" />
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabChapter"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/bg_main"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbarChapterArticles"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/text_select"
+            app:tabTextColor="@color/text_no_select" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpChapter"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabChapter" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

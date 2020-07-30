@@ -11,22 +11,8 @@
         android:label="ContainerFragment"
         tools:layout="@layout/fragment_container">
         <action
-            android:id="@+id/action_main_to_profile"
-            app:destination="@id/profileFragment"
-            app:enterAnim="@anim/nav_fragment_enter"
-            app:exitAnim="@anim/nav_fragment_exit"
-            app:popEnterAnim="@anim/nav_fragment_pop_enter"
-            app:popExitAnim="@anim/nav_fragment_pop_exit" />
-        <action
             android:id="@+id/action_main_to_search"
             app:destination="@id/searchFragment"
-            app:enterAnim="@anim/nav_fragment_enter"
-            app:exitAnim="@anim/nav_fragment_exit"
-            app:popEnterAnim="@anim/nav_fragment_pop_enter"
-            app:popExitAnim="@anim/nav_fragment_pop_exit" />
-        <action
-            android:id="@+id/action_main_to_knowledgeArticleList"
-            app:destination="@id/knowledgeArticleListFragment"
             app:enterAnim="@anim/nav_fragment_enter"
             app:exitAnim="@anim/nav_fragment_exit"
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
@@ -86,6 +72,13 @@
         android:name="me.robbin.wanandroid.ui.fragment.me.view.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile" />
+    <action
+        android:id="@+id/action_global_to_profile"
+        app:destination="@id/profileFragment"
+        app:enterAnim="@anim/nav_fragment_enter"
+        app:exitAnim="@anim/nav_fragment_exit"
+        app:popEnterAnim="@anim/nav_fragment_pop_enter"
+        app:popExitAnim="@anim/nav_fragment_pop_exit" />
 
     <fragment
         android:id="@+id/webFragment"
@@ -101,10 +94,17 @@
         app:popExitAnim="@anim/nav_fragment_pop_exit" />
 
     <fragment
-        android:id="@+id/knowledgeArticleListFragment"
+        android:id="@+id/chapterArticlesFragment"
         android:name="me.robbin.wanandroid.ui.fragment.knowledge.view.ChapterArticlesFragment"
-        android:label="KnowledgeArticleListFragment"
+        android:label="ChapterArticlesFragment"
         tools:layout="@layout/fragment_chapter_articles" />
+    <action
+        android:id="@+id/action_global_to_chapterArticles"
+        app:destination="@id/chapterArticlesFragment"
+        app:enterAnim="@anim/nav_fragment_enter"
+        app:exitAnim="@anim/nav_fragment_exit"
+        app:popEnterAnim="@anim/nav_fragment_pop_enter"
+        app:popExitAnim="@anim/nav_fragment_pop_exit" />
 
     <fragment
         android:id="@+id/searchFragment"
@@ -147,7 +147,17 @@
         android:id="@+id/myShareFragment"
         android:name="me.robbin.wanandroid.ui.fragment.me.view.MyShareFragment"
         android:label="MyShareFragment"
-        tools:layout="@layout/fragment_my_share" />
+        tools:layout="@layout/fragment_my_share">
+
+        <action
+            android:id="@+id/action_my_share_to_share_Article"
+            app:destination="@id/shareArticleFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/projectFragment"
@@ -173,5 +183,11 @@
         app:exitAnim="@anim/nav_login_exit"
         app:popEnterAnim="@anim/nav_login_pop_enter"
         app:popExitAnim="@anim/nav_login_pop_exit" />
+
+    <fragment
+        android:id="@+id/shareArticleFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.knowledge.view.ShareArticleFragment"
+        android:label="ShareArticleFragment"
+        tools:layout="@layout/fragment_share_article" />
 
 </navigation>

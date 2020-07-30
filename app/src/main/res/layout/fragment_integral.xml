@@ -8,10 +8,6 @@
         <variable
             name="viewModel"
             type="me.robbin.wanandroid.ui.fragment.me.viewmodel.IntegralViewModel" />
-
-        <variable
-            name="click"
-            type="me.robbin.wanandroid.ui.fragment.me.view.IntegralFragment.Click" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -27,7 +23,7 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbarIntegral"
                 addStatusPadding="@{true}"
-                tbNavIconClick="@{() -> click.back()}"
+                tbNavIconClick="@{() -> viewModel.goBack()}"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:background="@color/bg_main"

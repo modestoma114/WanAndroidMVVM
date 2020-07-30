@@ -2,10 +2,7 @@ package me.robbin.wanandroid.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import me.robbin.wanandroid.data.datasource.ArticlesDataSource
-import me.robbin.wanandroid.data.datasource.CollectDataSource
-import me.robbin.wanandroid.data.datasource.HomeDataSource
-import me.robbin.wanandroid.data.datasource.SearchArticleDateSource
+import me.robbin.wanandroid.data.datasource.*
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**
@@ -51,12 +48,30 @@ class ArticleRepository private constructor() {
         }.flow
 
     /**
-     * 获取收藏文章列表
+     * 获取站内收藏文章列表
      * Create by Robbin at 2020/7/14
      */
     fun getCollectArticles() =
         Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
             CollectDataSource()
+        }.flow
+
+    /**
+     * 获取收藏文章列表
+     * Create by Robbin at 2020/7/14
+     */
+    fun getUserPage(userId: Int) =
+        Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
+            UserPageDataSource(userId)
+        }.flow
+
+    /**
+     * 获取收藏文章列表
+     * Create by Robbin at 2020/7/30
+     */
+    fun getMyShare() =
+        Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
+            MyShareDataSource()
         }.flow
 
 }

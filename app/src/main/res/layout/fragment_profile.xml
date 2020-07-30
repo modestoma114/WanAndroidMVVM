@@ -31,8 +31,53 @@
 
                 <com.google.android.material.appbar.MaterialToolbar
                     addStatusPadding="@{true}"
+                    tbNavIconClick="@{() -> viewModel.goBack()}"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp" />
+                    android:layout_height="50dp"
+                    app:layout_collapseMode="pin"
+                    app:navigationIcon="@drawable/ic_back" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="bottom">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ivHead"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/head"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@{viewModel.userName}"
+                        android:textColor="@color/text_title"
+                        android:textSize="@dimen/text_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ivHead"
+                        tools:text="Robbin" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.userInfo}"
+                        android:textColor="@color/text_title"
+                        android:textSize="@dimen/text_desc"
+                        app:layout_constraintEnd_toEndOf="@id/tvName"
+                        app:layout_constraintStart_toStartOf="@id/tvName"
+                        app:layout_constraintTop_toBottomOf="@id/tvName"
+                        tools:text="用户Id：--" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 

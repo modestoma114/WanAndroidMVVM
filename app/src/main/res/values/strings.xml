@@ -40,6 +40,9 @@
     <string name="text_licenses">Licenses</string>
     <string name="text_choose_time">选择截止时间</string>
     <string name="text_add_detail">添加详细信息</string>
+    <string name="text_add_article_title">标题</string>
+    <string name="text_add_article_url">链接</string>
+    <string name="text_share">分享</string>
 
     <string name="text_setting_coin">我的积分</string>
     <string name="text_setting_collect">我的收藏</string>
@@ -55,7 +58,15 @@
     <string name="hint_search">输入搜索内容</string>
     <string name="hint_add_todo_title">新建任务</string>
     <string name="hint_add_todo_detail">添加详细信息</string>
+    <string name="hint_share_article_title">文章标题（100字以内）</string>
+    <string name="hint_share_article_url">文章链接</string>
 
     <string name="setting_night_mode">夜间模式</string>
+
+    <string name="format_author">分享人：%s</string>
+
+    <string name="string_share_info">1. 只要是任何好文都可以分享哈，并不一定要是原创！投递的文章会进入广场 tab;\n
+2. CSDN，掘金，简书等官方博客站点会直接通过，不需要审核;\n
+3. 其他个人站点会进入审核阶段，不要投递任何无效链接，测试的请尽快删除，否则可能会对你的账号产生一定影响。</string>
 
 </resources>

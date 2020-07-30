@@ -46,7 +46,11 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
     inner class RouteClick {
 
-        fun goProfile() = checkLogin { nav().navigate(R.id.action_main_to_profile) }
+        fun goProfile() = checkLogin {
+            val bundle = Bundle()
+            bundle.putInt("userId", appViewModel.userInfo.value!!.id)
+            nav().navigate(R.id.action_global_to_profile, bundle)
+        }
 
         fun goIntegral() = checkLogin { nav().navigate(R.id.action_main_to_integral) }
 

@@ -64,7 +64,12 @@ class CollectAdapter(private val context: Context) :
     inner class RouteClick {
         fun goWeb(bean: CollectBean) {
             val bundle = Bundle()
-            bundle.putParcelable("article", bean)
+            bundle.putString("url", bean.link)
+            bundle.putString("title", bean.title)
+            bundle.putInt("articleId", bean.id)
+            bundle.putBoolean("collected", true)
+            bundle.putString("author", bean.author)
+            bundle.putInt("userId", bean.userId)
             view?.let {
                 listener?.setNavController()
                     ?.navigate(R.id.action_global_to_webFragment, bundle)

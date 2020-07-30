@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="me.robbin.wanandroid.ui.fragment.common.viewmodel.ArticleListViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.me.viewmodel.MyShareViewModel" />
     </data>
 
     <LinearLayout
@@ -16,7 +16,9 @@
         android:orientation="vertical">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarMyShare"
             addStatusPadding="@{true}"
+            tbNavIconClick="@{() -> viewModel.goBack()}"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/bg_main"
@@ -26,7 +28,7 @@
             app:titleTextColor="@color/text_title" />
 
         <include
-            layout="@layout/layout_article_list"
+            layout="@layout/layout_articles"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

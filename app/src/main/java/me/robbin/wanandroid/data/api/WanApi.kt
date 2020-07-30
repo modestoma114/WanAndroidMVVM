@@ -169,11 +169,27 @@ interface WanApi {
     suspend fun getCollectArticles(@Path("page") page: Int)
             : ApiResponse<ApiPageResponse<MutableList<CollectBean>>>
 
+    @GET("lg/collect/usertools/json")
+    suspend fun getUserCollectArticles(): ApiResponse<MutableList<UserCollectBean>>
+
     // Share
 
     @GET("user/lg/private_articles/{page}/json")
     suspend fun getMyShare(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
+            : ApiResponse<UserPageBean>
+
+    @GET("user/{userId}/share_articles/{page}/json")
+    suspend fun getUserPage(
+        @Path("userId") userId: Int,
+        @Path("page") page: Int
+    ): ApiResponse<UserPageBean>
+
+    @POST("lg/user_article/add/json")
+    @FormUrlEncoded
+    suspend fun shareArticle(
+        @Field("title") title: String,
+        @Field("link") link: String
+    ): ApiResponse<Any?>
 
     // TodoL
 

@@ -35,18 +35,27 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
             mViewModel.author.value = it.getString("author", "")
             mViewModel.userId.value = it.getInt("userId", 0)
         }
-        webDetail.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                view?.loadUrl(url!!)
-                return true
-            }
-        }
+        initWebView()
     }
 
     override fun createObserver() {
         mViewModel.url.observe(viewLifecycleOwner, Observer {
             webDetail.loadUrl(it)
         })
+    }
+
+    private fun initWebView() {
+        webDetail.run {
+            settings.run {
+                javaScriptEnabled = true
+            }
+            webViewClient = object : WebViewClient() {
+                override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                    view?.loadUrl(url!!)
+                    return true
+                }
+            }
+        }
     }
 
     override fun onResume() {

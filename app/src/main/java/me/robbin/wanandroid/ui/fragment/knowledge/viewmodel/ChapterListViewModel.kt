@@ -1,7 +1,7 @@
 package me.robbin.wanandroid.ui.fragment.knowledge.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
+import me.robbin.wanandroid.app.base.BaseVM
 import me.robbin.wanandroid.data.api.ApiService
 import me.robbin.wanandroid.data.bean.ChapterBean
 import me.robbin.wanandroid.data.bean.NavigationBean
@@ -10,7 +10,7 @@ import me.robbin.wanandroid.data.bean.NavigationBean
  * 模块 ViewModel
  * Create by Robbin at 2020/7/15
  */
-class ChapterListViewModel : BaseViewModel() {
+class ChapterListViewModel : BaseVM() {
 
     val knowledgeList: MutableLiveData<MutableList<ChapterBean>> = MutableLiveData()
     val navigationList: MutableLiveData<MutableList<NavigationBean>> = MutableLiveData()

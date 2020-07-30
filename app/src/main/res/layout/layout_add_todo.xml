@@ -17,6 +17,7 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textColor="@color/text_secondary"
+        android:textColorHint="@color/text_secondary"
         android:textSize="@dimen/text_content"
         app:layout_constraintEnd_toStartOf="@id/btnTodoSend"
         app:layout_constraintStart_toStartOf="parent"

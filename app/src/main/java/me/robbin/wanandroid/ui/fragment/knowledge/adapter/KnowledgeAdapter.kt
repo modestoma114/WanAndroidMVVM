@@ -53,7 +53,7 @@ class KnowledgeAdapter :
                     bundle.putParcelable("data", item)
                     bundle.putInt("index", index)
                     onItemChipClickListener?.setNavController()
-                        ?.navigate(R.id.action_main_to_knowledgeArticleList, bundle)
+                        ?.navigate(R.id.action_global_to_chapterArticles, bundle)
                 }
                 binding.chipGroup.addView(chip)
             }

@@ -7,13 +7,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.layout_article_list.*
+import kotlinx.android.synthetic.main.layout_articles.*
 import kotlinx.android.synthetic.main.layout_loading_view.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
+import me.robbin.wanandroid.app.listener.AdapterItemClickListener
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.ext.nav
@@ -82,9 +83,11 @@ abstract class BaseArticlesFragment<VM : BaseArticlesViewModel, VDB : ViewDataBi
             }
         }
         // 设置 Article 列表 Item 点击事件
-        articleAdapter.setOnArticleItemClickListener(object :
-            ArticleAdapter.OnArticleItemClickListener {
-            override fun setNavController(): NavController = nav()
+        articleAdapter.setItemClickListener(object : AdapterItemClickListener {
+            override fun itemClickListener(): NavController = nav()
+            override fun itemLongClickListener() {
+                "Haha".toToast()
+            }
         })
         // 界面状态绑定
         articleAdapter.addLoadStateListener { loadState ->

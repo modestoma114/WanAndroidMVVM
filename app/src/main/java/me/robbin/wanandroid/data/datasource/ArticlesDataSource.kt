@@ -30,7 +30,6 @@ class ArticlesDataSource(private val type: ArticleType, private val cid: Int = -
                     ArticleType.LAST_PROJECT -> api.getLastProjectArticles(page)
                     ArticleType.PROJECT -> api.getProjectArticles(page, cid)
                     ArticleType.PUBLIC -> api.getPublicArticles(cid, page)
-                    ArticleType.MY_SHARE -> api.getMyShare(page + 1)
                     else -> ApiService.getApi().getShareArticles(page)
                 }
 

@@ -4,7 +4,7 @@ import android.os.Bundle
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.databinding.LayoutArticleListBinding
+import me.robbin.wanandroid.databinding.LayoutArticlesBinding
 import me.robbin.wanandroid.ui.fragment.common.viewmodel.ArticleListViewModel
 
 /**
@@ -12,10 +12,10 @@ import me.robbin.wanandroid.ui.fragment.common.viewmodel.ArticleListViewModel
  * Create by Robbin at 2020/7/21
  */
 class ArticleListsFragment :
-    BaseArticlesFragment<ArticleListViewModel, LayoutArticleListBinding>() {
+    BaseArticlesFragment<ArticleListViewModel, LayoutArticlesBinding>() {
 
     override fun getDataBindingConfig(): DataBindingConfig {
-        return DataBindingConfig(R.layout.layout_article_list, BR.viewModel, mViewModel)
+        return DataBindingConfig(R.layout.layout_articles, BR.viewModel, mViewModel)
     }
 
     companion object {
