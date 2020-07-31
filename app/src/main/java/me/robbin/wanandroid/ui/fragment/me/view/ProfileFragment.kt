@@ -103,8 +103,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding>()
         // 设置 Article 列表 Item 点击事件
         articleAdapter.setItemClickListener(object : AdapterItemClickListener {
             override fun itemClickListener(): NavController = nav()
-            override fun itemLongClickListener() {
-                "Haha".toToast()
+            override fun itemLongClickListener(position: Int) {
             }
         })
         // 界面状态绑定

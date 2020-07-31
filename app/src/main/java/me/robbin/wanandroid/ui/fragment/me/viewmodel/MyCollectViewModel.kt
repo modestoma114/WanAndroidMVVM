@@ -10,7 +10,7 @@ import me.robbin.wanandroid.data.repository.ArticleRepository
  *
  * Create by Robbin at 2020/7/30
  */
-class CollectViewModel : BaseVM() {
+class MyCollectViewModel : BaseVM() {
 
     private val articleRepository by lazy { ArticleRepository.instance }
 
@@ -26,9 +26,24 @@ class CollectViewModel : BaseVM() {
      * 获取站外收藏文章列表
      * Create by Robbin at 2020/7/30
      */
-    fun getUserCollectArticles() {
+    fun getUserCollectArticles(complete: () -> Unit) {
         launchGo(
-            block = { userCollects.value = ApiService.getApi().getUserCollectArticles().data }
+            block = { userCollects.value = ApiService.getApi().getUserCollectArticles().data },
+            complete = { complete() }
+        )
+    }
+
+    fun unCollect(aid: Int, success: () -> Unit) {
+        launchOnlyResult(
+            block = { ApiService.getApi().deCollect(aid) },
+            success = { success() }
+        )
+    }
+
+    fun unCollectUrl(aid: Int, success: () -> Unit) {
+        launchOnlyResult(
+            block = { ApiService.getApi().deCollectUrl(aid) },
+            success = { success() }
         )
     }
 

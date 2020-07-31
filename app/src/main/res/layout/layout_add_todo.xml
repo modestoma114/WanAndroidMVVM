@@ -8,7 +8,7 @@
     android:paddingBottom="10dp">
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etTodoTitle"
+        android:id="@+id/todoTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -19,12 +19,12 @@
         android:textColor="@color/text_secondary"
         android:textColorHint="@color/text_secondary"
         android:textSize="@dimen/text_content"
-        app:layout_constraintEnd_toStartOf="@id/btnTodoSend"
+        app:layout_constraintEnd_toStartOf="@id/todoSend"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/btnTodoSend"
+        android:id="@+id/todoSend"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="20dp"
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etTodoDetail"
+        android:id="@+id/todoDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_transparent"
@@ -43,13 +43,14 @@
         android:paddingTop="10dp"
         android:paddingEnd="20dp"
         android:textColor="@color/text_secondary"
+        android:textColorHint="@color/text_secondary"
         android:textSize="@dimen/text_content"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etTodoTitle" />
+        app:layout_constraintTop_toBottomOf="@id/todoTitle" />
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/cpTodoTime"
+        android:id="@+id/todoTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -58,11 +59,11 @@
         android:textColor="@color/text_secondary"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etTodoDetail"
+        app:layout_constraintTop_toBottomOf="@id/todoDetail"
         tools:text="2020-7-20" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvChooseTime"
+        android:id="@+id/todoChooseTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -72,10 +73,11 @@
         android:text="@string/text_choose_time"
         android:textColor="@color/text_secondary"
         android:textSize="@dimen/text_content"
-        app:layout_constraintStart_toEndOf="@id/cpTodoTime"
-        app:layout_constraintTop_toBottomOf="@id/etTodoDetail" />
+        app:layout_constraintStart_toEndOf="@id/todoTime"
+        app:layout_constraintTop_toBottomOf="@id/todoDetail" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/todoAddDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -84,7 +86,7 @@
         android:text="@string/text_add_detail"
         android:textColor="@color/text_secondary"
         android:textSize="@dimen/text_content"
-        app:layout_constraintStart_toEndOf="@id/tvChooseTime"
-        app:layout_constraintTop_toTopOf="@id/tvChooseTime" />
+        app:layout_constraintStart_toEndOf="@id/todoChooseTime"
+        app:layout_constraintTop_toTopOf="@id/todoChooseTime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

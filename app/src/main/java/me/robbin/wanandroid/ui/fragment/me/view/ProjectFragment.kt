@@ -12,6 +12,7 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.ui.fragment.common.view.BaseArticlesFragment
 import me.robbin.wanandroid.data.bean.ChapterBean
 import me.robbin.wanandroid.databinding.FragmentProjectBinding
+import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.fragment.me.adapter.ProjectAdapter
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.ProjectViewModel
 
@@ -52,6 +53,9 @@ class ProjectFragment : BaseArticlesFragment<ProjectViewModel, FragmentProjectBi
                     articleAdapter.submitData(it)
                 }
             }
+        })
+        mViewModel.back.observe(viewLifecycleOwner, Observer {
+            if (it) nav().navigateUp()
         })
     }
 

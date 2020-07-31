@@ -5,12 +5,18 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
+        <item name="materialAlertDialogTheme">@style/MaterialDialog</item>
     </style>
 
     <style name="BottomSheetDialog" parent="Theme.MaterialComponents.BottomSheetDialog">
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
         <item name="android:statusBarColor">@color/bg_transparent</item>
+    </style>
+
+    <style name="MaterialDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorSurface">@color/bg_second</item>
+        <item name="colorOnSurface">@color/text_primary</item>
     </style>
 
 </resources>

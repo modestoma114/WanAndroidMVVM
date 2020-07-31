@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.databinding.DataBindingUtil
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -36,28 +37,35 @@ class ArticleAdapter(private val context: Context) :
         this.itemClickListener = listener
     }
 
+    private var collectAction: (bean: ArticleBean, view: CheckBox, position: Int) -> Unit =
+        { _, _, _ -> }
+
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val binding = DataBindingUtil.getBinding<RvItemArticleBinding>(holder.itemView)
         binding?.route = this.RouteClick()
         binding?.bean = getItem(position)
         if (itemClickListener != null) {
-            binding?.root?.setOnClickListener {
-                val bean = getItem(position)
-                val bundle = Bundle()
-                if (bean != null) {
+            val bean = getItem(position)
+            if (bean != null) {
+                binding?.root?.setOnClickListener {
+                    val bundle = Bundle()
                     bundle.putString("url", bean.link)
                     bundle.putString("title", bean.title)
                     bundle.putInt("articleId", bean.id)
                     bundle.putBoolean("collected", bean.collect)
                     bundle.putString("author", bean.author)
                     bundle.putInt("userId", bean.userId)
+                    itemClickListener?.itemClickListener()
+                        ?.navigate(R.id.action_global_to_webFragment, bundle)
                 }
-                itemClickListener?.itemClickListener()
-                    ?.navigate(R.id.action_global_to_webFragment, bundle)
-            }
-            binding?.root?.setOnLongClickListener {
-                itemClickListener?.itemLongClickListener()
-                return@setOnLongClickListener true
+                val collectView = binding?.root?.findViewById<CheckBox>(R.id.collectArticle)
+                collectView?.setOnClickListener { _ ->
+                    collectAction.invoke(bean, collectView, position)
+                }
+                binding?.root?.setOnLongClickListener {
+                    itemClickListener?.itemLongClickListener(position)
+                    return@setOnLongClickListener true
+                }
             }
         }
     }
@@ -66,9 +74,13 @@ class ArticleAdapter(private val context: Context) :
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val binding: RvItemArticleBinding =
             DataBindingUtil.inflate(inflater, R.layout.rv_item_article, parent, false)
-        return ArticleViewHolder(
-            binding
-        )
+        return ArticleViewHolder(binding)
+    }
+
+    fun getData(position: Int): ArticleBean? = getItem(position)
+
+    fun setCollectAction(action: (item: ArticleBean, view: CheckBox, position: Int) -> Unit) {
+        this.collectAction = action
     }
 
     inner class RouteClick {

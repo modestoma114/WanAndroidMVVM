@@ -55,6 +55,7 @@
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="10dp"
                     android:background="@color/bg_transparent"
+                    android:onClick="@{() -> viewModel.goBack()}"
                     android:src="@drawable/ic_back_dark" />
 
                 <androidx.appcompat.widget.AppCompatImageButton

@@ -64,6 +64,7 @@
                 tools:listitem="@layout/rv_item_integral" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnRule"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"

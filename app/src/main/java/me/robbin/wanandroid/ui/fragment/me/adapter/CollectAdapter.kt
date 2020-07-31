@@ -3,14 +3,14 @@ package me.robbin.wanandroid.ui.fragment.me.adapter
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.robbin.wanandroid.R
+import me.robbin.wanandroid.app.listener.AdapterItemClickListener
 import me.robbin.wanandroid.data.bean.CollectBean
 import me.robbin.wanandroid.databinding.RvItemCollectBinding
 
@@ -19,9 +19,7 @@ import me.robbin.wanandroid.databinding.RvItemCollectBinding
  * Create by Robbin at 2020/7/26
  */
 class CollectAdapter(private val context: Context) :
-    PagingDataAdapter<CollectBean, CollectViewHolder>(
-        COLLECT_COMPARATOR
-    ) {
+    PagingDataAdapter<CollectBean, CollectViewHolder>(COLLECT_COMPARATOR) {
 
     companion object {
         val COLLECT_COMPARATOR = object : DiffUtil.ItemCallback<CollectBean>() {
@@ -33,51 +31,53 @@ class CollectAdapter(private val context: Context) :
         }
     }
 
-    interface OnArticleItemClickListener {
-        fun setNavController(): NavController
+    private var itemClickListener: AdapterItemClickListener? = null
+
+    fun setItemClickListener(listener: AdapterItemClickListener) {
+        this.itemClickListener = listener
     }
 
-    private var listener: OnArticleItemClickListener? = null
+    private var collectAction: (bean: CollectBean, view: CheckBox, position: Int) -> Unit =
+        { _, _, _ -> }
 
-    fun setOnArticleItemClickListener(listener: OnArticleItemClickListener) {
-        this.listener = listener
+    override fun onBindViewHolder(holder: CollectViewHolder, position: Int) {
+        val binding = DataBindingUtil.getBinding<RvItemCollectBinding>(holder.itemView)
+        binding?.bean = getItem(position)
+        if (itemClickListener != null) {
+            val bean = getItem(position)
+            if (bean != null) {
+                binding?.root?.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putString("url", bean.link)
+                    bundle.putString("title", bean.title)
+                    bundle.putInt("articleId", bean.id)
+                    bundle.putBoolean("collected", true)
+                    bundle.putString("author", bean.author)
+                    bundle.putInt("userId", bean.userId)
+                    itemClickListener?.itemClickListener()
+                        ?.navigate(R.id.action_global_to_webFragment, bundle)
+                }
+                val collectView = binding?.root?.findViewById<CheckBox>(R.id.collectCollect)
+                collectView?.setOnClickListener { _ ->
+                    collectAction.invoke(bean, collectView, position)
+                }
+                binding?.root?.setOnLongClickListener {
+                    itemClickListener?.itemLongClickListener(position)
+                    return@setOnLongClickListener true
+                }
+            }
+        }
     }
-
-    private var view: View? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectViewHolder {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val binding: RvItemCollectBinding =
             DataBindingUtil.inflate(inflater, R.layout.rv_item_collect, parent, false)
-        view = binding.root
-        return CollectViewHolder(
-            binding
-        )
+        return CollectViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CollectViewHolder, position: Int) {
-        val binding = DataBindingUtil.getBinding<RvItemCollectBinding>(holder.itemView)
-        binding?.bean = getItem(position)
-        binding?.route = RouteClick()
-    }
-
-    inner class RouteClick {
-        fun goWeb(bean: CollectBean) {
-            val bundle = Bundle()
-            bundle.putString("url", bean.link)
-            bundle.putString("title", bean.title)
-            bundle.putInt("articleId", bean.id)
-            bundle.putBoolean("collected", true)
-            bundle.putString("author", bean.author)
-            bundle.putInt("userId", bean.userId)
-            view?.let {
-                listener?.setNavController()
-                    ?.navigate(R.id.action_global_to_webFragment, bundle)
-            }
-        }
-
-        fun goChapter() {}
-
+    fun setCollectAction(action: (item: CollectBean, view: CheckBox, position: Int) -> Unit) {
+        this.collectAction = action
     }
 
 }

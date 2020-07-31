@@ -5,6 +5,7 @@ import androidx.fragment.app.activityViewModels
 import kotlinx.android.synthetic.main.fragment_register.*
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
+import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
@@ -25,12 +26,12 @@ class RegisterFragment : BaseFragment<BaseViewModel, FragmentRegisterBinding>() 
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        super.initView(savedInstanceState)
         btnGoLogin.setOnClickListener {
             (parentFragment as LoginMainFragment).goLogin()
         }
         btnRegister.setOnClickListener {
             userViewModel.register {
+                "注册成功".toToast()
                 appViewModel.setIsLogin(true)
                 nav().navigateUp()
             }

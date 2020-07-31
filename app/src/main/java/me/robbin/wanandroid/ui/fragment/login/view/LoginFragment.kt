@@ -25,7 +25,6 @@ class LoginFragment : BaseFragment<BaseViewModel, FragmentLoginBinding>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        super.initView(savedInstanceState)
         btnGoRegister.setOnClickListener {
             (parentFragment as LoginMainFragment).goRegister()
         }

@@ -15,9 +15,9 @@ import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.ui.fragment.common.view.BaseArticlesFragment
 import me.robbin.wanandroid.databinding.FragmentSearchBinding
 import me.robbin.wanandroid.ext.nav
+import me.robbin.wanandroid.ui.fragment.common.view.BaseArticlesFragment
 import me.robbin.wanandroid.ui.fragment.home.viewmodel.SearchViewModel
 
 /**
@@ -41,11 +41,6 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
             articleJob?.cancel()
             rlArticles.visibility = View.GONE
             cgSearch.visibility = View.VISIBLE
-        }
-
-        // 回退按钮点击事件
-        btnBack.setOnClickListener {
-            nav().navigateUp()
         }
     }
 
@@ -107,7 +102,6 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
     }
 
     override fun createObserver() {
-        super.createObserver()
         mViewModel.hotKeys.observe(viewLifecycleOwner, Observer { hotKeys ->
             hotKeys.forEach { hotKey ->
                 val chip = Chip(context)
@@ -120,6 +114,9 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
                 }
                 cgSearch.addView(chip)
             }
+        })
+        mViewModel.back.observe(viewLifecycleOwner, Observer {
+            if (it) nav().navigateUp()
         })
     }
 

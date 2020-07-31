@@ -22,7 +22,6 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_web, BR.viewModel, mViewModel)
-            .addBindingParams(BR.click, WebClick())
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -41,6 +40,9 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
     override fun createObserver() {
         mViewModel.url.observe(viewLifecycleOwner, Observer {
             webDetail.loadUrl(it)
+        })
+        mViewModel.back.observe(viewLifecycleOwner, Observer {
+            if (it) nav().navigateUp()
         })
     }
 
@@ -67,12 +69,6 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
         super.onDestroyView()
         if (!appViewModel.isNightMode.value!!)
             setStatusBarLightMode(false)
-    }
-
-    inner class WebClick {
-        fun back() {
-            nav().navigateUp()
-        }
     }
 
 }

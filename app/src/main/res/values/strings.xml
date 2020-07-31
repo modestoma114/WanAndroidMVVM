@@ -16,6 +16,8 @@
     <string name="title_about">关于软件</string>
     <string name="title_profile">用户详细</string>
 
+    <string name="dialog_title_action">选择操作</string>
+
     <string name="text_new">新</string>
     <string name="text_author">匿名</string>
     <string name="text_top">置顶</string>

@@ -62,7 +62,12 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             nav().navigate(R.id.action_main_to_my_share, args)
         }
 
-        fun goWanAndroidSite() = nav()
+        fun goWanAndroidSite() {
+            val bundle = Bundle()
+            bundle.putString("title", "玩Android")
+            bundle.putString("url", "https://www.wanandroid.com/index")
+            nav().navigate(R.id.action_global_to_webFragment, bundle)
+        }
 
         fun goProject() = nav().navigate(R.id.action_main_to_project)
 

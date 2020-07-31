@@ -1,6 +1,7 @@
 package me.robbin.wanandroid.ui.fragment.setting.view
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_setting.*
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
@@ -32,6 +33,12 @@ class SettingFragment : BaseFragment<SettingViewModel, FragmentSettingBinding>()
             appViewModel.isNightMode.value = checked
             CacheUtils.setNightMode(checked)
         }
+    }
+
+    override fun createObserver() {
+        mViewModel.back.observe(viewLifecycleOwner, Observer {
+            if (it) nav().navigateUp()
+        })
     }
 
     inner class SettingClick {

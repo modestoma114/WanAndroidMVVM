@@ -3,11 +3,11 @@ package me.robbin.wanandroid.ui.fragment.todo.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.databinding.DataBindingUtil
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.data.bean.TodoBean
 import me.robbin.wanandroid.databinding.RvItemTodoBinding
@@ -29,6 +29,24 @@ class TodoAdapter(private val context: Context) :
         }
     }
 
+    private var clickAction: (bean: TodoBean, view: CheckBox, position: Int) -> Unit =
+        { _, _, _ -> }
+
+    private var goDetail: (bean: TodoBean) -> Unit = { _ -> }
+
+    override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
+        val binding = DataBindingUtil.getBinding<RvItemTodoBinding>(holder.itemView)
+        binding?.bean = getItem(position)
+        val view = binding?.root
+        val bean = getItem(position)
+        if (bean != null && view != null) {
+            val checkBox = view.findViewById<CheckBox>(R.id.todoCheck)
+            checkBox?.setOnClickListener { _ ->
+                clickAction.invoke(bean, checkBox, position)
+            }
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val binding = DataBindingUtil.inflate<RvItemTodoBinding>(
@@ -42,13 +60,12 @@ class TodoAdapter(private val context: Context) :
         )
     }
 
-    override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-        val binding = DataBindingUtil.getBinding<RvItemTodoBinding>(holder.itemView)
-        binding?.bean = getItem(position)
-        val view = binding?.root
-        view?.setOnClickListener {
-            position.toToast()
-        }
+    fun setClickAction(action: (bean: TodoBean, view: CheckBox, position: Int) -> Unit) {
+        this.clickAction = action
+    }
+
+    fun setGoDetail(action: (bean: TodoBean) -> Unit) {
+        this.goDetail = action
     }
 
 }

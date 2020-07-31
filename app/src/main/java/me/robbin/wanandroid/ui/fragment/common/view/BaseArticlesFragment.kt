@@ -14,8 +14,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.app.listener.AdapterItemClickListener
 import me.robbin.wanandroid.app.base.BaseFragment
+import me.robbin.wanandroid.app.listener.AdapterItemClickListener
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.fragment.common.adapter.ArticleAdapter
@@ -85,10 +85,24 @@ abstract class BaseArticlesFragment<VM : BaseArticlesViewModel, VDB : ViewDataBi
         // 设置 Article 列表 Item 点击事件
         articleAdapter.setItemClickListener(object : AdapterItemClickListener {
             override fun itemClickListener(): NavController = nav()
-            override fun itemLongClickListener() {
-                "Haha".toToast()
+            override fun itemLongClickListener(position: Int) {
             }
         })
+        articleAdapter.setCollectAction { item, view, position ->
+            if (view.isChecked) {
+                mViewModel.collect(item.id) {
+                    item.collect = true
+                    view.isChecked = true
+                    articleAdapter.notifyItemChanged(position)
+                }
+            } else {
+                mViewModel.unCollect(item.id) {
+                    item.collect = false
+                    view.isChecked = false
+                    articleAdapter.notifyItemChanged(position)
+                }
+            }
+        }
         // 界面状态绑定
         articleAdapter.addLoadStateListener { loadState ->
             rlArticles.isVisible = loadState.refresh is LoadState.NotLoading

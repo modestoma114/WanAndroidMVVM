@@ -38,16 +38,21 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
                 false
             }
         }
-    }
-
-    override fun initData() {
-        mViewModel.getIntegral()
         refreshIntegral.setOnRefreshListener {
             mViewModel.getIntegral()
             getIntegralDetail()
         }
         initAdapter()
-        integralJob?.cancel()
+        btnRule.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("url", "https://www.wanandroid.com/blog/show/2653")
+            bundle.putString("title", "本站积分规则")
+            nav().navigate(R.id.action_global_to_webFragment, bundle)
+        }
+    }
+
+    override fun initData() {
+        mViewModel.getIntegral()
         getIntegralDetail()
     }
 
@@ -56,6 +61,7 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
     }
 
     private fun getIntegralDetail() {
+        integralJob?.cancel()
         integralJob = lifecycleScope.launchWhenResumed {
             mViewModel.getIntegralDetail().collect {
                 integralAdapter.submitData(it)

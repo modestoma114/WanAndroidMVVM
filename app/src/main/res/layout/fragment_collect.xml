@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="me.robbin.wanandroid.ui.fragment.me.viewmodel.CollectViewModel" />
+            type="me.robbin.wanandroid.ui.fragment.me.viewmodel.MyCollectViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

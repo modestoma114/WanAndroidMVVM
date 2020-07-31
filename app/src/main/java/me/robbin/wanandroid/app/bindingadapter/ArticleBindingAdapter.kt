@@ -33,9 +33,14 @@ fun imgIsVisible(view: ImageView, url: String) {
  * @param shareUser 文章分享者
  * Create by Robbin at 2020/7/21
  */
-@BindingAdapter("textAuthor", "textShareUser", requireAll = true)
-fun textAuthor(view: TextView, author: String, shareUser: String) {
+@BindingAdapter("articleAuthor", "articleShareUser", requireAll = true)
+fun articleAuthor(view: TextView, author: String, shareUser: String) {
     view.text = if (author.isBlank()) shareUser else author
+}
+
+@BindingAdapter("collectAuthor")
+fun collectAuthor(view: TextView, author: String) {
+    view.text = if (author.isBlank()) author else "匿名"
 }
 
 /**
@@ -43,8 +48,8 @@ fun textAuthor(view: TextView, author: String, shareUser: String) {
  * @param fresh 文章新发布标识
  * Create by Robbin at 2020/7/21
  */
-@BindingAdapter("isNew")
-fun isNew(view: TextView, fresh: Boolean) {
+@BindingAdapter("articleNew")
+fun articleNew(view: TextView, fresh: Boolean) {
     view.isVisible = fresh
 }
 
@@ -53,8 +58,8 @@ fun isNew(view: TextView, fresh: Boolean) {
  * @param type 文章类型
  * Create by Robbin at 2020/7/21
  */
-@BindingAdapter("isTop")
-fun isTop(view: TextView, type: Int) {
+@BindingAdapter("articleTop")
+fun articleTop(view: TextView, type: Int) {
     view.isVisible = type == 1
 }
 
@@ -63,8 +68,8 @@ fun isTop(view: TextView, type: Int) {
  * @param tags 当前文章 Tag 列表
  * Create by Robbin at 2020/7/21
  */
-@BindingAdapter("hasTag")
-fun hasTag(view: TextView, tags: List<TagsBean>) {
+@BindingAdapter("articleTag")
+fun articleTag(view: TextView, tags: List<TagsBean>) {
     view.isVisible = tags.isNotEmpty()
     if (tags.isNotEmpty()) view.text = tags[0].name
 }

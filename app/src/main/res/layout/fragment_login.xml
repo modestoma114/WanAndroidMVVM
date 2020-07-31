@@ -20,6 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:hint="@string/hint_login_username"
+            android:textColorHint="@color/text_secondary"
+            app:hintTextColor="@color/text_secondary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -29,7 +31,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_edit"
-                android:text="@{viewModel.username}" />
+                android:lines="1"
+                android:ellipsize="end"
+                android:text="@{viewModel.username}"
+                android:textColor="@color/text_secondary" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,6 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:hint="@string/hint_login_password"
+            android:textColorHint="@color/text_secondary"
+            app:hintTextColor="@color/text_secondary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/evLoginUsername">
@@ -48,7 +55,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_edit"
-                android:text="@{viewModel.pwd}" />
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{viewModel.pwd}"
+                android:textColor="@color/text_secondary" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

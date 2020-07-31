@@ -165,25 +165,76 @@ interface WanApi {
 
     // Collect
 
+    /**
+     * 收藏站内文章
+     * Create by Robbin at 2020/7/31
+     */
+    @POST("lg/collect/{id}/json")
+    suspend fun collect(@Path("id") id: Int): ApiResponse<Any?>
+
+    /**
+     * 取消收藏站内文章
+     * Create by Robbin at 2020/7/31
+     */
+    @POST("lg/uncollect_originId/{id}/json")
+    suspend fun deCollect(@Path("id") id: Int): ApiResponse<Any?>
+
+    /**
+     * 收藏站外文章
+     * Create by Robbin at 2020/7/31
+     */
+    @POST("lg/collect/addtool/json")
+    suspend fun collectUrl(
+        @Query("name") name: String,
+        @Query("link") link: String
+    ): ApiResponse<UserCollectBean>
+
+    /**
+     * 取消收藏站外文章
+     * Create by Robbin at 2020/7/31
+     */
+    @POST("lg/collect/deletetool/json")
+    suspend fun deCollectUrl(@Query("id") id: Int): ApiResponse<Any?>
+
+    /**
+     * 获得收藏站内文章列表
+     * Create by Robbin at 2020/7/30
+     */
     @GET("lg/collect/list/{page}/json")
     suspend fun getCollectArticles(@Path("page") page: Int)
             : ApiResponse<ApiPageResponse<MutableList<CollectBean>>>
 
+    /**
+     * 获得收藏站外文章列表
+     * Create by Robbin at 2020/7/30
+     */
     @GET("lg/collect/usertools/json")
     suspend fun getUserCollectArticles(): ApiResponse<MutableList<UserCollectBean>>
 
     // Share
 
+    /**
+     * 获得我分享的文章
+     * Create by Robbin at 2020/7/27
+     */
     @GET("user/lg/private_articles/{page}/json")
     suspend fun getMyShare(@Path("page") page: Int)
             : ApiResponse<UserPageBean>
 
+    /**
+     * 获得用户分享文章
+     * Create by Robbin at 2020/7/30
+     */
     @GET("user/{userId}/share_articles/{page}/json")
     suspend fun getUserPage(
         @Path("userId") userId: Int,
         @Path("page") page: Int
     ): ApiResponse<UserPageBean>
 
+    /**
+     * 分享文章
+     * Create by Robbin at 2020/7/30
+     */
     @POST("lg/user_article/add/json")
     @FormUrlEncoded
     suspend fun shareArticle(
@@ -191,10 +242,44 @@ interface WanApi {
         @Field("link") link: String
     ): ApiResponse<Any?>
 
+    /**
+     * 删除分享的文章
+     * Create by Robbin at 2020/7/30
+     */
+    @POST("lg/user_article/delete/{id}/json")
+    suspend fun deleteMyShare(@Path("id") id: Int): ApiResponse<Any?>
+
     // TodoL
 
+    /**
+     * 获得 TodoL 列表
+     * Create by Robbin at 2020/7/28
+     */
     @GET("lg/todo/v2/list/{page}/json")
     suspend fun getTodoList(@Path("page") page: Int)
             : ApiResponse<ApiPageResponse<MutableList<TodoBean>>>
+
+    /**
+     * 添加Todo
+     * Create by Robbin at 2020/7/31
+     */
+    @POST("/lg/todo/add/json")
+    @FormUrlEncoded
+    suspend fun addTodo(
+        @Field("title") title: String,
+        @Field("content") content: String,
+        @Field("date") date: String,
+        @Field("type") type: Int,
+        @Field("priority") priority: Int
+    ): ApiResponse<Any?>
+
+    /**
+     * 完成一个Todo
+     * Create by Robbin at 2020/7/31
+     */
+    @POST("/lg/todo/done/{id}/json")
+    @FormUrlEncoded
+    suspend fun doneTodo(@Path("id") id: Int, @Field("status") status: Int)
+            : ApiResponse<Any?>
 
 }

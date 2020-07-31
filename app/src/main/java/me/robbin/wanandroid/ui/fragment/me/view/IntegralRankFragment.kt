@@ -1,6 +1,7 @@
 package me.robbin.wanandroid.ui.fragment.me.view
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import kotlinx.android.synthetic.main.fragment_integral_rank.*
@@ -25,7 +26,6 @@ class IntegralRankFragment : BaseFragment<IntegralRankViewModel, FragmentIntegra
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_integral_rank, BR.viewModel, mViewModel)
-            .addBindingParams(BR.click, Click())
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -40,6 +40,12 @@ class IntegralRankFragment : BaseFragment<IntegralRankViewModel, FragmentIntegra
         }
     }
 
+    override fun createObserver() {
+        mViewModel.back.observe(viewLifecycleOwner, Observer {
+            if (it) nav().navigateUp()
+        })
+    }
+
     private fun initAdapter() {
         rlRank.adapter = rankAdapter
         lifecycleScope.launchWhenCreated {
@@ -47,10 +53,6 @@ class IntegralRankFragment : BaseFragment<IntegralRankViewModel, FragmentIntegra
                 refreshRank.isRefreshing = loadState.refresh is LoadState.Loading
             }
         }
-    }
-
-    inner class Click {
-        fun back() = nav().navigateUp()
     }
 
 }

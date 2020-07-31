@@ -3,6 +3,7 @@ package me.robbin.wanandroid.ui.fragment.common.viewmodel
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import me.robbin.wanandroid.app.base.BaseVM
+import me.robbin.wanandroid.data.api.ApiService
 import me.robbin.wanandroid.data.bean.ArticleBean
 import me.robbin.wanandroid.data.repository.ArticleRepository
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
@@ -16,5 +17,21 @@ abstract class BaseArticlesViewModel : BaseVM() {
     protected val articleRepository by lazy { ArticleRepository.instance }
 
     abstract fun getArticles(type: ArticleType = ArticleType.HOME, cid: Int = -1): Flow<PagingData<ArticleBean>>
+
+    private val api by lazy { ApiService.getApi() }
+
+    fun collect(aid: Int, success: () -> Unit) {
+        launchOnlyResult(
+            block = { api.collect(aid) },
+            success = { success() }
+        )
+    }
+
+    fun unCollect(aid: Int, success: () -> Unit) {
+        launchOnlyResult(
+            block = { api.deCollect(aid) },
+            success = { success() }
+        )
+    }
 
 }

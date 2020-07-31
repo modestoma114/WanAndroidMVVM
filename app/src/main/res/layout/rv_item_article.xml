@@ -41,8 +41,8 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_author"
-                textAuthor="@{bean.author}"
-                textShareUser="@{bean.shareUser}"
+                articleAuthor="@{bean.author}"
+                articleShareUser="@{bean.shareUser}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> route.goAuthorProfile(bean)}"
@@ -55,7 +55,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_new"
-                isNew="@{bean.fresh}"
+                articleNew="@{bean.fresh}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -68,7 +68,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_top"
-                isTop="@{bean.type}"
+                articleTop="@{bean.type}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -81,7 +81,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_tag"
-                hasTag="@{bean.tags}"
+                articleTag="@{bean.tags}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -150,13 +150,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:onClick="@{() -> route.goChapter(bean)}"
             android:textColor="@color/text_third"
             android:textSize="@dimen/text_notes"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivProject"
             app:layout_constraintTop_toBottomOf="@id/tv_desc"
             tools:text="问答·官方" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/collectArticle"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:button="@null"
+            android:checked="@{bean.collect}"
+            android:drawableEnd="@drawable/check_collect"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_desc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

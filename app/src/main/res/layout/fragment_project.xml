@@ -18,6 +18,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarProject"
             addStatusPadding="@{true}"
+            tbNavIconClick="@{() -> viewModel.goBack()}"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:background="@color/bg_main"

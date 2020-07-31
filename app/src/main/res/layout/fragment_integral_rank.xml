@@ -9,9 +9,6 @@
             name="viewModel"
             type="me.robbin.wanandroid.ui.fragment.me.viewmodel.IntegralRankViewModel" />
 
-        <variable
-            name="click"
-            type="me.robbin.wanandroid.ui.fragment.me.view.IntegralRankFragment.Click" />
     </data>
 
     <LinearLayout
@@ -22,7 +19,7 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             addStatusPadding="@{true}"
-            tbNavIconClick="@{() -> click.back()}"
+            tbNavIconClick="@{() -> viewModel.goBack()}"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/bg_main"

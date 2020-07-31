@@ -8,9 +8,6 @@
             name="viewModel"
             type="me.robbin.wanandroid.ui.fragment.common.viewmodel.WebViewModel" />
 
-        <variable
-            name="click"
-            type="me.robbin.wanandroid.ui.fragment.common.view.WebFragment.WebClick" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +48,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:background="@color/bg_transparent"
-                android:onClick="@{() -> click.back()}"
+                android:onClick="@{() -> viewModel.goBack()}"
                 android:src="@drawable/ic_back" />
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -76,8 +73,8 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:button="@null"
-                android:drawableEnd="@drawable/check_collect"
                 android:checked="@{viewModel.collected}"
+                android:drawableEnd="@drawable/check_collect"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:scaleType="center" />

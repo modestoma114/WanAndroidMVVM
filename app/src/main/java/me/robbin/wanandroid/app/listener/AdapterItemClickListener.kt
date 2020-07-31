@@ -10,6 +10,6 @@ interface AdapterItemClickListener {
 
     fun itemClickListener(): NavController
 
-    fun itemLongClickListener()
+    fun itemLongClickListener(position: Int)
 
 }

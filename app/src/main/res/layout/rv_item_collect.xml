@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="route"
-            type="me.robbin.wanandroid.ui.fragment.me.adapter.CollectAdapter.RouteClick" />
-
-        <variable
             name="bean"
             type="me.robbin.wanandroid.data.bean.CollectBean" />
     </data>
@@ -18,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_primary"
-        android:onClick="@{() -> route.goWeb(bean)}"
         android:padding="15dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,9 +28,9 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_author"
+                collectAuthor="@{bean.author}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/text_author"
                 android:textColor="@color/text_secondary"
                 android:textSize="@dimen/text_notes"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -94,10 +89,22 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:onClick="@{() -> route.goChapter()}"
             android:text="@{bean.chapterName}"
             android:textColor="@color/text_third"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_desc" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/collectCollect"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:button="@null"
+            android:checked="@{true}"
+            android:drawableEnd="@drawable/check_collect"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_desc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

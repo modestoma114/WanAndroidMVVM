@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.paging.LoadState
 import kotlinx.android.synthetic.main.layout_collect_articles.*
 import kotlinx.android.synthetic.main.layout_loading_view.*
@@ -16,6 +17,7 @@ import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
+import me.robbin.wanandroid.app.listener.AdapterItemClickListener
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.data.bean.UserCollectBean
 import me.robbin.wanandroid.databinding.LayoutCollectArticlesBinding
@@ -23,13 +25,13 @@ import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.me.adapter.CollectAdapter
 import me.robbin.wanandroid.ui.fragment.me.adapter.UserCollectAdapter
-import me.robbin.wanandroid.ui.fragment.me.viewmodel.CollectViewModel
+import me.robbin.wanandroid.ui.fragment.me.viewmodel.MyCollectViewModel
 
 /**
  *
  * Create by Robbin at 2020/7/30
  */
-class CollectArticlesFragment : BaseFragment<CollectViewModel, LayoutCollectArticlesBinding>() {
+class CollectArticlesFragment : BaseFragment<MyCollectViewModel, LayoutCollectArticlesBinding>() {
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.layout_collect_articles, BR.viewModel, mViewModel)
@@ -77,6 +79,15 @@ class CollectArticlesFragment : BaseFragment<CollectViewModel, LayoutCollectArti
                     refreshCollects.isRefreshing = loadState.refresh is LoadState.Loading
                 }
             }
+            wanAdapter.setCollectAction { item, _, position ->
+                mViewModel.unCollect(item.originId) {
+                    wanAdapter.notifyItemRemoved(position)
+                }
+            }
+            wanAdapter.setItemClickListener(object : AdapterItemClickListener {
+                override fun itemClickListener(): NavController = nav()
+                override fun itemLongClickListener(position: Int) {}
+            })
             wanAdapter.addLoadStateListener { loadState ->
                 rlCollects.isVisible = loadState.refresh is LoadState.NotLoading
                 progressLoading.isVisible = loadState.refresh is LoadState.Loading
@@ -110,6 +121,15 @@ class CollectArticlesFragment : BaseFragment<CollectViewModel, LayoutCollectArti
                 bundle.putInt("userId", bean.userId)
                 nav().navigate(R.id.action_global_to_webFragment, bundle)
             }
+            userAdapter.addChildClickViewIds(R.id.collectUserCollect)
+            userAdapter.setOnItemChildClickListener { adapter, view, position ->
+                if (view.id == R.id.collectUserCollect) {
+                    val bean = adapter.data[position] as UserCollectBean
+                    mViewModel.unCollectUrl(bean.id) {
+                        adapter.removeAt(position)
+                    }
+                }
+            }
         }
     }
 
@@ -121,7 +141,9 @@ class CollectArticlesFragment : BaseFragment<CollectViewModel, LayoutCollectArti
                     wanAdapter.submitData(it)
                 }
             } else {
-                mViewModel.getUserCollectArticles()
+                mViewModel.getUserCollectArticles {
+                    refreshCollects.isRefreshing = false
+                }
             }
         }
     }

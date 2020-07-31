@@ -48,9 +48,7 @@ class LoginViewModel : BaseViewModel() {
                 CacheUtils.setUser(it)
                 success()
             },
-            error = {
-                "${it.code}: ${it.code}".toToast()
-            }
+            error = { "${it.code}: ${it.errMsg}".toToast() }
         )
     }
 
@@ -59,18 +57,16 @@ class LoginViewModel : BaseViewModel() {
             launchOnlyResult(
                 block = {
                     ApiService.getApi().register(
-                        username.value.toString(),
-                        pwd.value.toString(),
-                        pwd2.value.toString()
+                        username.value!!,
+                        pwd.value!!,
+                        pwd2.value!!
                     )
                 },
                 success = {
                     CacheUtils.setUser(it)
                     success()
                 },
-                error = {
-                    "${it.code}: ${it.code}".toToast()
-                }
+                error = { "${it.code}: ${it.errMsg}".toToast() }
             )
         } else {
             "两次密码不一致".toToast()
@@ -78,7 +74,10 @@ class LoginViewModel : BaseViewModel() {
     }
 
     private fun checkPwd(): Boolean {
-        return pwd.value == pwd2.value
+        return pwd.value.equals(pwd2.value)
+                && !pwd.value.isNullOrBlank()
+                && !pwd2.value.isNullOrBlank()
+                && !username.value.isNullOrBlank()
     }
 
 }
