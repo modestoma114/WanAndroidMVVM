@@ -282,4 +282,26 @@ interface WanApi {
     suspend fun doneTodo(@Path("id") id: Int, @Field("status") status: Int)
             : ApiResponse<Any?>
 
+    /**
+     * 删除一个Todo
+     * Create by Robbin at 2020/7/31
+     */
+    @POST("/lg/todo/delete/{id}/json")
+    suspend fun deleteTodo(@Path("id") id: Int): ApiResponse<Any?>
+
+    /**
+     * 修改一个Todo
+     * Create by Robbin at 2020/7/31
+     */
+    @POST("/lg/todo/update/{id}/json")
+    @FormUrlEncoded
+    suspend fun updateTodo(
+        @Field("title") title: String,
+        @Field("content") content: String,
+        @Field("date") date: String,
+        @Field("type") type: Int,
+        @Field("priority") priority: Int,
+        @Path("id") id: Int
+    ): ApiResponse<Any?>
+
 }

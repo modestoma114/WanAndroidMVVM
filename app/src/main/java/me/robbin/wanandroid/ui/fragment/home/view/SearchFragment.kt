@@ -101,6 +101,7 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
         }
     }
 
+    @Suppress("DEPRECATION")
     override fun createObserver() {
         mViewModel.hotKeys.observe(viewLifecycleOwner, Observer { hotKeys ->
             hotKeys.forEach { hotKey ->
@@ -108,6 +109,8 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
                 chip.text = hotKey.name
                 chip.isCheckable = false
                 chip.isCloseIconVisible = false
+                chip.setTextColor(requireContext().resources.getColor(R.color.text_secondary))
+                chip.setChipBackgroundColorResource(R.color.bg_third)
                 chip.setOnClickListener {
                     etSearch.setText(hotKey.name)
                     search()

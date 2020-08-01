@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.fragment_todo.*
 import kotlinx.android.synthetic.main.layout_loading_view.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.utils.setStatusBarLightMode
 import me.robbin.mvvmscaffold.utils.toToast
@@ -26,6 +25,7 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.databinding.FragmentTodoBinding
+import me.robbin.wanandroid.ext.nav
 import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.todo.adapter.TodoAdapter
 import me.robbin.wanandroid.ui.fragment.todo.viewmodel.TodoViewModel
@@ -79,6 +79,10 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
         })
     }
 
+    /**
+     * 初始化 BottomSheetDialog
+     * Create by Robbin at 2020/7/31
+     */
     @SuppressLint("SimpleDateFormat")
     private fun initBottomSheet() {
         val addTodoView = View.inflate(requireContext(), R.layout.layout_add_todo, null)
@@ -136,15 +140,24 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
             }
         }
         todoAdapter.setClickAction { bean, view, position ->
-            if (!view.isChecked) {
-                mViewModel.doneTodo(bean.id, 0) {
+            if (view.isChecked) {
+                mViewModel.doneTodo(bean.id, 1) {
+                    bean.status = 1
                     view.isChecked = true
+                    todoAdapter.notifyItemChanged(position)
                 }
             } else {
-                mViewModel.doneTodo(bean.id, 1) {
+                mViewModel.doneTodo(bean.id, 0) {
+                    bean.status = 0
                     view.isChecked = false
+                    todoAdapter.notifyItemChanged(position)
                 }
             }
+        }
+        todoAdapter.setGoDetail {
+            val bundle = Bundle()
+            bundle.putParcelable("bean", it)
+            nav().navigate(R.id.action_main_to_todo_detail, bundle)
         }
         todoAdapter.addLoadStateListener { loadState ->
             rlTodo.isVisible = loadState.refresh is LoadState.NotLoading
@@ -168,12 +181,6 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
 
     private fun refreshData() {
         todoAdapter.refresh()
-//        todoJob?.cancel()
-//        todoJob = lifecycleScope.launch {
-//            mViewModel.getTodoList().collectLatest {
-//                todoAdapter.submitData(it)
-//            }
-//        }
     }
 
     override fun onResume() {

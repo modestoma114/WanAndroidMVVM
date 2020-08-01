@@ -28,11 +28,10 @@ class TodoViewModel : BaseViewModel() {
         )
     }
 
-    fun doneTodo(id: Int, status: Int, error: () -> Unit) {
+    fun doneTodo(id: Int, status: Int, success: () -> Unit) {
         launchOnlyResult(
             block = { ApiService.getApi().doneTodo(id, status) },
-            success = {  },
-            error = { error() }
+            success = { success() }
         )
     }
 

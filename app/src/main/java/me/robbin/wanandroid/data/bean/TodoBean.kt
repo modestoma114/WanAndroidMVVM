@@ -1,11 +1,15 @@
 package me.robbin.wanandroid.data.bean
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 /**
- * Todo
+ * TodoL
  * Created by Robbin on 2020-07-27
  */
+@Parcelize
 data class TodoBean(
-    var completeDate: Any,
+    var completeDate: Long,
     var completeDateStr: String,
     var content: String,
     var date: Long,
@@ -16,7 +20,7 @@ data class TodoBean(
     var title: String,
     var type: Int,
     var userId: Int
-) {
+) : Parcelable {
     val hasDone: Boolean
         get() = status == 1
 
@@ -26,5 +30,11 @@ data class TodoBean(
             2 -> "日常"
             3 -> "娱乐"
             else -> "其他"
+        }
+
+    val whatPriority: String
+        get() = when (priority) {
+            1 -> "紧急"
+            else -> "平常"
         }
 }

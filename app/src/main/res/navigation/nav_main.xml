@@ -59,6 +59,13 @@
             app:exitAnim="@anim/nav_fragment_exit"
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
             app:popExitAnim="@anim/nav_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_main_to_todo_detail"
+            app:destination="@id/todoDetailFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
     </fragment>
 
     <fragment
@@ -189,5 +196,11 @@
         android:name="me.robbin.wanandroid.ui.fragment.knowledge.view.ShareArticleFragment"
         android:label="ShareArticleFragment"
         tools:layout="@layout/fragment_share_article" />
+
+    <fragment
+        android:id="@+id/todoDetailFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.todo.view.TodoDetailFragment"
+        android:label="TodoDetailFragment"
+        tools:layout="@layout/fragment_todo_detail" />
 
 </navigation>

@@ -41,8 +41,11 @@ class TodoAdapter(private val context: Context) :
         val bean = getItem(position)
         if (bean != null && view != null) {
             val checkBox = view.findViewById<CheckBox>(R.id.todoCheck)
-            checkBox?.setOnClickListener { _ ->
+            checkBox.setOnClickListener {
                 clickAction.invoke(bean, checkBox, position)
+            }
+            view.setOnClickListener {
+                goDetail.invoke(bean)
             }
         }
     }

@@ -5,6 +5,9 @@
     <string name="tab_question">问答</string>
     <string name="tab_tree">体系</string>
     <string name="tab_me">我的</string>
+    
+    <string name="cancel">取消</string>
+    <string name="accept">确定</string>
 
     <string name="title_todo">TodoList</string>
     <string name="title_setting">设置</string>
@@ -15,8 +18,11 @@
     <string name="title_project">项目</string>
     <string name="title_about">关于软件</string>
     <string name="title_profile">用户详细</string>
+    <string name="title_todo_detail">Todo详细</string>
 
     <string name="dialog_title_action">选择操作</string>
+    <string name="dialog_title_edit">确定更改</string>
+    <string name="dialog_title_delete">确定删除</string>
 
     <string name="text_new">新</string>
     <string name="text_author">匿名</string>
@@ -45,6 +51,13 @@
     <string name="text_add_article_title">标题</string>
     <string name="text_add_article_url">链接</string>
     <string name="text_share">分享</string>
+    <string name="text_todo_detail_title">Todo标题</string>
+    <string name="text_todo_detail_content">Todo内容</string>
+    <string name="text_todo_detail_time">预定完成时间</string>
+    <string name="text_todo_detail_type">Todo类型</string>
+    <string name="text_todo_detail_priority">Todo优先级</string>
+    <string name="text_edit">编辑</string>
+    <string name="text_delete">删除</string>
 
     <string name="text_setting_coin">我的积分</string>
     <string name="text_setting_collect">我的收藏</string>
@@ -62,6 +75,8 @@
     <string name="hint_add_todo_detail">添加详细信息</string>
     <string name="hint_share_article_title">文章标题（100字以内）</string>
     <string name="hint_share_article_url">文章链接</string>
+    <string name="hint_todo_detail_title">Todo标题</string>
+    <string name="hint_todo_detail_content">Todo内容</string>
 
     <string name="setting_night_mode">夜间模式</string>
 
