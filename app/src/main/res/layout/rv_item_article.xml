@@ -11,7 +11,7 @@
 
         <variable
             name="bean"
-            type="me.robbin.wanandroid.data.bean.ArticleBean" />
+            type="me.robbin.wanandroid.model.ArticleBean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

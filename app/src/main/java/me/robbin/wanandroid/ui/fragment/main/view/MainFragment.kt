@@ -8,7 +8,7 @@ import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.mvvmscaffold.utils.setStatusBarLightMode
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.ext.mainAdapter
+import me.robbin.wanandroid.app.ext.mainAdapter
 
 /**
  * 二级承载界面

@@ -7,7 +7,7 @@
 
         <variable
             name="bean"
-            type="me.robbin.wanandroid.data.bean.TodoBean" />
+            type="me.robbin.wanandroid.model.TodoBean" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

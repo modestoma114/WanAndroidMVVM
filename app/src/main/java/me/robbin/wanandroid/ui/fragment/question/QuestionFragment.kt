@@ -8,8 +8,8 @@ import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.mvvmscaffold.utils.StatusBarUtils
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.ext.addTopPadding
-import me.robbin.wanandroid.ext.init
+import me.robbin.wanandroid.app.ext.addTopPadding
+import me.robbin.wanandroid.app.ext.init
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleListsFragment
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 

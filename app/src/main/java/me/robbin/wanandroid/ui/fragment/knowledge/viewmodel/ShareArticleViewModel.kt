@@ -4,7 +4,7 @@ import android.text.Editable
 import androidx.lifecycle.MutableLiveData
 import me.robbin.wanandroid.app.base.BaseVM
 import me.robbin.wanandroid.app.watcher.SimpleWatcher
-import me.robbin.wanandroid.data.api.ApiService
+import me.robbin.wanandroid.api.ApiService
 
 /**
  *

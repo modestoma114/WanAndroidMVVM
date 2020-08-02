@@ -5,7 +5,7 @@
     <string name="tab_question">问答</string>
     <string name="tab_tree">体系</string>
     <string name="tab_me">我的</string>
-    
+
     <string name="cancel">取消</string>
     <string name="accept">确定</string>
 
@@ -58,6 +58,8 @@
     <string name="text_todo_detail_priority">Todo优先级</string>
     <string name="text_edit">编辑</string>
     <string name="text_delete">删除</string>
+    <string name="text_web_error">网络出现了一些问题…</string>
+    <string name="text_reload">重新加载</string>
 
     <string name="text_setting_coin">我的积分</string>
     <string name="text_setting_collect">我的收藏</string>

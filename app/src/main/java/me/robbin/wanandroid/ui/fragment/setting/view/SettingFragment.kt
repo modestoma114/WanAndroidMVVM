@@ -11,7 +11,7 @@ import me.robbin.wanandroid.app.utils.CacheUtils
 import me.robbin.wanandroid.app.utils.isNightMode
 import me.robbin.wanandroid.app.utils.setNightMode
 import me.robbin.wanandroid.databinding.FragmentSettingBinding
-import me.robbin.wanandroid.ext.nav
+import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.setting.viewmodel.SettingViewModel
 
 /**

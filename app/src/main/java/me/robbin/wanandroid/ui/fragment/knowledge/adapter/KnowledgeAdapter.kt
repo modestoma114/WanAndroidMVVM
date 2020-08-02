@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.data.bean.ChapterBean
+import me.robbin.wanandroid.model.ChapterBean
 import me.robbin.wanandroid.databinding.RvItemKnowledgeBinding
 import java.util.*
 

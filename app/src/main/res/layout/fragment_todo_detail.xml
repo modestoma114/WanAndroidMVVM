@@ -197,30 +197,15 @@
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/bg_button"
                     android:padding="10dp"
                     android:text="@string/text_edit"
                     android:textColor="@color/text_secondary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btnTodoDetailPriority" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnTodoDetailDelete"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="50dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/bg_button"
-                    android:padding="10dp"
-                    android:text="@string/text_delete"
-                    android:textColor="@color/text_secondary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btnTodoDetailEdit" />
+                    app:layout_constraintTop_toBottomOf="@id/btnTodoDetailPriority" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

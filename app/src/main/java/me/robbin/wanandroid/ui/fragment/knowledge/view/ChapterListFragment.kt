@@ -6,8 +6,8 @@ import androidx.navigation.NavController
 import kotlinx.android.synthetic.main.fragment_chapter_list.*
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.data.bean.ChapterBean
-import me.robbin.wanandroid.ext.nav
+import me.robbin.wanandroid.model.ChapterBean
+import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.knowledge.adapter.KnowledgeAdapter
 import me.robbin.wanandroid.ui.fragment.knowledge.adapter.NavigationAdapter
 import me.robbin.wanandroid.ui.fragment.knowledge.viewmodel.ChapterListViewModel

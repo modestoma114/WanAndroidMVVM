@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.app.network.NetworkClient
 import me.robbin.wanandroid.app.utils.CacheUtils
-import me.robbin.wanandroid.data.bean.UserBean
+import me.robbin.wanandroid.model.UserBean
 
 /**
  * 全局 ViewModel

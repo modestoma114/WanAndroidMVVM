@@ -9,9 +9,9 @@ import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
-import me.robbin.wanandroid.data.bean.TodoBean
+import me.robbin.wanandroid.model.TodoBean
 import me.robbin.wanandroid.databinding.FragmentTodoDetailBinding
-import me.robbin.wanandroid.ext.nav
+import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.todo.viewmodel.TodoDetailViewModel
 
 /**
@@ -43,18 +43,6 @@ class TodoDetailFragment : BaseFragment<TodoDetailViewModel, FragmentTodoDetailB
                     dialog.dismiss()
                 }.setPositiveButton(resources.getString(R.string.accept)) { dialog, _ ->
                     mViewModel.updateTodo {
-                        dialog.dismiss()
-                        nav().navigateUp()
-                    }
-                }.show()
-        }
-        btnTodoDetailDelete.setOnClickListener {
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle(resources.getString(R.string.dialog_title_delete))
-                .setNegativeButton(resources.getString(R.string.cancel)) { dialog, _ ->
-                    dialog.dismiss()
-                }.setPositiveButton(resources.getString(R.string.accept)) { dialog, _ ->
-                    mViewModel.deleteTodo {
                         dialog.dismiss()
                         nav().navigateUp()
                     }

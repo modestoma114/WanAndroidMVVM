@@ -4,8 +4,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import kotlinx.coroutines.flow.Flow
-import me.robbin.wanandroid.data.bean.ArticleBean
-import me.robbin.wanandroid.data.bean.CollectBean
+import me.robbin.wanandroid.model.ArticleBean
+import me.robbin.wanandroid.model.CollectBean
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**

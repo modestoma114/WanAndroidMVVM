@@ -3,7 +3,7 @@ package me.robbin.wanandroid.ui.fragment.me.adapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.data.bean.UserCollectBean
+import me.robbin.wanandroid.model.UserCollectBean
 import me.robbin.wanandroid.databinding.RvItemCollectUserBinding
 
 /**

@@ -20,7 +20,7 @@ import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.app.listener.AdapterItemClickListener
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.databinding.FragmentProfileBinding
-import me.robbin.wanandroid.ext.nav
+import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.common.adapter.ArticleAdapter
 import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.ProfileViewModel

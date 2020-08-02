@@ -8,8 +8,8 @@ import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.databinding.FragmentMeBinding
-import me.robbin.wanandroid.ext.checkLogin
-import me.robbin.wanandroid.ext.nav
+import me.robbin.wanandroid.app.ext.checkLogin
+import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.MeViewModel
 

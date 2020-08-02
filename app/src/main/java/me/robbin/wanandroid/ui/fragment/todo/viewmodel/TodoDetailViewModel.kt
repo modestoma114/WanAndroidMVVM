@@ -4,8 +4,8 @@ import android.text.Editable
 import androidx.lifecycle.MutableLiveData
 import me.robbin.wanandroid.app.base.BaseVM
 import me.robbin.wanandroid.app.watcher.SimpleWatcher
-import me.robbin.wanandroid.data.api.ApiService
-import me.robbin.wanandroid.data.bean.TodoBean
+import me.robbin.wanandroid.api.ApiService
+import me.robbin.wanandroid.model.TodoBean
 
 /**
  *
@@ -27,13 +27,6 @@ class TodoDetailViewModel : BaseVM() {
             super.afterTextChanged(s)
             bean.value?.content = s.toString()
         }
-    }
-
-    fun deleteTodo(success: () -> Unit) {
-        launchOnlyResult(
-            block = { ApiService.getApi().deleteTodo(bean.value!!.id) },
-            success = { success() }
-        )
     }
 
     fun updateTodo(success: () -> Unit) {

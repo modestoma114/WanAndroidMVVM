@@ -16,7 +16,7 @@ import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.databinding.FragmentSearchBinding
-import me.robbin.wanandroid.ext.nav
+import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.common.view.BaseArticlesFragment
 import me.robbin.wanandroid.ui.fragment.home.viewmodel.SearchViewModel
 

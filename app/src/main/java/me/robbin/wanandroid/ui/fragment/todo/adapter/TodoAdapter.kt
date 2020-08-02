@@ -2,6 +2,7 @@ package me.robbin.wanandroid.ui.fragment.todo.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.databinding.DataBindingUtil
@@ -9,7 +10,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.data.bean.TodoBean
+import me.robbin.wanandroid.model.TodoBean
 import me.robbin.wanandroid.databinding.RvItemTodoBinding
 
 /**
@@ -29,10 +30,13 @@ class TodoAdapter(private val context: Context) :
         }
     }
 
-    private var clickAction: (bean: TodoBean, view: CheckBox, position: Int) -> Unit =
+    private var collectAction: (bean: TodoBean, view: CheckBox, position: Int) -> Unit =
         { _, _, _ -> }
 
-    private var goDetail: (bean: TodoBean) -> Unit = { _ -> }
+    private var clickAction: (bean: TodoBean, view: View, position: Int) -> Unit = { _, _, _ -> }
+
+    private var longClickAction: (bean: TodoBean, view: View, position: Int) -> Unit =
+        { _, _, _ -> }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         val binding = DataBindingUtil.getBinding<RvItemTodoBinding>(holder.itemView)
@@ -42,10 +46,14 @@ class TodoAdapter(private val context: Context) :
         if (bean != null && view != null) {
             val checkBox = view.findViewById<CheckBox>(R.id.todoCheck)
             checkBox.setOnClickListener {
-                clickAction.invoke(bean, checkBox, position)
+                collectAction.invoke(bean, checkBox, position)
             }
             view.setOnClickListener {
-                goDetail.invoke(bean)
+                clickAction.invoke(bean, view, position)
+            }
+            view.setOnLongClickListener {
+                longClickAction.invoke(bean, view, position)
+                return@setOnLongClickListener true
             }
         }
     }
@@ -63,12 +71,16 @@ class TodoAdapter(private val context: Context) :
         )
     }
 
-    fun setClickAction(action: (bean: TodoBean, view: CheckBox, position: Int) -> Unit) {
+    fun setCollectAction(action: (bean: TodoBean, view: CheckBox, position: Int) -> Unit) {
+        this.collectAction = action
+    }
+
+    fun setClickAction(action: (bean: TodoBean, view: View, position: Int) -> Unit) {
         this.clickAction = action
     }
 
-    fun setGoDetail(action: (bean: TodoBean) -> Unit) {
-        this.goDetail = action
+    fun setLongClickAction(action: (bean: TodoBean, view: View, position: Int) -> Unit) {
+        this.longClickAction = action
     }
 
 }

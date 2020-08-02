@@ -2,8 +2,8 @@ package me.robbin.wanandroid.data.datasource
 
 import androidx.paging.PagingSource
 import me.robbin.wanandroid.app.network.EmptyException
-import me.robbin.wanandroid.data.api.ApiService
-import me.robbin.wanandroid.data.bean.CollectBean
+import me.robbin.wanandroid.api.ApiService
+import me.robbin.wanandroid.model.CollectBean
 import retrofit2.HttpException
 import java.io.IOException
 

@@ -10,85 +10,27 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_primary">
+        android:background="@color/bg_primary"
+        android:orientation="vertical">
 
-        <View
-            android:id="@+id/statusWeb"
+        <com.google.android.material.appbar.MaterialToolbar
             addStatusPadding="@{true}"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="@color/bg_primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <me.robbin.wanandroid.widget.ScrollWebView
-            android:id="@+id/webDetail"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/statusWeb" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="48dp"
+            tbNavIconClick="@{() -> viewModel.goBack()}"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:background="@color/bg_main"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:menu="@menu/menu_web"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="@{viewModel.title}"
+            app:titleTextColor="@color/text_title" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:background="@color/bg_transparent"
-                android:onClick="@{() -> viewModel.goBack()}"
-                android:src="@drawable/ic_back" />
+        <FrameLayout
+            android:id="@+id/webContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@drawable/bg_web_title"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:imeOptions="actionGo"
-                android:lines="1"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:singleLine="true"
-                android:text="@{viewModel.title}"
-                android:textColor="@color/text_title"
-                android:textSize="@dimen/text_content" />
-
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:button="@null"
-                android:checked="@{viewModel.collected}"
-                android:drawableEnd="@drawable/check_collect"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:scaleType="center" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:paddingStart="0dp"
-                android:paddingEnd="10dp"
-                android:scaleType="center"
-                android:src="@drawable/ic_more" />
-
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

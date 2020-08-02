@@ -9,7 +9,7 @@ import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.databinding.FragmentShareArticleBinding
-import me.robbin.wanandroid.ext.nav
+import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.knowledge.viewmodel.ShareArticleViewModel
 
 /**

@@ -7,9 +7,9 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import coil.api.load
-import me.robbin.wanandroid.data.bean.TagsBean
-import me.robbin.wanandroid.ext.html2string
-import me.robbin.wanandroid.ext.removeAllBlank
+import me.robbin.wanandroid.model.TagsBean
+import me.robbin.wanandroid.app.ext.html2string
+import me.robbin.wanandroid.app.ext.removeAllBlank
 
 /**
  * 用于 Article 列表的 BindingAdapter

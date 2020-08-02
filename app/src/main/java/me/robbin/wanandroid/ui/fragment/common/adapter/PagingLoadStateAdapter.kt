@@ -16,18 +16,15 @@ import me.robbin.wanandroid.databinding.LayoutListFooterViewBinding
 class PagingLoadStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<PagingLoadStateViewHolder>() {
 
-    override fun onBindViewHolder(holder: PagingLoadStateViewHolder, loadState: LoadState) {
-        holder.bind(loadState)
-    }
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         loadState: LoadState
     ): PagingLoadStateViewHolder {
-        return PagingLoadStateViewHolder.create(
-            parent,
-            retry
-        )
+        return PagingLoadStateViewHolder.create(parent, retry)
+    }
+
+    override fun onBindViewHolder(holder: PagingLoadStateViewHolder, loadState: LoadState) {
+        holder.bind(loadState)
     }
 
 }
@@ -54,10 +51,7 @@ class PagingLoadStateViewHolder private constructor(
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.layout_list_footer_view, parent, false)
             val binding = LayoutListFooterViewBinding.bind(view)
-            return PagingLoadStateViewHolder(
-                binding,
-                retry
-            )
+            return PagingLoadStateViewHolder(binding, retry)
         }
     }
 

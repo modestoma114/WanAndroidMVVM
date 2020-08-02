@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import me.robbin.mvvmscaffold.utils.StatusBarUtils
 import me.robbin.wanandroid.app.watcher.SimpleWatcher
-import me.robbin.wanandroid.ext.addTopPadding
+import me.robbin.wanandroid.app.ext.addTopPadding
 
 /**
  * 通用 BindingAdapter

@@ -2,8 +2,8 @@ package me.robbin.wanandroid.ui.fragment.me.viewmodel
 
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
-import me.robbin.wanandroid.data.api.ApiService
-import me.robbin.wanandroid.data.bean.ArticleBean
+import me.robbin.wanandroid.api.ApiService
+import me.robbin.wanandroid.model.ArticleBean
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 import me.robbin.wanandroid.ui.fragment.common.viewmodel.BaseArticlesViewModel
 

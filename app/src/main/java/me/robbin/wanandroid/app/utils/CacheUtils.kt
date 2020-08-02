@@ -3,7 +3,7 @@ package me.robbin.wanandroid.app.utils
 import android.text.TextUtils
 import com.google.gson.Gson
 import com.tencent.mmkv.MMKV
-import me.robbin.wanandroid.data.bean.UserBean
+import me.robbin.wanandroid.model.UserBean
 
 /**
  * 本地缓存工具

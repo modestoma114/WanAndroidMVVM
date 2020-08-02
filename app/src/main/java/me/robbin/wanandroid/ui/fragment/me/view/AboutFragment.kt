@@ -7,9 +7,9 @@ import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.data.bean.LicensesBean
+import me.robbin.wanandroid.model.LicensesBean
 import me.robbin.wanandroid.databinding.FragmentAboutBinding
-import me.robbin.wanandroid.ext.nav
+import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.me.adapter.LicensesAdapter
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.AboutViewModel
 

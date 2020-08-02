@@ -8,7 +8,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.data.bean.IntegralBean
+import me.robbin.wanandroid.model.IntegralBean
 import me.robbin.wanandroid.databinding.RvItemIntegralRankBinding
 
 /**

@@ -6,9 +6,9 @@ import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import me.robbin.wanandroid.ui.fragment.common.viewmodel.BaseArticlesViewModel
 import me.robbin.wanandroid.app.watcher.SimpleWatcher
-import me.robbin.wanandroid.data.api.ApiService
-import me.robbin.wanandroid.data.bean.ArticleBean
-import me.robbin.wanandroid.data.bean.HotKeyBean
+import me.robbin.wanandroid.api.ApiService
+import me.robbin.wanandroid.model.ArticleBean
+import me.robbin.wanandroid.model.HotKeyBean
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**

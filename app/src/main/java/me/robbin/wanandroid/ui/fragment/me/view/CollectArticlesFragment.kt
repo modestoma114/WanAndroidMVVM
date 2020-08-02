@@ -19,9 +19,9 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.app.listener.AdapterItemClickListener
 import me.robbin.wanandroid.app.network.EmptyException
-import me.robbin.wanandroid.data.bean.UserCollectBean
+import me.robbin.wanandroid.model.UserCollectBean
 import me.robbin.wanandroid.databinding.LayoutCollectArticlesBinding
-import me.robbin.wanandroid.ext.nav
+import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.me.adapter.CollectAdapter
 import me.robbin.wanandroid.ui.fragment.me.adapter.UserCollectAdapter

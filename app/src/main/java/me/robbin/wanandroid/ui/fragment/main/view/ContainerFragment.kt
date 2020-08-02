@@ -5,7 +5,7 @@ import kotlinx.android.synthetic.main.fragment_container.*
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.ext.init
+import me.robbin.wanandroid.app.ext.init
 import me.robbin.wanandroid.ui.fragment.todo.view.TodoFragment
 
 /**

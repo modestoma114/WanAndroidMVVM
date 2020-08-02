@@ -12,6 +12,7 @@ import androidx.paging.LoadState
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textview.MaterialTextView
 import kotlinx.android.synthetic.main.fragment_todo.*
 import kotlinx.android.synthetic.main.layout_loading_view.*
@@ -25,7 +26,7 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.databinding.FragmentTodoBinding
-import me.robbin.wanandroid.ext.nav
+import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.todo.adapter.TodoAdapter
 import me.robbin.wanandroid.ui.fragment.todo.viewmodel.TodoViewModel
@@ -139,7 +140,7 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
                 refreshTodo.isRefreshing = loadState.refresh is LoadState.Loading
             }
         }
-        todoAdapter.setClickAction { bean, view, position ->
+        todoAdapter.setCollectAction { bean, view, position ->
             if (view.isChecked) {
                 mViewModel.doneTodo(bean.id, 1) {
                     bean.status = 1
@@ -154,10 +155,22 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
                 }
             }
         }
-        todoAdapter.setGoDetail {
+        todoAdapter.setClickAction { bean, _, _ ->
             val bundle = Bundle()
-            bundle.putParcelable("bean", it)
+            bundle.putParcelable("bean", bean)
             nav().navigate(R.id.action_main_to_todo_detail, bundle)
+        }
+        todoAdapter.setLongClickAction { bean, view, position ->
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(resources.getString(R.string.dialog_title_delete))
+                .setNegativeButton(resources.getString(R.string.cancel)) { dialog, _ ->
+                    dialog.dismiss()
+                }.setPositiveButton(resources.getString(R.string.accept)) { dialog, _ ->
+                    mViewModel.deleteTodo(position) {
+                        dialog.dismiss()
+                        nav().navigateUp()
+                    }
+                }.show()
         }
         todoAdapter.addLoadStateListener { loadState ->
             rlTodo.isVisible = loadState.refresh is LoadState.NotLoading

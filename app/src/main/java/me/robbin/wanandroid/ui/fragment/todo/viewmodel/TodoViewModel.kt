@@ -1,7 +1,7 @@
 package me.robbin.wanandroid.ui.fragment.todo.viewmodel
 
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
-import me.robbin.wanandroid.data.api.ApiService
+import me.robbin.wanandroid.api.ApiService
 import me.robbin.wanandroid.data.repository.TodoRepository
 
 /**
@@ -31,6 +31,13 @@ class TodoViewModel : BaseViewModel() {
     fun doneTodo(id: Int, status: Int, success: () -> Unit) {
         launchOnlyResult(
             block = { ApiService.getApi().doneTodo(id, status) },
+            success = { success() }
+        )
+    }
+
+    fun deleteTodo(id: Int, success: () -> Unit) {
+        launchOnlyResult(
+            block = { ApiService.getApi().deleteTodo(id) },
             success = { success() }
         )
     }

@@ -7,7 +7,7 @@
 
         <variable
             name="bean"
-            type="me.robbin.wanandroid.data.bean.CollectBean" />
+            type="me.robbin.wanandroid.model.CollectBean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
