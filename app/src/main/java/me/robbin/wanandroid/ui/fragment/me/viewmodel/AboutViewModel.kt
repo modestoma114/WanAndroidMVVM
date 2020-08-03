@@ -1,14 +1,14 @@
 package me.robbin.wanandroid.ui.fragment.me.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import me.robbin.wanandroid.app.base.BaseVM
+import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.model.LicensesBean
 
 /**
  * 关于软件界面 ViewModel
  * Create by Robbin at 2020/7/27
  */
-class AboutViewModel : BaseVM() {
+class AboutViewModel : BaseViewModel() {
 
     val name: MutableLiveData<String> = MutableLiveData("Robbin Ma")
 

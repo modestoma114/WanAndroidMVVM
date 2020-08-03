@@ -21,6 +21,7 @@ class AboutFragment : BaseDBFragment<AboutViewModel, FragmentAboutBinding>() {
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_about, BR.viewModel, mViewModel)
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     private val licensesAdapter by lazy { LicensesAdapter() }
@@ -44,9 +45,10 @@ class AboutFragment : BaseDBFragment<AboutViewModel, FragmentAboutBinding>() {
         mViewModel.licenses.observe(viewLifecycleOwner, Observer {
             licensesAdapter.setNewInstance(it)
         })
-        mViewModel.back.observe(viewLifecycleOwner, Observer {
-            if (it) nav().navigateUp()
-        })
+    }
+
+    inner class ClickProxy {
+        fun back() = nav().navigateUp()
     }
 
 }

@@ -9,10 +9,10 @@ import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
-import me.robbin.wanandroid.model.ChapterBean
-import me.robbin.wanandroid.databinding.FragmentChapterArticlesBinding
 import me.robbin.wanandroid.app.ext.init
 import me.robbin.wanandroid.app.ext.nav
+import me.robbin.wanandroid.databinding.FragmentChapterArticlesBinding
+import me.robbin.wanandroid.model.ChapterBean
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleListsFragment
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 import me.robbin.wanandroid.ui.fragment.knowledge.viewmodel.ChapterArticlesViewModel
@@ -26,6 +26,7 @@ class ChapterArticlesFragment :
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_chapter_articles, BR.viewModel, mViewModel)
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     private var chapter: ChapterBean? = null
@@ -57,9 +58,6 @@ class ChapterArticlesFragment :
     }
 
     override fun createObserver() {
-        mViewModel.back.observe(viewLifecycleOwner, Observer {
-            if (it) nav().navigateUp()
-        })
         mViewModel.knowledgeList.observe(viewLifecycleOwner, Observer { data ->
             data.forEach { item ->
                 if (item.id == superChapterId) {
@@ -89,6 +87,12 @@ class ChapterArticlesFragment :
                 position -> tab.text = chapter?.children?.get(position)?.name
             }
         }.attach()
+    }
+
+    inner class ClickProxy {
+        fun back() {
+            nav().navigateUp()
+        }
     }
 
 }

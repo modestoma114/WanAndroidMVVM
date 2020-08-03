@@ -8,6 +8,10 @@
         <variable
             name="viewModel"
             type="me.robbin.wanandroid.ui.fragment.home.viewmodel.SearchViewModel" />
+
+        <variable
+            name="click"
+            type="me.robbin.wanandroid.ui.fragment.home.view.SearchFragment.ClickProxy" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,7 +59,7 @@
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="10dp"
                     android:background="@color/bg_transparent"
-                    android:onClick="@{() -> viewModel.goBack()}"
+                    android:onClick="@{() -> click.back()}"
                     android:src="@drawable/ic_back_dark" />
 
                 <androidx.appcompat.widget.AppCompatImageButton

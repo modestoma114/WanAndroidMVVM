@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="route"
-            type="me.robbin.wanandroid.ui.fragment.me.view.MeFragment.RouteClick" />
+            name="click"
+            type="me.robbin.wanandroid.ui.fragment.me.view.MeFragment.ClickProxy" />
 
         <variable
             name="viewModel"
@@ -32,7 +32,7 @@
                 android:layout_height="60dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="100dp"
-                android:onClick="@{() -> route.goProfile()}"
+                android:onClick="@{() -> click.goProfile()}"
                 android:src="@drawable/head"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="5dp"
-                android:onClick="@{() -> route.goProfile()}"
+                android:onClick="@{() -> click.goProfile()}"
                 android:text="@{viewModel.userName}"
                 android:textColor="@color/text_title"
                 android:textSize="@dimen/text_content"
@@ -82,7 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="16dp"
-                        android:onClick="@{() -> route.goIntegral()}"
+                        android:onClick="@{() -> click.goIntegral()}"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -124,7 +124,7 @@
                         android:id="@+id/btnSettingCollect"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:onClick="@{() -> route.goMyCollect()}"
+                        android:onClick="@{() -> click.goMyCollect()}"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -157,7 +157,7 @@
                         android:id="@+id/btnSettingShare"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:onClick="@{() -> route.goMyArticle()}"
+                        android:onClick="@{() -> click.goMyArticle()}"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -190,7 +190,7 @@
                         android:id="@+id/btnSettingWanAndroid"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:onClick="@{() -> route.goWanAndroidSite()}"
+                        android:onClick="@{() -> click.goWanAndroidSite()}"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -223,7 +223,7 @@
                         android:id="@+id/btnSettingProject"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:onClick="@{() -> route.goProject()}"
+                        android:onClick="@{() -> click.goProject()}"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -256,7 +256,7 @@
                         android:id="@+id/btnSettingAboutMe"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:onClick="@{() -> route.goAboutMe()}"
+                        android:onClick="@{() -> click.goAboutMe()}"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -289,7 +289,7 @@
                         android:id="@+id/btnSettingSettings"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:onClick="@{() -> route.goSetting()}"
+                        android:onClick="@{() -> click.goSetting()}"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView

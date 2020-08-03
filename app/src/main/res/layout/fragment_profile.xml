@@ -8,6 +8,10 @@
         <variable
             name="viewModel"
             type="me.robbin.wanandroid.ui.fragment.me.viewmodel.ProfileViewModel" />
+
+        <variable
+            name="click"
+            type="me.robbin.wanandroid.ui.fragment.me.view.ProfileFragment.ClickProxy" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -31,7 +35,7 @@
 
                 <com.google.android.material.appbar.MaterialToolbar
                     addStatusPadding="@{true}"
-                    tbNavIconClick="@{() -> viewModel.goBack()}"
+                    toolbarNavigationClick="@{() -> click.back()}"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     app:layout_collapseMode="pin"

@@ -1,15 +1,14 @@
 package me.robbin.wanandroid.ui.fragment.knowledge.view
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_share_article.*
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
-import me.robbin.wanandroid.databinding.FragmentShareArticleBinding
 import me.robbin.wanandroid.app.ext.nav
+import me.robbin.wanandroid.databinding.FragmentShareArticleBinding
 import me.robbin.wanandroid.ui.fragment.knowledge.viewmodel.ShareArticleViewModel
 
 /**
@@ -20,6 +19,7 @@ class ShareArticleFragment : BaseFragment<ShareArticleViewModel, FragmentShareAr
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_share_article, BR.viewModel, mViewModel)
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -35,10 +35,8 @@ class ShareArticleFragment : BaseFragment<ShareArticleViewModel, FragmentShareAr
         mViewModel.author.value = appViewModel.userInfo.value?.nickname
     }
 
-    override fun createObserver() {
-        mViewModel.back.observe(viewLifecycleOwner, Observer {
-            if (it) nav().navigateUp()
-        })
+    inner class ClickProxy {
+        fun back() = nav().navigateUp()
     }
 
 }

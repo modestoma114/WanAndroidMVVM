@@ -1,16 +1,15 @@
 package me.robbin.wanandroid.ui.fragment.me.view
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_collect.*
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
-import me.robbin.wanandroid.databinding.FragmentCollectBinding
 import me.robbin.wanandroid.app.ext.init
 import me.robbin.wanandroid.app.ext.nav
+import me.robbin.wanandroid.databinding.FragmentCollectBinding
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.MyCollectViewModel
 
 /**
@@ -21,6 +20,7 @@ class CollectFragment : BaseFragment<MyCollectViewModel, FragmentCollectBinding>
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_collect, BR.viewModel, mViewModel)
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     private val wanCollect by lazy { CollectArticlesFragment.newInstance(CollectType.WAN) }
@@ -36,10 +36,8 @@ class CollectFragment : BaseFragment<MyCollectViewModel, FragmentCollectBinding>
         }.attach()
     }
 
-    override fun createObserver() {
-        mViewModel.back.observe(viewLifecycleOwner, Observer {
-            if (it) nav().navigateUp()
-        })
+    inner class ClickProxy {
+        fun back() = nav().navigateUp()
     }
 
 }

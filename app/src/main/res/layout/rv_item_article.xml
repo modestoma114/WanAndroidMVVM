@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="route"
-            type="me.robbin.wanandroid.ui.fragment.common.adapter.ArticleAdapter.RouteClick" />
-
-        <variable
             name="bean"
             type="me.robbin.wanandroid.model.ArticleBean" />
     </data>
@@ -45,7 +41,6 @@
                 articleShareUser="@{bean.shareUser}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> route.goAuthorProfile(bean)}"
                 android:text="@string/text_author"
                 android:textColor="@color/text_secondary"
                 android:textSize="@dimen/text_notes"
@@ -151,7 +146,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:onClick="@{() -> route.goChapter(bean)}"
             android:textColor="@color/text_third"
             android:textSize="@dimen/text_notes"
             app:layout_constraintBottom_toBottomOf="parent"

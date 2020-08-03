@@ -1,15 +1,12 @@
 package me.robbin.wanandroid.model
 
-import android.os.Parcelable
 //import androidx.room.Entity
 //import androidx.room.PrimaryKey
-import kotlinx.android.parcel.Parcelize
 
 /**
  * 文章
  * Created by Robbin on 2020-07-11
  */
-@Parcelize
 //@Entity(tableName = "articles")
 data class ArticleBean(
     var apkLink: String,
@@ -44,5 +41,6 @@ data class ArticleBean(
     var userId: Int,
     var visible: Int,
     var zan: Int,
-    var tags: List<TagsBean>
-) : Parcelable
+    var tags: List<TagsBean>,
+    var bannerList: List<BannerBean>
+)

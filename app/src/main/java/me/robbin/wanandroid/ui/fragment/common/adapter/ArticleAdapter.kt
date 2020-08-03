@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -42,7 +43,6 @@ class ArticleAdapter(private val context: Context) :
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val binding = DataBindingUtil.getBinding<RvItemArticleBinding>(holder.itemView)
-        binding?.route = this.RouteClick()
         binding?.bean = getItem(position)
         if (itemClickListener != null) {
             val bean = getItem(position)
@@ -58,13 +58,29 @@ class ArticleAdapter(private val context: Context) :
                     itemClickListener?.itemClickListener()
                         ?.navigate(R.id.action_global_to_webFragment, bundle)
                 }
+                binding?.root?.setOnLongClickListener {
+                    itemClickListener?.itemLongClickListener(position)
+                    return@setOnLongClickListener true
+                }
                 val collectView = binding?.root?.findViewById<CheckBox>(R.id.collectArticle)
                 collectView?.setOnClickListener { _ ->
                     collectAction.invoke(bean, collectView, position)
                 }
-                binding?.root?.setOnLongClickListener {
-                    itemClickListener?.itemLongClickListener(position)
-                    return@setOnLongClickListener true
+                val author = binding?.root?.findViewById<TextView>(R.id.tv_author)
+                author?.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putInt("userId", bean.userId)
+                    itemClickListener?.itemClickListener()
+                        ?.navigate(R.id.action_global_to_profile, bundle)
+                }
+                val chapter = binding?.root?.findViewById<TextView>(R.id.tv_chapter)
+                chapter?.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putString("superChapterName", bean.superChapterName)
+                    bundle.putInt("superChapterId", bean.realSuperChapterId)
+                    bundle.putInt("chapterId", bean.chapterId)
+                    itemClickListener?.itemClickListener()
+                        ?.navigate(R.id.action_global_to_chapterArticles, bundle)
                 }
             }
         }
@@ -81,27 +97,6 @@ class ArticleAdapter(private val context: Context) :
 
     fun setCollectAction(action: (item: ArticleBean, view: CheckBox, position: Int) -> Unit) {
         this.collectAction = action
-    }
-
-    inner class RouteClick {
-        fun goAuthorProfile(bean: ArticleBean) {
-            val bundle = Bundle()
-            bundle.putInt("userId", bean.userId)
-            itemClickListener?.itemClickListener()
-                ?.navigate(R.id.action_global_to_profile, bundle)
-
-        }
-
-        fun goChapter(bean: ArticleBean) {
-            val bundle = Bundle()
-            bundle.putString("superChapterName", bean.superChapterName)
-            bundle.putInt("superChapterId", bean.realSuperChapterId)
-            bundle.putInt("chapterId", bean.chapterId)
-            itemClickListener?.itemClickListener()
-                ?.navigate(R.id.action_global_to_chapterArticles, bundle)
-
-        }
-
     }
 
 }

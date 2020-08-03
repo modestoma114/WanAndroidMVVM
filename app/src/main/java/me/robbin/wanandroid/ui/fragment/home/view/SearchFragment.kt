@@ -28,6 +28,7 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_search, BR.viewModel, mViewModel)
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -118,9 +119,10 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
                 cgSearch.addView(chip)
             }
         })
-        mViewModel.back.observe(viewLifecycleOwner, Observer {
-            if (it) nav().navigateUp()
-        })
+    }
+
+    inner class ClickProxy {
+        fun back() = nav().navigateUp()
     }
 
 }

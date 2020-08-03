@@ -2,9 +2,11 @@ package me.robbin.wanandroid.ui.fragment.common.view
 
 import android.net.Uri
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.ViewGroup
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.DefaultWebClient
@@ -27,6 +29,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_web, BR.viewModel, mViewModel)
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     private var agentWeb: AgentWeb? = null
@@ -47,9 +50,6 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
     override fun createObserver() {
         mViewModel.url.observe(viewLifecycleOwner, Observer {
             agentWeb?.urlLoader?.loadUrl(mViewModel.url.value)
-        })
-        mViewModel.back.observe(viewLifecycleOwner, Observer {
-            if (it) nav().navigateUp()
         })
     }
 
@@ -149,6 +149,17 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
     override fun onDestroy() {
         agentWeb?.webLifeCycle?.onDestroy()
         super.onDestroy()
+    }
+
+    inner class ClickProxy : Toolbar.OnMenuItemClickListener {
+
+        fun back() {
+            nav().navigateUp()
+        }
+
+        override fun onMenuItemClick(item: MenuItem?): Boolean {
+            return false
+        }
     }
 
 }

@@ -34,7 +34,7 @@ data class TodoBean(
 
     val whatPriority: String
         get() = when (priority) {
-            1 -> "紧急"
-            else -> "平常"
+            1 -> "普通"
+            else -> "紧急"
         }
 }

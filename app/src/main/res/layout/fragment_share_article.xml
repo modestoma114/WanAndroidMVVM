@@ -7,6 +7,10 @@
         <variable
             name="viewModel"
             type="me.robbin.wanandroid.ui.fragment.knowledge.viewmodel.ShareArticleViewModel" />
+
+        <variable
+            name="click"
+            type="me.robbin.wanandroid.ui.fragment.knowledge.view.ShareArticleFragment.ClickProxy" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +21,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarShareArticle"
             addStatusPadding="@{true}"
-            tbNavIconClick="@{() -> viewModel.goBack()}"
+            toolbarNavigationClick="@{() -> click.back()}"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:background="@color/bg_main"

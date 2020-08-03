@@ -1,20 +1,15 @@
 package me.robbin.wanandroid.ui.fragment.todo.view
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.widget.AppCompatEditText
-import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.textview.MaterialTextView
-import kotlinx.android.synthetic.main.fragment_todo.*
+import kotlinx.android.synthetic.main.fragment_todo_list.*
 import kotlinx.android.synthetic.main.layout_loading_view.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
@@ -24,28 +19,25 @@ import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
-import me.robbin.wanandroid.app.network.EmptyException
-import me.robbin.wanandroid.databinding.FragmentTodoBinding
 import me.robbin.wanandroid.app.ext.nav
+import me.robbin.wanandroid.app.network.EmptyException
+import me.robbin.wanandroid.databinding.FragmentTodoListBinding
 import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.todo.adapter.TodoAdapter
 import me.robbin.wanandroid.ui.fragment.todo.viewmodel.TodoViewModel
-import java.text.SimpleDateFormat
 
 /**
  * TodoL Fragment
  * Create by Robbin at 2020/7/14
  */
-class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
+class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoListBinding>() {
 
     override fun getDataBindingConfig(): DataBindingConfig {
-        return DataBindingConfig(R.layout.fragment_todo, BR.viewModel, mViewModel)
+        return DataBindingConfig(R.layout.fragment_todo_list, BR.viewModel, mViewModel)
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     private val todoAdapter by lazy { TodoAdapter(requireContext()) }
-
-    private val bottomSheet by lazy { BottomSheetDialog(requireContext()) }
-    private var behavior: BottomSheetBehavior<View>? = null
 
     private var todoJob: Job? = null
 
@@ -53,23 +45,13 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
         initAdapter()
         refreshTodo.setOnRefreshListener { refreshData() }
         btnEmpty.setOnClickListener { todoAdapter.retry() }
-        initBottomSheet()
-        btnAddTodo.setOnClickListener {
-            behavior?.state = BottomSheetBehavior.STATE_EXPANDED
-            bottomSheet.show()
-        }
     }
 
     override fun createObserver() {
         appViewModel.isLogin.observe(viewLifecycleOwner, Observer { isLogin ->
             if (isLogin) {
                 refreshTodo.isEnabled = true
-                todoJob?.cancel()
-                todoJob = lifecycleScope.launchWhenResumed {
-                    mViewModel.getTodoList().collectLatest {
-                        todoAdapter.submitData(it)
-                    }
-                }
+                getTodo()
             } else {
                 rlTodo.visibility = View.GONE
                 ivEmpty.visibility = View.VISIBLE
@@ -78,58 +60,6 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
                 btnEmpty.text = "请先登录"
             }
         })
-    }
-
-    /**
-     * 初始化 BottomSheetDialog
-     * Create by Robbin at 2020/7/31
-     */
-    @SuppressLint("SimpleDateFormat")
-    private fun initBottomSheet() {
-        val addTodoView = View.inflate(requireContext(), R.layout.layout_add_todo, null)
-        val todoTitle = addTodoView.findViewById<AppCompatEditText>(R.id.todoTitle)
-        val todoDetail = addTodoView.findViewById<AppCompatEditText>(R.id.todoDetail)
-        val send = addTodoView.findViewById<AppCompatImageView>(R.id.todoSend)
-        val addDetail = addTodoView.findViewById<MaterialTextView>(R.id.todoAddDetail)
-        val chooseTime = addTodoView.findViewById<MaterialTextView>(R.id.todoChooseTime)
-        bottomSheet.setContentView(addTodoView)
-        addDetail.setOnClickListener {
-            todoDetail.visibility = View.VISIBLE
-        }
-        var date: Long? = 0L
-        chooseTime.setOnClickListener {
-            val builder = MaterialDatePicker.Builder.datePicker()
-            val today = MaterialDatePicker.todayInUtcMilliseconds()
-            builder.setSelection(today)
-            val picker = builder.build()
-            picker.show(parentFragmentManager, picker.toString())
-            picker.addOnPositiveButtonClickListener {
-                date = picker.selection
-                chooseTime.text = picker.headerText
-            }
-        }
-        send.setOnClickListener {
-            val title = todoTitle.text.toString()
-            val detail = todoDetail.text.toString()
-            when {
-                title.isBlank() -> "请填写标题".toToast()
-                date == 0L -> "请选择时间".toToast()
-                else -> {
-                    val format = SimpleDateFormat("yyyy-MM-dd")
-                    val dateStr = format.format(date)
-                    mViewModel.addTodo(title, detail, dateStr, 1, 1) {
-                        todoTitle.text?.clear()
-                        todoDetail.text?.clear()
-                        date = 0L
-                        chooseTime.text = resources.getString(R.string.text_choose_time)
-                        todoDetail.visibility = View.GONE
-                        todoAdapter.refresh()
-                        bottomSheet.dismiss()
-                    }
-                }
-            }
-        }
-        behavior = BottomSheetBehavior.from(addTodoView.parent as View)
     }
 
     private fun initAdapter() {
@@ -145,13 +75,13 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
                 mViewModel.doneTodo(bean.id, 1) {
                     bean.status = 1
                     view.isChecked = true
-                    todoAdapter.notifyItemChanged(position)
+                    todoAdapter.notifyItemRemoved(position)
                 }
             } else {
                 mViewModel.doneTodo(bean.id, 0) {
                     bean.status = 0
                     view.isChecked = false
-                    todoAdapter.notifyItemChanged(position)
+                    todoAdapter.notifyItemRemoved(position)
                 }
             }
         }
@@ -160,13 +90,14 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
             bundle.putParcelable("bean", bean)
             nav().navigate(R.id.action_main_to_todo_detail, bundle)
         }
-        todoAdapter.setLongClickAction { bean, view, position ->
+        todoAdapter.setLongClickAction { _, _, position ->
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle(resources.getString(R.string.dialog_title_delete))
                 .setNegativeButton(resources.getString(R.string.cancel)) { dialog, _ ->
                     dialog.dismiss()
                 }.setPositiveButton(resources.getString(R.string.accept)) { dialog, _ ->
                     mViewModel.deleteTodo(position) {
+                        todoAdapter.notifyItemRemoved(position)
                         dialog.dismiss()
                         nav().navigateUp()
                     }
@@ -192,6 +123,15 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
         }
     }
 
+    private fun getTodo() {
+        todoJob?.cancel()
+        todoJob = lifecycleScope.launchWhenResumed {
+            mViewModel.getTodoList().collectLatest {
+                todoAdapter.submitData(it)
+            }
+        }
+    }
+
     private fun refreshData() {
         todoAdapter.refresh()
     }
@@ -199,6 +139,41 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
     override fun onResume() {
         super.onResume()
         setStatusBarLightMode(!appViewModel.isNightMode.value!!)
+    }
+
+    inner class ClickProxy : Toolbar.OnMenuItemClickListener {
+        fun addTodo() {
+            nav().navigate(R.id.action_main_to_todo_detail)
+        }
+
+        override fun onMenuItemClick(item: MenuItem?): Boolean {
+            return if (appViewModel.isLogin.value == true) {
+                when (item?.itemId) {
+                    R.id.tab_done -> {
+                        todoJob?.cancel()
+                        todoJob = lifecycleScope.launchWhenResumed {
+                            mViewModel.getDoneTodoList().collectLatest {
+                                todoAdapter.submitData(it)
+                            }
+                        }
+                        true
+                    }
+                    R.id.tab_todo -> {
+                        todoJob?.cancel()
+                        todoJob = lifecycleScope.launchWhenResumed {
+                            mViewModel.getTodoList().collectLatest {
+                                todoAdapter.submitData(it)
+                            }
+                        }
+                        true
+                    }
+                    else -> false
+                }
+            } else {
+                false
+            }
+        }
+
     }
 
 }

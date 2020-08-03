@@ -9,10 +9,10 @@ import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.ui.fragment.common.view.BaseArticlesFragment
-import me.robbin.wanandroid.model.ChapterBean
-import me.robbin.wanandroid.databinding.FragmentProjectBinding
 import me.robbin.wanandroid.app.ext.nav
+import me.robbin.wanandroid.databinding.FragmentProjectBinding
+import me.robbin.wanandroid.model.ChapterBean
+import me.robbin.wanandroid.ui.fragment.common.view.BaseArticlesFragment
 import me.robbin.wanandroid.ui.fragment.me.adapter.ProjectAdapter
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.ProjectViewModel
 
@@ -24,6 +24,7 @@ class ProjectFragment : BaseArticlesFragment<ProjectViewModel, FragmentProjectBi
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_project, BR.viewModel, mViewModel)
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     private val projectAdapter by lazy { ProjectAdapter() }
@@ -54,9 +55,6 @@ class ProjectFragment : BaseArticlesFragment<ProjectViewModel, FragmentProjectBi
                 }
             }
         })
-        mViewModel.back.observe(viewLifecycleOwner, Observer {
-            if (it) nav().navigateUp()
-        })
     }
 
     override fun refreshData() {
@@ -66,6 +64,10 @@ class ProjectFragment : BaseArticlesFragment<ProjectViewModel, FragmentProjectBi
                 articleAdapter.submitData(it)
             }
         }
+    }
+
+    inner class ClickProxy {
+        fun back() = nav().navigateUp()
     }
 
 }

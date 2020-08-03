@@ -1,16 +1,16 @@
 package me.robbin.wanandroid.ui.fragment.me.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import me.robbin.wanandroid.app.base.BaseVM
+import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.api.ApiService
-import me.robbin.wanandroid.model.UserCollectBean
 import me.robbin.wanandroid.data.repository.ArticleRepository
+import me.robbin.wanandroid.model.UserCollectBean
 
 /**
  *
  * Create by Robbin at 2020/7/30
  */
-class MyCollectViewModel : BaseVM() {
+class MyCollectViewModel : BaseViewModel() {
 
     private val articleRepository by lazy { ArticleRepository.instance }
 

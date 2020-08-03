@@ -10,6 +10,13 @@ import retrofit2.http.*
 interface WanApi {
 
     /**
+     * 获取 Banner 列表
+     * Create by Robbin at 2020/7/10
+     */
+    @GET("banner/json")
+    suspend fun getBanners(): ApiResponse<MutableList<BannerBean>>
+
+    /**
      * 获取首页文章列表
      * Create by Robbin at 2020/7/10
      */
@@ -256,7 +263,7 @@ interface WanApi {
      * Create by Robbin at 2020/7/28
      */
     @GET("lg/todo/v2/list/{page}/json")
-    suspend fun getTodoList(@Path("page") page: Int)
+    suspend fun getTodoList(@Path("page") page: Int, @Query("status") status: Int)
             : ApiResponse<ApiPageResponse<MutableList<TodoBean>>>
 
     /**

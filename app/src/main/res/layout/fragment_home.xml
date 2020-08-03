@@ -8,6 +8,10 @@
         <variable
             name="state"
             type="me.robbin.wanandroid.ui.fragment.home.viewmodel.HomeViewModel" />
+
+        <variable
+            name="click"
+            type="me.robbin.wanandroid.ui.fragment.home.view.HomeFragment.ClickProxy" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +22,8 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarHome"
+            addStatusPadding="@{true}"
+            toolbarMenuItemClick="@{click}"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/bg_main"
@@ -25,6 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:menu="@menu/menu_home"
+            app:title="@string/tab_home"
             app:titleTextColor="@color/text_title" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

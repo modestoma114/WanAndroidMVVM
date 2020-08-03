@@ -7,6 +7,10 @@
         <variable
             name="viewModel"
             type="me.robbin.wanandroid.ui.fragment.me.viewmodel.MyShareViewModel" />
+
+        <variable
+            name="click"
+            type="me.robbin.wanandroid.ui.fragment.me.view.MyShareFragment.ClickProxy" />
     </data>
 
     <LinearLayout
@@ -18,7 +22,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarMyShare"
             addStatusPadding="@{true}"
-            tbNavIconClick="@{() -> viewModel.goBack()}"
+            toolbarNavigationClick="@{() -> click.back()}"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/bg_main"

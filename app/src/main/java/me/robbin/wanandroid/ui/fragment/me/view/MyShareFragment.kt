@@ -1,18 +1,18 @@
 package me.robbin.wanandroid.ui.fragment.me.view
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
+import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.android.synthetic.main.fragment_my_share.*
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.app.listener.AdapterItemClickListener
-import me.robbin.wanandroid.databinding.FragmentMyShareBinding
 import me.robbin.wanandroid.app.ext.checkLogin
 import me.robbin.wanandroid.app.ext.nav
+import me.robbin.wanandroid.app.listener.AdapterItemClickListener
+import me.robbin.wanandroid.databinding.FragmentMyShareBinding
 import me.robbin.wanandroid.ui.fragment.common.view.BaseArticlesFragment
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.MyShareViewModel
 
@@ -24,17 +24,11 @@ class MyShareFragment : BaseArticlesFragment<MyShareViewModel, FragmentMyShareBi
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_my_share, BR.viewModel, mViewModel)
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
-        toolbarMyShare.setOnMenuItemClickListener { item ->
-            if (item.itemId == R.id.addShare)
-                checkLogin {
-                    nav().navigate(R.id.action_my_share_to_share_Article)
-                }
-            return@setOnMenuItemClickListener true
-        }
         val item = arrayOf("删除")
         articleAdapter.setItemClickListener(object : AdapterItemClickListener {
             override fun itemClickListener(): NavController = nav()
@@ -55,11 +49,16 @@ class MyShareFragment : BaseArticlesFragment<MyShareViewModel, FragmentMyShareBi
         })
     }
 
-    override fun createObserver() {
-        super.createObserver()
-        mViewModel.back.observe(viewLifecycleOwner, Observer {
-            if (it) nav().navigateUp()
-        })
+    inner class ClickProxy : Toolbar.OnMenuItemClickListener {
+        fun back() = nav().navigateUp()
+
+        override fun onMenuItemClick(item: MenuItem?): Boolean {
+            if (item?.itemId == R.id.addShare)
+                checkLogin {
+                    nav().navigate(R.id.action_my_share_to_share_Article)
+                }
+            return true
+        }
     }
 
 }

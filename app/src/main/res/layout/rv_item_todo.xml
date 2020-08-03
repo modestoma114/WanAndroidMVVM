@@ -64,7 +64,7 @@
                 tools:text="这是一条测试Todo的详细内容" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/todoType"
+                android:id="@+id/todoPriority"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/bg_third"
@@ -73,10 +73,23 @@
                 android:textSize="@dimen/text_content"
                 app:layout_constraintStart_toStartOf="@id/todoTitle"
                 app:layout_constraintTop_toBottomOf="@id/todoDetail"
-                tools:text="任务" />
+                tools:text="普通" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/todoType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_third"
+                android:layout_marginStart="10dp"
+                android:text="@{bean.whatType}"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_content"
+                app:layout_constraintStart_toEndOf="@id/todoPriority"
+                app:layout_constraintTop_toBottomOf="@id/todoDetail"
+                tools:text="工作" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/todoTime"
+                android:id="@+id/todoDateStr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

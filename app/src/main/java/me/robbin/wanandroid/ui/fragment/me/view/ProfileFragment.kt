@@ -33,6 +33,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding>()
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_profile, BR.viewModel, mViewModel)
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     private val articleAdapter by lazy { ArticleAdapter(requireContext()) }
@@ -62,9 +63,6 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding>()
     }
 
     override fun createObserver() {
-        mViewModel.back.observe(viewLifecycleOwner, Observer {
-            if (it) nav().navigateUp()
-        })
         mViewModel.haveArticle.observe(viewLifecycleOwner, Observer {
             if (it) {
                 articleJob?.cancel()
@@ -138,6 +136,10 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding>()
                 articleAdapter.submitData(it)
             }
         }
+    }
+
+    inner class ClickProxy {
+        fun back() = nav().navigateUp()
     }
 
 }

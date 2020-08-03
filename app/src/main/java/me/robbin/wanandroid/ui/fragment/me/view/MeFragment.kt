@@ -21,7 +21,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_me, BR.viewModel, mViewModel)
-            .addBindingParams(BR.route, RouteClick())
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -44,7 +44,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
         })
     }
 
-    inner class RouteClick {
+    inner class ClickProxy {
 
         fun goProfile() = checkLogin {
             val bundle = Bundle()

@@ -4,6 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import me.robbin.wanandroid.data.datasource.*
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
+import me.robbin.wanandroid.ui.fragment.home.viewmodel.HomeViewModel
 
 /**
  * 文章仓库
@@ -21,9 +22,9 @@ class ArticleRepository private constructor() {
      * 获取首页文章列表
      * Create by Robbin at 2020/7/12
      */
-    fun getHomeArticles() =
+    fun getHomeArticles(homeViewModel: HomeViewModel) =
         Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
-            HomeDataSource()
+            HomeDataSource(homeViewModel)
         }.flow
 
     /**

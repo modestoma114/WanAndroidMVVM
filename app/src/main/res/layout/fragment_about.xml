@@ -9,6 +9,10 @@
             name="viewModel"
             type="me.robbin.wanandroid.ui.fragment.me.viewmodel.AboutViewModel" />
 
+        <variable
+            name="click"
+            type="me.robbin.wanandroid.ui.fragment.me.view.AboutFragment.ClickProxy" />
+
     </data>
 
     <LinearLayout
@@ -19,7 +23,7 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             addStatusPadding="@{true}"
-            tbNavIconClick="@{() -> viewModel.goBack()}"
+            toolbarNavigationClick="@{() -> click.back()}"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/bg_main"

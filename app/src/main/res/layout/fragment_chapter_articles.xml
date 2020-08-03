@@ -7,6 +7,11 @@
         <variable
             name="viewModel"
             type="me.robbin.wanandroid.ui.fragment.knowledge.viewmodel.ChapterArticlesViewModel" />
+
+        <variable
+            name="click"
+            type="me.robbin.wanandroid.ui.fragment.knowledge.view.ChapterArticlesFragment.ClickProxy" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +22,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarChapterArticles"
             addStatusPadding="@{true}"
-            tbNavIconClick="@{() -> viewModel.goBack()}"
+            toolbarNavigationClick="@{() -> click.back()}"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/bg_main"

@@ -1,8 +1,8 @@
 package me.robbin.wanandroid.data.datasource
 
 import androidx.paging.PagingSource
-import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.api.ApiService
+import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.model.TodoBean
 import retrofit2.HttpException
 import java.io.IOException
@@ -11,12 +11,12 @@ import java.io.IOException
  * TodoL 列表数据源
  * Create by Robbin at 2020/7/27
  */
-class TodoDataSource : PagingSource<Int, TodoBean>() {
+class TodoDataSource(private val status: Int) : PagingSource<Int, TodoBean>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TodoBean> {
         return try {
             val page: Int = params.key ?: 1
-            val response = ApiService.getApi().getTodoList(page)
+            val response = ApiService.getApi().getTodoList(page, status)
 
             // 如果获取结果为空，直接抛出 Empty 异常
             if (response.data.total == 0) {

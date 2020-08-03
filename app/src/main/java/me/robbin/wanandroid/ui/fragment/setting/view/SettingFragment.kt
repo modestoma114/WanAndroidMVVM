@@ -1,7 +1,6 @@
 package me.robbin.wanandroid.ui.fragment.setting.view
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_setting.*
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
@@ -23,7 +22,7 @@ class SettingFragment : BaseFragment<SettingViewModel, FragmentSettingBinding>()
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.fragment_setting, BR.state, mViewModel)
             .addBindingParams(BR.appState, appViewModel)
-            .addBindingParams(BR.click, SettingClick())
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -35,13 +34,7 @@ class SettingFragment : BaseFragment<SettingViewModel, FragmentSettingBinding>()
         }
     }
 
-    override fun createObserver() {
-        mViewModel.back.observe(viewLifecycleOwner, Observer {
-            if (it) nav().navigateUp()
-        })
-    }
-
-    inner class SettingClick {
+    inner class ClickProxy {
         fun back() {
             nav().navigateUp()
         }
