@@ -20,7 +20,7 @@ class HomeViewModel : BaseViewModel() {
      * Create by Robbin at 2020/7/28
      */
     fun getArticles(): Flow<PagingData<ArticleBean>> =
-        homeRepository.getHomeArticles(this)
+        homeRepository.getHomeArticles()
 
     private val api by lazy { ApiService.getApi() }
 
