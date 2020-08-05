@@ -62,43 +62,43 @@
 
 |                        首页                        |                          每日一问                          |                             广场                             |
 | :------------------------------------------------: | :--------------------------------------------------------: | :----------------------------------------------------------: |
-| ![home](screenshots/me.robbin.wanandroid_home.jpg) | ![question](screenshots\me.robbin.wanandroid_question.jpg) | ![users_share](screenshots\me.robbin.wanandroid_usersshare.jpg) |
+| ![home](screenshots/me.robbin.wanandroid_home.jpg) | ![question](screenshots/me.robbin.wanandroid_question.jpg) | ![users_share](screenshots/me.robbin.wanandroid_usersshare.jpg) |
 
 |                      知识体系                      |                       知识体系文章列表                       |                            公众号                            |
 | :------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![tree](screenshots\me.robbin.wanandroid_tree.jpg) | ![tree_articles](screenshots\me.robbin.wanandroid_tree_articles.jpg) | ![wechat_articles](screenshots\me.robbin.wanandroid_wechat_articles.jpg) |
+| ![tree](screenshots/me.robbin.wanandroid_tree.jpg) | ![tree_articles](screenshots/me.robbin.wanandroid_tree_articles.jpg) | ![wechat_articles](screenshots/me.robbin.wanandroid_wechat_articles.jpg) |
 
 |                      我的                      |                            积分                            |                         我的收藏                         |
 | :--------------------------------------------: | :--------------------------------------------------------: | :------------------------------------------------------: |
-| ![me](screenshots\me.robbin.wanandroid_me.jpg) | ![integral](screenshots\me.robbin.wanandroid_integral.jpg) | ![collect](screenshots\me.robbin.wanandroid_collect.jpg) |
+| ![me](screenshots/me.robbin.wanandroid_me.jpg) | ![integral](screenshots/me.robbin.wanandroid_integral.jpg) | ![collect](screenshots/me.robbin.wanandroid_collect.jpg) |
 
-|                          我的分享                          |                      待办清单                      |                          添加代办                          |
-| :--------------------------------------------------------: | :------------------------------------------------: | :--------------------------------------------------------: |
-| ![my_share](screenshots\me.robbin.wanandroid_my_share.jpg) | ![todo](screenshots\me.robbin.wanandroid_todo.jpg) | ![add_todo](screenshots\me.robbin.wanandroid_add_todo.jpg) |
+|                          我的分享                          |                        待办清单                        |                          添加代办                           |
+| :--------------------------------------------------------: | :----------------------------------------------------: | :---------------------------------------------------------: |
+| ![my_share](screenshots/me.robbin.wanandroid_my_share.jpg) | ![todolist](screenshots/me.robbin.wanandroid_todo.jpg) | ![add_todol](screenshots/me.robbin.wanandroid_add_todo.jpg) |
 
 |                     浏览网页                     |                         项目列表                         |      |
 | :----------------------------------------------: | :------------------------------------------------------: | ---- |
-| ![web](screenshots\me.robbin.wanandroid_web.jpg) | ![project](screenshots\me.robbin.wanandroid_project.jpg) |      |
+| ![web](screenshots/me.robbin.wanandroid_web.jpg) | ![project](screenshots/me.robbin.wanandroid_project.jpg) |      |
 
 **夜间模式**
 
 |                             首页                             |                           每日一问                           |                             广场                             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![home_dark](screenshots\me.robbin.wanandroid_home_dark.jpg) | ![question_dark](screenshots\me.robbin.wanandroid_question_dark.jpg) | ![user_share_dark](screenshots\me.robbin.wanandroid_users_share_dark.jpg) |
+| ![home_dark](screenshots/me.robbin.wanandroid_home_dark.jpg) | ![question_dark](screenshots/me.robbin.wanandroid_question_dark.jpg) | ![user_share_dark](screenshots/me.robbin.wanandroid_users_share_dark.jpg) |
 
 |                           知识体系                           |                       知识体系文章列表                       |                            公众号                            |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![tree_dark](screenshots\me.robbin.wanandroid_tree_dark.jpg) | ![tree_articles_dark](screenshots\me.robbin.wanandroid_tree_articles_dark.jpg) | ![wechat_dark](screenshots\me.robbin.wanandroid_wechat_articles_dark.jpg) |
+| ![tree_dark](screenshots/me.robbin.wanandroid_tree_dark.jpg) | ![tree_articles_dark](screenshots/me.robbin.wanandroid_tree_articles_dark.jpg) | ![wechat_dark](screenshots/me.robbin.wanandroid_wechat_articles_dark.jpg) |
 
 |                           我的                           |                             积分                             |                           我的收藏                           |
 | :------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![me_dark](screenshots\me.robbin.wanandroid_me_dark.jpg) | ![integral_dark](screenshots\me.robbin.wanandroid_integral_dark.jpg) | ![collect_dark](screenshots\me.robbin.wanandroid_collect_dark.jpg) |
+| ![me_dark](screenshots/me.robbin.wanandroid_me_dark.jpg) | ![integral_dark](screenshots/me.robbin.wanandroid_integral_dark.jpg) | ![collect_dark](screenshots/me.robbin.wanandroid_collect_dark.jpg) |
 
 |                           我的分享                           |                           代办清单                           |                           添加代办                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![my_share_dark](screenshots\me.robbin.wanandroid_my_share_dark.jpg) | ![todo_dark](screenshots\me.robbin.wanandroid_todo_dark.jpg) | ![add_todo_dark](screenshots\me.robbin.wanandroid_add_todo_dark.jpg) |
+| ![my_share_dark](screenshots/me.robbin.wanandroid_my_share_dark.jpg) | ![todolsit_dark](screenshots/me.robbin.wanandroid_todo_dark.jpg) | ![add_todol_dark](screenshots/me.robbin.wanandroid_add_todo_dark.jpg) |
 
 |                          浏览网页                          |                           项目列表                           |      |
 | :--------------------------------------------------------: | :----------------------------------------------------------: | ---- |
-| ![web_dark](screenshots\me.robbin.wanandroid_web_dark.jpg) | ![project_dark](screenshots\me.robbin.wanandroid_project_dark.jpg) |      |
+| ![web_dark](screenshots/me.robbin.wanandroid_web_dark.jpg) | ![project_dark](screenshots/me.robbin.wanandroid_project_dark.jpg) |      |
 
