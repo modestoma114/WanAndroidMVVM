@@ -22,6 +22,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarMyShare"
             addStatusPadding="@{true}"
+            toolbarMenuItemClick="@{click}"
             toolbarNavigationClick="@{() -> click.back()}"
             android:layout_width="match_parent"
             android:layout_height="50dp"

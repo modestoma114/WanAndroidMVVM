@@ -96,6 +96,20 @@ class AboutViewModel : BaseViewModel() {
         )
         list.add(
             LicensesBean(
+                "AgentWeb - Justson",
+                "AgentWeb is a powerful library based on Android WebView.",
+                "https://github.com/Justson/AgentWeb"
+            )
+        )
+        list.add(
+            LicensesBean(
+                "banner - youth5201314",
+                "Banner 2.0 来了！Android广告图片轮播控件，内部基于ViewPager2实现，Indicator和UI都可以自定义。",
+                "https://github.com/youth5201314/banner"
+            )
+        )
+        list.add(
+            LicensesBean(
                 "MVVMScaffold - RobbinM",
                 "A toolkit help to build Android MVVM Application",
                 "https://github.com/RobbinM/MVVMScaffold"
