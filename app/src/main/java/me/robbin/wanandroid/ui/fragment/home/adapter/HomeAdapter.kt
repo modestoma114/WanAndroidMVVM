@@ -16,7 +16,7 @@ import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.app.listener.AdapterItemClickListener
+import me.robbin.wanandroid.app.event.listener.AdapterItemClickListener
 import me.robbin.wanandroid.databinding.LayoutBannerBinding
 import me.robbin.wanandroid.databinding.RvItemArticleBinding
 import me.robbin.wanandroid.model.ArticleBean
@@ -33,7 +33,6 @@ class HomeAdapter(private val context: Context) :
     companion object {
 
         private const val ITEM_TYPE_HEADER = 99
-        private const val ITEM_TYPE_FOOTER = 100
 
         val HOME_COMPARATOR = object : DiffUtil.ItemCallback<ArticleBean>() {
             override fun areItemsTheSame(oldItem: ArticleBean, newItem: ArticleBean): Boolean =
@@ -66,7 +65,6 @@ class HomeAdapter(private val context: Context) :
     override fun getItemViewType(position: Int): Int {
         return when (position) {
             0 -> ITEM_TYPE_HEADER
-            itemCount - 1 -> ITEM_TYPE_FOOTER
             else -> super.getItemViewType(position)
         }
     }
@@ -123,6 +121,8 @@ class HomeAdapter(private val context: Context) :
         }
     }
 
+    fun getData(position: Int): ArticleBean? = getItem(position)
+
     private var itemClickListener: AdapterItemClickListener? = null
 
     fun setItemClickListener(listener: AdapterItemClickListener) {
@@ -136,27 +136,39 @@ class HomeAdapter(private val context: Context) :
         this.collectAction = action
     }
 
-}
+    inner class BannerViewHolder(
+        private val binding: LayoutBannerBinding,
+        private val mContext: Context
+    ) :
+        RecyclerView.ViewHolder(binding.root) {
 
-class BannerViewHolder(private val binding: LayoutBannerBinding, private val mContext: Context) :
-    RecyclerView.ViewHolder(binding.root) {
-
-    fun bind(banners: List<BannerBean>?) {
-        val banner = binding.banner
-        banner.run {
-            adapter = object : BannerImageAdapter<BannerBean>(banners) {
-                override fun onBindView(
-                    holder: BannerImageHolder?,
-                    data: BannerBean?,
-                    position: Int,
-                    size: Int
-                ) {
-                    holder?.imageView?.load(data?.url)
+        fun bind(banners: List<BannerBean>?) {
+            val banner = binding.banner
+            banner.run {
+                adapter = object : BannerImageAdapter<BannerBean>(banners) {
+                    override fun onBindView(
+                        holder: BannerImageHolder?,
+                        data: BannerBean?,
+                        position: Int,
+                        size: Int
+                    ) {
+                        holder?.imageView?.load(data?.imagePath)
+                        holder?.imageView?.setOnClickListener {
+                            val bundle = Bundle()
+                            bundle.run {
+                                putString("url", data?.url)
+                                putString("title", data?.title)
+                            }
+                            itemClickListener?.itemClickListener()
+                                ?.navigate(R.id.action_global_to_webFragment, bundle)
+                        }
+                    }
                 }
+                addBannerLifecycleObserver(mContext as LifecycleOwner)
+                setIndicator(CircleIndicator(mContext))
             }
-            addBannerLifecycleObserver(mContext as LifecycleOwner)
-            setIndicator(CircleIndicator(mContext))
         }
+
     }
 
 }

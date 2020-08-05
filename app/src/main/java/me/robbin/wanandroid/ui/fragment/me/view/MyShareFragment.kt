@@ -9,9 +9,9 @@ import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
+import me.robbin.wanandroid.app.event.listener.AdapterItemClickListener
 import me.robbin.wanandroid.app.ext.checkLogin
 import me.robbin.wanandroid.app.ext.nav
-import me.robbin.wanandroid.app.listener.AdapterItemClickListener
 import me.robbin.wanandroid.databinding.FragmentMyShareBinding
 import me.robbin.wanandroid.ui.fragment.common.view.BaseArticlesFragment
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.MyShareViewModel
@@ -40,7 +40,7 @@ class MyShareFragment : BaseArticlesFragment<MyShareViewModel, FragmentMyShareBi
                             item[0].toToast()
                             val id = articleAdapter.getData(position)?.id
                             mViewModel.deleteShare(id) {
-                                refreshData()
+                                articleAdapter.refresh()
                                 dialog.dismiss()
                             }
                         }

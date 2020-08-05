@@ -18,7 +18,7 @@
         android:id="@+id/refreshIntegral"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_primary">
+        android:background="@color/bgPrimary">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -31,23 +31,23 @@
                 toolbarNavigationClick="@{() -> click.back()}"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:background="@color/bg_main"
+                android:background="@color/bgMain"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:menu="@menu/menu_integral"
                 app:navigationIcon="@drawable/ic_back"
                 app:title="@string/title_my_coin"
-                app:titleTextColor="@color/text_title" />
+                app:titleTextColor="@color/textTitle" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvIntegral"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:background="@color/bg_main"
+                android:background="@color/bgMain"
                 android:gravity="center"
                 android:text="@{viewModel.integral.toString()}"
-                android:textColor="@color/text_title"
+                android:textColor="@color/textTitle"
                 android:textSize="60sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,7 @@
                 android:drawableStart="@drawable/ic_info"
                 android:onClick="@{() -> click.goIntegralRule()}"
                 android:text="@string/text_integral_info"
-                android:textColor="@color/text_title"
+                android:textColor="@color/textTitle"
                 android:textSize="@dimen/text_content"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toTopOf="@id/rlIntegral"

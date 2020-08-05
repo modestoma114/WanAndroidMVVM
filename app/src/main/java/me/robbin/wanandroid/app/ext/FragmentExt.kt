@@ -3,7 +3,7 @@ package me.robbin.wanandroid.app.ext
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.app.utils.CacheUtils
+import me.robbin.wanandroid.app.ext.utils.CacheUtils
 
 /**
  * Fragment 拓展函数
@@ -20,7 +20,7 @@ fun Fragment.checkLogin(action: () -> Unit) {
     if (CacheUtils.isLogin()) {
         action()
     } else {
-        nav().navigate(R.id.action_global_loginFragment)
+        nav().navigate(R.id.action_global_to_login)
     }
 
 }
@@ -32,6 +32,6 @@ fun Fragment.checkLogin(action: () -> Unit) {
 fun Fragment.backMain() {
     requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
         CacheUtils.setIsLogin(false)
-        nav().popBackStack(R.id.containerFragment, false)
+        nav().popBackStack(R.id.mainFragment, false)
     }
 }

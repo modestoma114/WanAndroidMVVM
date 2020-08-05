@@ -6,9 +6,9 @@ import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
-import me.robbin.wanandroid.app.utils.CacheUtils
-import me.robbin.wanandroid.app.utils.isNightMode
-import me.robbin.wanandroid.app.utils.setNightMode
+import me.robbin.wanandroid.app.ext.utils.CacheUtils
+import me.robbin.wanandroid.app.ext.utils.isNightMode
+import me.robbin.wanandroid.app.ext.utils.setNightMode
 import me.robbin.wanandroid.databinding.FragmentSettingBinding
 import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.setting.viewmodel.SettingViewModel

@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_primary">
+        android:background="@color/bgPrimary">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarProject"
@@ -25,13 +25,13 @@
             toolbarNavigationClick="@{() -> click.back()}"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:background="@color/bg_main"
+            android:background="@color/bgMain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_back"
             app:title="@string/title_project"
-            app:titleTextColor="@color/text_title" />
+            app:titleTextColor="@color/textTitle" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rlProjects"

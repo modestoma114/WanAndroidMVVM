@@ -110,8 +110,8 @@ class SearchFragment : BaseArticlesFragment<SearchViewModel, FragmentSearchBindi
                 chip.text = hotKey.name
                 chip.isCheckable = false
                 chip.isCloseIconVisible = false
-                chip.setTextColor(requireContext().resources.getColor(R.color.text_secondary))
-                chip.setChipBackgroundColorResource(R.color.bg_third)
+                chip.setTextColor(requireContext().resources.getColor(R.color.textSecondary))
+                chip.setChipBackgroundColorResource(R.color.bgThird)
                 chip.setOnClickListener {
                     etSearch.setText(hotKey.name)
                     search()

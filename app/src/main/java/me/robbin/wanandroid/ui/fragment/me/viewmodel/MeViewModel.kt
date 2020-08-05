@@ -2,7 +2,7 @@ package me.robbin.wanandroid.ui.fragment.me.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
-import me.robbin.wanandroid.app.utils.CacheUtils
+import me.robbin.wanandroid.app.ext.utils.CacheUtils
 import me.robbin.wanandroid.api.ApiService
 
 /**

@@ -17,7 +17,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_primary">
+        android:background="@color/bgPrimary">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 android:layout_height="match_parent"
                 android:minHeight="200dp"
                 app:collapsedTitleGravity="start"
-                app:contentScrim="@color/bg_main"
+                app:contentScrim="@color/bgMain"
                 app:expandedTitleMarginEnd="10dp"
                 app:expandedTitleMarginStart="10dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
@@ -62,7 +62,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="@{viewModel.userName}"
-                        android:textColor="@color/text_title"
+                        android:textColor="@color/textTitle"
                         android:textSize="@dimen/text_content"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.userInfo}"
-                        android:textColor="@color/text_title"
+                        android:textColor="@color/textTitle"
                         android:textSize="@dimen/text_desc"
                         app:layout_constraintEnd_toEndOf="@id/tvName"
                         app:layout_constraintStart_toStartOf="@id/tvName"

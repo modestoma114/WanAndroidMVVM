@@ -11,7 +11,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.app.listener.AdapterItemClickListener
+import me.robbin.wanandroid.app.event.listener.AdapterItemClickListener
 import me.robbin.wanandroid.model.ArticleBean
 import me.robbin.wanandroid.databinding.RvItemArticleBinding
 

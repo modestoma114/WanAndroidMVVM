@@ -46,8 +46,8 @@ class KnowledgeAdapter :
                 chip.text = item.children[index].name
                 chip.isCheckable = false
                 chip.isCloseIconVisible = false
-                chip.setTextColor(context.resources.getColor(R.color.text_secondary))
-                chip.setChipBackgroundColorResource(R.color.bg_third)
+                chip.setTextColor(context.resources.getColor(R.color.textSecondary))
+                chip.setChipBackgroundColorResource(R.color.bgThird)
                 chip.setOnClickListener {
                     val bundle = Bundle()
                     bundle.putParcelable("data", item)

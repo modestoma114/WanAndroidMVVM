@@ -2,28 +2,28 @@
 <resources>
 
     <color name="colorPrimary">#4282F4</color>
-    <color name="colorAccent">#B1B1B1</color>
+    <color name="colorAccent">#03DAC5</color>
 
-    <!-- 文章细节 -->
-    <color name="text_new">#4282F4</color>
-    <color name="text_top">#F86734</color>
     <!-- 文字细节 -->
-    <color name="text_primary">#B1B1B1</color>
-    <color name="text_secondary">#7C7B7B</color>
-    <color name="text_third">#5E5E5E</color>
-    <color name="text_title">#FFFFFF</color>
+    <color name="textPrimary">#B1B1B1</color>
+    <color name="textSecondary">#7C7B7B</color>
+    <color name="textThird">#5E5E5E</color>
+    <color name="textTitle">#FFFFFF</color>
     <!-- 界面细节 -->
-    <color name="bg_main">#000000</color>
-    <color name="bg_primary">#000000</color>
-    <color name="bg_second">#292929</color>
-    <color name="bg_third">#262626</color>
-    <color name="bg_transparent">#00000000</color>
-    <color name="bg_mask">#11000000</color>
+    <color name="bgMain">#000000</color>
+    <color name="bgPrimary">#000000</color>
+    <color name="bgSecondary">#292929</color>
+    <color name="bgThird">#262626</color>
+    <color name="bgTransparent">#00000000</color>
+    <color name="bgMask">#11000000</color>
     <!-- TabLayout细节 -->
     <color name="text_select">#BBBBBB</color>
     <color name="text_no_select">#88BBBBBB</color>
     <!-- Icon细节 -->
     <color name="color_icon">#FFB1B1B1</color>
     <color name="color_bottom_icon">#FF7C7B7B</color>
+    <!-- 细节颜色 -->
+    <color name="colorNew">#4282F4</color>
+    <color name="colorBadge">#F86734</color>
 
 </resources>

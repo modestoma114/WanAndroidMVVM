@@ -3,6 +3,7 @@ package me.robbin.wanandroid.ui.fragment.common.view
 import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.paging.LoadState
@@ -11,13 +12,13 @@ import kotlinx.android.synthetic.main.layout_articles.*
 import kotlinx.android.synthetic.main.layout_loading_view.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
-import me.robbin.wanandroid.app.listener.AdapterItemClickListener
-import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.app.ext.nav
+import me.robbin.wanandroid.app.event.listener.AdapterItemClickListener
+import me.robbin.wanandroid.app.network.EmptyException
+import me.robbin.wanandroid.app.event.bus.CollectBus
 import me.robbin.wanandroid.ui.fragment.common.adapter.ArticleAdapter
 import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.common.viewmodel.BaseArticlesViewModel
@@ -53,7 +54,7 @@ abstract class BaseArticlesFragment<VM : BaseArticlesViewModel, VDB : ViewDataBi
         emptyStr = resources.getString(R.string.text_empty_retry)
         initAdapter(rlArticles)
         // 设置 RefreshLayout 刷新事件
-        refreshArticles.setOnRefreshListener { refreshData() }
+        refreshArticles.setOnRefreshListener { articleAdapter.refresh() }
         // 提示信息界面 Button 点击事件
         btnEmpty.setOnClickListener { articleAdapter.retry() }
     }
@@ -66,6 +67,18 @@ abstract class BaseArticlesFragment<VM : BaseArticlesViewModel, VDB : ViewDataBi
                 articleAdapter.submitData(it)
             }
         }
+    }
+
+    override fun createObserver() {
+        eventViewModel.userCollectUpdate.observe(viewLifecycleOwner, Observer {
+            for (i in 0 until articleAdapter.itemCount) {
+                if (articleAdapter.getData(i)?.id == it.id) {
+                    articleAdapter.getData(i)?.collect = it.collect
+                    articleAdapter.notifyItemChanged(i)
+                    break
+                }
+            }
+        })
     }
 
     /**
@@ -88,18 +101,24 @@ abstract class BaseArticlesFragment<VM : BaseArticlesViewModel, VDB : ViewDataBi
             override fun itemLongClickListener(position: Int) {
             }
         })
-        articleAdapter.setCollectAction { item, view, position ->
+        articleAdapter.setCollectAction { item, view, _ ->
             if (view.isChecked) {
                 mViewModel.collect(item.id) {
-                    item.collect = true
-                    view.isChecked = true
-                    articleAdapter.notifyItemChanged(position)
+                    eventViewModel.userCollectUpdate.postValue(
+                        CollectBus(
+                            item.id,
+                            true
+                        )
+                    )
                 }
             } else {
                 mViewModel.unCollect(item.id) {
-                    item.collect = false
-                    view.isChecked = false
-                    articleAdapter.notifyItemChanged(position)
+                    eventViewModel.userCollectUpdate.postValue(
+                        CollectBus(
+                            item.id,
+                            false
+                        )
+                    )
                 }
             }
         }
@@ -120,19 +139,6 @@ abstract class BaseArticlesFragment<VM : BaseArticlesViewModel, VDB : ViewDataBi
                 errorState?.let {
                     "\uD83D\uDE28 Wooops: ${it.error}".toToast()
                 }
-            }
-        }
-    }
-
-    /**
-     * 刷新事件
-     * Create by Robbin at 2020/7/28
-     */
-    open fun refreshData() {
-        articleJob?.cancel()
-        articleJob = lifecycleScope.launch {
-            mViewModel.getArticles(type, cid).collectLatest {
-                articleAdapter.submitData(it)
             }
         }
     }

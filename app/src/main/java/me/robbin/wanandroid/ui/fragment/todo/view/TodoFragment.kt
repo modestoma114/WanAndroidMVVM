@@ -1,27 +1,23 @@
 package me.robbin.wanandroid.ui.fragment.todo.view
 
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.android.synthetic.main.fragment_todo_list.*
-import kotlinx.android.synthetic.main.layout_loading_view.*
+import kotlinx.android.synthetic.main.fragment_todo.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import me.robbin.mvvmscaffold.base.DataBindingConfig
-import me.robbin.mvvmscaffold.utils.setStatusBarLightMode
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
+import me.robbin.wanandroid.app.event.bus.TodoBus
 import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.app.network.EmptyException
-import me.robbin.wanandroid.databinding.FragmentTodoListBinding
+import me.robbin.wanandroid.databinding.FragmentTodoBinding
 import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.todo.adapter.TodoAdapter
 import me.robbin.wanandroid.ui.fragment.todo.viewmodel.TodoViewModel
@@ -30,34 +26,74 @@ import me.robbin.wanandroid.ui.fragment.todo.viewmodel.TodoViewModel
  * TodoL Fragment
  * Create by Robbin at 2020/7/14
  */
-class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoListBinding>() {
+class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
 
     override fun getDataBindingConfig(): DataBindingConfig {
-        return DataBindingConfig(R.layout.fragment_todo_list, BR.viewModel, mViewModel)
+        return DataBindingConfig(R.layout.fragment_todo, BR.viewModel, mViewModel)
             .addBindingParams(BR.click, ClickProxy())
     }
+
+    private var emptyStr = ""
 
     private val todoAdapter by lazy { TodoAdapter(requireContext()) }
 
     private var todoJob: Job? = null
 
     override fun initView(savedInstanceState: Bundle?) {
+        emptyStr = resources.getString(R.string.text_empty_retry)
         initAdapter()
-        refreshTodo.setOnRefreshListener { refreshData() }
         btnEmpty.setOnClickListener { todoAdapter.retry() }
+        refreshTodo.setOnRefreshListener { todoAdapter.refresh() }
+    }
+
+    override fun initData() {
+        todoJob?.cancel()
+        todoJob = lifecycleScope.launchWhenResumed {
+            mViewModel.getTodoList().collectLatest {
+                todoAdapter.submitData(it)
+            }
+        }
     }
 
     override fun createObserver() {
-        appViewModel.isLogin.observe(viewLifecycleOwner, Observer { isLogin ->
-            if (isLogin) {
-                refreshTodo.isEnabled = true
-                getTodo()
-            } else {
-                rlTodo.visibility = View.GONE
-                ivEmpty.visibility = View.VISIBLE
-                btnEmpty.visibility = View.VISIBLE
-                refreshTodo.isEnabled = false
-                btnEmpty.text = "请先登录"
+        eventViewModel.changeTodoStatus.observe(viewLifecycleOwner, Observer {
+            for (i in 0 until todoAdapter.itemCount) {
+                if (todoAdapter.getItemByPosition(i)?.id == it.id) {
+                    todoAdapter.getItemByPosition(i)?.status = it.status
+                    todoAdapter.notifyItemChanged(i)
+                    break
+                }
+            }
+        })
+        eventViewModel.deleteTodo.observe(viewLifecycleOwner, Observer {
+            for (i in 0 until todoAdapter.itemCount) {
+                if (todoAdapter.getItemByPosition(i)?.id == it.id) {
+                    todoAdapter.run {
+                        getItemByPosition(i)?.deleteFlag = true
+                        notifyItemChanged(i)
+                    }
+                    break
+                }
+            }
+        })
+        eventViewModel.addTodo.observe(viewLifecycleOwner, Observer {
+            todoAdapter.refresh()
+        })
+        eventViewModel.changeTodo.observe(viewLifecycleOwner, Observer {
+            for (i in 0 until todoAdapter.itemCount) {
+                if (todoAdapter.getItemByPosition(i)?.id == it.id) {
+                    todoAdapter.run {
+                        getItemByPosition(i).run {
+                            this?.title = it.bean.title
+                            this?.content = it.bean.content
+                            this?.dateStr = it.bean.dateStr
+                            this?.type = it.bean.type
+                            this?.priority = it.bean.priority
+                        }
+                        notifyItemChanged(i)
+                    }
+                    break
+                }
             }
         })
     }
@@ -70,39 +106,34 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoListBinding>() {
                 refreshTodo.isRefreshing = loadState.refresh is LoadState.Loading
             }
         }
-        todoAdapter.setCollectAction { bean, view, position ->
-            if (view.isChecked) {
-                mViewModel.doneTodo(bean.id, 1) {
-                    bean.status = 1
-                    view.isChecked = true
-                    todoAdapter.notifyItemRemoved(position)
-                }
-            } else {
-                mViewModel.doneTodo(bean.id, 0) {
-                    bean.status = 0
-                    view.isChecked = false
-                    todoAdapter.notifyItemRemoved(position)
-                }
-            }
-        }
         todoAdapter.setClickAction { bean, _, _ ->
             val bundle = Bundle()
             bundle.putParcelable("bean", bean)
-            nav().navigate(R.id.action_main_to_todo_detail, bundle)
+            nav().navigate(R.id.action_todo_to_todoDetail, bundle)
         }
-        todoAdapter.setLongClickAction { _, _, position ->
-            MaterialAlertDialogBuilder(requireContext())
+        todoAdapter.setLongClickAction { bean, _, _ ->
+            MaterialAlertDialogBuilder(context)
                 .setTitle(resources.getString(R.string.dialog_title_delete))
                 .setNegativeButton(resources.getString(R.string.cancel)) { dialog, _ ->
                     dialog.dismiss()
                 }.setPositiveButton(resources.getString(R.string.accept)) { dialog, _ ->
-                    mViewModel.deleteTodo(position) {
-                        todoAdapter.notifyItemRemoved(position)
+                    mViewModel.deleteTodo(bean.id) {
+                        eventViewModel.deleteTodo.postValue(TodoBus(bean.id, bean.status))
                         dialog.dismiss()
-                        nav().navigateUp()
                     }
                 }.show()
         }
+        todoAdapter.setChangeStatusClick { bean ->
+            mViewModel.changeTodoStatus(bean.id, (bean.status + 1) % 2) {
+                eventViewModel.changeTodoStatus.postValue(
+                    TodoBus(
+                        bean.id,
+                        (bean.status + 1) % 2
+                    )
+                )
+            }
+        }
+        // 界面状态绑定
         todoAdapter.addLoadStateListener { loadState ->
             rlTodo.isVisible = loadState.refresh is LoadState.NotLoading
             progressLoading.isVisible = loadState.refresh is LoadState.Loading
@@ -114,7 +145,7 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoListBinding>() {
                 ?: loadState.prepend as? LoadState.Error
                 ?: loadState.refresh as? LoadState.Error
             if (errorState?.error is EmptyException) {
-                btnEmpty.text = (errorState.error as EmptyException).errMsg
+                btnEmpty.text = emptyStr
             } else {
                 errorState?.let {
                     "\uD83D\uDE28 Wooops: ${it.error}".toToast()
@@ -123,57 +154,10 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoListBinding>() {
         }
     }
 
-    private fun getTodo() {
-        todoJob?.cancel()
-        todoJob = lifecycleScope.launchWhenResumed {
-            mViewModel.getTodoList().collectLatest {
-                todoAdapter.submitData(it)
-            }
-        }
-    }
-
-    private fun refreshData() {
-        todoAdapter.refresh()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        setStatusBarLightMode(!appViewModel.isNightMode.value!!)
-    }
-
-    inner class ClickProxy : Toolbar.OnMenuItemClickListener {
+    inner class ClickProxy {
         fun addTodo() {
-            nav().navigate(R.id.action_main_to_todo_detail)
+            nav().navigate(R.id.action_todo_to_todoDetail)
         }
-
-        override fun onMenuItemClick(item: MenuItem?): Boolean {
-            return if (appViewModel.isLogin.value == true) {
-                when (item?.itemId) {
-                    R.id.tab_done -> {
-                        todoJob?.cancel()
-                        todoJob = lifecycleScope.launchWhenResumed {
-                            mViewModel.getDoneTodoList().collectLatest {
-                                todoAdapter.submitData(it)
-                            }
-                        }
-                        true
-                    }
-                    R.id.tab_todo -> {
-                        todoJob?.cancel()
-                        todoJob = lifecycleScope.launchWhenResumed {
-                            mViewModel.getTodoList().collectLatest {
-                                todoAdapter.submitData(it)
-                            }
-                        }
-                        true
-                    }
-                    else -> false
-                }
-            } else {
-                false
-            }
-        }
-
     }
 
 }

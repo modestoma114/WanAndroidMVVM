@@ -19,6 +19,7 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.databinding.FragmentWebBinding
+import me.robbin.wanandroid.app.event.bus.CollectBus
 import me.robbin.wanandroid.ui.fragment.common.viewmodel.WebViewModel
 
 /**
@@ -56,7 +57,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
     private fun initWeb() {
         agentWeb = AgentWeb.with(this)
             .setAgentWebParent(webContainer, ViewGroup.LayoutParams(-1, -1))
-            .useDefaultIndicator(resources.getColor(R.color.text_primary), 2)
+            .useDefaultIndicator(resources.getColor(R.color.textPrimary), 2)
             .interceptUnkownUrl()
             .setMainFrameErrorView(R.layout.layout_web_error, R.id.btnReload)
             .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)
@@ -158,7 +159,20 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
         }
 
         override fun onMenuItemClick(item: MenuItem?): Boolean {
-            return false
+            return when (item?.itemId) {
+                R.id.tab_home -> {
+                    mViewModel.collect {
+                        eventViewModel.userCollectUpdate.postValue(
+                            CollectBus(
+                                mViewModel.articleId.value!!,
+                                true
+                            )
+                        )
+                    }
+                    true
+                }
+                else -> false
+            }
         }
     }
 

@@ -19,10 +19,9 @@ data class TodoBean(
     var status: Int,
     var title: String,
     var type: Int,
-    var userId: Int
+    var userId: Int,
+    var deleteFlag: Boolean = false
 ) : Parcelable {
-    val hasDone: Boolean
-        get() = status == 1
 
     val whatType: String
         get() = when (type) {

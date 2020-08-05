@@ -17,7 +17,7 @@ import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
-import me.robbin.wanandroid.app.listener.AdapterItemClickListener
+import me.robbin.wanandroid.app.event.listener.AdapterItemClickListener
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.databinding.FragmentProfileBinding
 import me.robbin.wanandroid.app.ext.nav

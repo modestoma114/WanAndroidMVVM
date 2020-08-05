@@ -57,15 +57,6 @@ class ProjectFragment : BaseArticlesFragment<ProjectViewModel, FragmentProjectBi
         })
     }
 
-    override fun refreshData() {
-        articleJob?.cancel()
-        articleJob = lifecycleScope.launch {
-            mViewModel.getArticles(cid = mViewModel.cid.value!!).collectLatest {
-                articleAdapter.submitData(it)
-            }
-        }
-    }
-
     inner class ClickProxy {
         fun back() = nav().navigateUp()
     }

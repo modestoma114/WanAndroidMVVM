@@ -20,9 +20,9 @@ class TodoRepository private constructor() {
      * 获取 TodoL 列表
      * Create by Robbin at 2020/7/27
      */
-    fun getTodoList(status: Int) =
+    fun getTodoList() =
         Pager(PagingConfig(pageSize = 20, enablePlaceholders = false)) {
-            TodoDataSource(status)
+            TodoDataSource()
         }.flow
 
 }

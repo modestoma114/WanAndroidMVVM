@@ -17,7 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_primary"
+        android:background="@color/bgPrimary"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -26,11 +26,11 @@
             toolbarNavigationClick="@{() -> click.back()}"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/bg_main"
+            android:background="@color/bgMain"
             app:menu="@menu/menu_web"
             app:navigationIcon="@drawable/ic_back"
             app:title="@{viewModel.title}"
-            app:titleTextColor="@color/text_title" />
+            app:titleTextColor="@color/textTitle" />
 
         <FrameLayout
             android:id="@+id/webContainer"

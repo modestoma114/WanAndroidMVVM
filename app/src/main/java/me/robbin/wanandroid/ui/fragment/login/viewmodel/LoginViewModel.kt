@@ -4,8 +4,8 @@ import android.text.Editable
 import androidx.lifecycle.MutableLiveData
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.mvvmscaffold.utils.toToast
-import me.robbin.wanandroid.app.utils.CacheUtils
-import me.robbin.wanandroid.app.watcher.SimpleWatcher
+import me.robbin.wanandroid.app.ext.utils.CacheUtils
+import me.robbin.wanandroid.app.ext.watcher.SimpleWatcher
 import me.robbin.wanandroid.api.ApiService
 
 /**

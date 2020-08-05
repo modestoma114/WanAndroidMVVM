@@ -8,6 +8,7 @@ import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
+import me.robbin.wanandroid.app.event.bus.TodoDetailBus
 import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.databinding.FragmentTodoDetailBinding
 import me.robbin.wanandroid.model.TodoBean
@@ -57,12 +58,12 @@ class TodoDetailFragment : BaseFragment<TodoDetailViewModel, FragmentTodoDetailB
         fun setPriority() {
             val item = arrayOf("普通", "紧急")
             MaterialAlertDialogBuilder(context)
-                .setTitle(resources.getString(R.string.dialog_title_action))
+                .setTitle(resources.getString(R.string.dialog_title_priority))
                 .setItems(item) { dialog, which ->
                     val priority =
                         when (which) {
                             0 -> 1
-                            else -> 1
+                            else -> 2
                         }
                     mViewModel.setPriority(priority)
                     dialog.dismiss()
@@ -72,7 +73,7 @@ class TodoDetailFragment : BaseFragment<TodoDetailViewModel, FragmentTodoDetailB
         fun setType() {
             val item = arrayOf("工作", "日常", "娱乐", "其他")
             MaterialAlertDialogBuilder(context)
-                .setTitle(resources.getString(R.string.dialog_title_action))
+                .setTitle(resources.getString(R.string.dialog_title_type))
                 .setItems(item) { dialog, which ->
                     val type =
                         when (which) {
@@ -93,8 +94,9 @@ class TodoDetailFragment : BaseFragment<TodoDetailViewModel, FragmentTodoDetailB
                     .setNegativeButton(resources.getString(R.string.cancel)) { dialog, _ ->
                         dialog.dismiss()
                     }.setPositiveButton(resources.getString(R.string.accept)) { dialog, _ ->
-                        mViewModel.updateTodo {
+                        mViewModel.updateTodo { bean ->
                             dialog.dismiss()
+                            eventViewModel.changeTodo.postValue(TodoDetailBus(bean.id, bean))
                             nav().navigateUp()
                         }
                     }.show()
@@ -106,6 +108,7 @@ class TodoDetailFragment : BaseFragment<TodoDetailViewModel, FragmentTodoDetailB
                     }.setPositiveButton(resources.getString(R.string.accept)) { dialog, _ ->
                         mViewModel.addTodo {
                             dialog.dismiss()
+                            eventViewModel.addTodo.postValue(true)
                             nav().navigateUp()
                         }
                     }.show()

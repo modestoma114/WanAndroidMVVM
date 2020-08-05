@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WanAndroidMVVM</string>
+    <string name="app_name">玩Android</string>
 
     <string name="tab_home">首页</string>
     <string name="tab_question">问答</string>
@@ -21,11 +21,14 @@
     <string name="title_about">关于软件</string>
     <string name="title_profile">用户详细</string>
     <string name="title_todo_detail">Todo</string>
+    <string name="title_login">登录/注册</string>
 
     <string name="dialog_title_action">选择操作</string>
     <string name="dialog_title_edit">确定更改</string>
     <string name="dialog_title_commit">确认提交</string>
     <string name="dialog_title_delete">确定删除</string>
+    <string name="dialog_title_priority">选择优先级</string>
+    <string name="dialog_title_type">选择种类</string>
 
     <string name="text_new">新</string>
     <string name="text_author">匿名</string>
@@ -36,7 +39,6 @@
     <string name="text_search_empty">什么都没有找到，换个关键词试试</string>
     <string name="text_me_login">去登录</string>
     <string name="text_user_info">等级：—&#160;&#160;&#160;排名： —</string>
-    <string name="text_login_title">登录/注册</string>
     <string name="text_login">登录</string>
     <string name="text_register">注册</string>
     <string name="text_go_register">去注册</string>
@@ -67,6 +69,7 @@
     <string name="text_setting_coin">我的积分</string>
     <string name="text_setting_collect">我的收藏</string>
     <string name="text_setting_share">我的分享</string>
+    <string name="text_setting_todo">待办清单</string>
     <string name="text_setting_wanandroid">WanAndroid网站</string>
     <string name="text_setting_project">项目</string>
     <string name="text_setting_about">关于软件</string>

@@ -17,14 +17,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_primary">
+        android:background="@color/bgPrimary">
 
         <LinearLayout
             android:id="@+id/llSearch"
             addStatusPadding="@{true}"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:background="@color/bg_main"
+            android:background="@color/bgMain"
             android:paddingStart="10dp"
             android:paddingTop="5dp"
             android:paddingEnd="10dp"
@@ -43,7 +43,7 @@
                     onTextChanged="@{viewModel.searchWatcher}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/bg_transparent"
+                    android:background="@color/bgTransparent"
                     android:hint="@string/hint_search"
                     android:imeOptions="actionSearch"
                     android:maxLines="1"
@@ -58,9 +58,10 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="10dp"
-                    android:background="@color/bg_transparent"
+                    android:background="@color/bgTransparent"
                     android:onClick="@{() -> click.back()}"
-                    android:src="@drawable/ic_back_dark" />
+                    android:src="@drawable/ic_back"
+                    android:tint="#FF707070" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/btnClearSearch"
@@ -68,7 +69,7 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical|end"
                     android:layout_marginEnd="10dp"
-                    android:background="@color/bg_transparent"
+                    android:background="@color/bgTransparent"
                     android:src="@drawable/ic_clear" />
 
             </com.google.android.material.card.MaterialCardView>

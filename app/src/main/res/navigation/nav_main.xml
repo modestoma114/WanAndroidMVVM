@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/containerFragment">
+    app:startDestination="@id/mainFragment">
+
+    <include app:graph="@navigation/nav_login" />
+
+    <include app:graph="@navigation/nav_todo" />
 
     <fragment
-        android:id="@+id/containerFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.main.view.ContainerFragment"
-        android:label="ContainerFragment"
-        tools:layout="@layout/fragment_container">
+        android:id="@+id/mainFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.main.view.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_main_to_search"
             app:destination="@id/searchFragment"
@@ -18,7 +22,7 @@
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
             app:popExitAnim="@anim/nav_fragment_pop_exit" />
         <action
-            android:id="@+id/action_mainFragment_to_setting"
+            android:id="@+id/action_main_to_setting"
             app:destination="@id/settingFragment"
             app:enterAnim="@anim/nav_fragment_enter"
             app:exitAnim="@anim/nav_fragment_exit"
@@ -60,19 +64,13 @@
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
             app:popExitAnim="@anim/nav_fragment_pop_exit" />
         <action
-            android:id="@+id/action_main_to_todo_detail"
-            app:destination="@id/todoDetailFragment"
+            android:id="@+id/action_main_to_todo"
+            app:destination="@id/todoNavigation"
             app:enterAnim="@anim/nav_fragment_enter"
             app:exitAnim="@anim/nav_fragment_exit"
             app:popEnterAnim="@anim/nav_fragment_pop_enter"
             app:popExitAnim="@anim/nav_fragment_pop_exit" />
     </fragment>
-
-    <fragment
-        android:id="@+id/mainFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.main.view.MainFragment"
-        android:label="MainFragment"
-        tools:layout="@layout/fragment_main" />
 
     <fragment
         android:id="@+id/profileFragment"
@@ -179,28 +177,17 @@
         tools:layout="@layout/fragment_about" />
 
     <fragment
-        android:id="@+id/loginMainFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.login.view.LoginMainFragment"
-        android:label="LoginMainFragment"
-        tools:layout="@layout/fragment_login_main" />
-    <action
-        android:id="@+id/action_global_loginFragment"
-        app:destination="@id/loginMainFragment"
-        app:enterAnim="@anim/nav_login_enter"
-        app:exitAnim="@anim/nav_login_exit"
-        app:popEnterAnim="@anim/nav_login_pop_enter"
-        app:popExitAnim="@anim/nav_login_pop_exit" />
-
-    <fragment
         android:id="@+id/shareArticleFragment"
         android:name="me.robbin.wanandroid.ui.fragment.knowledge.view.ShareArticleFragment"
         android:label="ShareArticleFragment"
         tools:layout="@layout/fragment_share_article" />
 
-    <fragment
-        android:id="@+id/todoDetailFragment"
-        android:name="me.robbin.wanandroid.ui.fragment.todo.view.TodoDetailFragment"
-        android:label="TodoDetailFragment"
-        tools:layout="@layout/fragment_todo_detail" />
+    <action
+        android:id="@+id/action_global_to_login"
+        app:destination="@id/loginNavigation"
+        app:enterAnim="@anim/nav_fragment_enter"
+        app:exitAnim="@anim/nav_fragment_exit"
+        app:popEnterAnim="@anim/nav_fragment_pop_enter"
+        app:popExitAnim="@anim/nav_fragment_pop_exit" />
 
 </navigation>

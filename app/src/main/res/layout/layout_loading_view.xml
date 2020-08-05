@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_transparent">
+    android:background="@color/bgTransparent">
 
     <ProgressBar
         android:id="@+id/progressLoading"
@@ -21,6 +21,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/ic_error"
+        android:tint="@color/color_icon"
         app:layout_constraintBottom_toTopOf="@id/btnEmpty"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,9 +32,9 @@
         android:id="@+id/btnEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/bg_transparent"
+        android:background="@color/bgTransparent"
         android:text="@string/text_error_retry"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/textPrimary"
         android:textSize="@dimen/text_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.paging.LoadState
@@ -18,9 +19,10 @@ import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.app.ext.nav
-import me.robbin.wanandroid.app.listener.AdapterItemClickListener
+import me.robbin.wanandroid.app.event.listener.AdapterItemClickListener
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.databinding.FragmentHomeBinding
+import me.robbin.wanandroid.app.event.bus.CollectBus
 import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.home.adapter.HomeAdapter
 import me.robbin.wanandroid.ui.fragment.home.viewmodel.HomeViewModel
@@ -60,6 +62,18 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         }
     }
 
+    override fun createObserver() {
+        eventViewModel.userCollectUpdate.observe(viewLifecycleOwner, Observer {
+            for (i in 0 until homeAdapter.itemCount) {
+                if (homeAdapter.getData(i)?.id == it.id) {
+                    homeAdapter.getData(i)?.collect = it.collect
+                    homeAdapter.notifyItemChanged(i)
+                    break
+                }
+            }
+        })
+    }
+
     private fun initAdapter() {
         // 绑定带有 LoadMore 的适配器
         rlArticles.adapter =
@@ -76,18 +90,24 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             override fun itemLongClickListener(position: Int) {
             }
         })
-        homeAdapter.setCollectAction { item, view, position ->
+        homeAdapter.setCollectAction { item, view, _ ->
             if (view.isChecked) {
                 mViewModel.collect(item.id) {
-                    item.collect = true
-                    view.isChecked = true
-                    homeAdapter.notifyItemChanged(position)
+                    eventViewModel.userCollectUpdate.postValue(
+                        CollectBus(
+                            item.id,
+                            true
+                        )
+                    )
                 }
             } else {
                 mViewModel.unCollect(item.id) {
-                    item.collect = false
-                    view.isChecked = false
-                    homeAdapter.notifyItemChanged(position)
+                    eventViewModel.userCollectUpdate.postValue(
+                        CollectBus(
+                            item.id,
+                            false
+                        )
+                    )
                 }
             }
         }

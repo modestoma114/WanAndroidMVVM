@@ -30,7 +30,9 @@ object ApiService {
             val banners = async { getApi().getBanners() }
             val top = async { getApi().getTopArticles() }
             val articles = async { getApi().getHomeArticles(page) }
-            top.await().data[0].bannerList = banners.await().data
+            val temp = top.await().data[0]
+            temp.bannerList = banners.await().data
+            top.await().data.add(0, temp)
             articles.await().data.datas.addAll(0, top.await().data)
             success(articles.await())
         }

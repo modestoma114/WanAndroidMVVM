@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_primary">
+    android:background="@color/bgPrimary">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vpMain"
@@ -16,14 +16,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomMain"
-        style="Widget.MaterialComponents.BottomNavigationView.PrimarySurface"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:background="@color/bg_primary"
+        android:background="@color/bgPrimary"
         app:itemBackground="@null"
         app:itemHorizontalTranslationEnabled="false"
-        app:itemIconTint="@color/color_bottom_icon"
-        app:itemTextColor="@color/color_bottom_icon"
+        app:itemIconTint="@color/selector_bottom_navigation_item"
+        app:itemTextColor="@color/selector_bottom_navigation_item"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

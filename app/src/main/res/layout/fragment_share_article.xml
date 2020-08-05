@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_primary">
+        android:background="@color/bgPrimary">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarShareArticle"
@@ -24,13 +24,13 @@
             toolbarNavigationClick="@{() -> click.back()}"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:background="@color/bg_main"
+            android:background="@color/bgMain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_back"
             app:title="@string/text_add_article"
-            app:titleTextColor="@color/text_title" />
+            app:titleTextColor="@color/textTitle" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvShareTitle"
@@ -39,7 +39,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:text="@string/text_add_article_title"
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/textSecondary"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbarShareArticle" />
@@ -57,8 +57,8 @@
             android:lines="1"
             android:padding="10dp"
             android:text="@{viewModel.articleTitle}"
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_primary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvShareTitle" />
@@ -70,7 +70,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:text="@string/text_add_article_url"
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/textSecondary"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etShareTitle" />
@@ -89,8 +89,8 @@
             android:lines="3"
             android:padding="10dp"
             android:text="@{viewModel.articleUrl}"
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_primary"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvShareUrl" />
@@ -103,7 +103,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:text="@{@string/format_author(viewModel.author)}"
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/textSecondary"
             android:textSize="@dimen/text_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -118,7 +118,7 @@
             android:layout_marginEnd="50dp"
             android:background="@drawable/bg_button"
             android:text="@string/text_share"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/textPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvAuthor" />
@@ -130,7 +130,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:text="@string/string_share_info"
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/textSecondary"
             android:textSize="@dimen/text_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

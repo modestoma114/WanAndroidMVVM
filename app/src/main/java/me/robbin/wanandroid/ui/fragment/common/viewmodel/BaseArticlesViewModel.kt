@@ -16,7 +16,10 @@ abstract class BaseArticlesViewModel : BaseViewModel() {
 
     protected val articleRepository by lazy { ArticleRepository.instance }
 
-    abstract fun getArticles(type: ArticleType = ArticleType.HOME, cid: Int = -1): Flow<PagingData<ArticleBean>>
+    abstract fun getArticles(
+        type: ArticleType = ArticleType.HOME,
+        cid: Int = -1
+    ): Flow<PagingData<ArticleBean>>
 
     private val api by lazy { ApiService.getApi() }
 

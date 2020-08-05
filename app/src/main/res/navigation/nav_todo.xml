@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/todoNavigation"
+    app:startDestination="@id/todoFragment">
+    <fragment
+        android:id="@+id/todoFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.todo.view.TodoFragment"
+        android:label="TodoFragment"
+        tools:layout="@layout/fragment_todo">
+        <action
+            android:id="@+id/action_todo_to_todoDetail"
+            app:destination="@id/todoDetailFragment"
+            app:enterAnim="@anim/nav_fragment_enter"
+            app:exitAnim="@anim/nav_fragment_exit"
+            app:popEnterAnim="@anim/nav_fragment_pop_enter"
+            app:popExitAnim="@anim/nav_fragment_pop_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/todoDetailFragment"
+        android:name="me.robbin.wanandroid.ui.fragment.todo.view.TodoDetailFragment"
+        android:label="TodoDetailFragment"
+        tools:layout="@layout/fragment_todo_detail" />
+</navigation>

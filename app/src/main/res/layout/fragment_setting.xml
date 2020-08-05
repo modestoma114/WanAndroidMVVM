@@ -20,7 +20,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_primary">
+        android:background="@color/bgPrimary">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarSetting"
@@ -28,13 +28,13 @@
             toolbarNavigationClick="@{() -> click.back()}"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:background="@color/bg_main"
+            android:background="@color/bgMain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/ic_back"
             app:title="@string/title_setting"
-            app:titleTextColor="@color/text_title" />
+            app:titleTextColor="@color/textTitle" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_gravity="center_vertical"
-                    android:background="@color/bg_second"
+                    android:background="@color/bgSecondary"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -61,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:text="@string/setting_night_mode"
-                        android:textColor="@color/text_primary"
+                        android:textColor="@color/textPrimary"
                         android:textSize="@dimen/text_content" />
 
                     <Space
@@ -81,11 +81,11 @@
                     isVisible="@{appState.isLogin}"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@color/bg_second"
+                    android:background="@color/bgSecondary"
                     android:gravity="center"
                     android:onClick="@{() -> click.logOut()}"
                     android:text="@string/text_logout"
-                    android:textColor="@color/text_top"
+                    android:textColor="@color/colorBadge"
                     android:textSize="@dimen/text_content" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>

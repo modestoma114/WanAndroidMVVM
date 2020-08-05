@@ -62,6 +62,10 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             nav().navigate(R.id.action_main_to_my_share, args)
         }
 
+        fun goTodo() = checkLogin {
+            nav().navigate(R.id.action_main_to_todo)
+        }
+
         fun goWanAndroidSite() {
             val bundle = Bundle()
             bundle.putString("title", "玩Android")
@@ -73,7 +77,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
         fun goAboutMe() = nav().navigate(R.id.action_main_to_about)
 
-        fun goSetting() = nav().navigate(R.id.action_mainFragment_to_setting)
+        fun goSetting() = nav().navigate(R.id.action_main_to_setting)
     }
 
 }

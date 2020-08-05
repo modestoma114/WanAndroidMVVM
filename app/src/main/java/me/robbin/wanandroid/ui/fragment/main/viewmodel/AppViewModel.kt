@@ -3,7 +3,7 @@ package me.robbin.wanandroid.ui.fragment.main.viewmodel
 import androidx.lifecycle.MutableLiveData
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.app.network.NetworkClient
-import me.robbin.wanandroid.app.utils.CacheUtils
+import me.robbin.wanandroid.app.ext.utils.CacheUtils
 import me.robbin.wanandroid.model.UserBean
 
 /**

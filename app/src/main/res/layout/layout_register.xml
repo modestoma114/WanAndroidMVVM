@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="me.robbin.wanandroid.ui.fragment.login.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bgPrimary">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/evRegisterUsername"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:hint="@string/hint_login_username"
+            android:textColorHint="@color/textSecondary"
+            app:hintTextColor="@color/textSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                onTextChanged="@{viewModel.nameWatcher}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edit"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{viewModel.username}"
+                android:textColor="@color/textSecondary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/evRegisterPassword"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="@string/hint_login_password"
+            android:textColorHint="@color/textSecondary"
+            app:hintTextColor="@color/textSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/evRegisterUsername">
+
+            <com.google.android.material.textfield.TextInputEditText
+                onTextChanged="@{viewModel.pwdWatcher}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edit"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{viewModel.pwd}"
+                android:textColor="@color/textSecondary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/evRegisterPassword2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="@string/hint_register_password2"
+            android:textColorHint="@color/textSecondary"
+            app:hintTextColor="@color/textSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/evRegisterPassword">
+
+            <com.google.android.material.textfield.TextInputEditText
+                onTextChanged="@{viewModel.pwd2Watcher}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edit"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{viewModel.pwd2}"
+                android:textColor="@color/textSecondary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRegister"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button"
+            android:text="@string/text_register"
+            android:textColor="@color/textPrimary"
+            android:textSize="@dimen/text_web_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/evRegisterPassword2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnGoLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/text_go_login"
+            android:textColor="@color/colorNew"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivGoRegister"
+            app:layout_constraintTop_toBottomOf="@id/btnRegister" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivGoRegister"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_left_circle"
+            app:layout_constraintBottom_toBottomOf="@id/btnGoLogin"
+            app:layout_constraintEnd_toStartOf="@id/btnGoLogin"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnGoLogin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

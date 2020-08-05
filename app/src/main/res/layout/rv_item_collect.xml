@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg_primary"
+        android:background="@color/bgPrimary"
         android:padding="15dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +31,7 @@
                 collectAuthor="@{bean.author}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/textSecondary"
                 android:textSize="@dimen/text_notes"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{bean.niceDate}"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/textSecondary"
                 android:textSize="@dimen/text_notes"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,7 @@
             android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/text_primary"
+            android:textColor="@color/textPrimary"
             android:textSize="@dimen/text_content"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,7 @@
             android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="3"
-            android:textColor="@color/text_secondary"
+            android:textColor="@color/textSecondary"
             android:textSize="@dimen/text_desc"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +90,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:text="@{bean.chapterName}"
-            android:textColor="@color/text_third"
+            android:textColor="@color/textThird"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_desc" />

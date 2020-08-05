@@ -5,8 +5,8 @@ import android.content.Context
 import android.os.Process
 import com.tencent.mmkv.MMKV
 import me.robbin.mvvmscaffold.base.BaseApplication
-import me.robbin.wanandroid.app.utils.CacheUtils
-import me.robbin.wanandroid.app.utils.setNightMode
+import me.robbin.wanandroid.app.ext.utils.CacheUtils
+import me.robbin.wanandroid.app.ext.utils.setNightMode
 
 /**
  * 自定义 Application 类

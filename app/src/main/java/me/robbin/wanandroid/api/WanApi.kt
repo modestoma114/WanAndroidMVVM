@@ -263,7 +263,7 @@ interface WanApi {
      * Create by Robbin at 2020/7/28
      */
     @GET("lg/todo/v2/list/{page}/json")
-    suspend fun getTodoList(@Path("page") page: Int, @Query("status") status: Int)
+    suspend fun getTodoList(@Path("page") page: Int)
             : ApiResponse<ApiPageResponse<MutableList<TodoBean>>>
 
     /**
