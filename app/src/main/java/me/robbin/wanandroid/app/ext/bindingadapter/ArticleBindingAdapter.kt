@@ -6,7 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
-import coil.api.load
+import coil.load
 import me.robbin.wanandroid.model.TagsBean
 import me.robbin.wanandroid.app.ext.html2string
 import me.robbin.wanandroid.app.ext.removeAllBlank

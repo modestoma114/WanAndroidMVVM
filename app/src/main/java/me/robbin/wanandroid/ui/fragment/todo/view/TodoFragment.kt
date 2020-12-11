@@ -112,7 +112,7 @@ class TodoFragment : BaseFragment<TodoViewModel, FragmentTodoBinding>() {
             nav().navigate(R.id.action_todo_to_todoDetail, bundle)
         }
         todoAdapter.setLongClickAction { bean, _, _ ->
-            MaterialAlertDialogBuilder(context)
+            MaterialAlertDialogBuilder(requireContext())
                 .setTitle(resources.getString(R.string.dialog_title_delete))
                 .setNegativeButton(resources.getString(R.string.cancel)) { dialog, _ ->
                     dialog.dismiss()

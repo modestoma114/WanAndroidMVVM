@@ -57,7 +57,7 @@ class TodoDetailFragment : BaseFragment<TodoDetailViewModel, FragmentTodoDetailB
 
         fun setPriority() {
             val item = arrayOf("普通", "紧急")
-            MaterialAlertDialogBuilder(context)
+            MaterialAlertDialogBuilder(requireContext())
                 .setTitle(resources.getString(R.string.dialog_title_priority))
                 .setItems(item) { dialog, which ->
                     val priority =
@@ -72,7 +72,7 @@ class TodoDetailFragment : BaseFragment<TodoDetailViewModel, FragmentTodoDetailB
 
         fun setType() {
             val item = arrayOf("工作", "日常", "娱乐", "其他")
-            MaterialAlertDialogBuilder(context)
+            MaterialAlertDialogBuilder(requireContext())
                 .setTitle(resources.getString(R.string.dialog_title_type))
                 .setItems(item) { dialog, which ->
                     val type =

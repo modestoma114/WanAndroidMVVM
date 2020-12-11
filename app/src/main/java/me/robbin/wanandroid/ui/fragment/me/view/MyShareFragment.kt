@@ -33,7 +33,7 @@ class MyShareFragment : BaseArticlesFragment<MyShareViewModel, FragmentMyShareBi
         articleAdapter.setItemClickListener(object : AdapterItemClickListener {
             override fun itemClickListener(): NavController = nav()
             override fun itemLongClickListener(position: Int) {
-                MaterialAlertDialogBuilder(context)
+                MaterialAlertDialogBuilder(requireContext())
                     .setTitle(resources.getString(R.string.dialog_title_action))
                     .setItems(item) { dialog, which ->
                         if (which == 0) {
