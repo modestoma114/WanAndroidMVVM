@@ -3,8 +3,9 @@ package me.robbin.wanandroid.data.datasource
 import androidx.paging.PagingSource
 import me.robbin.wanandroid.api.ApiService
 import me.robbin.wanandroid.app.network.EmptyException
+import me.robbin.wanandroid.model.ApiPageResponse
 import me.robbin.wanandroid.model.ApiResponse
-import me.robbin.wanandroid.model.Article
+import me.robbin.wanandroid.model.ArticleBean
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -12,15 +13,15 @@ import java.io.IOException
  * 首页列表数据源
  * Create by Robbin at 2020/7/14
  */
-class HomeDataSource : PagingSource<Int, Article>() {
+class HomeDataSource : PagingSource<Int, ArticleBean>() {
 
     private val api by lazy { ApiService.getApi() }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticleBean> {
 
         return try {
             val page = params.key ?: 0
-            var response: ApiResponse<ApiPageResponse<MutableList<Article>>>? = null
+            var response: ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>? = null
             if (page == 0) {
                 ApiService.getHomeArticle(page) {
                     response = it

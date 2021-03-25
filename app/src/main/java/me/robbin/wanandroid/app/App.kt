@@ -1,18 +1,18 @@
 package me.robbin.wanandroid.app
 
 import android.app.ActivityManager
-import android.app.Application
 import android.content.Context
 import android.os.Process
 import com.tencent.mmkv.MMKV
-import me.robbin.common.setNightMode
+import me.robbin.mvvmscaffold.base.BaseApplication
 import me.robbin.wanandroid.app.ext.utils.CacheUtils
+import me.robbin.wanandroid.app.ext.utils.setNightMode
 
 /**
  * 自定义 Application 类
  * Create by Robbin at 2020/7/17
  */
-class App : Application() {
+class App : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()

@@ -1,5 +1,2 @@
-include ':net'
-include ':common'
-include ':architecture'
 include ':app'
 rootProject.name = "WanAndroidMVVM"

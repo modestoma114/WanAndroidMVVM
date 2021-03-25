@@ -3,7 +3,7 @@ package me.robbin.wanandroid.data.datasource
 import androidx.paging.PagingSource
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.api.ApiService
-import me.robbin.wanandroid.model.Article
+import me.robbin.wanandroid.model.ArticleBean
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -11,9 +11,9 @@ import java.io.IOException
  * 搜索结果数据源
  * Create by Robbin at 2020/7/19
  */
-class SearchArticleDateSource(private val query: String) : PagingSource<Int, Article>() {
+class SearchArticleDateSource(private val query: String) : PagingSource<Int, ArticleBean>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticleBean> {
         return try {
             val page = params.key ?: 0
             val response = ApiService.getApi().getSearchDataByKey(page, query)

@@ -5,8 +5,8 @@ import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import me.robbin.wanandroid.ui.fragment.common.viewmodel.BaseArticlesViewModel
 import me.robbin.wanandroid.api.ApiService
-import me.robbin.wanandroid.model.Article
-import me.robbin.wanandroid.model.Chapter
+import me.robbin.wanandroid.model.ArticleBean
+import me.robbin.wanandroid.model.ChapterBean
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**
@@ -15,7 +15,7 @@ import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
  */
 class ProjectViewModel : BaseArticlesViewModel() {
 
-    val projectList: MutableLiveData<MutableList<Chapter>> = MutableLiveData()
+    val projectList: MutableLiveData<MutableList<ChapterBean>> = MutableLiveData()
 
     val cid: MutableLiveData<Int> = MutableLiveData()
 
@@ -32,7 +32,7 @@ class ProjectViewModel : BaseArticlesViewModel() {
      * 根据 cid 获取文章列表
      * Create by Robbin at 2020/7/27
      */
-    override fun getArticles(type: ArticleType, cid: Int): Flow<PagingData<Article>> =
+    override fun getArticles(type: ArticleType, cid: Int): Flow<PagingData<ArticleBean>> =
         articleRepository.getArticles(ArticleType.PROJECT, cid)
 
 }

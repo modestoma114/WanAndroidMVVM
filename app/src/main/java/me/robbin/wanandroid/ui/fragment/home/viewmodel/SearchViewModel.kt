@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.Flow
 import me.robbin.wanandroid.ui.fragment.common.viewmodel.BaseArticlesViewModel
 import me.robbin.wanandroid.app.ext.watcher.SimpleWatcher
 import me.robbin.wanandroid.api.ApiService
-import me.robbin.wanandroid.model.Article
-import me.robbin.wanandroid.model.HotKey
+import me.robbin.wanandroid.model.ArticleBean
+import me.robbin.wanandroid.model.HotKeyBean
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**
@@ -21,14 +21,14 @@ class SearchViewModel : BaseArticlesViewModel() {
      * 获取搜索文章列表
      * Create by Robbin at 2020/7/28
      */
-    override fun getArticles(type: ArticleType, cid: Int): Flow<PagingData<Article>> =
+    override fun getArticles(type: ArticleType, cid: Int): Flow<PagingData<ArticleBean>> =
         articleRepository.getSearchArticles(searchStr.value.toString())
 
     // 搜索关键词
     val searchStr: MutableLiveData<String> = MutableLiveData("")
 
     // 搜索热词列表
-    val hotKeys: MutableLiveData<List<HotKey>> = MutableLiveData()
+    val hotKeys: MutableLiveData<List<HotKeyBean>> = MutableLiveData()
 
     // 自定义 EditText Watcher
     val searchWatcher = object : SimpleWatcher() {

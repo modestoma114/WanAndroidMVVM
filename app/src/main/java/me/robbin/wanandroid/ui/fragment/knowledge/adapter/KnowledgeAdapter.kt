@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.model.Chapter
+import me.robbin.wanandroid.model.ChapterBean
 import me.robbin.wanandroid.databinding.RvItemKnowledgeBinding
 import java.util.*
 
@@ -16,7 +16,7 @@ import java.util.*
  * Create by Robbin at 2020/7/15
  */
 class KnowledgeAdapter :
-    BaseQuickAdapter<Chapter, BaseDataBindingHolder<RvItemKnowledgeBinding>>(R.layout.rv_item_knowledge) {
+    BaseQuickAdapter<ChapterBean, BaseDataBindingHolder<RvItemKnowledgeBinding>>(R.layout.rv_item_knowledge) {
 
     // 当前模块的子模块列表
     private val chipItemCaches: Queue<Chip> = LinkedList()
@@ -37,7 +37,7 @@ class KnowledgeAdapter :
     }
 
     @Suppress("DEPRECATION")
-    override fun convert(holder: BaseDataBindingHolder<RvItemKnowledgeBinding>, item: Chapter) {
+    override fun convert(holder: BaseDataBindingHolder<RvItemKnowledgeBinding>, item: ChapterBean) {
         val binding = holder.dataBinding
         if (binding != null) {
             binding.tvChapterName.text = item.name

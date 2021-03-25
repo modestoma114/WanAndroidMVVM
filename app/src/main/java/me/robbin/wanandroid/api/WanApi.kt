@@ -1,15 +1,13 @@
 package me.robbin.wanandroid.api
 
-import com.drake.net.Get
 import me.robbin.wanandroid.model.*
+import retrofit2.http.*
 
 /**
  * WanAndroid Api
  * Create by Robbin at 2020/7/10
  */
 interface WanApi {
-
-    fun getData() = Get<>()
 
     /**
      * 获取 Banner 列表
@@ -24,21 +22,21 @@ interface WanApi {
      */
     @GET("article/list/{page}/json")
     suspend fun getHomeArticles(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<Article>>>
+            : ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
 
     /**
      * 获取首页置顶文章列表
      * Create by Robbin at 2020/7/10
      */
     @GET("article/top/json")
-    suspend fun getTopArticles(): ApiResponse<MutableList<Article>>
+    suspend fun getTopArticles(): ApiResponse<MutableList<ArticleBean>>
 
     /**
      * 获取公众号列表
      * Create by Robbin at 2020/7/10
      */
     @GET("wxarticle/chapters/json")
-    suspend fun getPublicList(): ApiResponse<MutableList<Chapter>>
+    suspend fun getPublicList(): ApiResponse<MutableList<ChapterBean>>
 
     /**
      * 根据cid获取公众号文章列表
@@ -48,7 +46,7 @@ interface WanApi {
     suspend fun getPublicArticles(
         @Path("cid") cid: Int,
         @Path("page") page: Int
-    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
+    ): ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
 
     /**
      * 获取问答文章列表
@@ -56,7 +54,7 @@ interface WanApi {
      */
     @GET("wenda/list/{page}/json")
     suspend fun getQuestionArticles(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<Article>>>
+            : ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
 
     /**
      * 获取广场文章列表
@@ -64,14 +62,14 @@ interface WanApi {
      */
     @GET("user_article/list/{page}/json")
     suspend fun getShareArticles(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<Article>>>
+            : ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
 
     /**
      * 获取知识体系分类列表
      * Create by Robbin at 2020/7/10
      */
     @GET("tree/json")
-    suspend fun getKnowledgeList(): ApiResponse<MutableList<Chapter>>
+    suspend fun getKnowledgeList(): ApiResponse<MutableList<ChapterBean>>
 
     /**
      * 根据cid获取知识体系文章列表
@@ -81,14 +79,14 @@ interface WanApi {
     suspend fun getKnowledgeArticles(
         @Path("page") page: Int,
         @Query("cid") cid: Int
-    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
+    ): ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
 
     /**
      * 获取项目分类列表
      * Create by Robbin at 2020/7/10
      */
     @GET("project/tree/json")
-    suspend fun getProjectList(): ApiResponse<MutableList<Chapter>>
+    suspend fun getProjectList(): ApiResponse<MutableList<ChapterBean>>
 
     /**
      * 根据cid获取项目文章列表
@@ -98,7 +96,7 @@ interface WanApi {
     suspend fun getProjectArticles(
         @Path("page") page: Int,
         @Query("cid") cid: Int
-    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
+    ): ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
 
     /**
      * 获取最新项目文章列表
@@ -106,17 +104,17 @@ interface WanApi {
      */
     @GET("article/listproject/{page}/json")
     suspend fun getLastProjectArticles(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<Article>>>
+            : ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
 
     @GET("navi/json")
-    suspend fun getNaviList(): ApiResponse<MutableList<Navigation>>
+    suspend fun getNaviList(): ApiResponse<MutableList<NavigationBean>>
 
     /**
      * 获取搜索热词
      * Create by Robbin at 2020/7/10
      */
     @GET("hotkey/json")
-    suspend fun getHotKey(): ApiResponse<MutableList<HotKey>>
+    suspend fun getHotKey(): ApiResponse<MutableList<HotKeyBean>>
 
     /**
      * 根据关键词搜索
@@ -126,7 +124,7 @@ interface WanApi {
     suspend fun getSearchDataByKey(
         @Path("page") pageNo: Int,
         @Query("k") searchKey: String
-    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
+    ): ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>
 
     /**
      * 登录
@@ -137,7 +135,7 @@ interface WanApi {
     suspend fun login(
         @Field("username") username: String,
         @Field("password") pwd: String
-    ): ApiResponse<User>
+    ): ApiResponse<UserBean>
 
     // Integral
 
@@ -151,7 +149,7 @@ interface WanApi {
         @Field("username") username: String,
         @Field("password") pwd: String,
         @Field("repassword") pwd2: String
-    ): ApiResponse<User>
+    ): ApiResponse<UserBean>
 
     /**
      * 获取用户积分

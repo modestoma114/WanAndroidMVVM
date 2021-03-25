@@ -1,22 +1,18 @@
-import me.robbin.buildSrc.Versions
-import me.robbin.buildSrc.Dependencies
-
-plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion Versions.compilerSdkVersion
-    buildToolsVersion Versions.buildToolsVersion
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "me.robbin.wanandroid"
-        minSdkVersion Versions.minSdkVersion
-        targetSdkVersion Versions.targetSdkVersion
-        versionCode Versions.versionCode
-        versionName Versions.versionName
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,16 +24,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    buildFeatures {
-        dataBinding = true
-    }
+
+    android.buildFeatures.dataBinding = true
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
-        useIR = true
+        jvmTarget = "1.8"
         freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
     }
 
@@ -45,29 +39,25 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-
-    implementation project(':architecture')
-    implementation project(':common')
-    implementation project(':net')
-
-    implementation Dependencies.Kotlin.stdLib
-    implementation Dependencies.AndroidX.coreKtx
-    implementation Dependencies.AndroidX.appcompat
-    implementation Dependencies.AndroidX.constraintLayout
-    implementation Dependencies.AndroidX.material
-    implementation Dependencies.AndroidX.swipeRefreshLayout
-    implementation Dependencies.AndroidX.paging
-
-    implementation Dependencies.ThirdParty.BRVAH
-    implementation Dependencies.ThirdParty.circleImage
-    implementation Dependencies.ThirdParty.persistentCookie
-    implementation Dependencies.ThirdParty.coil
-    implementation Dependencies.ThirdParty.MMKV
-    implementation Dependencies.ThirdParty.agentWeb
-    implementation Dependencies.ThirdParty.banner
-
-    testImplementation 'junit:junit:4.13.2'
+    implementation Dependencies.kotlinStdlib
+    implementation Dependencies.androidxCore
+    implementation Dependencies.androidxAppcompat
+    implementation Dependencies.constraintLayout
+    implementation Dependencies.material
+    implementation Dependencies.swipeRefreshLayout
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'me.robbin.mvvmscaffold:mvvmscaffold:0.2.1'
+
+    implementation Dependencies.pagingRuntimeKtx
+    implementation Dependencies.BRVAH
+    implementation Dependencies.circleImage
+    implementation Dependencies.persistentCookie
+    implementation Dependencies.coil
+    implementation Dependencies.MMKV
+    implementation Dependencies.agentWeb
+    implementation Dependencies.banner
 
 }

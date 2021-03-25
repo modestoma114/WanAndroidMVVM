@@ -1,10 +1,9 @@
 package me.robbin.wanandroid.app.ext.utils
 
 import android.text.TextUtils
+import com.google.gson.Gson
 import com.tencent.mmkv.MMKV
-import me.robbin.net.fromJson
-import me.robbin.net.toJson
-import me.robbin.wanandroid.model.User
+import me.robbin.wanandroid.model.UserBean
 
 /**
  * 本地缓存工具
@@ -12,14 +11,14 @@ import me.robbin.wanandroid.model.User
  */
 object CacheUtils {
 
-    private val sp = MMKV.mmkvWithID("wandroid")
+    private val sp = MMKV.mmkvWithID("app")
 
     /**
      * 判断用户是否登录
      * Create by Robbin at 2020/7/22
      */
     fun isLogin(): Boolean {
-        return sp?.decodeBool("isLogin", false) ?: false
+        return sp.decodeBool("isLogin", false)
     }
 
     /**
@@ -28,7 +27,7 @@ object CacheUtils {
      * Create by Robbin at 2020/7/22
      */
     fun setIsLogin(isLogin: Boolean) {
-        sp?.encode("isLogin", isLogin)
+        sp.encode("isLogin", isLogin)
     }
 
     /**
@@ -36,8 +35,10 @@ object CacheUtils {
      * @return 本地缓存的用户信息
      * Create by Robbin at 2020/7/22
      */
-    fun getUser(): User? {
-        return sp?.decodeString("userInfo")?.fromJson()
+    fun getUser(): UserBean? {
+        val user = sp.decodeString("userInfo")
+        return if (TextUtils.isEmpty(user)) null
+        else Gson().fromJson(user, UserBean::class.java)
     }
 
     /**
@@ -45,12 +46,12 @@ object CacheUtils {
      * @param user 要保存的用户信息
      * Create by Robbin at 2020/7/22
      */
-    fun setUser(user: User?) {
+    fun setUser(user: UserBean?) {
         if (user == null) {
-            sp?.encode("userInfo", "")
+            sp.encode("userInfo", "")
             setIsLogin(false)
         } else {
-            sp?.encode("userInfo", user.toJson())
+            sp.encode("userInfo", Gson().toJson(user))
             setIsLogin(true)
         }
     }
@@ -60,7 +61,7 @@ object CacheUtils {
      * Create by Robbin at 2020/7/29
      */
     fun setNightMode(isNightMode: Boolean) {
-        sp?.encode("key_night_mode", isNightMode)
+        sp.encode("key_night_mode", isNightMode)
     }
 
     /**
@@ -68,7 +69,7 @@ object CacheUtils {
      * Create by Robbin at 2020/7/29
      */
     fun getNightMode(): Boolean {
-        return sp?.decodeBool("key_night_mode", false) ?: false
+        return sp.decodeBool("key_night_mode", false)
     }
 
 }

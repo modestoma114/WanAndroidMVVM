@@ -3,7 +3,7 @@ package me.robbin.wanandroid.ui.fragment.knowledge.viewmodel
 import androidx.lifecycle.MutableLiveData
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.api.ApiService
-import me.robbin.wanandroid.model.Chapter
+import me.robbin.wanandroid.model.ChapterBean
 
 /**
  *
@@ -11,7 +11,7 @@ import me.robbin.wanandroid.model.Chapter
  */
 class ChapterArticlesViewModel : BaseViewModel() {
 
-    val knowledgeList: MutableLiveData<MutableList<Chapter>> = MutableLiveData()
+    val knowledgeList: MutableLiveData<MutableList<ChapterBean>> = MutableLiveData()
 
     val title: MutableLiveData<String> = MutableLiveData()
 
