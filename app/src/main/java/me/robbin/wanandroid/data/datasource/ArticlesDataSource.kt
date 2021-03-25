@@ -3,7 +3,7 @@ package me.robbin.wanandroid.data.datasource
 import androidx.paging.PagingSource
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.api.ApiService
-import me.robbin.wanandroid.model.ArticleBean
+import me.robbin.wanandroid.model.Article
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 import retrofit2.HttpException
 import java.io.IOException
@@ -13,11 +13,11 @@ import java.io.IOException
  * Create by Robbin at 2020/7/14
  */
 class ArticlesDataSource(private val type: ArticleType, private val cid: Int = -1) :
-    PagingSource<Int, ArticleBean>() {
+    PagingSource<Int, Article>() {
 
     private val api by lazy { ApiService.getApi() }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticleBean> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         return try {
             val page = params.key ?: 0
 

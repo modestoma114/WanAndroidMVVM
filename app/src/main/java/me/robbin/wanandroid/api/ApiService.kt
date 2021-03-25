@@ -3,9 +3,8 @@ package me.robbin.wanandroid.api
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import me.robbin.wanandroid.app.network.NetworkClient
-import me.robbin.wanandroid.model.ApiPageResponse
 import me.robbin.wanandroid.model.ApiResponse
-import me.robbin.wanandroid.model.ArticleBean
+import me.robbin.wanandroid.model.Article
 
 /**
  * 获取 WanApi 实例
@@ -24,7 +23,7 @@ object ApiService {
      */
     suspend fun getHomeArticle(
         page: Int,
-        success: (ApiResponse<ApiPageResponse<MutableList<ArticleBean>>>) -> Unit
+        success: (ApiResponse<ApiPageResponse<MutableList<Article>>>) -> Unit
     ) {
         coroutineScope {
             val banners = async { getApi().getBanners() }

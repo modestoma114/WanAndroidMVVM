@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.api.ApiService
 import me.robbin.wanandroid.data.repository.ArticleRepository
-import me.robbin.wanandroid.model.ArticleBean
+import me.robbin.wanandroid.model.Article
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 
 /**
@@ -19,7 +19,7 @@ abstract class BaseArticlesViewModel : BaseViewModel() {
     abstract fun getArticles(
         type: ArticleType = ArticleType.HOME,
         cid: Int = -1
-    ): Flow<PagingData<ArticleBean>>
+    ): Flow<PagingData<Article>>
 
     private val api by lazy { ApiService.getApi() }
 

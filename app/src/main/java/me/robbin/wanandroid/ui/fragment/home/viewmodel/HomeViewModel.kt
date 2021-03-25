@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.api.ApiService
 import me.robbin.wanandroid.data.repository.ArticleRepository
-import me.robbin.wanandroid.model.ArticleBean
+import me.robbin.wanandroid.model.Article
 
 /**
  * 首页 ViewModel
@@ -19,7 +19,7 @@ class HomeViewModel : BaseViewModel() {
      * 获取首页文章列表
      * Create by Robbin at 2020/7/28
      */
-    fun getArticles(): Flow<PagingData<ArticleBean>> =
+    fun getArticles(): Flow<PagingData<Article>> =
         homeRepository.getHomeArticles()
 
     private val api by lazy { ApiService.getApi() }

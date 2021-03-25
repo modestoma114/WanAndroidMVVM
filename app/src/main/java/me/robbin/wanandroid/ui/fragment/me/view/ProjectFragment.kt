@@ -2,16 +2,12 @@ package me.robbin.wanandroid.ui.fragment.me.view
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.fragment_project.*
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.databinding.FragmentProjectBinding
-import me.robbin.wanandroid.model.ChapterBean
+import me.robbin.wanandroid.model.Chapter
 import me.robbin.wanandroid.ui.fragment.common.view.BaseArticlesFragment
 import me.robbin.wanandroid.ui.fragment.me.adapter.ProjectAdapter
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.ProjectViewModel
@@ -33,7 +29,7 @@ class ProjectFragment : BaseArticlesFragment<ProjectViewModel, FragmentProjectBi
         super.initView(savedInstanceState)
         rlProjects.adapter = projectAdapter
         projectAdapter.setOnItemClickListener { adapter, _, position ->
-            mViewModel.cid.value = (adapter.getItem(position) as ChapterBean).id
+            mViewModel.cid.value = (adapter.getItem(position) as Chapter).id
         }
     }
 

@@ -5,5 +5,5 @@ package me.robbin.wanandroid.model
  */
 data class UserPageBean(
     var coinInfo: IntegralBean,
-    var shareArticles: ApiPageResponse<MutableList<ArticleBean>>
+    var shareArticles: ApiPageResponse<MutableList<Article>>
 )
