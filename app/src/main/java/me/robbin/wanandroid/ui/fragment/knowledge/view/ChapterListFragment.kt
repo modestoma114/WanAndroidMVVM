@@ -6,8 +6,7 @@ import androidx.navigation.NavController
 import kotlinx.android.synthetic.main.fragment_chapter_list.*
 import me.robbin.mvvmscaffold.base.fragment.BaseVMFragment
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.model.ChapterBean
-import me.robbin.wanandroid.app.ext.nav
+import me.robbin.wanandroid.model.Chapter
 import me.robbin.wanandroid.ui.fragment.knowledge.adapter.KnowledgeAdapter
 import me.robbin.wanandroid.ui.fragment.knowledge.adapter.NavigationAdapter
 import me.robbin.wanandroid.ui.fragment.knowledge.viewmodel.ChapterListViewModel
@@ -79,7 +78,7 @@ class ChapterListFragment : BaseVMFragment<ChapterListViewModel>() {
             navigationAdapter.setNewInstance(it)
         })
         mViewModel.publicList.observe(viewLifecycleOwner, Observer {
-            val data = ChapterBean(
+            val data = Chapter(
                 courseId = 1,
                 id = 1,
                 name = "公众号",

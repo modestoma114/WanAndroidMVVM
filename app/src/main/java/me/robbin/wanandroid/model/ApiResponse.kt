@@ -1,6 +1,6 @@
 package me.robbin.wanandroid.model
 
-import me.robbin.mvvmscaffold.network.IBaseResponse
+import me.robbin.net.IBaseResponse
 
 /**
  * 服务器返回数据基类
@@ -18,3 +18,13 @@ data class ApiResponse<T>(val data: T, val errorCode: Int, val errorMsg: String)
     override fun isSuccess(): Boolean = errorCode == 0
 
 }
+
+data class ApiPageResponse<T>(
+    var curPage: Int,
+    var datas: T,
+    var offset: Int,
+    var over: Boolean,
+    var pageCount: Int,
+    var size: Int,
+    var total: Int
+)

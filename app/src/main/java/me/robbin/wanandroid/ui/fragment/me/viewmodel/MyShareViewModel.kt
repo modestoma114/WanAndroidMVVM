@@ -3,7 +3,7 @@ package me.robbin.wanandroid.ui.fragment.me.viewmodel
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import me.robbin.wanandroid.api.ApiService
-import me.robbin.wanandroid.model.ArticleBean
+import me.robbin.wanandroid.model.Article
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 import me.robbin.wanandroid.ui.fragment.common.viewmodel.BaseArticlesViewModel
 
@@ -13,7 +13,7 @@ import me.robbin.wanandroid.ui.fragment.common.viewmodel.BaseArticlesViewModel
  */
 class MyShareViewModel : BaseArticlesViewModel() {
 
-    override fun getArticles(type: ArticleType, cid: Int): Flow<PagingData<ArticleBean>> {
+    override fun getArticles(type: ArticleType, cid: Int): Flow<PagingData<Article>> {
         return articleRepository.getMyShare()
     }
 

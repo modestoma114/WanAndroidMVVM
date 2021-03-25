@@ -9,10 +9,8 @@ import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
-import me.robbin.wanandroid.app.ext.init
-import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.databinding.FragmentChapterArticlesBinding
-import me.robbin.wanandroid.model.ChapterBean
+import me.robbin.wanandroid.model.Chapter
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleListsFragment
 import me.robbin.wanandroid.ui.fragment.common.view.ArticleType
 import me.robbin.wanandroid.ui.fragment.knowledge.viewmodel.ChapterArticlesViewModel
@@ -29,7 +27,7 @@ class ChapterArticlesFragment :
             .addBindingParams(BR.click, ClickProxy())
     }
 
-    private var chapter: ChapterBean? = null
+    private var chapter: Chapter? = null
     private var index: Int = 1
 
     private var superChapterName: String = ""

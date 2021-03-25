@@ -19,7 +19,7 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.event.listener.AdapterItemClickListener
 import me.robbin.wanandroid.databinding.LayoutBannerBinding
 import me.robbin.wanandroid.databinding.RvItemArticleBinding
-import me.robbin.wanandroid.model.ArticleBean
+import me.robbin.wanandroid.model.Article
 import me.robbin.wanandroid.model.BannerBean
 import me.robbin.wanandroid.ui.fragment.common.adapter.ArticleViewHolder
 
@@ -28,17 +28,17 @@ import me.robbin.wanandroid.ui.fragment.common.adapter.ArticleViewHolder
  * Create by Robbin at 2020/8/3
  */
 class HomeAdapter(private val context: Context) :
-    PagingDataAdapter<ArticleBean, RecyclerView.ViewHolder>(HOME_COMPARATOR) {
+    PagingDataAdapter<Article, RecyclerView.ViewHolder>(HOME_COMPARATOR) {
 
     companion object {
 
         private const val ITEM_TYPE_HEADER = 99
 
-        val HOME_COMPARATOR = object : DiffUtil.ItemCallback<ArticleBean>() {
-            override fun areItemsTheSame(oldItem: ArticleBean, newItem: ArticleBean): Boolean =
+        val HOME_COMPARATOR = object : DiffUtil.ItemCallback<Article>() {
+            override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean =
                 oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: ArticleBean, newItem: ArticleBean): Boolean =
+            override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean =
                 oldItem == newItem
         }
     }
@@ -121,7 +121,7 @@ class HomeAdapter(private val context: Context) :
         }
     }
 
-    fun getData(position: Int): ArticleBean? = getItem(position)
+    fun getData(position: Int): Article? = getItem(position)
 
     private var itemClickListener: AdapterItemClickListener? = null
 
@@ -129,10 +129,10 @@ class HomeAdapter(private val context: Context) :
         this.itemClickListener = listener
     }
 
-    private var collectAction: (bean: ArticleBean, view: CheckBox, position: Int) -> Unit =
+    private var collectAction: (bean: Article, view: CheckBox, position: Int) -> Unit =
         { _, _, _ -> }
 
-    fun setCollectAction(action: (item: ArticleBean, view: CheckBox, position: Int) -> Unit) {
+    fun setCollectAction(action: (item: Article, view: CheckBox, position: Int) -> Unit) {
         this.collectAction = action
     }
 

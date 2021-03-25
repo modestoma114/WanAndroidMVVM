@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.model.NavigationBean
+import me.robbin.wanandroid.model.Navigation
 import me.robbin.wanandroid.databinding.RvItemKnowledgeBinding
 import java.util.*
 
@@ -16,7 +16,7 @@ import java.util.*
  * Create by Robbin at 2020/7/21
  */
 class NavigationAdapter :
-    BaseQuickAdapter<NavigationBean, BaseDataBindingHolder<RvItemKnowledgeBinding>>(R.layout.rv_item_knowledge) {
+    BaseQuickAdapter<Navigation, BaseDataBindingHolder<RvItemKnowledgeBinding>>(R.layout.rv_item_knowledge) {
 
     private val chipItemCaches: Queue<Chip> = LinkedList()
     private var onItemChipClickListener: OnItemChipClickListener? = null
@@ -36,7 +36,7 @@ class NavigationAdapter :
     @Suppress("DEPRECATION")
     override fun convert(
         holder: BaseDataBindingHolder<RvItemKnowledgeBinding>,
-        item: NavigationBean
+        item: Navigation
     ) {
         val binding = holder.dataBinding
         if (binding != null) {

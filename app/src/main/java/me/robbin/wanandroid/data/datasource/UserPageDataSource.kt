@@ -3,7 +3,7 @@ package me.robbin.wanandroid.data.datasource
 import androidx.paging.PagingSource
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.api.ApiService
-import me.robbin.wanandroid.model.ArticleBean
+import me.robbin.wanandroid.model.Article
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -11,9 +11,9 @@ import java.io.IOException
  *
  * Create by Robbin at 2020/7/29
  */
-class UserPageDataSource(private val userId: Int) : PagingSource<Int, ArticleBean>() {
+class UserPageDataSource(private val userId: Int) : PagingSource<Int, Article>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticleBean> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         return try {
             val page: Int = params.key ?: 1
             val response = ApiService.getApi().getUserPage(userId, page)
