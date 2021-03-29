@@ -1,7 +1,7 @@
 package me.robbin.wanandroid.api
 
-import com.drake.net.Get
 import me.robbin.wanandroid.model.*
+import retrofit2.http.*
 
 /**
  * WanAndroid Api
@@ -9,308 +9,303 @@ import me.robbin.wanandroid.model.*
  */
 interface WanApi {
 
-    fun getData() = Get<>()
-
+    // ******************** 用户相关 ********************
     /**
-     * 获取 Banner 列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("banner/json")
-    suspend fun getBanners(): ApiResponse<MutableList<BannerBean>>
-
-    /**
-     * 获取首页文章列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("article/list/{page}/json")
-    suspend fun getHomeArticles(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<Article>>>
-
-    /**
-     * 获取首页置顶文章列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("article/top/json")
-    suspend fun getTopArticles(): ApiResponse<MutableList<Article>>
-
-    /**
-     * 获取公众号列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("wxarticle/chapters/json")
-    suspend fun getPublicList(): ApiResponse<MutableList<Chapter>>
-
-    /**
-     * 根据cid获取公众号文章列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("wxarticle/list/{cid}/{page}/json")
-    suspend fun getPublicArticles(
-        @Path("cid") cid: Int,
-        @Path("page") page: Int
-    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
-
-    /**
-     * 获取问答文章列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("wenda/list/{page}/json")
-    suspend fun getQuestionArticles(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<Article>>>
-
-    /**
-     * 获取广场文章列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("user_article/list/{page}/json")
-    suspend fun getShareArticles(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<Article>>>
-
-    /**
-     * 获取知识体系分类列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("tree/json")
-    suspend fun getKnowledgeList(): ApiResponse<MutableList<Chapter>>
-
-    /**
-     * 根据cid获取知识体系文章列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("article/list/{page}/json")
-    suspend fun getKnowledgeArticles(
-        @Path("page") page: Int,
-        @Query("cid") cid: Int
-    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
-
-    /**
-     * 获取项目分类列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("project/tree/json")
-    suspend fun getProjectList(): ApiResponse<MutableList<Chapter>>
-
-    /**
-     * 根据cid获取项目文章列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("project/list/{page}/json")
-    suspend fun getProjectArticles(
-        @Path("page") page: Int,
-        @Query("cid") cid: Int
-    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
-
-    /**
-     * 获取最新项目文章列表
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("article/listproject/{page}/json")
-    suspend fun getLastProjectArticles(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<Article>>>
-
-    @GET("navi/json")
-    suspend fun getNaviList(): ApiResponse<MutableList<Navigation>>
-
-    /**
-     * 获取搜索热词
-     * Create by Robbin at 2020/7/10
-     */
-    @GET("hotkey/json")
-    suspend fun getHotKey(): ApiResponse<MutableList<HotKey>>
-
-    /**
-     * 根据关键词搜索
-     * Create by Robbin at 2020/7/10
-     */
-    @POST("article/query/{page}/json")
-    suspend fun getSearchDataByKey(
-        @Path("page") pageNo: Int,
-        @Query("k") searchKey: String
-    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
-
-    /**
-     * 登录
-     * Create by Robbin at 2020/7/10
+     * 用户登录
+     * <br>Created by Robbin in 2020/7/10
      */
     @FormUrlEncoded
     @POST("user/login")
     suspend fun login(
         @Field("username") username: String,
-        @Field("password") pwd: String
+        @Field("password") password: String
     ): ApiResponse<User>
 
-    // Integral
-
     /**
-     * 注册
-     * Create by Robbin at 2020/7/10
+     * 用户注册
+     * <br>Created by Robbin in 2020/7/10
      */
     @FormUrlEncoded
     @POST("user/register")
     suspend fun register(
         @Field("username") username: String,
-        @Field("password") pwd: String,
-        @Field("repassword") pwd2: String
+        @Field("password") password: String,
+        @Field("repassword") repassword: String
     ): ApiResponse<User>
 
     /**
-     * 获取用户积分
-     * Create by Robbin at 2020/7/10
+     * 用户注销
+     * <br>Created by Robbin in 2021/3/29
      */
-    @GET("lg/coin/userinfo/json")
-    suspend fun getIntegral(): ApiResponse<IntegralBean>
+    @GET("user/logout/json")
+    suspend fun logout(): ApiResponse<Any?>
+
+    // ******************** 收藏相关 ********************
+    /**
+     * 站内收藏文章列表
+     * Created by Robbin in 2020/7/30
+     */
+    @GET("lg/collect/list/{page}/json")
+    suspend fun collectArticles(
+        @Path("page") page: Int
+    ): ApiResponse<ApiPageResponse<MutableList<Collect>>>
 
     /**
-     * 获取积分详细
-     * Create by Robbin at 2020/7/25
+     * 收藏网址列表
+     * Created by Robbin in 2020/7/30
      */
-    @GET("lg/coin/list/{page}/json")
-    suspend fun getIntegralDetail(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<IntegralDetailBean>>>
-
-    @GET("coin/rank/{page}/json")
-    suspend fun getIntegralRank(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<IntegralBean>>>
-
-    // Collect
+    @GET("lg/collect/usertools/json")
+    suspend fun userCollectArticles(): ApiResponse<MutableList<CollectUrl>>
 
     /**
      * 收藏站内文章
-     * Create by Robbin at 2020/7/31
+     * Created by Robbin in 2020/7/31
      */
     @POST("lg/collect/{id}/json")
-    suspend fun collect(@Path("id") id: Int): ApiResponse<Any?>
-
-    /**
-     * 取消收藏站内文章
-     * Create by Robbin at 2020/7/31
-     */
-    @POST("lg/uncollect_originId/{id}/json")
-    suspend fun deCollect(@Path("id") id: Int): ApiResponse<Any?>
+    suspend fun collect(
+        @Path("id") id: Int
+    ): ApiResponse<Any?>
 
     /**
      * 收藏站外文章
-     * Create by Robbin at 2020/7/31
+     * Created by Robbin in 2020/7/31
+     */
+    @POST("lg/collect/add/json")
+    suspend fun collectCustom(
+        @Query("title") title: String,
+        @Query("author") author: String,
+        @Query("link") link: String
+    ): ApiResponse<Collect>
+
+    /**
+     * 收藏网址
+     * Created by Robbin in 2021/3/29
      */
     @POST("lg/collect/addtool/json")
     suspend fun collectUrl(
         @Query("name") name: String,
         @Query("link") link: String
-    ): ApiResponse<UserCollectBean>
+    ): ApiResponse<CollectUrl>
 
     /**
-     * 取消收藏站外文章
-     * Create by Robbin at 2020/7/31
+     * 编辑收藏网址
+     * Created by Robbin in 2021/3/29
+     */
+    @POST("lg/collect/updatetool/json")
+    suspend fun editCollectUrl(
+        @Query("id") id: Int,
+        @Query("name") name: String,
+        @Query("link") link: String
+    )
+
+    /**
+     * 根据文章 ID 取消收藏
+     * Created by Robbin in 2020/7/31
+     */
+    @POST("lg/uncollect_originId/{id}/json")
+    suspend fun uncollect(
+        @Path("id") id: Int
+    ): ApiResponse<Any?>
+
+    /**
+     * 根据收藏 ID 取消收藏
+     * Created by Robbin in 2020/7/31
+     */
+    @POST("lg/uncollect/{id}/json")
+    suspend fun uncollectCustom(
+        @Path("id") id: Int,
+        @Query("originId") originId: Int
+    ): ApiResponse<Any?>
+
+    /**
+     * 根据 ID 取消收藏网址
+     * Created by Robbin in 2021/3/29
      */
     @POST("lg/collect/deletetool/json")
-    suspend fun deCollectUrl(@Query("id") id: Int): ApiResponse<Any?>
+    suspend fun uncollectUrl(
+        @Query("id") id: Int
+    ): ApiResponse<Any?>
 
+    // ******************** 首页相关 ********************
     /**
-     * 获得收藏站内文章列表
-     * Create by Robbin at 2020/7/30
+     * 首页文章列表
+     * Created by Robbin in 2021/3/29
      */
-    @GET("lg/collect/list/{page}/json")
-    suspend fun getCollectArticles(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<CollectBean>>>
+    @GET("article/list/{page}/json")
+    suspend fun homeArticles(
+        @Path("page") page: Int
+    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
 
     /**
-     * 获得收藏站外文章列表
-     * Create by Robbin at 2020/7/30
+     * 置顶文章列表
+     * Created by Robbin in 2021/3/29
      */
-    @GET("lg/collect/usertools/json")
-    suspend fun getUserCollectArticles(): ApiResponse<MutableList<UserCollectBean>>
-
-    // Share
+    @GET("article/top/json")
+    suspend fun topArticles(): ApiResponse<MutableList<Article>>
 
     /**
-     * 获得我分享的文章
-     * Create by Robbin at 2020/7/27
+     * 首页 Banner 列表
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("banner/json")
+    suspend fun banners(): ApiResponse<MutableList<Banner>>
+
+    /**
+     * 常用网站列表
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("friend/json")
+    suspend fun friendSite(): ApiResponse<MutableList<FriendSite>>
+
+    /**
+     * 搜素热词
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("hotkey/json")
+    suspend fun hotKey(): ApiResponse<MutableList<HotKey>>
+
+    // ******************** 知识体系相关 ********************
+    /**
+     * 知识体系列表
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("tree/json")
+    suspend fun tree(): ApiResponse<MutableList<Chapter>>
+
+    /**
+     * 知识体系文章列表
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("article/list/{page}/json")
+    suspend fun treeArticles(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int
+    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
+
+    /**
+     * 根据作者昵称获取文章列表
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("article/list/{page}/json")
+    suspend fun authorArticles(
+        @Path("page") page: Int,
+        @Query("author") author: String
+    ): ApiResponse<ApiPageResponse<Article>>
+
+    // ******************** 导航相关 ********************
+    /**
+     * 导航数据
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("navi/json")
+    suspend fun navigations(): ApiResponse<MutableList<Navigation>>
+
+    // ******************** 项目相关 ********************
+    /**
+     * 项目分类
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("project/tree/json")
+    suspend fun projectTree(): ApiResponse<MutableList<Chapter>>
+
+    /**
+     * 特定项目文章列表
+     */
+    @GET("project/list/{page}/json")
+    suspend fun projects(
+        @Path("page") page: Int,
+        @Query("cid") cid: Int
+    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
+
+    // ******************** 搜索相关 ********************
+    /**
+     * 根据关键词搜索
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("article/query/{page}/json")
+    suspend fun search(
+        @Path("page") page: Int,
+        @Query("k") k: String
+    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
+
+    // ******************** 积分相关 ********************
+    /**
+     * 获取积分排行榜，page 从 1 开始
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("coin/rank/{page}/json")
+    suspend fun coinRank(
+        @Path("page") page: Int
+    ): ApiResponse<ApiPageResponse<MutableList<Integral>>>
+
+    /**
+     * 个人积分详细
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("lg/coin/userinfo/json")
+    suspend fun myCoin(): ApiResponse<Integral>
+
+    /**
+     * 获取个人积分获取详情
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("lg/coin/list/{page}/json")
+    suspend fun coinList(
+        @Path("page") page: Int
+    ): ApiResponse<ApiPageResponse<MutableList<Integral>>>
+
+    // ******************** 广场相关 ********************
+    /**
+     * 广场文章列表
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("user_article/list/{page}/json")
+    suspend fun userArticles(
+        @Path("page") page: Int
+    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
+
+    /**
+     * 根据用户 ID 获取分享文章列表，page 从 1 开始
+     * Created by Robbin in 2021/3/29
+     */
+    @GET("user/{id}/articles/{page}/json")
+    suspend fun userArticles(
+        @Path("id") id: Int,
+        @Path("page") page: Int
+    ): ApiResponse<ApiPageResponse<MutableList<UserPage>>>
+
+    /**
+     * 获取自己分享的文章
+     * Created by Robbin in 2021/3/29
      */
     @GET("user/lg/private_articles/{page}/json")
-    suspend fun getMyShare(@Path("page") page: Int)
-            : ApiResponse<UserPageBean>
+    suspend fun myArticles(
+        @Path("page") page: Int
+    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
 
     /**
-     * 获得用户分享文章
-     * Create by Robbin at 2020/7/30
+     * 删除自己的文章
+     * Created by Robbin in 2021/3/29
      */
-    @GET("user/{userId}/share_articles/{page}/json")
-    suspend fun getUserPage(
-        @Path("userId") userId: Int,
-        @Path("page") page: Int
-    ): ApiResponse<UserPageBean>
+    @POST("lg/user_article/delete/{id}/json")
+    suspend fun deleteMyArticle(
+        @Path("id") id: Int
+    ): ApiResponse<Any?>
 
     /**
      * 分享文章
-     * Create by Robbin at 2020/7/30
+     * Created by Robbin in 2021/3/29
      */
     @POST("lg/user_article/add/json")
-    @FormUrlEncoded
     suspend fun shareArticle(
-        @Field("title") title: String,
-        @Field("link") link: String
-    ): ApiResponse<Any?>
+        @Query("title") title: String,
+        @Query("link") link: String
+    ): ApiResponse<Article>
 
-    /**
-     * 删除分享的文章
-     * Create by Robbin at 2020/7/30
-     */
-    @POST("lg/user_article/delete/{id}/json")
-    suspend fun deleteMyShare(@Path("id") id: Int): ApiResponse<Any?>
-
-    // TodoL
-
-    /**
-     * 获得 TodoL 列表
-     * Create by Robbin at 2020/7/28
-     */
-    @GET("lg/todo/v2/list/{page}/json")
-    suspend fun getTodoList(@Path("page") page: Int)
-            : ApiResponse<ApiPageResponse<MutableList<TodoBean>>>
-
-    /**
-     * 添加Todo
-     * Create by Robbin at 2020/7/31
-     */
-    @POST("/lg/todo/add/json")
-    @FormUrlEncoded
-    suspend fun addTodo(
-        @Field("title") title: String,
-        @Field("content") content: String,
-        @Field("date") date: String,
-        @Field("type") type: Int,
-        @Field("priority") priority: Int
-    ): ApiResponse<Any?>
-
-    /**
-     * 完成一个Todo
-     * Create by Robbin at 2020/7/31
-     */
-    @POST("/lg/todo/done/{id}/json")
-    @FormUrlEncoded
-    suspend fun doneTodo(@Path("id") id: Int, @Field("status") status: Int)
-            : ApiResponse<Any?>
-
-    /**
-     * 删除一个Todo
-     * Create by Robbin at 2020/7/31
-     */
-    @POST("/lg/todo/delete/{id}/json")
-    suspend fun deleteTodo(@Path("id") id: Int): ApiResponse<Any?>
-
-    /**
-     * 修改一个Todo
-     * Create by Robbin at 2020/7/31
-     */
-    @POST("/lg/todo/update/{id}/json")
-    @FormUrlEncoded
-    suspend fun updateTodo(
-        @Field("title") title: String,
-        @Field("content") content: String,
-        @Field("date") date: String,
-        @Field("type") type: Int,
-        @Field("priority") priority: Int,
-        @Path("id") id: Int
-    ): ApiResponse<Any?>
+    // ******************** 问答相关 ********************
+    @GET("wenda/list/{page}/json")
+    suspend fun question(
+        @Path("page") page: Int
+    ): ApiResponse<ApiPageResponse<MutableList<Article>>>
 
 }

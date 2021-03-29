@@ -5,7 +5,6 @@ import com.kunminx.architecture.ui.callback.UnPeekLiveData
 import me.robbin.wanandroid.app.event.bus.CollectBus
 import me.robbin.wanandroid.app.event.bus.TodoBus
 import me.robbin.wanandroid.app.event.bus.TodoDetailBus
-import me.robbin.wanandroid.model.TodoBean
 
 /**
  *

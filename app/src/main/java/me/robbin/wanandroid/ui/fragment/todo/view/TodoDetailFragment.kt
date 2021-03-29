@@ -9,9 +9,8 @@ import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.app.event.bus.TodoDetailBus
-import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.databinding.FragmentTodoDetailBinding
-import me.robbin.wanandroid.model.TodoBean
+import me.robbin.wanandroid.model.Todo
 import me.robbin.wanandroid.ui.fragment.todo.viewmodel.TodoDetailViewModel
 import java.text.SimpleDateFormat
 
@@ -26,7 +25,7 @@ class TodoDetailFragment : BaseFragment<TodoDetailViewModel, FragmentTodoDetailB
             .addBindingParams(BR.click, ClickProxy())
     }
 
-    private var bean: TodoBean? = null
+    private var bean: Todo? = null
 
     override fun initView(savedInstanceState: Bundle?) {
         arguments?.let {

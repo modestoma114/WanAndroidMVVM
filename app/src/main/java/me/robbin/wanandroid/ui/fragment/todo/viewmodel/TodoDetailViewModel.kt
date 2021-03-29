@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.api.ApiService
 import me.robbin.wanandroid.app.ext.watcher.SimpleWatcher
-import me.robbin.wanandroid.model.TodoBean
+import me.robbin.wanandroid.model.Todo
 
 /**
  *
@@ -20,7 +20,7 @@ class TodoDetailViewModel : BaseViewModel() {
     val priority: MutableLiveData<Int> = MutableLiveData(1)
     val id: MutableLiveData<Int> = MutableLiveData(-1)
 
-    val bean: MutableLiveData<TodoBean> = MutableLiveData()
+    val bean: MutableLiveData<Todo> = MutableLiveData()
 
     val priorityStr: MutableLiveData<String> = MutableLiveData("普通")
     val typeStr: MutableLiveData<String> = MutableLiveData("工作")
@@ -61,7 +61,7 @@ class TodoDetailViewModel : BaseViewModel() {
         }
     }
 
-    fun setValue(bean: TodoBean) {
+    fun setValue(bean: Todo) {
         title.value = bean.title
         content.value = bean.content
         dateStr.value = bean.dateStr
@@ -89,7 +89,7 @@ class TodoDetailViewModel : BaseViewModel() {
         }
     }
 
-    fun updateTodo(success: (bean: TodoBean) -> Unit) {
+    fun updateTodo(success: (bean: Todo) -> Unit) {
         if (checkDetail()) {
             launchOnlyResult(
                 block = {

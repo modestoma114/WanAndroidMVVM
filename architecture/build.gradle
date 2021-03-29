@@ -45,6 +45,7 @@ dependencies {
     implementation Dependencies.AndroidX.coreKtx
     implementation Dependencies.AndroidX.appcompat
     implementation Dependencies.Lifecycle.viewModelKtx
+    implementation Dependencies.Kotlin.Coroutines.android
 
     implementation project(':common')
 

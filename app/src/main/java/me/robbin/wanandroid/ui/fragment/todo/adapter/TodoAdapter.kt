@@ -11,31 +11,31 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.robbin.wanandroid.R
 import me.robbin.wanandroid.databinding.RvItemTodoBinding
-import me.robbin.wanandroid.model.TodoBean
+import me.robbin.wanandroid.model.Todo
 
 /**
  * TodoL 列表适配器
  * Create by Robbin at 2020/7/27
  */
 class TodoAdapter(private val context: Context) :
-    PagingDataAdapter<TodoBean, TodoViewHolder>(TODO_COMPARATOR) {
+    PagingDataAdapter<Todo, TodoViewHolder>(TODO_COMPARATOR) {
 
     companion object {
-        val TODO_COMPARATOR = object : DiffUtil.ItemCallback<TodoBean>() {
-            override fun areContentsTheSame(oldItem: TodoBean, newItem: TodoBean): Boolean =
+        val TODO_COMPARATOR = object : DiffUtil.ItemCallback<Todo>() {
+            override fun areContentsTheSame(oldItem: Todo, newItem: Todo): Boolean =
                 oldItem == newItem
 
-            override fun areItemsTheSame(oldItem: TodoBean, newItem: TodoBean): Boolean =
+            override fun areItemsTheSame(oldItem: Todo, newItem: Todo): Boolean =
                 oldItem.id == newItem.id
         }
     }
 
-    private var changeStatusClick: (bean: TodoBean) -> Unit =
+    private var changeStatusClick: (bean: Todo) -> Unit =
         { _ -> }
 
-    private var clickAction: (bean: TodoBean, view: View, position: Int) -> Unit = { _, _, _ -> }
+    private var clickAction: (bean: Todo, view: View, position: Int) -> Unit = { _, _, _ -> }
 
-    private var longClickAction: (bean: TodoBean, view: View, position: Int) -> Unit =
+    private var longClickAction: (bean: Todo, view: View, position: Int) -> Unit =
         { _, _, _ -> }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
@@ -69,17 +69,17 @@ class TodoAdapter(private val context: Context) :
         }
     }
 
-    fun getItemByPosition(position: Int): TodoBean? = getItem(position)
+    fun getItemByPosition(position: Int): Todo? = getItem(position)
 
-    fun setChangeStatusClick(action: (bean: TodoBean) -> Unit) {
+    fun setChangeStatusClick(action: (bean: Todo) -> Unit) {
         this.changeStatusClick = action
     }
 
-    fun setClickAction(action: (bean: TodoBean, view: View, position: Int) -> Unit) {
+    fun setClickAction(action: (bean: Todo, view: View, position: Int) -> Unit) {
         this.clickAction = action
     }
 
-    fun setLongClickAction(action: (bean: TodoBean, view: View, position: Int) -> Unit) {
+    fun setLongClickAction(action: (bean: Todo, view: View, position: Int) -> Unit) {
         this.longClickAction = action
     }
 

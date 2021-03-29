@@ -2,16 +2,13 @@ package me.robbin.wanandroid.ui.fragment.me.view
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.paging.LoadState
 import kotlinx.android.synthetic.main.layout_collect_articles.*
 import kotlinx.android.synthetic.main.layout_loading_view.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.utils.toToast
 import me.robbin.wanandroid.BR
@@ -19,9 +16,7 @@ import me.robbin.wanandroid.R
 import me.robbin.wanandroid.app.base.BaseFragment
 import me.robbin.wanandroid.app.event.listener.AdapterItemClickListener
 import me.robbin.wanandroid.app.network.EmptyException
-import me.robbin.wanandroid.model.UserCollectBean
 import me.robbin.wanandroid.databinding.LayoutCollectArticlesBinding
-import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.common.adapter.PagingLoadStateAdapter
 import me.robbin.wanandroid.ui.fragment.me.adapter.CollectAdapter
 import me.robbin.wanandroid.ui.fragment.me.adapter.UserCollectAdapter
@@ -113,7 +108,7 @@ class CollectArticlesFragment : BaseFragment<MyCollectViewModel, LayoutCollectAr
             btnEmpty.visibility = View.GONE
             userAdapter.setOnItemClickListener { adapter, _, position ->
                 val bundle = Bundle()
-                val bean = adapter.data[position] as UserCollectBean
+                val bean = adapter.data[position] as UserCollect
                 bundle.putString("url", bean.link)
                 bundle.putString("title", bean.name)
                 bundle.putInt("articleId", bean.id)
@@ -124,7 +119,7 @@ class CollectArticlesFragment : BaseFragment<MyCollectViewModel, LayoutCollectAr
             userAdapter.addChildClickViewIds(R.id.collectUserCollect)
             userAdapter.setOnItemChildClickListener { adapter, view, position ->
                 if (view.id == R.id.collectUserCollect) {
-                    val bean = adapter.data[position] as UserCollectBean
+                    val bean = adapter.data[position] as UserCollect
                     mViewModel.unCollectUrl(bean.id) {
                         adapter.removeAt(position)
                     }

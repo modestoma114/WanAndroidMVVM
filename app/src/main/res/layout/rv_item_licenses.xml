@@ -8,7 +8,7 @@
 
         <variable
             name="bean"
-            type="me.robbin.wanandroid.model.LicensesBean" />
+            type="me.robbin.wanandroid.model.Licenses" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

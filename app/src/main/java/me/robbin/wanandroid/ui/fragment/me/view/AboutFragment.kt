@@ -7,9 +7,8 @@ import me.robbin.mvvmscaffold.base.DataBindingConfig
 import me.robbin.mvvmscaffold.base.fragment.BaseDBFragment
 import me.robbin.wanandroid.BR
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.model.LicensesBean
+import me.robbin.wanandroid.model.Licenses
 import me.robbin.wanandroid.databinding.FragmentAboutBinding
-import me.robbin.wanandroid.app.ext.nav
 import me.robbin.wanandroid.ui.fragment.me.adapter.LicensesAdapter
 import me.robbin.wanandroid.ui.fragment.me.viewmodel.AboutViewModel
 
@@ -30,7 +29,7 @@ class AboutFragment : BaseDBFragment<AboutViewModel, FragmentAboutBinding>() {
         rlLicenses.adapter = licensesAdapter
         licensesAdapter.setOnItemClickListener { adapter, _, position ->
             val bundle = Bundle()
-            val bean = adapter.getItem(position) as LicensesBean
+            val bean = adapter.getItem(position) as Licenses
             bundle.putString("title", bean.name)
             bundle.putString("url", bean.url)
             nav().navigate(R.id.action_global_to_webFragment, bundle)

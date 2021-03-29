@@ -3,7 +3,7 @@ package me.robbin.wanandroid.data.datasource
 import androidx.paging.PagingSource
 import me.robbin.wanandroid.app.network.EmptyException
 import me.robbin.wanandroid.api.ApiService
-import me.robbin.wanandroid.model.IntegralBean
+import me.robbin.wanandroid.model.Integral
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -11,9 +11,9 @@ import java.io.IOException
  * 积分排名列表数据源
  * Create by Robbin at 2020/7/26
  */
-class IntegralRankDataSource : PagingSource<Int, IntegralBean>() {
+class IntegralRankDataSource : PagingSource<Int, Integral>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, IntegralBean> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Integral> {
         return try {
             val page: Int = params.key ?: 1
             val response = ApiService.getApi().getIntegralRank(page)

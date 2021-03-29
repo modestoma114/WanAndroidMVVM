@@ -1,6 +1,6 @@
 package me.robbin.wanandroid.app.event.bus
 
-import me.robbin.wanandroid.model.TodoBean
+import me.robbin.wanandroid.model.Todo
 
 /**
  *
@@ -8,4 +8,4 @@ import me.robbin.wanandroid.model.TodoBean
  */
 data class TodoBus(var id: Int, var status: Int)
 
-data class TodoDetailBus(var id: Int, var bean: TodoBean)
+data class TodoDetailBus(var id: Int, var bean: Todo)

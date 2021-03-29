@@ -43,7 +43,8 @@ dependencies {
     implementation Dependencies.AndroidX.material
 
     api Dependencies.Kotlin.Coroutines.android
-    api Dependencies.Net.android
+    api Dependencies.Net.Retrofit.core
+    api Dependencies.Net.Retrofit.converterMoshi
     api Dependencies.Net.Moshi.codegen
 
     testImplementation 'junit:junit:4.13.2'

@@ -8,7 +8,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.robbin.wanandroid.R
-import me.robbin.wanandroid.model.IntegralBean
+import me.robbin.wanandroid.model.Integral
 import me.robbin.wanandroid.databinding.RvItemIntegralRankBinding
 
 /**
@@ -16,21 +16,21 @@ import me.robbin.wanandroid.databinding.RvItemIntegralRankBinding
  * Create by Robbin at 2020/7/26
  */
 class IntegralRankAdapter(private val context: Context) :
-    PagingDataAdapter<IntegralBean, IntegralRankViewHolder>(
+    PagingDataAdapter<Integral, IntegralRankViewHolder>(
         INTEGRAL_COMPARATOR
     ) {
 
     companion object {
-        val INTEGRAL_COMPARATOR = object : DiffUtil.ItemCallback<IntegralBean>() {
+        val INTEGRAL_COMPARATOR = object : DiffUtil.ItemCallback<Integral>() {
             override fun areItemsTheSame(
-                oldItem: IntegralBean,
-                newItem: IntegralBean
+                oldItem: Integral,
+                newItem: Integral
             ): Boolean =
                 oldItem.userId == newItem.userId
 
             override fun areContentsTheSame(
-                oldItem: IntegralBean,
-                newItem: IntegralBean
+                oldItem: Integral,
+                newItem: Integral
             ): Boolean =
                 oldItem == newItem
         }

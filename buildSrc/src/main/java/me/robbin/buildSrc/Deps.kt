@@ -43,7 +43,11 @@ object Dependencies {
 
     object Net {
 
-        const val android = "com.github.liangjingkanji:Net:2.3.11"
+        object Retrofit {
+            private const val version = "2.9.0"
+            const val core = "com.squareup.retrofit2:retrofit:$version"
+            const val converterMoshi = "com.squareup.retrofit2:converter-moshi:$version"
+        }
 
         object Moshi {
             const val codegen = "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"

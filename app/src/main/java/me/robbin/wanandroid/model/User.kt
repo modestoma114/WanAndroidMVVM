@@ -1,7 +1,7 @@
 package me.robbin.wanandroid.model
 
 /**
- *  用户
+ * 用户信息 Model
  * Create by Robbin at 2020/7/10
  */
 data class User(

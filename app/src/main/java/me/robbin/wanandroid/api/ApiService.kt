@@ -3,6 +3,7 @@ package me.robbin.wanandroid.api
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import me.robbin.wanandroid.app.network.NetworkClient
+import me.robbin.wanandroid.model.ApiPageResponse
 import me.robbin.wanandroid.model.ApiResponse
 import me.robbin.wanandroid.model.Article
 

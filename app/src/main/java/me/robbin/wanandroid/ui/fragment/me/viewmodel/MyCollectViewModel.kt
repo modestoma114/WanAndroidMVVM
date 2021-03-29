@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import me.robbin.mvvmscaffold.base.viewmodel.BaseViewModel
 import me.robbin.wanandroid.api.ApiService
 import me.robbin.wanandroid.data.repository.ArticleRepository
-import me.robbin.wanandroid.model.UserCollectBean
 
 /**
  *
@@ -14,7 +13,7 @@ class MyCollectViewModel : BaseViewModel() {
 
     private val articleRepository by lazy { ArticleRepository.instance }
 
-    val userCollects: MutableLiveData<MutableList<UserCollectBean>> = MutableLiveData()
+    val userCollects: MutableLiveData<MutableList<UserCollect>> = MutableLiveData()
 
     /**
      * 获取站外收藏文章列表

@@ -32,7 +32,7 @@ data class Article(
     private var shareUser: String,
     private var superChapterId: Int,
     private var superChapterName: String,
-    private var tags: MutableList<TagsBean>,
+    private var tags: MutableList<Tags>,
     private var title: String,
     private var type: Int,
     private var userId: Int,

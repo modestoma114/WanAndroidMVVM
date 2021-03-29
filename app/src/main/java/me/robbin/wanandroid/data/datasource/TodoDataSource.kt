@@ -3,7 +3,7 @@ package me.robbin.wanandroid.data.datasource
 import androidx.paging.PagingSource
 import me.robbin.wanandroid.api.ApiService
 import me.robbin.wanandroid.app.network.EmptyException
-import me.robbin.wanandroid.model.TodoBean
+import me.robbin.wanandroid.model.Todo
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -11,9 +11,9 @@ import java.io.IOException
  * TodoL 列表数据源
  * Create by Robbin at 2020/7/27
  */
-class TodoDataSource : PagingSource<Int, TodoBean>() {
+class TodoDataSource : PagingSource<Int, Todo>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TodoBean> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Todo> {
         return try {
             val page: Int = params.key ?: 1
             val response = ApiService.getApi().getTodoList(page)
