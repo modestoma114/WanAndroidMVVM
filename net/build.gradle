@@ -4,6 +4,7 @@ import me.robbin.buildSrc.Dependencies
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -45,7 +46,8 @@ dependencies {
     api Dependencies.Kotlin.Coroutines.android
     api Dependencies.Net.Retrofit.core
     api Dependencies.Net.Retrofit.converterMoshi
-    api Dependencies.Net.Moshi.codegen
+    api Dependencies.Net.Retrofit.logger
+    kapt(Dependencies.Net.Moshi.codegen)
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

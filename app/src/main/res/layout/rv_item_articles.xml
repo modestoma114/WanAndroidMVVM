@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="me.robbin.wanandroid.model.Article" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bgPrimary"
+        android:padding="15dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_envelope"
+            imgVisible="@{bean.projectPic}"
+            android:layout_width="70dp"
+            android:layout_height="99dp"
+            android:background="?attr/selectableItemBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_head"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_envelope"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{bean.realAuthor}"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_notes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_new"
+                articleNew="@{bean.newTag}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/text_new"
+                android:textColor="@color/colorNew"
+                android:textSize="@dimen/text_notes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_author"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_top"
+                articleTop="@{bean.topTag}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/text_top"
+                android:textColor="@color/colorBadge"
+                android:textSize="@dimen/text_notes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_new"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_tag"
+                articleTag="@{bean.tag}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/bg_article_tag"
+                android:paddingStart="3dp"
+                android:paddingEnd="3dp"
+                android:textColor="@color/colorNew"
+                android:textSize="@dimen/text_notes"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_top"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="公众号" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{bean.date}"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_notes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{bean.realTitle}"
+            android:textColor="@color/textPrimary"
+            android:textSize="@dimen/text_content"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_envelope"
+            app:layout_constraintTop_toBottomOf="@id/cl_head" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@{bean.realDesc}"
+            android:textColor="@color/textSecondary"
+            android:textSize="@dimen/text_desc"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_envelope"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_chapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:text="@{bean.realChapter}"
+            android:textColor="@color/textThird"
+            android:textSize="@dimen/text_notes"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_envelope"
+            app:layout_constraintTop_toBottomOf="@id/tv_desc" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/check_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:button="@null"
+            android:checked="@{bean.haveCollect}"
+            android:drawableEnd="@drawable/check_collect"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_desc" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

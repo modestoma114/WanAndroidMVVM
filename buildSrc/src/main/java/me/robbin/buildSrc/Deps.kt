@@ -47,6 +47,7 @@ object Dependencies {
             private const val version = "2.9.0"
             const val core = "com.squareup.retrofit2:retrofit:$version"
             const val converterMoshi = "com.squareup.retrofit2:converter-moshi:$version"
+            const val logger = "com.squareup.okhttp3:logging-interceptor:4.9.0"
         }
 
         object Moshi {

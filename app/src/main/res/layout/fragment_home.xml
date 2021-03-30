@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="state"
             type="me.robbin.wanandroid.ui.home.HomeStateViewModel" />
+
+        <variable
+            name="articlesAdapter"
+            type="me.robbin.wanandroid.ui.common.ArticlesAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_home"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/title_home" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home_articles"
+            setAdapter="@{articlesAdapter}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_home" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

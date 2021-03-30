@@ -69,6 +69,8 @@ dependencies {
     implementation Dependencies.AndroidX.swipeRefreshLayout
     implementation Dependencies.AndroidX.paging
 
+    kapt(Dependencies.Net.Moshi.codegen)
+
     implementation Dependencies.ThirdParty.BRVAH
     implementation Dependencies.ThirdParty.circleImage
     implementation Dependencies.ThirdParty.persistentCookie

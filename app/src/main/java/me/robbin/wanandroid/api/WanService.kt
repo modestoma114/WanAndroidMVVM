@@ -5,12 +5,30 @@ import kotlinx.coroutines.coroutineScope
 import me.robbin.wanandroid.model.ApiPageResponse
 import me.robbin.wanandroid.model.ApiResponse
 import me.robbin.wanandroid.model.Article
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 /**
  * 获取 WanApi 实例
  * Create by Robbin at 2020/7/10
  */
-object ApiService {
+object WanService {
+
+    fun getApi(): WanApi {
+        val logger = HttpLoggingInterceptor()
+        logger.level = HttpLoggingInterceptor.Level.BASIC
+        val client = OkHttpClient.Builder()
+            .addInterceptor(logger)
+            .build()
+        return Retrofit.Builder()
+            .baseUrl("https://www.wanandroid.com")
+            .client(client)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+            .create(WanApi::class.java)
+    }
 
 //    fun getApi() =
 //        NetworkClient.instance.getApi("https://www.wanandroid.com", WanApi::class.java)
