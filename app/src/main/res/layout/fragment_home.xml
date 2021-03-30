@@ -1,60 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <variable
             name="state"
-            type="me.robbin.wanandroid.ui.fragment.home.viewmodel.HomeViewModel" />
-
-        <variable
-            name="click"
-            type="me.robbin.wanandroid.ui.fragment.home.view.HomeFragment.ClickProxy" />
+            type="me.robbin.wanandroid.ui.home.HomeStateViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bgPrimary"
-        android:orientation="vertical">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbarHome"
-            addStatusPadding="@{true}"
-            toolbarMenuItemClick="@{click}"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/bgMain"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/menu_home"
-            app:title="@string/tab_home"
-            app:titleTextColor="@color/textTitle" />
-
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/refreshArticles"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbarHome">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rlArticles"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical"
-                app:layoutManager="LinearLayoutManager"
-                tools:layoutManager="LinearLayoutManager"
-                tools:listitem="@layout/rv_item_article" />
-
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-        <include layout="@layout/layout_loading_view" />
+        android:layout_height="match_parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

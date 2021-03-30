@@ -16,7 +16,7 @@ object Dependencies {
     const val buildGradle = "com.android.tools.build:gradle:4.1.3"
 
     object Kotlin {
-        private const val version = "1.4.31"
+        private const val version = "1.4.32"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val stdLib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
 
